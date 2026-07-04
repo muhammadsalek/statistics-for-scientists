@@ -1440,6 +1440,9 @@ CV = (15/100) × 100 = 15%
 - মেশিন লার্নিং
 - কৃত্রিম বুদ্ধিমত্তা
 - ডেটা সায়েন্স
+
+---
+
 ## 📚 References & Resources
 
 ### Key References
@@ -1491,6 +1494,7 @@ CV = (15/100) × 100 = 15%
 7. **STROBE Statement**: Observational study reporting guidelines - https://www.strobe-statement.org/
 
 8. **PRISMA Statement**: Systematic review reporting guidelines - https://www.prisma-statement.org/
+
 ---
 
 <div align="center">
@@ -1503,8 +1507,3 @@ CV = (15/100) × 100 = 15%
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-green)](LICENSE)
 
 </div>
-
-
-
-
-
