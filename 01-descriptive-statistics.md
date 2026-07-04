@@ -1,4 +1,4 @@
-I need to add figures to all the READMEs and update them to around 3,000 lines each. Let me work on creating complete, detailed versions with ASCII art figures for visualization.
+
 
 # 📊 Chapter 1: Descriptive Statistics
 
