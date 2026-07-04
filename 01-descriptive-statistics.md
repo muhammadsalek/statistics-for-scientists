@@ -652,96 +652,1122 @@ F -->|Yes| H[Ratio]
 
 ---
 
-## 3. Frequency Distributions
+# 3. Frequency Distributions
 
-### 3.1 Frequency Distribution
-
-> 📖 **Definition**: A frequency distribution is a table that shows the frequency of each value or class interval.
-
-### 3.2 Relative Frequency
-
-$$\text{Relative Frequency} = \frac{\text{Frequency}}{\text{Total Observations}}$$
-
-### 3.3 Cumulative Frequency
-
-$$\text{Cumulative Frequency} = \sum_{i=1}^k f_i$$
-
-### 3.4 Frequency Tables
-
-| Blood Type | Frequency | Relative Frequency | Cumulative Frequency |
-|------------|-----------|-------------------|---------------------|
-| O+ | 35 | 0.35 | 35 |
-| A+ | 28 | 0.28 | 63 |
-| B+ | 18 | 0.18 | 81 |
-| AB+ | 12 | 0.12 | 93 |
-| O- | 4 | 0.04 | 97 |
-| A- | 2 | 0.02 | 99 |
-| B- | 1 | 0.01 | 100 |
-
-### 3.5 Grouped Data
-
-> 📖 **Definition**: Grouped data are observations organized into class intervals.
-
-### 3.6 Ungrouped Data
-
-> 📖 **Definition**: Ungrouped data are individual observations not organized into classes.
-
-### 3.7 Class Intervals
-
-> 📖 **Definition**: Class intervals are ranges of values used to group continuous data.
-
-### 3.8 Class Boundaries
-
-> 📖 **Definition**: Class boundaries are the true limits of class intervals, eliminating gaps.
-
-### 3.9 Class Midpoints
-
-$$\text{Class Midpoint} = \frac{\text{Lower Class Limit} + \text{Upper Class Limit}}{2}$$
+Frequency distributions provide a systematic method for organizing, summarizing, and presenting data. Rather than examining hundreds or thousands of individual observations, researchers can understand the overall pattern of a dataset by observing how frequently different values or groups of values occur. Frequency distributions are one of the fundamental tools of **descriptive statistics** and serve as the basis for many graphical displays and statistical analyses.
 
 ---
 
-## 4. Data Visualization
+## Learning Objectives
 
-### 4.1 Histograms
+After completing this section, you should be able to:
 
-> 📖 **Definition**: A histogram is a graphical representation of the distribution of numerical data.
+- Understand the concept of frequency distributions.
+- Construct frequency distribution tables.
+- Calculate relative and cumulative frequencies.
+- Distinguish between grouped and ungrouped data.
+- Define class intervals, class boundaries, and class midpoints.
+- Interpret frequency tables in scientific research.
+- Choose appropriate frequency distributions for different types of data.
 
-```mermaid
-graph TD
-    H[Histogram] --> B[Bin Selection]
-    H --> C[Count Frequencies]
-    H --> D[Draw Bars]
-    H --> E[Interpret Shape]
+---
+
+## 3.1 Frequency Distribution
+
+> 📖 **Definition:** A **frequency distribution** is a systematic arrangement of data that displays the number of observations (frequencies) corresponding to each value or class interval. It provides a concise summary of how data are distributed within a dataset.
+
+A frequency distribution helps researchers:
+
+- Organize raw data.
+- Identify patterns and trends.
+- Detect unusual observations.
+- Prepare data for visualization.
+- Support statistical analysis.
+
+### General Structure
+
+| Value/Class | Frequency |
+|-------------|----------:|
+| Category A | 15 |
+| Category B | 22 |
+| Category C | 18 |
+
+---
+
+### Components of a Frequency Distribution
+
+A complete frequency distribution generally contains:
+
+- Variable
+- Class interval (if grouped)
+- Frequency
+- Relative frequency
+- Percentage
+- Cumulative frequency
+
+---
+
+## 3.2 Relative Frequency
+
+Relative frequency represents the proportion of observations belonging to each category relative to the total sample size.
+
+### Formula
+
+$$
+\text{Relative Frequency}
+=
+\frac{\text{Frequency}}
+{\text{Total Number of Observations}}
+$$
+
+### Percentage Frequency
+
+$$
+\text{Percentage}
+=
+\text{Relative Frequency}
+\times100
+$$
+
+### Interpretation
+
+A relative frequency of **0.35** means that **35% of all observations** belong to that category.
+
+---
+
+## 3.3 Cumulative Frequency
+
+Cumulative frequency represents the running total of frequencies as observations accumulate from one class to the next.
+
+### Formula
+
+$$
+\text{Cumulative Frequency}
+=
+\sum_{i=1}^{k}f_i
+$$
+
+where
+
+- $f_i$ = frequency of class *i*
+- *k* = current class
+
+### Interpretation
+
+Cumulative frequencies help determine:
+
+- Percentiles
+- Quartiles
+- Median
+- Distribution shape
+
+---
+
+## 3.4 Frequency Distribution Table
+
+The following example summarizes the blood groups of **100 participants**.
+
+| Blood Type | Frequency | Relative Frequency | Percentage | Cumulative Frequency |
+|------------|----------:|------------------:|-----------:|--------------------:|
+| O+ | 35 | 0.35 | 35% | 35 |
+| A+ | 28 | 0.28 | 28% | 63 |
+| B+ | 18 | 0.18 | 18% | 81 |
+| AB+ | 12 | 0.12 | 12% | 93 |
+| O− | 4 | 0.04 | 4% | 97 |
+| A− | 2 | 0.02 | 2% | 99 |
+| B− | 1 | 0.01 | 1% | 100 |
+
+---
+
+### Interpretation
+
+From the table we observe:
+
+- **O+** is the most common blood group.
+- **B−** is the least common blood group.
+- Approximately **63%** of participants belong to either **O+** or **A+** blood groups.
+- The cumulative frequency reaches **100**, confirming that all observations have been included.
+
+---
+
+## 3.5 Grouped Data
+
+> 📖 **Definition:** **Grouped data** are observations organized into class intervals rather than reported individually. Grouping simplifies the presentation of large datasets and facilitates statistical analysis.
+
+### Example
+
+| Age (Years) | Frequency |
+|-------------|----------:|
+| 20–29 | 12 |
+| 30–39 | 28 |
+| 40–49 | 31 |
+| 50–59 | 19 |
+| 60–69 | 10 |
+
+Grouped data are commonly used for:
+
+- Age distributions
+- Income distributions
+- Blood pressure measurements
+- Examination scores
+
+---
+
+## 3.6 Ungrouped Data
+
+> 📖 **Definition:** **Ungrouped data** consist of individual observations presented in their original form without classification into intervals.
+
+### Example
+
+```
+21, 24, 27, 29, 31, 34, 36, 39,
+41, 42, 44, 48, 51, 54, 57
 ```
 
-**Components:**
-- X-axis: Variable values (bins)
-- Y-axis: Frequency or density
-- Bars: No gaps between bins
+Ungrouped data are generally appropriate for:
 
-**Interpretation:**
-- Shape: Distribution pattern
-- Peaks: Modes
-- Spread: Variation
-- Gaps: Missing data
+- Small datasets
+- Individual measurements
+- Preliminary exploratory analysis
 
-### 4.2 Frequency Polygon
+---
 
-> 📖 **Definition**: A frequency polygon is a line graph connecting the midpoints of histogram bars.
+## 3.7 Class Intervals
 
-### 4.3 Ogive
+> 📖 **Definition:** A **class interval** is the range of values used to group continuous observations into meaningful categories.
 
-> 📖 **Definition**: An ogive is a line graph of cumulative frequencies.
+Example:
 
-### 4.4 Bar Chart
+| Class Interval |
+|---------------|
+| 0–9 |
+| 10–19 |
+| 20–29 |
+| 30–39 |
 
-> 📖 **Definition**: A bar chart displays categorical data with rectangular bars.
+Well-designed class intervals should:
 
-**Types:**
-- Vertical bar chart
-- Horizontal bar chart
-- Stacked bar chart
-- Grouped bar chart
+- Be mutually exclusive.
+- Cover all observations.
+- Have equal widths whenever possible.
+- Avoid overlapping values.
+
+---
+
+## 3.8 Class Boundaries
+
+> 📖 **Definition:** **Class boundaries** represent the true limits separating adjacent class intervals by eliminating any gaps between them.
+
+Example:
+
+| Class Limits | Class Boundaries |
+|--------------|-----------------|
+| 20–29 | 19.5–29.5 |
+| 30–39 | 29.5–39.5 |
+| 40–49 | 39.5–49.5 |
+
+Class boundaries are especially important when constructing histograms and estimating continuous distributions.
+
+---
+
+## 3.9 Class Midpoints
+
+The class midpoint represents the center of each class interval.
+
+### Formula
+
+$$
+\text{Class Midpoint}
+=
+\frac{\text{Lower Class Limit}
++
+\text{Upper Class Limit}}
+{2}
+$$
+
+### Example
+
+| Class Interval | Midpoint |
+|---------------|---------:|
+| 20–29 | 24.5 |
+| 30–39 | 34.5 |
+| 40–49 | 44.5 |
+| 50–59 | 54.5 |
+
+Class midpoints are widely used for estimating:
+
+- Mean
+- Variance
+- Standard deviation
+- Histograms
+- Frequency polygons
+
+---
+
+## Key Takeaways
+
+- Frequency distributions summarize raw data into an organized format.
+- Relative frequency expresses proportions rather than counts.
+- Cumulative frequency shows the running total of observations.
+- Grouped data simplify the analysis of large datasets.
+- Class intervals, boundaries, and midpoints are essential components of grouped frequency distributions.
+- Frequency distributions form the basis for many statistical graphs and inferential methods.
+
+## 4. Data Visualization
+
+Data visualization transforms raw numerical data into graphical representations that help researchers identify patterns, trends, distributions, relationships, and potential anomalies. Effective visualizations make complex datasets easier to understand and communicate.
+
+---
+
+## Learning Objectives
+
+After completing this section, you should be able to:
+
+- Understand the purpose of data visualization.
+- Choose appropriate graphs for different data types.
+- Interpret common statistical graphics.
+- Recognize misleading visualizations.
+- Present scientific data effectively.
+
+---
+
+## 4.1 Histograms
+
+> 📖 **Definition:** A **histogram** is a graphical display of the frequency distribution of a continuous numerical variable. Unlike a bar chart, histogram bars are **adjacent**, indicating continuous data.
+
+---
+
+### Construction Process
+
+```mermaid
+flowchart LR
+
+A[Collect Numerical Data]
+-->B[Choose Class Intervals]
+
+B-->C[Count Frequencies]
+
+C-->D[Draw Adjacent Bars]
+
+D-->E[Interpret Distribution]
+```
+
+---
+
+### Components of a Histogram
+
+| Component | Description |
+|-----------|-------------|
+| X-axis | Class intervals (bins) |
+| Y-axis | Frequency or density |
+| Bars | Adjacent rectangles representing frequencies |
+| Width | Class interval |
+| Height | Frequency of observations |
+
+---
+
+### Simple Histogram
+
+```text
+Frequency
+
+12 |               █
+11 |               █
+10 |            █  █
+ 9 |            █  █
+ 8 |         █  █  █
+ 7 |      █  █  █  █
+ 6 |      █  █  █  █
+ 5 |   █  █  █  █  █
+ 4 |   █  █  █  █  █
+ 3 | █ █  █  █  █  █
+ 2 | █ █  █  █  █  █
+ 1 | █ █  █  █  █  █
+    -------------------------
+     10 20 30 40 50 60
+```
+
+---
+
+### Histogram Shapes
+
+#### Symmetric Distribution
+
+```text
+        █
+      ███
+    █████
+  ███████
+███████████
+  ███████
+    █████
+      ███
+        █
+```
+
+---
+
+#### Right-Skewed Distribution
+
+```text
+██████████
+████████
+██████
+████
+███
+██
+█
+```
+
+---
+
+#### Left-Skewed Distribution
+
+```text
+        █
+      ███
+    █████
+  ███████
+██████████
+```
+
+---
+
+#### Uniform Distribution
+
+```text
+████
+████
+████
+████
+████
+████
+```
+
+---
+
+#### Bimodal Distribution
+
+```text
+███
+██████
+████████
+███
+█
+███
+██████
+████████
+```
+
+---
+
+### Interpretation
+
+A histogram helps identify:
+
+- Distribution shape
+- Center of the data
+- Spread
+- Skewness
+- Multiple peaks
+- Outliers
+- Possible data errors
+
+---
+
+### Medical Example
+
+Age distribution of patients admitted to a hospital.
+
+```text
+Frequency
+
+30 |        █
+25 |      ███
+20 |    █████
+15 |  ███████
+10 | █████████
+ 5 | ███████
+    ---------------------
+    20 30 40 50 60 70
+```
+
+---
+
+### Common Mistakes
+
+❌ Using unequal bin widths
+
+❌ Choosing too many bins
+
+❌ Choosing too few bins
+
+❌ Using histograms for categorical variables
+
+---
+
+### Reviewer Perspective
+
+Reviewers typically evaluate:
+
+- Are appropriate bin widths used?
+- Does the histogram accurately represent the data?
+- Are axes clearly labeled?
+- Are outliers explained?
+- Is the figure publication quality?
+
+---
+
+### Key Takeaways
+
+- Histograms summarize continuous numerical variables.
+- Bars touch because the data are continuous.
+- Histogram shape reveals important characteristics of a distribution.
+- Histograms are fundamental tools in exploratory data analysis (EDA).
+
+---
+
+## 4.2 Frequency Polygon
+
+> 📖 **Definition:** A **frequency polygon** is a line graph constructed by plotting the **class midpoints** on the x-axis against their corresponding **frequencies** on the y-axis and connecting the points with straight lines. It provides a clear visualization of the shape of a frequency distribution and is often used as an alternative or complement to a histogram.
+
+---
+
+### Why Use a Frequency Polygon?
+
+A frequency polygon helps researchers:
+
+- Visualize the overall distribution of data.
+- Compare two or more datasets on the same graph.
+- Identify peaks, trends, and patterns.
+- Observe skewness and symmetry.
+- Display grouped continuous data efficiently.
+
+---
+
+### Construction Process
+
+```mermaid
+flowchart LR
+
+A[Collect Grouped Data]
+-->B[Calculate Class Midpoints]
+
+B-->C[Determine Frequencies]
+
+C-->D[Plot Midpoints]
+
+D-->E[Connect Points with Straight Lines]
+
+E-->F[Interpret Distribution]
+```
+
+---
+
+### Components of a Frequency Polygon
+
+| Component | Description |
+|-----------|-------------|
+| X-axis | Class midpoints |
+| Y-axis | Frequency |
+| Points | Frequency at each midpoint |
+| Lines | Straight lines connecting adjacent points |
+| Start & End | Usually connected to the x-axis at both ends |
+
+---
+
+### Simple Frequency Polygon
+
+```text
+Frequency
+
+12 |                 ●
+11 |               /   \
+10 |             ●       ●
+ 9 |            /         \
+ 8 |          ●             ●
+ 7 |         /               \
+ 6 |       ●                  \
+ 5 |      /                    ●
+ 4 |    ●
+ 3 |
+ 2 |
+ 1 |
+    ----------------------------------------
+      10   20   30   40   50   60
+            Class Midpoints
+```
+
+---
+
+### Example Frequency Table
+
+| Class Interval | Midpoint | Frequency |
+|---------------|---------:|----------:|
+| 10–19 | 14.5 | 4 |
+| 20–29 | 24.5 | 8 |
+| 30–39 | 34.5 | 12 |
+| 40–49 | 44.5 | 9 |
+| 50–59 | 54.5 | 5 |
+
+---
+
+### Comparison with Histogram
+
+| Histogram | Frequency Polygon |
+|-----------|-------------------|
+| Uses bars | Uses connected lines |
+| Better for showing frequencies | Better for showing overall trends |
+| Difficult to compare multiple datasets | Easy to compare multiple datasets |
+| Bars touch each other | Points connected by straight lines |
+
+---
+
+### Medical Example
+
+The following frequency polygon illustrates the age distribution of patients admitted to a hospital.
+
+```text
+Frequency
+
+15 |                    ●
+13 |                 ●     ●
+11 |              ●           ●
+ 9 |           ●
+ 7 |        ●
+ 5 |     ●
+ 3 |
+ 1 |
+    ------------------------------------------
+      20   30   40   50   60   70
+             Age (Years)
+```
+
+---
+
+### Interpretation
+
+A frequency polygon helps identify:
+
+- Distribution shape
+- Most common class
+- Peaks (Modes)
+- Spread of observations
+- Symmetry
+- Skewness
+- Possible outliers
+
+---
+
+### Advantages
+
+- Easy to construct.
+- Clearly shows distribution trends.
+- Suitable for grouped continuous data.
+- Allows comparison of multiple datasets.
+- Requires less visual space than histograms.
+
+---
+
+### Limitations
+
+- Not suitable for categorical variables.
+- Less intuitive than histograms for beginners.
+- Exact frequencies are harder to estimate visually.
+
+---
+
+### Common Mistakes
+
+❌ Plotting class limits instead of class midpoints.
+
+❌ Forgetting to connect the first and last points to the x-axis.
+
+❌ Using unequal class intervals without explanation.
+
+❌ Applying frequency polygons to categorical data.
+
+---
+
+### Reviewer Perspective
+
+When evaluating a frequency polygon, reviewers commonly ask:
+
+- Are class intervals equal?
+- Are midpoints calculated correctly?
+- Are axes clearly labeled?
+- Is the distribution interpreted accurately?
+- Is the graph appropriate for the research question?
+
+---
+
+### Key Takeaways
+
+- A frequency polygon is a line graph based on class midpoints and frequencies.
+- It is particularly useful for displaying grouped continuous data.
+- Frequency polygons make it easy to compare multiple distributions.
+- They provide valuable insights into the shape, spread, and center of a dataset.
+- 
+---
+
+## 4.3 Ogive
+
+> 📖 **Definition:** An **ogive**, also known as a **cumulative frequency curve**, is a line graph that displays the cumulative frequency (or cumulative relative frequency) of a dataset across class intervals. Unlike a frequency polygon, an ogive shows the **running total** of observations rather than the frequency of each individual class.
+
+---
+
+### Why Use an Ogive?
+
+An ogive helps researchers:
+
+- Visualize cumulative frequencies.
+- Estimate the median.
+- Determine quartiles and percentiles.
+- Identify the distribution of observations.
+- Compare cumulative distributions between datasets.
+
+Ogives are widely used in **epidemiology, education, economics, quality control, and public health research**.
+
+---
+
+### Construction Process
+
+```mermaid
+flowchart LR
+
+A[Collect Grouped Data]
+-->B[Calculate Cumulative Frequencies]
+
+B-->C[Use Upper Class Boundaries]
+
+C-->D[Plot Cumulative Frequencies]
+
+D-->E[Connect Points with Straight Lines]
+
+E-->F[Interpret the Distribution]
+```
+
+---
+
+### Components of an Ogive
+
+| Component | Description |
+|-----------|-------------|
+| X-axis | Upper class boundaries (or upper class limits) |
+| Y-axis | Cumulative frequency |
+| Points | Running total of observations |
+| Line | Straight line connecting cumulative frequencies |
+| Final Point | Total number of observations |
+
+---
+
+### Example Frequency Table
+
+| Class Interval | Frequency | Cumulative Frequency |
+|---------------|----------:|---------------------:|
+| 10–19 | 4 | 4 |
+| 20–29 | 8 | 12 |
+| 30–39 | 12 | 24 |
+| 40–49 | 9 | 33 |
+| 50–59 | 5 | 38 |
+
+---
+
+### Simple Ogive
+
+```text
+Cumulative Frequency
+
+40 |                              ●
+35 |                           ●
+30 |                        ●
+25 |                     ●
+20 |
+15 |                 ●
+10 |             ●
+ 5 |         ●
+ 0 |________________________________________
+      20   30   40   50   60
+        Upper Class Boundary
+```
+
+---
+
+### Typical Shape of an Ogive
+
+```text
+Frequency
+
+40 |                              ●
+35 |                           ●
+30 |                        ●
+25 |                    ●
+20 |                 ●
+15 |             ●
+10 |         ●
+ 5 |     ●
+ 0 |__●_____________________________________
+      Increasing Class Boundaries
+```
+
+The curve always moves **upward** because cumulative frequencies can only stay the same or increase—they never decrease.
+
+---
+
+### Medical Example
+
+Suppose researchers record the ages of **200 patients** admitted to a hospital.
+
+| Age Group | Frequency | Cumulative Frequency |
+|-----------|----------:|---------------------:|
+| 20–29 | 18 | 18 |
+| 30–39 | 42 | 60 |
+| 40–49 | 56 | 116 |
+| 50–59 | 48 | 164 |
+| 60–69 | 36 | 200 |
+
+An ogive constructed from these data allows researchers to estimate:
+
+- Median age
+- 25th percentile (Q1)
+- 75th percentile (Q3)
+- Percentage of patients younger than a given age
+
+---
+
+### Applications
+
+Ogives are commonly used for:
+
+- Estimating the median.
+- Determining quartiles.
+- Calculating percentiles.
+- Comparing cumulative distributions.
+- Evaluating educational test scores.
+- Public health surveillance.
+- Clinical research.
+
+---
+
+### Frequency Polygon vs. Ogive
+
+| Frequency Polygon | Ogive |
+|-------------------|-------|
+| Uses class midpoints | Uses upper class boundaries |
+| Displays frequencies | Displays cumulative frequencies |
+| May increase or decrease | Always increases |
+| Shows distribution shape | Shows cumulative distribution |
+
+---
+
+### Interpretation
+
+An ogive helps identify:
+
+- Median value
+- Quartiles (Q1 and Q3)
+- Percentiles
+- Distribution of observations
+- Proportion below a specified value
+- Overall cumulative trend
+
+---
+
+### Advantages
+
+- Simple to interpret.
+- Useful for estimating percentiles.
+- Clearly displays cumulative information.
+- Effective for comparing distributions.
+- Widely used in education and health research.
+
+---
+
+### Limitations
+
+- Does not display individual class frequencies directly.
+- Less informative about local peaks.
+- Requires grouped data.
+
+---
+
+### Common Mistakes
+
+❌ Plotting class midpoints instead of upper class boundaries.
+
+❌ Using ordinary frequencies instead of cumulative frequencies.
+
+❌ Forgetting the final cumulative frequency equals the total sample size.
+
+❌ Interpreting an ogive as a histogram.
+
+---
+
+### Reviewer Perspective
+
+When evaluating an ogive, reviewers typically consider:
+
+- Are cumulative frequencies calculated correctly?
+- Are upper class boundaries used appropriately?
+- Are the axes clearly labeled?
+- Does the graph accurately represent the cumulative distribution?
+- Are conclusions supported by the graph?
+
+---
+
+### Key Takeaways
+
+- An **ogive** is a graph of cumulative frequencies.
+- It always rises from left to right because cumulative frequencies never decrease.
+- Ogives are useful for estimating **medians, quartiles, and percentiles**.
+- They are widely applied in epidemiology, education, medicine, and survey research.
+- An ogive complements, rather than replaces, a histogram or frequency polygon.
+- 
+---
+
+## 4.4 Bar Chart
+
+> 📖 **Definition:** A **bar chart** (or **bar graph**) is a graphical representation of **categorical data** using rectangular bars of equal width. The length or height of each bar is proportional to the frequency, count, percentage, or value represented by each category. Unlike histograms, **bars are separated by gaps** because categorical variables are discrete rather than continuous.
+
+---
+
+### Why Use a Bar Chart?
+
+Bar charts help researchers:
+
+- Compare categories easily.
+- Display frequencies or percentages.
+- Identify the largest and smallest categories.
+- Present survey and questionnaire results.
+- Summarize categorical variables effectively.
+
+Bar charts are among the most commonly used figures in **medicine, epidemiology, business, economics, education, and public health research**.
+
+---
+
+### Construction Process
+
+```mermaid
+flowchart LR
+
+A[Collect Categorical Data]
+-->B[Count Frequencies]
+
+B-->C[Choose Categories]
+
+C-->D[Draw Equal-Width Bars]
+
+D-->E[Compare Heights]
+
+E-->F[Interpret Results]
+```
+
+---
+
+### Components of a Bar Chart
+
+| Component | Description |
+|-----------|-------------|
+| X-axis | Categories |
+| Y-axis | Frequency, count, or percentage |
+| Bars | Equal-width rectangles |
+| Gaps | Spaces between bars indicate categorical data |
+| Height | Represents the value of each category |
+
+---
+
+### Simple Vertical Bar Chart
+
+```text
+Frequency
+
+10 |           ███
+ 9 |           ███
+ 8 |     ███   ███
+ 7 |     ███   ███
+ 6 |     ███   ███
+ 5 | ███ ███   ███
+ 4 | ███ ███   ███
+ 3 | ███ ███ ████
+ 2 | ███ ███ ████
+ 1 | ███ ███ ████
+    -------------------------
+      A    B    C    D
+        Categories
+```
+
+---
+
+### Simple Horizontal Bar Chart
+
+```text
+Category A  ████████
+Category B  █████████████
+Category C  ██████
+Category D  ███████████
+```
+
+---
+
+## Types of Bar Charts
+
+### 1. Vertical Bar Chart
+
+Used to compare categories vertically.
+
+```text
+Frequency
+
+8 |      █
+7 |      █
+6 |  █   █
+5 |  █   █
+4 |  █ █ █
+3 |  █ █ █
+2 |  █ █ █
+1 |  █ █ █
+   -----------
+    A B C D
+```
+
+---
+
+### 2. Horizontal Bar Chart
+
+Useful when category names are long.
+
+```text
+Male        ███████████
+Female      ███████████████
+Children    ███████
+Older Adult █████████
+```
+
+---
+
+### 3. Grouped Bar Chart
+
+Compares two or more groups.
+
+```text
+Frequency
+
+10 |      █ ▓
+ 8 |  █ ▓ █ ▓
+ 6 |  █ ▓ █ ▓
+ 4 |  █ ▓ █ ▓
+ 2 |  █ ▓ █ ▓
+    -------------------
+       A   B   C
+
+█ = Male
+▓ = Female
+```
+
+---
+
+### 4. Stacked Bar Chart
+
+Shows how categories contribute to a total.
+
+```text
+████████████
+███▓▓▓▓▓▓▓▓
+██▓▓▓▓▓
+█▓▓▓
+```
+
+---
+
+### Medical Example
+
+Distribution of blood groups among hospital patients.
+
+| Blood Group | Frequency |
+|-------------|----------:|
+| O+ | 35 |
+| A+ | 28 |
+| B+ | 18 |
+| AB+ | 12 |
+| Others | 7 |
+
+A vertical bar chart clearly shows that **O+** is the most common blood group.
+
+---
+
+### Interpretation
+
+A bar chart helps identify:
+
+- Highest category
+- Lowest category
+- Differences between groups
+- Relative proportions
+- Ranking of categories
+
+---
+
+### Bar Chart vs Histogram
+
+| Bar Chart | Histogram |
+|-----------|-----------|
+| Used for categorical variables | Used for continuous variables |
+| Bars have gaps | Bars touch each other |
+| Categories can be rearranged | Class intervals must remain in order |
+| Compares groups | Shows distributions |
+
+---
+
+### Advantages
+
+- Easy to construct and interpret.
+- Excellent for comparing categories.
+- Suitable for survey and questionnaire data.
+- Effective for presentations and publications.
+- Widely understood by general audiences.
+
+---
+
+### Limitations
+
+- Not suitable for continuous data.
+- Difficult to display too many categories.
+- Does not reveal the underlying distribution of numerical data.
+
+---
+
+### Common Mistakes
+
+❌ Using a bar chart for continuous variables.
+
+❌ Unequal bar widths.
+
+❌ Missing axis labels.
+
+❌ Misleading scales that exaggerate differences.
+
+❌ Overcrowding the chart with too many categories.
+
+---
+
+### Reviewer Perspective
+
+When reviewing a bar chart, consider:
+
+- Are the categories clearly labeled?
+- Are the axes properly titled?
+- Are the bars equally spaced and equally wide?
+- Is a bar chart appropriate for the variable type?
+- Are the conclusions supported by the displayed data?
+
+---
+
+### Key Takeaways
+
+- A **bar chart** displays **categorical data** using separate rectangular bars.
+- The height (or length) of each bar represents the value or frequency of a category.
+- Bar charts are ideal for comparing groups and presenting categorical data.
+- Unlike histograms, **bar chart bars are separated by gaps**, reflecting the discrete nature of the categories.
 
 ### 4.5 Pie Chart
 
