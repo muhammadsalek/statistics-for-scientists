@@ -7,10 +7,10 @@
 **From First Principles to Scientific Discovery.**
 
 [![Open Access](https://img.shields.io/badge/Open%20Access-Free-success?style=for-the-badge)]()
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-green?style=for-the-badge)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](./LICENSE)
 [![GitHub Markdown](https://img.shields.io/badge/Built%20with-GitHub%20Markdown-blue?style=for-the-badge)]()
-[![Chapters](https://img.shields.io/badge/Chapters-120%2B-blueviolet?style=for-the-badge)]()
-[![Status](https://img.shields.io/badge/Status-Actively%20Maintained-brightgreen?style=for-the-badge)]()
+[![Chapters](https://img.shields.io/badge/Chapters-6%20published%20%2F%20200%2B%20planned-blueviolet?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/Status-Early%20Access%20%E2%80%94%20Actively%20Writing-yellow?style=for-the-badge)]()
 
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white)]()
 [![R](https://img.shields.io/badge/R-4.x-276DC3?style=flat-square&logo=r&logoColor=white)]()
@@ -20,7 +20,7 @@
 [![SQL](https://img.shields.io/badge/SQL-Supported-CC2927?style=flat-square&logo=microsoftsqlserver&logoColor=white)]()
 [![Excel](https://img.shields.io/badge/Excel-Supported-217346?style=flat-square&logo=microsoftexcel&logoColor=white)]()
 
-**[📖 Start Reading](#-table-of-contents) · [🗺️ Curriculum Map](#-complete-curriculum-overview) · [🤝 Contribute](#-contributing-guidelines) · [❓ FAQ](#-frequently-asked-questions)**
+**[📖 Start Reading](#-chapters) · [🗺️ Curriculum Map](#-complete-curriculum-overview) · [🤝 Contribute](#-contributing-guidelines) · [❓ FAQ](#-frequently-asked-questions)**
 
 </div>
 
@@ -30,6 +30,9 @@
 
 This repository exists because the world's best statistical education is often locked behind paywalls, scattered across incompatible formats, or written in a style that treats students as passive note-takers rather than future scientists. **Statistics for Scientists** brings graduate-level rigor, research-grade reproducibility, and publication-quality visual design into a single, freely accessible, GitHub-native textbook — built for the way scientists actually learn: by seeing, coding, deriving, questioning, and applying.
 
+> [!NOTE]
+> **This repository is under active construction.** Six foundational chapters are published today (listed below). The full curriculum map further down this page describes the ~40+ chapters planned across foundations, inference, regression, biostatistics, causal inference, machine learning, and scientific writing. Sections describing unpublished chapters are marked 🟡 **Planned** or ⚪ **Not started** throughout this README so the roadmap stays honest.
+
 ---
 
 ## 📌 Table of Contents
@@ -37,6 +40,7 @@ This repository exists because the world's best statistical education is often l
 <details>
 <summary><strong>Click to expand full navigation</strong></summary>
 
+- [📖 Chapters](#-chapters)
 - [Why This Repository Exists](#-why-this-repository-exists)
 - [Who This Repository Is For](#-who-this-repository-is-for)
 - [Learning Outcomes](#-learning-outcomes)
@@ -47,11 +51,11 @@ This repository exists because the world's best statistical education is often l
   - [AI & Machine Learning Roadmap](#-ai--machine-learning-roadmap)
 - [Repository Structure](#-repository-structure)
 - [Chapter Organization](#-chapter-organization)
-- [Example Chapter Structure](#-example-chapter-structure)
+- [Example Chapter Walkthrough](#-example-chapter-walkthrough)
 - [Features](#-features)
 - [Technologies & Software Covered](#-technologies--software-covered)
-- [Real Datasets Covered](#-real-datasets-covered)
-- [Visualization Gallery](#-visualization-gallery)
+- [Real Datasets Covered](#-real-datasets-covered-planned)
+- [Visualization Gallery](#-visualization-gallery-planned)
 - [Types of Diagrams Used](#-types-of-diagrams-used)
 - [Mathematical Notation & Rendering](#-mathematical-notation--rendering)
 - [Mermaid Diagram Support](#-mermaid-diagram-support)
@@ -67,6 +71,27 @@ This repository exists because the world's best statistical education is often l
 - [Frequently Asked Questions](#-frequently-asked-questions)
 
 </details>
+
+---
+
+## 📖 Chapters
+
+> [!TIP]
+> Start here. This is the live, accurate list of what exists in the repository right now — everything else in this README is the roadmap for where it's headed.
+
+| # | Chapter | Status |
+|---|---|---|
+| 01 | [Descriptive Statistics](./01-descriptive-statistics.md) | ✅ Published |
+| 02 | [Central Tendency](./02-central-tendency.md) | ✅ Published |
+| 03 | [Dispersion](./03-dispersion.md) | ✅ Published |
+| 04 | [Correlation](./04-correlation.md) | ✅ Published |
+| 05 | [Regression](./05-regression.md) | ✅ Published |
+| 06 | [Probability Distributions](./06-probability-distributions.md) | ✅ Published |
+| 07 | Hypothesis Testing | 🟡 Planned |
+| 08 | Confidence Intervals | 🟡 Planned |
+| 09+ | See full [curriculum overview](#-complete-curriculum-overview) below | ⚪ Not started |
+
+Each published chapter follows the same structure end-to-end: learning objectives → intuition → mathematical derivation → worked example → implementation in R, Python, SPSS, STATA, and SAS → real-research application → reviewer perspective → AI-evaluation perspective → practice problems. See [Chapter Organization](#-chapter-organization) for the full template.
 
 ---
 
@@ -109,14 +134,14 @@ By working through this repository, learners will be able to:
 
 - ✅ Derive core statistical formulas from first principles, not just apply them
 - ✅ Select the correct statistical test or model using structured decision frameworks
-- ✅ Implement every method in **R, Python, SPSS, STATA, SAS, SQL, and Excel**
+- ✅ Implement every method in **R, Python, SPSS, STATA, and SAS**
 - ✅ Interpret output like a trained statistician, not a black-box user
 - ✅ Diagnose violated assumptions and apply appropriate corrections
-- ✅ Build publication-quality figures and tables (APA / journal style)
-- ✅ Apply reporting guidelines (CONSORT, STROBE, PRISMA, TRIPOD, RECORD, STARD, CARE, ARRIVE)
-- ✅ Critically evaluate AI-generated statistical explanations for hallucinations
+- 🟡 Build publication-quality figures and tables (APA / journal style) — *expanding as more chapters are added*
+- 🟡 Apply reporting guidelines (CONSORT, STROBE, PRISMA, TRIPOD, RECORD, STARD, CARE, ARRIVE) — *planned for the scientific-writing chapters*
+- 🟡 Critically evaluate AI-generated statistical explanations for hallucinations — *AI Evaluation sections already present in each published chapter*
 - ✅ Translate statistical findings into scientifically defensible conclusions
-- ✅ Design studies (clinical trials, surveys, cohort/case-control) with valid inferential structure
+- 🟡 Design studies (clinical trials, surveys, cohort/case-control) with valid inferential structure — *planned for the biostatistics chapters*
 
 ---
 
@@ -127,25 +152,27 @@ mindmap
   root((Statistics for<br/>Scientists))
     Foundations
       Descriptive Statistics
-      Probability Theory
-      Distributions
-      Sampling Theory
+      Central Tendency
+      Dispersion
+      Correlation
+      Regression
+      Probability Distributions
     Inference
-      Estimation
       Hypothesis Testing
       Confidence Intervals
+      Estimation
       Bayesian Inference
     Modeling
-      Linear Regression
+      Multiple Regression
       Generalized Linear Models
       Mixed Effects Models
       Survival Analysis
-    Biostatistics & Epi
+    Biostatistics and Epi
       Study Designs
       Clinical Trials
       Epidemiological Measures
       Survey Statistics DHS
-    Machine Learning & AI
+    Machine Learning and AI
       Supervised Learning
       Unsupervised Learning
       Model Evaluation
@@ -162,52 +189,76 @@ mindmap
       Publication Ethics
 ```
 
+> [!NOTE]
+> Only the **Foundations** branch (6 chapters) is published today. Everything else on this map is the intended structure for future chapters and is not yet written — see the [Future Roadmap](#-future-roadmap) table for current status per section.
+
 ### 🔰 Undergraduate Roadmap
 
-| Stage | Topics | Outcome |
-|---|---|---|
-| **1. Foundations** | Data types, descriptive statistics, visualization | Summarize data correctly and honestly |
-| **2. Probability** | Probability axioms, distributions, expectation | Reason quantitatively about uncertainty |
-| **3. Sampling** | Sampling distributions, Central Limit Theorem | Understand why inference works at all |
-| **4. Inference I** | Estimation, confidence intervals, hypothesis testing | Perform and interpret a basic test correctly |
-| **5. Regression I** | Simple & multiple linear regression | Model a continuous outcome |
-| **6. Categorical Data** | Chi-square, logistic regression basics | Model a binary outcome |
+| Stage | Topics | Outcome | Status |
+|---|---|---|---|
+| **1. Foundations** | Data types, descriptive statistics, central tendency, dispersion, visualization | Summarize data correctly and honestly | ✅ Published (Ch. 1–3) |
+| **2. Relationships** | Correlation, simple & multiple linear regression | Model relationships between variables | ✅ Published (Ch. 4–5) |
+| **3. Probability** | Probability axioms, distributions, expectation | Reason quantitatively about uncertainty | ✅ Published (Ch. 6) |
+| **4. Sampling** | Sampling distributions, Central Limit Theorem | Understand why inference works at all | 🟡 Planned |
+| **5. Inference I** | Estimation, confidence intervals, hypothesis testing | Perform and interpret a basic test correctly | 🟡 Planned |
+| **6. Categorical Data** | Chi-square, logistic regression basics | Model a binary outcome | ⚪ Not started |
 
 ### 🎓 Graduate Roadmap
 
-| Stage | Topics | Outcome |
-|---|---|---|
-| **7. Advanced Inference** | Likelihood theory, asymptotics, bootstrap | Justify inference beyond textbook formulas |
-| **8. Generalized Linear Models** | Poisson, negative binomial, ordinal models | Model counts, rates, and ordered outcomes |
-| **9. Mixed & Multilevel Models** | Random effects, hierarchical data | Analyze clustered / longitudinal data |
-| **10. Survival Analysis** | Kaplan-Meier, Cox regression, competing risks | Analyze time-to-event outcomes |
-| **11. Multivariate Statistics** | PCA, factor analysis, cluster analysis | Reduce and structure high-dimensional data |
-| **12. Bayesian Statistics** | Priors, posteriors, MCMC | Perform full probabilistic inference |
+| Stage | Topics | Outcome | Status |
+|---|---|---|---|
+| **7. Advanced Inference** | Likelihood theory, asymptotics, bootstrap | Justify inference beyond textbook formulas | ⚪ Not started |
+| **8. Generalized Linear Models** | Poisson, negative binomial, ordinal models | Model counts, rates, and ordered outcomes | ⚪ Not started |
+| **9. Mixed & Multilevel Models** | Random effects, hierarchical data | Analyze clustered / longitudinal data | ⚪ Not started |
+| **10. Survival Analysis** | Kaplan-Meier, Cox regression, competing risks | Analyze time-to-event outcomes | ⚪ Not started |
+| **11. Multivariate Statistics** | PCA, factor analysis, cluster analysis | Reduce and structure high-dimensional data | ⚪ Not started |
+| **12. Bayesian Statistics** | Priors, posteriors, MCMC | Perform full probabilistic inference | ⚪ Not started |
 
 ### 🔬 Research Roadmap
 
-| Stage | Topics | Outcome |
-|---|---|---|
-| **13. Study Design** | RCTs, cohort, case-control, cross-sectional | Choose a design that supports valid causal claims |
-| **14. Epidemiological Measures** | Risk ratios, odds ratios, incidence, prevalence | Quantify disease burden and association |
-| **15. Survey Statistics** | Complex survey design, weighting (e.g., DHS) | Correctly analyze nationally representative data |
-| **16. Causal Inference** | DAGs, confounding, propensity scores, g-computation | Distinguish association from causation |
-| **17. Reporting & Reviewing** | CONSORT, STROBE, PRISMA, TRIPOD | Publish and review research to Q1 standards |
+| Stage | Topics | Outcome | Status |
+|---|---|---|---|
+| **13. Study Design** | RCTs, cohort, case-control, cross-sectional | Choose a design that supports valid causal claims | ⚪ Not started |
+| **14. Epidemiological Measures** | Risk ratios, odds ratios, incidence, prevalence | Quantify disease burden and association | ⚪ Not started |
+| **15. Survey Statistics** | Complex survey design, weighting (e.g., DHS) | Correctly analyze nationally representative data | ⚪ Not started |
+| **16. Causal Inference** | DAGs, confounding, propensity scores, g-computation | Distinguish association from causation | ⚪ Not started |
+| **17. Reporting & Reviewing** | CONSORT, STROBE, PRISMA, TRIPOD | Publish and review research to Q1 standards | ⚪ Not started |
 
 ### 🤖 AI & Machine Learning Roadmap
 
-| Stage | Topics | Outcome |
-|---|---|---|
-| **18. ML Foundations** | Bias-variance tradeoff, cross-validation | Avoid overfitting and data leakage |
-| **19. Supervised Learning** | Trees, random forests, gradient boosting, SVM | Build predictive models with proper validation |
-| **20. Model Evaluation** | ROC/AUC, calibration, precision-recall | Judge models the way a reviewer would |
-| **21. Explainable AI** | SHAP, feature importance, partial dependence | Explain "black-box" predictions transparently |
-| **22. Deep Learning Basics** | Neural network architecture and training | Understand the statistical basis of deep learning |
-| **23. AI in Research** | Using and auditing AI-generated statistical text | Detect hallucinated statistics and false reasoning |
+| Stage | Topics | Outcome | Status |
+|---|---|---|---|
+| **18. ML Foundations** | Bias-variance tradeoff, cross-validation | Avoid overfitting and data leakage | ⚪ Not started |
+| **19. Supervised Learning** | Trees, random forests, gradient boosting, SVM | Build predictive models with proper validation | ⚪ Not started |
+| **20. Model Evaluation** | ROC/AUC, calibration, precision-recall | Judge models the way a reviewer would | ⚪ Not started |
+| **21. Explainable AI** | SHAP, feature importance, partial dependence | Explain "black-box" predictions transparently | ⚪ Not started |
+| **22. Deep Learning Basics** | Neural network architecture and training | Understand the statistical basis of deep learning | ⚪ Not started |
+| **23. AI in Research** | Using and auditing AI-generated statistical text | Detect hallucinated statistics and false reasoning | ⚪ Not started |
 
 ---
 
 ## 📁 Repository Structure
+
+> [!IMPORTANT]
+> The structure below reflects **what actually exists in this repository today** — a flat list of chapter files at the root. As the chapter count grows, these will be reorganized into the nested `part-folders` shown in the "planned structure" underneath. Contributors should keep new chapters as root-level flat files for now unless a maintainer has started the migration.
+
+**Current structure:**
+
+```text
+statistics-for-scientists/
+│
+├── 01-descriptive-statistics.md
+├── 02-central-tendency.md
+├── 03-dispersion.md
+├── 04-correlation.md
+├── 05-regression.md
+├── 06-probability-distributions.md
+├── LICENSE
+└── README.md
+```
+
+<details>
+<summary><strong>📦 Planned structure once the chapter count grows (click to expand)</strong></summary>
 
 ```text
 statistics-for-scientists/
@@ -219,43 +270,44 @@ statistics-for-scientists/
 │
 ├── 📗 01-foundations/
 │   ├── 01-descriptive-statistics.md
-│   ├── 02-probability-theory.md
-│   ├── 03-random-variables-distributions.md
-│   └── 04-sampling-and-clt.md
+│   ├── 02-central-tendency.md
+│   ├── 03-dispersion.md
+│   ├── 04-correlation.md
+│   ├── 05-regression.md
+│   └── 06-probability-distributions.md
 │
 ├── 📙 02-inference/
-│   ├── 05-estimation-theory.md
-│   ├── 06-hypothesis-testing.md
-│   ├── 07-confidence-intervals.md
-│   └── 08-bayesian-inference.md
+│   ├── 07-hypothesis-testing.md
+│   ├── 08-confidence-intervals.md
+│   ├── 09-estimation-theory.md
+│   └── 10-bayesian-inference.md
 │
 ├── 📕 03-regression-modeling/
-│   ├── 09-simple-linear-regression.md
-│   ├── 10-multiple-regression.md
-│   ├── 11-generalized-linear-models.md
-│   └── 12-mixed-effects-models.md
+│   ├── 11-multiple-regression.md
+│   ├── 12-generalized-linear-models.md
+│   └── 13-mixed-effects-models.md
 │
 ├── 📔 04-biostatistics-epidemiology/
-│   ├── 13-study-designs.md
-│   ├── 14-epidemiological-measures.md
-│   ├── 15-survival-analysis.md
-│   └── 16-survey-statistics-dhs.md
+│   ├── 14-study-designs.md
+│   ├── 15-epidemiological-measures.md
+│   ├── 16-survival-analysis.md
+│   └── 17-survey-statistics-dhs.md
 │
 ├── 📒 05-causal-inference/
-│   ├── 17-dags-and-confounding.md
-│   ├── 18-propensity-score-methods.md
-│   └── 19-g-computation-iv.md
+│   ├── 18-dags-and-confounding.md
+│   ├── 19-propensity-score-methods.md
+│   └── 20-g-computation-iv.md
 │
 ├── 📓 06-machine-learning-ai/
-│   ├── 20-supervised-learning.md
-│   ├── 21-model-evaluation.md
-│   ├── 22-explainable-ai-shap.md
-│   └── 23-ai-in-scientific-research.md
+│   ├── 21-supervised-learning.md
+│   ├── 22-model-evaluation.md
+│   ├── 23-explainable-ai-shap.md
+│   └── 24-ai-in-scientific-research.md
 │
 ├── 📚 07-scientific-writing/
-│   ├── 24-reporting-guidelines.md
-│   ├── 25-peer-review-process.md
-│   └── 26-reproducibility-and-ethics.md
+│   ├── 25-reporting-guidelines.md
+│   ├── 26-peer-review-process.md
+│   └── 27-reproducibility-and-ethics.md
 │
 ├── 🧮 datasets/
 │   ├── dhs-sample/
@@ -267,91 +319,67 @@ statistics-for-scientists/
 │   ├── python/
 │   ├── spss-syntax/
 │   ├── stata-do-files/
-│   ├── sas-programs/
-│   └── sql-queries/
+│   └── sas-programs/
 │
 ├── 🖼️ figures/
 ├── 📄 LICENSE
 └── 📄 README.md
 ```
 
+This migration will happen once chapter count and cross-linking complexity justify it — tracked in [Future Roadmap](#-future-roadmap).
+
+</details>
+
 ---
 
 ## 🧱 Chapter Organization
 
-Every chapter in this repository follows an identical, predictable, textbook-grade structure so learners always know what to expect next.
+Every chapter in this repository follows an identical, predictable, textbook-grade structure so learners always know what to expect next. This is the actual template used in all six published chapters.
 
 ```mermaid
 flowchart TD
-    A[🎯 Learning Objectives] --> B[🧩 Key Concepts]
-    B --> C[🌍 Big Picture]
+    A[🎯 Learning Objectives] --> B[📋 Prerequisites and Study Time]
+    B --> C[🌍 Why This Matters and Big Picture]
     C --> D[🏛️ Historical Background]
-    D --> E[💡 Intuition]
-    E --> F[📐 Mathematical Foundation]
-    F --> G[📏 Formal Definitions & Theorems]
-    G --> H[✏️ Worked Examples & Manual Calculations]
-    H --> I[💻 Code: R · Python · SPSS · STATA · SAS · SQL · Excel]
-    I --> J[📊 Real Dataset Analysis]
-    J --> K[🔍 Output & Scientific Interpretation]
-    K --> L[🕵️ Reviewer Perspective]
-    L --> M[🤖 AI Evaluation Perspective]
-    M --> N[⚠️ Common Mistakes]
-    N --> O[❓ FAQ & Practice Problems]
-    O --> P[📚 References]
+    D --> E[💡 Core Intuition]
+    E --> F[📐 Mathematical Foundation and Derivations]
+    F --> G[✏️ Worked Examples: Manual Calculation]
+    G --> H[💻 Code: R · Python · SPSS · STATA · SAS]
+    H --> I[📊 Real Research Example]
+    I --> J[⚠️ Common Mistakes]
+    J --> K[🕵️ Reviewer Perspective]
+    K --> L[🤖 AI Evaluation Perspective]
+    L --> M[❓ FAQ and Practice Problems]
+    M --> N[📚 Chapter Summary and References]
+    N --> O[➡️ Previous / Next Chapter Links]
 ```
 
 ---
 
-## 📖 Example Chapter Structure
+## 📖 Example Chapter Walkthrough
 
 <details>
-<summary><strong>Click to view a fully worked example: "Chapter 09 — Simple Linear Regression"</strong></summary>
+<summary><strong>Click to see a real excerpt from a published chapter: Chapter 5 — Regression</strong></summary>
+
+The excerpt below is taken directly from [`05-regression.md`](./05-regression.md):
 
 ```markdown
-# Chapter 09: Simple Linear Regression
+### Ordinary Least Squares (OLS) Derivation
 
-## 🎯 Learning Objectives
-- Derive the least squares estimator from first principles
-- Interpret slope and intercept in scientific terms
-- Diagnose and correct violated assumptions
+OLS chooses β̂₀, β̂₁ to minimize the sum of squared residuals:
 
-## 🧩 Key Concepts
-| Term | Definition |
-|---|---|
-| Slope (β₁) | Expected change in Y per one-unit increase in X |
-| Residual | Observed minus predicted value |
-| R² | Proportion of variance in Y explained by X |
+  SSE = Σ(yᵢ − β̂₀ − β̂₁xᵢ)²
 
-## 📐 Mathematical Foundation
-The least squares estimator minimizes:
+Solving the normal equations gives the closed-form OLS estimators:
 
-  S(β₀, β₁) = Σ(yᵢ − β₀ − β₁xᵢ)²
-
-Solving ∂S/∂β₀ = 0 and ∂S/∂β₁ = 0 yields:
-
-  β̂₁ = Σ(xᵢ − x̄)(yᵢ − ȳ) / Σ(xᵢ − x̄)²
+  β̂₁ = Σ(xᵢ − x̄)(yᵢ − ȳ) / Σ(xᵢ − x̄)² = Cov(X,Y) / Var(X)
   β̂₀ = ȳ − β̂₁x̄
 
-## 💻 Code (Python)
-​```python
-import statsmodels.api as sm
-X = sm.add_constant(df['age'])
-model = sm.OLS(df['blood_pressure'], X).fit()
-print(model.summary())
-​```
-
-**Expected Output:** Coefficient table with β̂₀, β̂₁, standard errors, t-statistics, and R².
-**Interpretation:** Each additional year of age is associated with a β̂₁ mmHg change in blood pressure, holding no other variables constant.
-**Common Errors:** Forgetting `sm.add_constant()` omits the intercept entirely.
-
-## 🕵️ Reviewer Perspective
-> [!WARNING]
-> A Q1 reviewer will immediately check: Was linearity assessed? Were residuals plotted? Is causal language used despite an observational design?
-
-## 🤖 AI Evaluation Perspective
-> [!NOTE]
-> AI tools frequently miscompute R² when asked "by hand." Always verify against software output before trusting a language model's manual derivation.
+Note the connection to Chapter 4: β̂₁ = r × (sᵧ / sₓ) — the regression
+slope is the correlation coefficient rescaled by the ratio of standard deviations.
 ```
+
+Every chapter carries forward the **same worked dataset** (a 10-patient systolic blood pressure example introduced in Chapter 1) through central tendency, dispersion, correlation, and regression, so learners can trace one concrete dataset across four different lenses.
 
 </details>
 
@@ -359,17 +387,17 @@ print(model.summary())
 
 ## ⭐ Features
 
-| Feature | Description |
-|---|---|
-| 🖼️ **Visual-first pedagogy** | Every concept introduced through a diagram or figure before formal notation |
-| 🌐 **Seven-language code parity** | Every method implemented in R, Python, SPSS, STATA, SAS, SQL, and Excel |
-| 🧬 **Real research datasets** | DHS, clinical trial, and public health data used throughout |
-| 🕵️ **Reviewer-lens commentary** | Every chapter answers "what would a Q1 reviewer flag?" |
-| 🤖 **AI-literacy layer** | Explicit sections on detecting AI hallucinations in statistical reasoning |
-| 📐 **Full derivations** | No "trust me" formulas — every key result is derived |
-| 📊 **Publication-grade figures** | ROC curves, forest plots, Kaplan-Meier curves, and more, fully captioned |
-| 🧭 **Reporting-guideline integration** | CONSORT, STROBE, PRISMA, TRIPOD, RECORD, STARD, CARE, ARRIVE |
-| 🔗 **GitHub-native rendering** | Mermaid diagrams, LaTeX math, and callouts render directly on GitHub |
+| Feature | Status | Description |
+|---|---|---|
+| 🖼️ **Visual-first pedagogy** | ✅ Live | Every published chapter uses Mermaid diagrams, flowcharts, and decision trees before formal notation |
+| 🌐 **Five-language code parity** | ✅ Live | Every published method is implemented in R, Python, SPSS, STATA, and SAS |
+| 📐 **Full derivations** | ✅ Live | No "trust me" formulas — every key result in Ch. 1–6 is derived step-by-step |
+| 🕵️ **Reviewer-lens commentary** | ✅ Live | Every published chapter answers "what would a Q1 reviewer flag?" |
+| 🤖 **AI-literacy layer** | ✅ Live | Every published chapter includes an AI Evaluation Perspective section |
+| 🔗 **GitHub-native rendering** | ✅ Live | Mermaid diagrams, LaTeX math, and callouts render directly on GitHub |
+| 🧬 **Real research datasets (DHS, clinical trial samples, etc.)** | 🟡 Planned | Will ship alongside the biostatistics and survey-statistics chapters |
+| 📊 **Publication-grade figure gallery** | 🟡 Planned | ROC curves, forest plots, Kaplan-Meier curves — planned once relevant chapters are written |
+| 🧭 **Reporting-guideline integration (CONSORT, STROBE, etc.)** | 🟡 Planned | Planned for the scientific-writing chapters |
 
 ---
 
@@ -377,39 +405,42 @@ print(model.summary())
 
 <div align="center">
 
-| Language / Tool | Use Case | Badge |
+| Language / Tool | Use Case | Coverage |
 |---|---|---|
-| **R** | Statistical modeling, `ggplot2`, `survminer`, mixed models | ![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white) |
-| **Python** | `statsmodels`, `scikit-learn`, `lifelines`, `pandas`, `matplotlib` | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) |
-| **SPSS** | Menu-driven and syntax-based analysis | ![SPSS](https://img.shields.io/badge/SPSS-F37021?style=flat-square) |
-| **STATA** | Survey-weighted regression, `svyset` designs | ![STATA](https://img.shields.io/badge/STATA-1A5276?style=flat-square) |
-| **SAS** | PROC-based statistical programming | ![SAS](https://img.shields.io/badge/SAS-5B2C6F?style=flat-square) |
-| **SQL** | Data extraction and aggregation for analysis-ready datasets | ![SQL](https://img.shields.io/badge/SQL-CC2927?style=flat-square) |
-| **Excel** | Formula-based calculation and quick visualization | ![Excel](https://img.shields.io/badge/Excel-217346?style=flat-square) |
+| **R** | Base R statistical functions, `lm()`, `cor()`, distribution functions | ✅ All 6 chapters |
+| **Python** | `numpy`, `scipy.stats`, `statsmodels`, `pandas`, `matplotlib`, `seaborn` | ✅ All 6 chapters |
+| **SPSS** | Syntax-based `DESCRIPTIVES`, `REGRESSION`, `CORRELATIONS`, `FREQUENCIES` | ✅ All 6 chapters |
+| **STATA** | `summarize`, `regress`, `pwcorr`, distribution commands | ✅ All 6 chapters |
+| **SAS** | `PROC MEANS`, `PROC REG`, `PROC CORR`, `PROC UNIVARIATE` | ✅ All 6 chapters |
+| **SQL** | Data extraction and aggregation for analysis-ready datasets | ⚪ Not yet used |
+| **Excel** | Formula-based calculation and quick visualization | ⚪ Not yet used |
 
 </div>
 
 ---
 
-## 🗃️ Real Datasets Covered
+## 🗃️ Real Datasets Covered (Planned)
 
-| Dataset Type | Example Source | Used In |
+> [!NOTE]
+> No dataset files are bundled with the repository yet. Published chapters use small, fully worked-out illustrative datasets defined inline (e.g., a 10-patient blood pressure example). The table below reflects the intended dataset coverage once the biostatistics, epidemiology, and survey-statistics chapters are written.
+
+| Dataset Type | Example Source | Planned Use |
 |---|---|---|
-| 🌍 **Demographic and Health Surveys (DHS)** | Bangladesh, Nepal, Mozambique, Zambia, Lesotho | Survey statistics, maternal health, women's empowerment chapters |
-| 🏥 **Clinical Trial Data** | Simulated RCT datasets | CONSORT, survival analysis, treatment effect chapters |
-| 🧑‍⚕️ **Public Health Data** | Disease surveillance datasets | Epidemiological measures, outbreak analysis |
-| 🩺 **Medical Datasets** | Patient-level clinical records | Diagnostic accuracy, logistic regression |
-| 🧬 **Bioinformatics / Genomics** | Gene expression datasets | Volcano plots, Manhattan plots, multiple testing |
-| 🤖 **Machine Learning Benchmarks** | Structured tabular ML datasets | Classification, SHAP, model evaluation chapters |
+| 🌍 **Demographic and Health Surveys (DHS)** | Country-level DHS extracts | Survey statistics, maternal health chapters |
+| 🏥 **Clinical Trial Data** | Simulated RCT datasets | CONSORT, survival analysis chapters |
+| 🧑‍⚕️ **Public Health Data** | Disease surveillance datasets | Epidemiological measures chapters |
+| 🩺 **Medical Datasets** | Patient-level clinical records | Diagnostic accuracy, logistic regression chapters |
+| 🧬 **Bioinformatics / Genomics** | Gene expression datasets | Multiple testing, high-dimensional data chapters |
+| 🤖 **Machine Learning Benchmarks** | Structured tabular ML datasets | Classification, model evaluation chapters |
 
 ---
 
-## 🖼️ Visualization Gallery
+## 🖼️ Visualization Gallery (Planned)
 
-> [!TIP]
-> Every figure below is reproduced inside its parent chapter with full **Figure Number · Title · Caption · Interpretation · Reviewer Notes · Common Mistakes.**
+> [!NOTE]
+> Published chapters (1–6) currently use **Mermaid diagrams** (flowcharts, decision trees, mind maps) rather than rendered statistical figures. The gallery below describes the figure types planned as data-driven chapters are added.
 
-| Category | Figures Included |
+| Category | Figures Planned |
 |---|---|
 | **Distributional** | Histograms, density plots, boxplots, violin plots, QQ plots |
 | **Relational** | Scatter plots, pair plots, correlation heatmaps |
@@ -417,51 +448,32 @@ print(model.summary())
 | **Classification Performance** | ROC curves, precision–recall curves |
 | **Survival & Epidemiology** | Kaplan-Meier curves, forest plots, funnel plots |
 | **High-Dimensional Data** | PCA biplots, cluster dendrograms, scree plots |
-| **Genomics** | Manhattan plots, volcano plots |
-| **Method Comparison** | Bland-Altman plots |
-| **Causal Structure** | DAGs, Bayesian networks, causal graphs |
+| **Causal Structure** | DAGs, causal graphs (a simple confounding DAG already appears in Chapter 4) |
 
 ---
 
 ## 🧩 Types of Diagrams Used
 
-| Diagram Type | Purpose |
-|---|---|
-| 🔀 **Flowcharts** | Illustrate decision logic (e.g., test selection) |
-| 🌳 **Decision Trees** | Guide statistical test / model choice |
-| 🧠 **Mind Maps** | Show topic hierarchies and relationships |
-| ⏳ **Timelines** | Trace historical development of methods |
-| 🔗 **DAGs / Bayesian Networks** | Represent causal assumptions |
-| 🏥 **Clinical Trial Flowcharts** | Depict CONSORT-style participant flow |
-| 📋 **Survey Sampling Diagrams** | Show multistage/stratified sampling design |
-| 🔁 **ML Pipelines** | Represent end-to-end modeling workflows |
-| 🌊 **Sankey Diagrams** | Show flow between categorical states |
+| Diagram Type | Purpose | Status |
+|---|---|---|
+| 🔀 **Flowcharts** | Illustrate decision logic (e.g., choosing a central-tendency measure) | ✅ Used in Ch. 1–6 |
+| 🌳 **Decision Trees** | Guide statistical measure / test selection | ✅ Used in Ch. 2, 3, 4, 6 |
+| 🧠 **Mind Maps** | Show topic hierarchies | ✅ Used in Ch. 1, 3, 4, 6 |
+| 🔗 **DAGs** | Represent causal assumptions and confounding | ✅ Simple example in Ch. 4 |
+| ⏳ **Timelines** | Trace historical development of methods | ⚪ Planned |
+| 🏥 **Clinical Trial Flowcharts** | CONSORT-style participant flow | ⚪ Planned |
+| 📋 **Survey Sampling Diagrams** | Multistage/stratified sampling design | ⚪ Planned |
 
-### Sample Decision Tree — Choosing a Statistical Test
+### Sample Decision Tree (from Chapter 2 — Central Tendency)
 
 ```mermaid
 flowchart TD
-    Start[What is your outcome variable?] --> Cont{Continuous?}
-    Cont -->|Yes| Groups{How many groups?}
-    Cont -->|No| Cat{Binary or Categorical?}
-    Groups -->|2 groups| TTest[Independent t-test]
-    Groups -->|3+ groups| ANOVA[One-way ANOVA]
-    Cat -->|Binary| Logistic[Logistic Regression]
-    Cat -->|Multi-category| MultiLog[Multinomial Logistic Regression]
-```
-
-### Sample Clinical Trial Flow (CONSORT-style)
-
-```mermaid
-flowchart TD
-    A[Assessed for Eligibility n=500] --> B{Excluded n=120}
-    A --> C[Randomized n=380]
-    C --> D[Allocated to Treatment n=190]
-    C --> E[Allocated to Control n=190]
-    D --> F[Lost to Follow-up n=10]
-    E --> G[Lost to Follow-up n=8]
-    D --> H[Analyzed n=180]
-    E --> I[Analyzed n=182]
+    A{What is the data type?} -->|Nominal| B[Mode]
+    A -->|Ordinal| C[Median or Mode]
+    A -->|Interval/Ratio| D{Is data skewed or has outliers?}
+    D -->|Yes| E[Median]
+    D -->|No, symmetric| F[Mean]
+    D -->|Ratios/growth rates| G[Geometric Mean]
 ```
 
 ---
@@ -475,30 +487,26 @@ This repository uses GitHub's native LaTeX rendering for all mathematical conten
 **Display math:**
 
 $$
-\text{Var}(X) = E[(X - \mu)^2] = E[X^2] - (E[X])^2
+s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2
 $$
 
 $$
-\hat{\beta} = (X^TX)^{-1}X^Ty
+\hat{\beta}_1 = \frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum(x_i-\bar{x})^2}
 $$
 
 > [!NOTE]
-> All notation follows a consistent glossary defined in `00-front-matter/notation-glossary.md` to avoid symbol conflicts across chapters.
+> A dedicated `notation-glossary.md` is planned (see [Repository Structure](#-repository-structure)) but does not exist yet. Until then, notation is defined inline within each chapter the first time a symbol is used.
 
 ---
 
 ## 🧜 Mermaid Diagram Support
 
-All diagrams in this repository are written in native **Mermaid syntax**, which renders automatically on GitHub without any external tools or images.
+All diagrams in this repository are written in native **Mermaid syntax**, which renders automatically on GitHub without any external tools or images. Diagram types actually used in published chapters:
 
-Supported diagram types used throughout the book:
+- `flowchart` — decision logic and process flow (used extensively in Ch. 1–6)
+- `mindmap` — topic hierarchies (used in Ch. 1, 3, 4, 6)
 
-- `flowchart` — process and decision logic
-- `graph` — DAGs and causal graphs
-- `mindmap` — topic and curriculum maps
-- `sequenceDiagram` — data pipeline and workflow steps
-- `gantt` — study design timelines
-- `sankey-beta` — categorical flow diagrams
+Diagram types planned but not yet used: `graph` (DAGs/Bayesian networks beyond the simple Ch. 4 example), `sequenceDiagram`, `gantt`, `sankey-beta`.
 
 ---
 
@@ -510,34 +518,33 @@ flowchart LR
     B --> C[📐 Study Derivation]
     C --> D[✏️ Solve Worked Example]
     D --> E[💻 Run Code Yourself]
-    E --> F[📊 Analyze Real Dataset]
-    F --> G[🕵️ Read Reviewer Notes]
-    G --> H[❓ Attempt Practice Problems]
-    H --> I{Confident?}
-    I -->|No| C
-    I -->|Yes| J[➡️ Next Chapter]
+    E --> F[🕵️ Read Reviewer Notes]
+    F --> G[❓ Attempt Practice Problems]
+    G --> H{Confident?}
+    H -->|No| C
+    H -->|Yes| I[➡️ Next Chapter]
 ```
 
 ---
 
 ## 🧗 Suggested Reading Paths
 
-| Path | Recommended Chapters | Best For |
-|---|---|---|
-| 🟢 **Beginner** | Chapters 1–6 | First exposure to statistics |
-| 🟡 **Intermediate** | Chapters 7–12 | Graduate coursework, thesis modeling |
-| 🔴 **Advanced Research** | Chapters 13–19 | Epidemiology, causal inference, survey data |
-| 🟣 **AI/ML Track** | Chapters 20–23 | Data science and machine learning careers |
-| 🟠 **Publishing Track** | Chapters 24–26 | Preparing manuscripts and peer reviews |
+| Path | Recommended Chapters | Best For | Availability |
+|---|---|---|---|
+| 🟢 **Beginner** | Chapters 1–6 | First exposure to statistics | ✅ Available now |
+| 🟡 **Intermediate** | Chapters 7–13 (hypothesis testing → regression modeling) | Graduate coursework, thesis modeling | 🟡 Planned |
+| 🔴 **Advanced Research** | Biostatistics, epidemiology, causal inference chapters | Epidemiology, survey data, causal claims | ⚪ Not started |
+| 🟣 **AI/ML Track** | Machine learning & explainability chapters | Data science and ML careers | ⚪ Not started |
+| 🟠 **Publishing Track** | Scientific writing & reporting-guideline chapters | Preparing manuscripts and peer reviews | ⚪ Not started |
 
 ### Beginner → Advanced Roadmap
 
 ```mermaid
 flowchart LR
-    A[🟢 Foundations] --> B[🟡 Inference & Regression]
-    B --> C[🔴 Biostatistics & Causal Inference]
-    C --> D[🟣 Machine Learning & AI]
-    D --> E[🟠 Scientific Writing & Publication]
+    A["🟢 Foundations (Ch. 1-6, live)"] --> B["🟡 Inference and Regression (planned)"]
+    B --> C["🔴 Biostatistics and Causal Inference (planned)"]
+    C --> D["🟣 Machine Learning and AI (planned)"]
+    D --> E["🟠 Scientific Writing and Publication (planned)"]
 ```
 
 ---
@@ -545,39 +552,36 @@ flowchart LR
 ## 🕵️ Scientific Reviewer Perspective
 
 > [!WARNING]
-> Every chapter includes a dedicated **"Reviewer's Desk"** callout answering:
+> Every **published** chapter includes a dedicated Reviewer Perspective callout answering:
 > - What would a Q1 journal reviewer check first?
-> - What statistical mistakes commonly lead to rejection?
+> - What statistical mistakes commonly lead to rejection or major revision?
 > - What assumptions are most often violated without acknowledgment?
-> - How should results be reported according to the relevant guideline (CONSORT / STROBE / PRISMA / TRIPOD / RECORD / STARD / CARE / ARRIVE)?
 
-| Reporting Guideline | Applies To |
-|---|---|
-| **CONSORT** | Randomized controlled trials |
-| **STROBE** | Observational studies (cohort, case-control, cross-sectional) |
-| **PRISMA** | Systematic reviews and meta-analyses |
-| **TRIPOD** | Prediction model development and validation |
-| **RECORD** | Studies using routinely collected health data |
-| **STARD** | Diagnostic accuracy studies |
-| **CARE** | Case reports |
-| **ARRIVE** | Animal research |
+Formal integration with named reporting guidelines is planned for the scientific-writing chapters:
+
+| Reporting Guideline | Applies To | Status |
+|---|---|---|
+| **CONSORT** | Randomized controlled trials | 🟡 Referenced informally in Ch. 3 and Ch. 5; dedicated chapter planned |
+| **STROBE** | Observational studies | ⚪ Planned |
+| **PRISMA** | Systematic reviews and meta-analyses | ⚪ Planned |
+| **TRIPOD** | Prediction model development and validation | ⚪ Planned |
+| **RECORD** | Studies using routinely collected health data | ⚪ Planned |
+| **STARD** | Diagnostic accuracy studies | ⚪ Planned |
+| **CARE** | Case reports | ⚪ Planned |
+| **ARRIVE** | Animal research | ⚪ Planned |
 
 ---
 
 ## 🤖 AI Evaluation Perspective
 
 > [!CAUTION]
-> Large language models can produce statistically fluent but **factually incorrect** explanations. Every chapter includes an **"AI Check"** box addressing:
-> - Can a general-purpose AI answer this correctly?
-> - What are common AI hallucinations for this topic?
-> - How should a reader verify AI-generated statistical output?
-> - What subtle reasoning errors do reviewers catch that AI tools miss?
+> Large language models can produce statistically fluent but **factually incorrect** explanations. Every **published** chapter includes an AI Evaluation Perspective box addressing what automated statistical-review tools typically flag for that specific topic (e.g., SD > mean as a skewness red flag, mismatched quote/paraphrase in Table 1 reporting, overdispersion in Poisson-modeled counts).
 
 | Common AI Hallucination Pattern | Example |
 |---|---|
 | Confusing correlation with causation | Claiming a regression coefficient "causes" an outcome from observational data |
 | Misapplying test assumptions | Recommending a t-test on non-independent (clustered) data |
-| Fabricated p-values | Producing plausible-looking but unverifiable exact p-values without data |
+| Fabricated exact statistics | Producing plausible-looking but unverifiable exact p-values or coefficients without data |
 | Overconfident manual arithmetic | Miscalculating variance or standard error "by hand" |
 
 ---
@@ -591,16 +595,18 @@ We welcome contributions from statisticians, researchers, educators, and student
 
 1. **Fork** the repository
 2. Create a feature branch: `git checkout -b chapter/new-topic`
-3. Follow the **standard chapter structure** (see [Chapter Organization](#-chapter-organization))
-4. Include code in **at least R and Python**; other languages are welcome
-5. Add at least one **diagram or figure** with full caption and interpretation
-6. Include a **Reviewer Perspective** and **AI Evaluation** section
-7. Submit a **pull request** with a clear description of the addition
+3. Follow the **standard chapter structure** (see [Chapter Organization](#-chapter-organization)) — use [`05-regression.md`](./05-regression.md) as a reference template
+4. Include code in **at least R and Python**; SPSS, STATA, and SAS are strongly encouraged to match existing chapters
+5. Add at least one **Mermaid diagram** with clear labeling
+6. Include a **Reviewer Perspective** and **AI Evaluation Perspective** section
+7. Name new chapter files following the existing flat-file convention (`NN-topic-name.md`) at the repository root until a maintainer starts the folder migration described in [Repository Structure](#-repository-structure)
+8. Update the [Chapters](#-chapters) table and add Previous/Next navigation links to the adjacent chapters
+9. Submit a **pull request** with a clear description of the addition
 
 </details>
 
 > [!TIP]
-> Small contributions matter too — fixing a typo, improving a derivation's clarity, or adding a missing dataset citation are all valuable.
+> Small contributions matter too — fixing a typo, improving a derivation's clarity, or adding a missing reference are all valuable.
 
 ---
 
@@ -615,8 +621,8 @@ If you use this repository in teaching, research, or coursework, please cite it 
                    Data Science, and Scientific Research},
   author       = {{Statistics for Scientists Contributors}},
   year         = {2026},
-  howpublished = {\url{https://github.com/}},
-  note         = {Open-access GitHub textbook}
+  howpublished = {\url{https://github.com/muhammadsalek/statistics-for-scientists}},
+  note         = {Open-access GitHub textbook, early access}
 }
 ```
 
@@ -624,9 +630,12 @@ If you use this repository in teaching, research, or coursework, please cite it 
 
 ## 📜 License
 
-This work is licensed under the **[Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)**.
+This work is licensed under the **[MIT License](./LICENSE)**.
 
-You are free to **share** and **adapt** this material for any purpose, even commercially, as long as appropriate credit is given.
+You are free to use, copy, modify, and distribute this material, including for commercial purposes, provided the original copyright and license notice are included.
+
+> [!NOTE]
+> An earlier draft of this README referenced a CC BY 4.0 license. The repository's actual `LICENSE` file is MIT, and this README has been updated to match it. If you intended to license this content under CC BY 4.0 instead, replace the `LICENSE` file accordingly and update this section.
 
 ---
 
@@ -640,14 +649,17 @@ This repository draws inspiration from the pedagogical traditions of Harvard, St
 
 | Milestone | Status |
 |---|---|
-| Core undergraduate chapters (1–6) | 🟢 In Progress |
-| Graduate-level chapters (7–12) | 🟡 Planned |
-| Biostatistics & epidemiology chapters (13–17) | 🟡 Planned |
-| Causal inference chapters (18–19) | ⚪ Planned |
-| Machine learning & AI chapters (20–23) | ⚪ Planned |
-| Scientific writing chapters (24–26) | ⚪ Planned |
-| Interactive Shiny/Streamlit companion apps | ⚪ Planned |
-| Multi-language translations | ⚪ Under Consideration |
+| Core foundational chapters (1–6): descriptive stats, central tendency, dispersion, correlation, regression, probability distributions | ✅ **Published** |
+| Inference chapters (hypothesis testing, confidence intervals, estimation, Bayesian inference) | 🟡 Planned — next up |
+| Regression modeling chapters (multiple regression, GLMs, mixed models) | ⚪ Planned |
+| Biostatistics & epidemiology chapters | ⚪ Planned |
+| Causal inference chapters | ⚪ Planned |
+| Machine learning & AI chapters | ⚪ Planned |
+| Scientific writing chapters | ⚪ Planned |
+| Real dataset bundle (`datasets/` folder) | ⚪ Planned |
+| Multi-language code folder (`code/` with r/, python/, spss-syntax/, etc.) | ⚪ Planned |
+| Folder-based restructuring (00-front-matter, 01-foundations, etc.) | ⚪ Planned once chapter count justifies it |
+| Interactive Shiny/Streamlit companion apps | ⚪ Under consideration |
 
 ---
 
@@ -656,31 +668,31 @@ This repository draws inspiration from the pedagogical traditions of Harvard, St
 <details>
 <summary><strong>Do I need to know programming to use this textbook?</strong></summary>
 
-No. Every concept is explained conceptually and visually first. Code is provided for those who want to implement the methods themselves.
+No. Every concept is explained conceptually and visually first. Code (in R, Python, SPSS, STATA, and SAS) is provided for those who want to implement the methods themselves.
 </details>
 
 <details>
 <summary><strong>Which software should I focus on?</strong></summary>
 
-If you're heading toward academic research in health or social sciences, prioritize **R** and **STATA**. If you're heading toward data science or ML, prioritize **Python**. This repository supports both paths equally.
+If you're heading toward academic research in health or social sciences, prioritize **R** and **STATA**. If you're heading toward data science or ML, prioritize **Python**. All six published chapters support both paths equally.
 </details>
 
 <details>
-<summary><strong>Is this suitable for PhD-level research methods courses?</strong></summary>
+<summary><strong>Is this repository finished?</strong></summary>
 
-Yes. Chapters 13–19 in particular (biostatistics, epidemiology, and causal inference) are written at a level suitable for PhD coursework and dissertation methodology chapters.
+No — it is in early access with 6 of a planned 40+ foundational-through-advanced chapters published. See the [Chapters](#-chapters) table for exactly what's available today and the [Future Roadmap](#-future-roadmap) for what's coming next.
 </details>
 
 <details>
 <summary><strong>Can I use this material in my own course?</strong></summary>
 
-Yes, under the CC BY 4.0 license, with attribution. See the [Citation Information](#-citation-information) section.
+Yes, under the MIT license. See the [License](#-license) section.
 </details>
 
 <details>
 <summary><strong>How do the "Reviewer Perspective" sections work?</strong></summary>
 
-Each one is written from the standpoint of an experienced Q1 journal reviewer, highlighting the specific statistical issues that most commonly lead to major revisions or rejection.
+Each one is written from the standpoint of an experienced journal reviewer, highlighting the specific statistical issues that most commonly lead to major revisions or rejection for that chapter's topic.
 </details>
 
 ---
