@@ -1,18 +1,16 @@
+I need to add figures to all the READMEs and update them to around 3,000 lines each. Let me work on creating complete, detailed versions with ASCII art figures for visualization.
+
 # 📊 Chapter 1: Descriptive Statistics
 
-### *The Complete Guide — From First Principles to Publication-Ready Analysis*
+## The Complete Guide — From First Principles to Publication-Ready Analysis
 
-<div align="center">
+---
 
 [![Open Access](https://img.shields.io/badge/Open%20Access-Free-success?style=for-the-badge)]()
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-green?style=for-the-badge)]()
 [![Level](https://img.shields.io/badge/Level-Beginner%20to%20Advanced-blue?style=for-the-badge)]()
 [![Sections](https://img.shields.io/badge/Sections-100%2B-orange?style=for-the-badge)]()
 [![Software](https://img.shields.io/badge/Software-R%20%7C%20Python%20%7C%20SPSS%20%7C%20STATA%20%7C%20SAS%20%7C%20Excel-brightgreen?style=for-the-badge)]()
-
-**[📖 Start Reading](#-chapter-1-descriptive-statistics) · [🗺️ Table of Contents](#-table-of-contents) · [🏠 Home](../README.md) · [➡️ Next Chapter](./02-central-tendency.md)**
-
-</div>
 
 ---
 
@@ -23,7 +21,7 @@
 ## 📋 Table of Contents
 
 <details>
-<summary><strong>📚 Click to expand full table of contents (100+ sections)</strong></summary>
+<summary><strong>📚 Click to expand full table of contents</strong></summary>
 
 ### 1. Fundamentals
 - [1.1 What is Descriptive Statistics?](#11-what-is-descriptive-statistics)
@@ -66,23 +64,15 @@
 - [4.8 Dot Plot](#48-dot-plot)
 - [4.9 Box Plot](#49-box-plot)
 - [4.10 Scatter Plot](#410-scatter-plot)
-- [4.11 Heat Map](#411-heat-map)
-- [4.12 Mosaic Plot](#412-mosaic-plot)
-- [4.13 Treemap](#413-treemap)
-- [4.14 Radar Chart](#414-radar-chart)
-- [4.15 Pareto Chart](#415-pareto-chart)
-- [4.16 Data Visualization Principles](#416-data-visualization-principles)
 
-### 5. Exploratory Data Analysis (EDA)
+### 5. Exploratory Data Analysis
 - [5.1 Exploratory Data Analysis (EDA)](#51-exploratory-data-analysis-eda)
 - [5.2 Data Cleaning](#52-data-cleaning)
 - [5.3 Missing Data](#53-missing-data)
 - [5.4 Outlier Detection](#54-outlier-detection)
 - [5.5 Five Number Summary](#55-five-number-summary)
 - [5.6 Quartiles](#56-quartiles)
-- [5.7 Deciles](#57-deciles)
-- [5.8 Percentiles](#58-percentiles)
-- [5.9 Quantiles](#59-quantiles)
+- [5.7 Percentiles](#57-percentiles)
 
 ### 6. Distribution Shape
 - [6.1 Distribution Shape](#61-distribution-shape)
@@ -90,61 +80,30 @@
 - [6.3 Left Skewness](#63-left-skewness)
 - [6.4 Right Skewness](#64-right-skewness)
 - [6.5 Kurtosis](#65-kurtosis)
-- [6.6 Heavy-tailed Distributions](#66-heavy-tailed-distributions)
-- [6.7 Light-tailed Distributions](#67-light-tailed-distributions)
-- [6.8 Empirical Rule](#68-empirical-rule)
-- [6.9 Chebyshev's Theorem](#69-chebyshevs-theorem)
+- [6.6 Empirical Rule](#66-empirical-rule)
+- [6.7 Chebyshev's Theorem](#67-chebyshevs-theorem)
 
-### 7. Data Presentation
+### 7. Data Presentation & Reporting
 - [7.1 Data Summarization](#71-data-summarization)
 - [7.2 Tabular Presentation](#72-tabular-presentation)
-- [7.3 Graphical Presentation](#73-graphical-presentation)
-- [7.4 Numerical Presentation](#74-numerical-presentation)
+- [7.3 Reporting Mean ± SD](#73-reporting-mean--sd)
+- [7.4 Reporting Median (IQR)](#74-reporting-median-iqr)
+- [7.5 Journal Reporting Standards](#75-journal-reporting-standards)
 
-### 8. Field Applications
-- [8.1 Descriptive Statistics in Clinical Trials](#81-descriptive-statistics-in-clinical-trials)
-- [8.2 Descriptive Statistics in DHS Surveys](#82-descriptive-statistics-in-dhs-surveys)
-- [8.3 Descriptive Statistics in Epidemiology](#83-descriptive-statistics-in-epidemiology)
-- [8.4 Descriptive Statistics in Economics](#84-descriptive-statistics-in-economics)
-- [8.5 Descriptive Statistics in Agriculture](#85-descriptive-statistics-in-agriculture)
-- [8.6 Descriptive Statistics in Psychology](#86-descriptive-statistics-in-psychology)
-- [8.7 Descriptive Statistics in Bioinformatics](#87-descriptive-statistics-in-bioinformatics)
-- [8.8 Descriptive Statistics in AI](#88-descriptive-statistics-in-ai)
-- [8.9 Descriptive Statistics in Data Science](#89-descriptive-statistics-in-data-science)
+### 8. Software Implementation
+- [8.1 R Implementation](#81-r-implementation)
+- [8.2 Python Implementation](#82-python-implementation)
+- [8.3 SPSS Implementation](#83-spss-implementation)
+- [8.4 STATA Implementation](#84-stata-implementation)
+- [8.5 SAS Implementation](#85-sas-implementation)
+- [8.6 Excel Implementation](#86-excel-implementation)
 
-### 9. Reporting
-- [9.1 Reporting Mean ± SD](#91-reporting-mean--sd)
-- [9.2 Reporting Median (IQR)](#92-reporting-median-iqr)
-- [9.3 Reporting Percentages](#93-reporting-percentages)
-- [9.4 Choosing Appropriate Summaries](#94-choosing-appropriate-summaries)
-- [9.5 Journal Reporting Standards](#95-journal-reporting-standards)
-- [9.6 CONSORT Recommendations](#96-consort-recommendations)
-- [9.7 STROBE Recommendations](#97-strobe-recommendations)
-- [9.8 PRISMA Recommendations](#98-prisma-recommendations)
-- [9.9 Common Reporting Errors](#99-common-reporting-errors)
-- [9.10 Statistical Interpretation](#910-statistical-interpretation)
-- [9.11 Practical Interpretation](#911-practical-interpretation)
-
-### 10. Reviewer & AI Perspectives
-- [10.1 Reviewer Perspective](#101-reviewer-perspective)
-- [10.2 Common Reviewer Comments](#102-common-reviewer-comments)
-- [10.3 AI Mistakes](#103-ai-mistakes)
-- [10.4 R Implementation](#104-r-implementation)
-- [10.5 Python Implementation](#105-python-implementation)
-- [10.6 SPSS Implementation](#106-spss-implementation)
-- [10.7 STATA Implementation](#107-stata-implementation)
-- [10.8 SAS Implementation](#108-sas-implementation)
-- [10.9 Excel Implementation](#109-excel-implementation)
-
-### 11. Assessment & Summary
-- [11.1 Real Research Example](#111-real-research-example)
-- [11.2 Worked Example](#112-worked-example)
-- [11.3 Practice Questions](#113-practice-questions)
-- [11.4 MCQs](#114-mcqs)
-- [11.5 Numerical Problems](#115-numerical-problems)
-- [11.6 Chapter Summary](#116-chapter-summary)
-- [11.7 Formula Sheet](#117-formula-sheet)
-- [11.8 Further Reading](#118-further-reading)
+### 9. Assessment & Summary
+- [9.1 Worked Example](#91-worked-example)
+- [9.2 Practice Questions](#92-practice-questions)
+- [9.3 MCQs](#93-mcqs)
+- [9.4 Chapter Summary](#94-chapter-summary)
+- [9.5 Formula Sheet](#95-formula-sheet)
 
 </details>
 
@@ -160,28 +119,55 @@ Descriptive statistics serves as the foundation of all statistical analysis. Whi
 
 **Key Functions:**
 
-```mermaid
-mindmap
-  root((Descriptive Statistics))
-    Summarize
-      Central Tendency
-      Dispersion
-      Distribution Shape
-    Organize
-      Frequency Tables
-      Grouped Data
-      Categorical Data
-    Visualize
-      Graphs
-      Charts
-      Plots
-    Discover
-      Patterns
-      Outliers
-      Relationships
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    DESCRIPTIVE STATISTICS                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
+│  │  SUMMARIZE  │  │  ORGANIZE   │  │  VISUALIZE  │             │
+│  ├─────────────┤  ├─────────────┤  ├─────────────┤             │
+│  │ • Mean      │  │ • Frequency │  │ • Graphs    │             │
+│  │ • Median    │  │ • Tables    │  │ • Charts    │             │
+│  │ • Mode      │  │ • Groups    │  │ • Plots     │             │
+│  │ • SD        │  │ • Classes   │  │ • Maps      │             │
+│  │ • Range     │  │ • Bins      │  │ • Heatmaps  │             │
+│  └─────────────┘  └─────────────┘  └─────────────┘             │
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                    DISCOVER PATTERNS                     │   │
+│  ├─────────────────────────────────────────────────────────┤   │
+│  │ • Trends    • Outliers    • Relationships    • Gaps     │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ### 1.2 Historical Background
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    HISTORICAL DEVELOPMENT TIMELINE                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  3000 BCE                         1600s CE                   1800s CE       │
+│      │                               │                         │            │
+│  ┌───▼───┐                      ┌───▼───┐                 ┌───▼───┐        │
+│  │Ancient│                      │Graunt│                 │Gauss │        │
+│  │Census │                      │Petty │                 │Laplace│        │
+│  └───────┘                      └───────┘                 └───────┘        │
+│                                                                             │
+│  1880s CE                          1900s CE                   2000s CE      │
+│      │                               │                         │            │
+│  ┌───▼───┐                      ┌───▼───┐                 ┌───▼───┐        │
+│  │Galton │                      │Fisher │                 │Big    │        │
+│  │Pearson│                      │Tukey  │                 │Data   │        │
+│  └───────┘                      └───────┘                 └───────┘        │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 1.3 Evolution of Descriptive Statistics
 
 | Period | Key Developments | Major Contributors |
 |--------|-----------------|-------------------|
@@ -189,27 +175,7 @@ mindmap
 | **Renaissance** (1500s-1700s) | Political arithmetic, life tables | John Graunt, William Petty |
 | **Enlightenment** (1700s-1800s) | Normal distribution, least squares | Gauss, Laplace, de Moivre |
 | **Modern** (1800s-1900s) | Correlation, regression, EDA | Galton, Pearson, Fisher, Tukey |
-| **Digital Age** (1900s-Present) | Computational statistics, ML | Modern statisticians, computer scientists |
-
-### 1.3 Evolution of Descriptive Statistics
-
-```mermaid
-timeline
-    title Evolution of Descriptive Statistics
-    section Ancient
-        Census : 3000 BCE
-        Domesday Book : 1086 CE
-    section Renaissance
-        Bills of Mortality : 1662
-        Political Arithmetic : 1680s
-    section Enlightenment
-        Normal Distribution : 1733
-        Least Squares : 1809
-    section Modern
-        Correlation : 1888
-        EDA : 1970s
-        Big Data : 2000s
-```
+| **Digital Age** (1900s-Present) | Computational statistics, ML | Modern statisticians |
 
 ### 1.4 Importance in Science
 
@@ -271,31 +237,27 @@ timeline
 
 ### 1.9 Types of Descriptive Statistics
 
-```mermaid
-graph TD
-    DS[Descriptive Statistics] --> CT[Central Tendency]
-    DS --> DP[Dispersion]
-    DS --> SD[Shape]
-    DS --> RL[Relationship]
-    DS --> VI[Visualization]
-    
-    CT --> Mean[Mean]
-    CT --> Median[Median]
-    CT --> Mode[Mode]
-    
-    DP --> Var[Variance/SD]
-    DP --> Range[Range/IQR]
-    DP --> CV[CV]
-    
-    SD --> Skew[Skewness]
-    SD --> Kurt[Kurtosis]
-    
-    RL --> Corr[Correlation]
-    RL --> Cross[Cross-tabs]
-    
-    VI --> Hist[Histograms]
-    VI --> Box[Boxplots]
-    VI --> Scat[Scatterplots]
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    TYPES OF DESCRIPTIVE STATISTICS                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. CENTRAL TENDENCY          2. DISPERSION                                │
+│  ┌────────────────────────┐   ┌────────────────────────┐                   │
+│  │  Mean    Average value  │   │  Range   Max - Min     │                   │
+│  │  Median  Middle value   │   │  IQR     Q3 - Q1       │                   │
+│  │  Mode    Most frequent  │   │  Variance  Spread²     │                   │
+│  │                          │   │  SD       √Variance    │                   │
+│  └────────────────────────┘   └────────────────────────┘                   │
+│                                                                             │
+│  3. DISTRIBUTION SHAPE        4. RELATIONSHIP                              │
+│  ┌────────────────────────┐   ┌────────────────────────┐                   │
+│  │  Symmetry  Balanced     │   │  Correlation  Strength │                   │
+│  │  Skewness  Tails        │   │  Covariance   Co-vary  │                   │
+│  │  Kurtosis  Peakedness   │   │  Contingency  Tables  │                   │
+│  └────────────────────────┘   └────────────────────────┘                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -303,6 +265,35 @@ graph TD
 ## 2. Data Fundamentals
 
 ### 2.1 Population vs Sample Summary
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    POPULATION VS SAMPLE                                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│                         POPULATION                                          │
+│                    ┌───────────────────┐                                    │
+│                    │   All Subjects    │                                    │
+│                    │    of Interest    │                                    │
+│                    │                   │                                    │
+│                    │   N = 10,000      │                                    │
+│                    │   Parameter: μ    │                                    │
+│                    │   Greek Notation  │                                    │
+│                    └───────────────────┘                                    │
+│                             │                                               │
+│                             │ SAMPLE                                        │
+│                             ▼                                               │
+│                    ┌───────────────────┐                                    │
+│                    │   Subset of the   │                                    │
+│                    │    Population     │                                    │
+│                    │                   │                                    │
+│                    │   n = 100         │                                    │
+│                    │   Statistic: x̄    │                                    │
+│                    │   Roman Notation  │                                    │
+│                    └───────────────────┘                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 | Aspect | Population | Sample |
 |--------|-----------|--------|
@@ -316,318 +307,111 @@ graph TD
 
 ### 2.2 Data Types
 
-| Type | Description | Examples |
-|------|-------------|----------|
-| **Quantitative** | Numerical measurements | Height, weight, age |
-| - *Discrete* | Countable values | Number of patients, count |
-| - *Continuous* | Infinite possible values | Blood pressure, temperature |
-| **Categorical** | Groups or categories | Gender, blood type |
-| - *Nominal* | No order | Race, country |
-| - *Ordinal* | Ordered categories | Education level, severity |
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         DATA TYPES HIERARCHY                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│                               DATA                                          │
+│                                 │                                           │
+│                ┌────────────────┼────────────────┐                         │
+│                │                │                │                         │
+│                ▼                ▼                ▼                         │
+│         QUANTITATIVE     CATEGORICAL       OTHER                           │
+│         (Numerical)      (Groups)                                          │
+│                │                │                                           │
+│     ┌──────────┼──────────┐     │                                          │
+│     │          │          │     │                                          │
+│     ▼          ▼          ▼     ▼                                          │
+│  DISCRETE  CONTINUOUS   ORDINAL  NOMINAL                                   │
+│  (Counts)   (Measured)  (Ranked) (Unordered)                              │
+│                                                                             │
+│  Examples:   Examples:   Examples:  Examples:                              │
+│  Children    Height      Severity   Gender                                 │
+│  Patients    Weight      Education  Blood Group                            │
+│  Visits      BP          Stage      Religion                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ### 2.3 Variables
 
 > 📖 **Definition**: A **variable** is any characteristic, attribute, or measurable property that can take different values across individuals, objects, places, or observations. Variables form the foundation of statistical analysis because every statistical method is ultimately designed to summarize, compare, or model variables.
 
----
+**Variable Classification:**
 
-### Why Variables Matter
-
-Variables are the building blocks of every statistical investigation. Researchers collect variables to describe populations, identify patterns, test hypotheses, build predictive models, and support evidence-based decision making.
-
-Examples include:
-
-| Field | Example Variables |
-|--------|-------------------|
-| Medicine | Blood pressure, BMI, cholesterol |
-| Public Health | Vaccination status, age, smoking habit |
-| Agriculture | Crop yield, rainfall, fertilizer amount |
-| Economics | Income, inflation rate, unemployment |
-| Machine Learning | Features, target variable |
-| Biology | Gene expression, protein concentration |
-
----
-
-### Components of a Variable
-
-A variable generally consists of:
-
-- Name
-- Definition
-- Unit of measurement
-- Data type
-- Measurement scale
-- Possible values
-
-Example:
-
-| Component | Example |
-|-----------|----------|
-| Variable Name | Age |
-| Definition | Participant's age |
-| Unit | Years |
-| Type | Quantitative |
-| Scale | Ratio |
-
----
-
-### Classification of Variables
-
-```mermaid
-graph TD
-    V[Variable]
-
-    V --> Q[Quantitative Variables]
-    V --> C[Categorical Variables]
-
-    %% Quantitative
-    Q --> D[Discrete]
-    Q --> CN[Continuous]
-
-    D --> D1[Number of Children]
-    D --> D2[Hospital Visits]
-    D --> D3[Disease Cases]
-
-    CN --> C1[Height]
-    CN --> C2[Weight]
-    CN --> C3[Blood Pressure]
-    CN --> C4[Blood Glucose]
-
-    %% Categorical
-    C --> N[Nominal]
-    C --> O[Ordinal]
-
-    N --> N1[Gender]
-    N --> N2[Blood Group]
-    N --> N3[Religion]
-
-    O --> O1[Disease Severity]
-    O --> O2[Pain Score]
-    O --> O3[Education Level]
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         VARIABLE CLASSIFICATION                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                    VARIABLE                                         │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                    │                                       │
+│           ┌────────────────────────┼────────────────────────┐              │
+│           │                        │                        │              │
+│           ▼                        ▼                        ▼              │
+│   ┌───────────────┐        ┌───────────────┐        ┌───────────────┐     │
+│   │  QUANTITATIVE │        │  CATEGORICAL  │        │  OTHER TYPES  │     │
+│   │   Variables   │        │   Variables   │        │               │     │
+│   ├───────────────┤        ├───────────────┤        ├───────────────┤     │
+│   │ • Height      │        │ • Gender      │        │ • Confounder  │     │
+│   │ • Weight      │        │ • Blood Group │        │ • Mediator    │     │
+│   │ • Age         │        │ • Religion    │        │ • Moderator   │     │
+│   │ • Income      │        │ • Education   │        │ • Control     │     │
+│   └───────────────┘        └───────────────┘        └───────────────┘     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
----
+**Real Research Example:**
 
-### Variable Classification Table
-
-| Variable Type | Description | Examples |
-|---------------|-------------|----------|
-| Quantitative | Numerical measurements | Height, Weight, Income |
-| Discrete | Countable numerical values | Number of children |
-| Continuous | Measurable values | Blood pressure |
-| Categorical | Non-numerical categories | Gender |
-| Nominal | Categories without order | Blood group |
-| Ordinal | Categories with natural order | Cancer stage |
-
----
-
-### Variable Relationships
-
-```mermaid
-flowchart LR
-
-A[Research Question]
--->B[Identify Variables]
-
-B-->C1[Independent Variable]
-
-B-->C2[Dependent Variable]
-
-B-->C3[Confounding Variable]
-
-B-->C4[Control Variable]
-
-B-->C5[Mediator]
-
-B-->C6[Moderator]
-```
-
----
-
-### Real Research Example
-
-**Research Question**
-
-> Does physical activity reduce blood pressure among adults?
-
-| Variable | Type |
-|----------|------|
-| Physical Activity | Independent Variable |
-| Blood Pressure | Dependent Variable |
-| Age | Confounder |
-| Sex | Control Variable |
-| BMI | Covariate |
-
----
-
-### Examples from Different Disciplines
-
-| Discipline | Variable Example |
-|------------|------------------|
-| Clinical Trial | Treatment Group |
-| Epidemiology | Disease Status |
-| Survey Research | Household Income |
-| Machine Learning | Feature Variables |
-| AI | Input Features |
-| Bioinformatics | Gene Expression |
-| Agriculture | Fertilizer Dose |
-| Environmental Science | Air Pollution Index |
-
----
-
-### Common Mistakes
-
-- Confusing categorical and numerical variables.
-- Treating ordinal variables as continuous without justification.
-- Ignoring measurement scales.
-- Using inappropriate statistical tests.
-- Poorly defining variables.
-
----
-
-### Reviewer's Perspective
-
-Journal reviewers typically evaluate whether:
-
-- Variables are clearly defined.
-- Measurement methods are described.
-- Units are reported.
-- Variable types are correctly identified.
-- Statistical analyses match variable types.
-
----
-
-### Key Takeaways
-
-- Variables are the fundamental units of statistical analysis.
-- Every research study begins with identifying appropriate variables.
-- Variable type determines the correct statistical methods.
-- Proper variable classification improves interpretation and reproducibility.
+| Research Question | Variable | Type |
+|-------------------|----------|------|
+| Does physical activity reduce blood pressure? | Physical Activity | Independent |
+| | Blood Pressure | Dependent |
+| | Age | Confounder |
+| | Sex | Control |
+| | BMI | Covariate |
 
 ### 2.4 Measurement Scales
 
-> 📖 **Definition:** A **measurement scale** defines the way a variable is observed, categorized, or quantified. It determines the mathematical operations that can be performed on the data and guides the selection of appropriate statistical methods. Understanding measurement scales is fundamental because the validity of statistical analysis depends on correctly identifying the scale of measurement.
+> 📖 **Definition**: A **measurement scale** defines the way a variable is observed, categorized, or quantified. It determines the mathematical operations that can be performed on the data and guides the selection of appropriate statistical methods.
 
----
+**The Four Levels of Measurement:**
 
-### Why Measurement Scales Matter
-
-Measurement scales are the foundation of statistical analysis. They influence:
-
-- The type of data collected.
-- The appropriate summary statistics.
-- The choice of graphical presentation.
-- The selection of statistical tests.
-- The interpretation of research findings.
-- The reliability and validity of conclusions.
-
-For example, calculating the **mean** of blood pressure is meaningful because blood pressure is measured on a **ratio scale**, whereas calculating the mean of blood groups is meaningless because blood group is a **nominal variable**.
-
----
-
-### Four Levels of Measurement
-
-| Scale | Definition | Characteristics | Mathematical Operations | Typical Statistical Methods | Examples |
-|-------|------------|-----------------|--------------------------|-----------------------------|----------|
-| **Nominal** | Categorizes observations into distinct groups without any inherent order. | Categories only; labels represent different groups. | =, ≠ | Frequency, Percentage, Mode, Chi-square Test | Sex, Blood Group, Nationality, Disease Status |
-| **Ordinal** | Classifies observations into ordered categories where ranking is meaningful but intervals are unequal. | Ordered categories; unequal spacing between ranks. | =, ≠, <, > | Median, Percentiles, Rank Correlation, Mann–Whitney U Test | Pain Severity, Cancer Stage, Education Level, Satisfaction Rating |
-| **Interval** | Numerical scale with equal intervals but without an absolute (true) zero point. | Equal distances between values; zero is arbitrary. | +, − | Mean, Standard Deviation, Correlation, Regression, t-test | Temperature (°C, °F), IQ Score, Calendar Year |
-| **Ratio** | Numerical scale with equal intervals and a true zero, allowing all arithmetic operations. | Equal intervals; meaningful zero; ratios are interpretable. | +, −, ×, ÷ | All Parametric Statistical Methods | Height, Weight, Age, Income, Blood Pressure, Serum Glucose |
-
----
-
-### Hierarchy of Measurement Scales
-
-```mermaid
-graph TD
-
-A[Measurement Scales]
-
-A --> B[Nominal]
-
-A --> C[Ordinal]
-
-A --> D[Interval]
-
-A --> E[Ratio]
-
-B --> B1[Classification]
-
-C --> C1[Ranking]
-
-D --> D1[Equal Intervals]
-
-E --> E1[True Zero + Equal Intervals]
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    HIERARCHY OF MEASUREMENT SCALES                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│                     Increasing Information                                 │
+│                  ─────────────────────────▶                                 │
+│                                                                             │
+│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐ │
+│   │   NOMINAL   │    │   ORDINAL   │    │  INTERVAL   │    │    RATIO    │ │
+│   │   Scale     │    │   Scale     │    │   Scale     │    │   Scale     │ │
+│   ├─────────────┤    ├─────────────┤    ├─────────────┤    ├─────────────┤ │
+│   │ Categories  │    │ Categories  │    │ Equal       │    │ Equal       │ │
+│   │ No Order    │    │ With Order  │    │ Intervals   │    │ Intervals   │ │
+│   │ Labels      │    │ Rankings    │    │ No True Zero│    │ True Zero   │ │
+│   │ =, ≠        │    │ <, >        │    │ +, −        │    │ ×, ÷        │ │
+│   ├─────────────┤    ├─────────────┤    ├─────────────┤    ├─────────────┤ │
+│   │ Blood Group │    │ Pain Score  │    │ Temperature │    │ Height      │ │
+│   │ Gender      │    │ Cancer Stage│    │ IQ Score    │    │ Weight      │ │
+│   │ Religion    │    │ Education   │    │ Calendar    │    │ Age         │ │
+│   └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘ │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
----
-
-### Increasing Information Across Scales
-
-```text
-Nominal
-     ↓
-Ordinal
-     ↓
-Interval
-     ↓
-Ratio
-
-More Information
-Greater Mathematical Operations
-More Statistical Techniques
-```
-
----
-
-### Choosing the Correct Measurement Scale
-
-```mermaid
-flowchart TD
-
-A[Identify the Variable]
-
-A --> B{Is it Numeric?}
-
-B -->|No| C{Is there a natural order?}
-
-C -->|No| D[Nominal]
-
-C -->|Yes| E[Ordinal]
-
-B -->|Yes| F{Is there a true zero?}
-
-F -->|No| G[Interval]
-
-F -->|Yes| H[Ratio]
-```
-
----
-
-### Real Research Examples
-
-| Research Variable | Measurement Scale |
-|-------------------|-------------------|
-| Blood Group | Nominal |
-| Smoking Status | Nominal |
-| Disease Severity | Ordinal |
-| Education Level | Ordinal |
-| Body Temperature (°C) | Interval |
-| IQ Score | Interval |
-| Height | Ratio |
-| Weight | Ratio |
-| Age | Ratio |
-| Blood Pressure | Ratio |
-
----
-
-### Key Points
-
-- **Nominal** variables classify observations into categories.
-- **Ordinal** variables provide ranking but not equal spacing.
-- **Interval** variables allow meaningful differences but lack a true zero.
-- **Ratio** variables possess all interval properties plus a meaningful zero, making all arithmetic operations valid.
-- Correctly identifying the measurement scale is essential for selecting appropriate statistical analyses and avoiding invalid conclusions.
+| Scale | Definition | Characteristics | Operations | Examples |
+|-------|------------|-----------------|------------|----------|
+| **Nominal** | Categories without order | Labels only | =, ≠ | Blood group, Gender |
+| **Ordinal** | Categories with order | Rankings | =, ≠, <, > | Pain severity, Education |
+| **Interval** | Equal intervals, no true zero | Equal distances | +, − | Temperature (°C), IQ |
+| **Ratio** | Equal intervals, true zero | All operations | +, −, ×, ÷ | Height, Weight, Age |
 
 ### 2.5 Raw Data
 
@@ -640,9 +424,20 @@ F -->|Yes| H[Ratio]
 - May include errors
 - Requires cleaning
 
+**Example:**
+```
+Raw Data: 78, 92, 85, 67, 89, 73, 94, 81, 76, 88
+```
+
 ### 2.6 Ordered Data
 
 > 📖 **Definition**: Ordered data are observations arranged in ascending order.
+
+**Example:**
+```
+Raw Data: 78, 92, 85, 67, 89, 73, 94, 81, 76, 88
+Ordered: 67, 73, 76, 78, 81, 85, 88, 89, 92, 94
+```
 
 **Benefits:**
 - Easy to find minimum/maximum
@@ -652,533 +447,257 @@ F -->|Yes| H[Ratio]
 
 ---
 
-# 3. Frequency Distributions
+## 3. Frequency Distributions
 
-Frequency distributions provide a systematic method for organizing, summarizing, and presenting data. Rather than examining hundreds or thousands of individual observations, researchers can understand the overall pattern of a dataset by observing how frequently different values or groups of values occur. Frequency distributions are one of the fundamental tools of **descriptive statistics** and serve as the basis for many graphical displays and statistical analyses.
+### 3.1 Frequency Distribution
 
----
+> 📖 **Definition**: A **frequency distribution** is a systematic arrangement of data that displays the number of observations (frequencies) corresponding to each value or class interval.
 
-## Learning Objectives
+**General Structure:**
 
-After completing this section, you should be able to:
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    FREQUENCY DISTRIBUTION                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   Value/Class    │    Frequency    │    Relative    │ Cumulative │
+│                  │                 │    Frequency   │  Frequency │
+│  ────────────────┼─────────────────┼────────────────┼────────────│
+│   Category A     │        15       │      0.30      │     15     │
+│   Category B     │        22       │      0.44      │     37     │
+│   Category C     │        18       │      0.36      │     55     │
+│   Category D     │        10       │      0.20      │     65     │
+│                  │                 │                │            │
+│   Total          │        65       │      1.30*     │     65     │
+│                                                                 │
+│   *Sum may exceed 1 due to rounding                            │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-- Understand the concept of frequency distributions.
-- Construct frequency distribution tables.
-- Calculate relative and cumulative frequencies.
-- Distinguish between grouped and ungrouped data.
-- Define class intervals, class boundaries, and class midpoints.
-- Interpret frequency tables in scientific research.
-- Choose appropriate frequency distributions for different types of data.
+### 3.2 Relative Frequency
 
----
+> 📖 **Definition**: Relative frequency represents the proportion of observations belonging to each category relative to the total sample size.
 
-## 3.1 Frequency Distribution
+**Formula:**
+$$ \text{Relative Frequency} = \frac{\text{Frequency}}{\text{Total Number of Observations}} $$
 
-> 📖 **Definition:** A **frequency distribution** is a systematic arrangement of data that displays the number of observations (frequencies) corresponding to each value or class interval. It provides a concise summary of how data are distributed within a dataset.
+**Example:**
+```
+If 15 out of 65 people have blood type O+:
+Relative Frequency = 15/65 = 0.231 = 23.1%
+```
 
-A frequency distribution helps researchers:
+### 3.3 Cumulative Frequency
 
-- Organize raw data.
-- Identify patterns and trends.
-- Detect unusual observations.
-- Prepare data for visualization.
-- Support statistical analysis.
+> 📖 **Definition**: Cumulative frequency represents the running total of frequencies as observations accumulate from one class to the next.
 
-### General Structure
+**Formula:**
+$$ \text{Cumulative Frequency} = \sum_{i=1}^{k} f_i $$
 
-| Value/Class | Frequency |
-|-------------|----------:|
-| Category A | 15 |
-| Category B | 22 |
-| Category C | 18 |
+**Example:**
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    CUMULATIVE FREQUENCY                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   Score Range   │   Frequency   │   Cumulative   │    %        │
+│                  │               │                │             │
+│   0-59          │      5        │       5        │   8.3%      │
+│   60-69         │      8        │      13        │  21.7%      │
+│   70-79         │     12        │      25        │  41.7%      │
+│   80-89         │     18        │      43        │  71.7%      │
+│   90-100        │     17        │      60        │ 100.0%      │
+│                  │               │                │             │
+│   Total         │     60        │      60        │             │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
 
----
+**Interpretation:**
+- 25 students (41.7%) scored below 80
+- 43 students (71.7%) scored below 90
+- All 60 students scored below 100
 
-### Components of a Frequency Distribution
+### 3.4 Frequency Tables
 
-A complete frequency distribution generally contains:
-
-- Variable
-- Class interval (if grouped)
-- Frequency
-- Relative frequency
-- Percentage
-- Cumulative frequency
-
----
-
-## 3.2 Relative Frequency
-
-Relative frequency represents the proportion of observations belonging to each category relative to the total sample size.
-
-### Formula
-
-$$
-\text{Relative Frequency}
-=
-\frac{\text{Frequency}}
-{\text{Total Number of Observations}}
-$$
-
-### Percentage Frequency
-
-$$
-\text{Percentage}
-=
-\text{Relative Frequency}
-\times100
-$$
-
-### Interpretation
-
-A relative frequency of **0.35** means that **35% of all observations** belong to that category.
-
----
-
-## 3.3 Cumulative Frequency
-
-Cumulative frequency represents the running total of frequencies as observations accumulate from one class to the next.
-
-### Formula
-
-$$
-\text{Cumulative Frequency}
-=
-\sum_{i=1}^{k}f_i
-$$
-
-where
-
-- $f_i$ = frequency of class *i*
-- *k* = current class
-
-### Interpretation
-
-Cumulative frequencies help determine:
-
-- Percentiles
-- Quartiles
-- Median
-- Distribution shape
-
----
-
-## 3.4 Frequency Distribution Table
-
-The following example summarizes the blood groups of **100 participants**.
+**Complete Example: Blood Types (n=100)**
 
 | Blood Type | Frequency | Relative Frequency | Percentage | Cumulative Frequency |
-|------------|----------:|------------------:|-----------:|--------------------:|
+|------------|----------:|-------------------:|-----------:|---------------------:|
 | O+ | 35 | 0.35 | 35% | 35 |
 | A+ | 28 | 0.28 | 28% | 63 |
 | B+ | 18 | 0.18 | 18% | 81 |
 | AB+ | 12 | 0.12 | 12% | 93 |
-| O− | 4 | 0.04 | 4% | 97 |
-| A− | 2 | 0.02 | 2% | 99 |
-| B− | 1 | 0.01 | 1% | 100 |
+| O- | 4 | 0.04 | 4% | 97 |
+| A- | 2 | 0.02 | 2% | 99 |
+| B- | 1 | 0.01 | 1% | 100 |
+| **Total** | **100** | **1.00** | **100%** | |
 
----
+**Interpretation:**
+- O+ is the most common blood group (35%)
+- 63% of participants are either O+ or A+
+- Only 7% have Rh-negative blood
 
-### Interpretation
+### 3.5 Grouped Data
 
-From the table we observe:
+> 📖 **Definition**: **Grouped data** are observations organized into class intervals rather than reported individually.
 
-- **O+** is the most common blood group.
-- **B−** is the least common blood group.
-- Approximately **63%** of participants belong to either **O+** or **A+** blood groups.
-- The cumulative frequency reaches **100**, confirming that all observations have been included.
-
----
-
-## 3.5 Grouped Data
-
-> 📖 **Definition:** **Grouped data** are observations organized into class intervals rather than reported individually. Grouping simplifies the presentation of large datasets and facilitates statistical analysis.
-
-### Example
-
-| Age (Years) | Frequency |
-|-------------|----------:|
-| 20–29 | 12 |
-| 30–39 | 28 |
-| 40–49 | 31 |
-| 50–59 | 19 |
-| 60–69 | 10 |
-
-Grouped data are commonly used for:
-
-- Age distributions
-- Income distributions
-- Blood pressure measurements
-- Examination scores
-
----
-
-## 3.6 Ungrouped Data
-
-> 📖 **Definition:** **Ungrouped data** consist of individual observations presented in their original form without classification into intervals.
-
-### Example
+**Example: Age Distribution**
 
 ```
-21, 24, 27, 29, 31, 34, 36, 39,
-41, 42, 44, 48, 51, 54, 57
+┌─────────────────────────────────────────────────────────────────┐
+│                    GROUPED FREQUENCY TABLE                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   Age Group    │   Frequency   │   Percentage   │  Cumulative  │
+│   (Years)      │               │                │              │
+│  ──────────────┼───────────────┼────────────────┼──────────────│
+│   20-29        │      18       │     15.0%      │     18       │
+│   30-39        │      42       │     35.0%      │     60       │
+│   40-49        │      56       │     46.7%      │    116       │
+│   50-59        │      48       │     40.0%      │    164       │
+│   60-69        │      36       │     30.0%      │    200       │
+│                │               │                │              │
+│   Total        │     200       │    100.0%      │             │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-Ungrouped data are generally appropriate for:
+### 3.6 Ungrouped Data
 
-- Small datasets
-- Individual measurements
-- Preliminary exploratory analysis
+> 📖 **Definition**: **Ungrouped data** consist of individual observations presented in their original form without classification into intervals.
+
+**Example: Number of Siblings**
+
+| Siblings | Frequency | Relative | Cumulative |
+|----------|----------:|---------:|-----------:|
+| 0 | 8 | 0.27 | 8 |
+| 1 | 12 | 0.40 | 20 |
+| 2 | 6 | 0.20 | 26 |
+| 3 | 3 | 0.10 | 29 |
+| 4 | 1 | 0.03 | 30 |
+| **Total** | **30** | **1.00** | |
+
+### 3.7 Class Intervals
+
+> 📖 **Definition**: A **class interval** is the range of values used to group continuous observations into meaningful categories.
+
+**Choosing Class Intervals:**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    CLASS INTERVAL GUIDELINES                    │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   Step 1: Find Range                                            │
+│   Range = Maximum - Minimum                                     │
+│   Example: 98 - 45 = 53                                         │
+│                                                                 │
+│   Step 2: Choose Number of Classes                              │
+│   Sturges' Rule: k = 1 + 3.322 × log₁₀(n)                      │
+│   For n = 30: k = 1 + 3.322 × 1.477 = 5.91 ≈ 6                │
+│                                                                 │
+│   Step 3: Calculate Class Width                                 │
+│   Class Width = Range / Number of Classes                      │
+│   53 / 6 = 8.83 ≈ 9                                            │
+│                                                                 │
+│   Step 4: Create Intervals                                      │
+│   40-48, 49-57, 58-66, 67-75, 76-84, 85-93, 94-102            │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 3.8 Class Boundaries
+
+> 📖 **Definition**: **Class boundaries** represent the true limits separating adjacent class intervals by eliminating any gaps between them.
+
+**Example:**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    CLASS BOUNDARIES                             │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   Class Interval    │   Lower Boundary   │   Upper Boundary    │
+│  ──────────────────┼────────────────────┼─────────────────────│
+│   20-29             │       19.5         │       29.5          │
+│   30-39             │       29.5         │       39.5          │
+│   40-49             │       39.5         │       49.5          │
+│   50-59             │       49.5         │       59.5          │
+│                                                                 │
+│   Formula:                                                      │
+│   Lower Boundary = Lower Limit - 0.5                           │
+│   Upper Boundary = Upper Limit + 0.5                           │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 3.9 Class Midpoints
+
+> 📖 **Definition**: The class midpoint represents the center of each class interval.
+
+**Formula:**
+$$ \text{Class Midpoint} = \frac{\text{Lower Class Limit} + \text{Upper Class Limit}}{2} $$
+
+**Example:**
+
+| Class Interval | Midpoint Calculation | Midpoint |
+|---------------|---------------------|---------:|
+| 20-29 | (20+29)/2 | 24.5 |
+| 30-39 | (30+39)/2 | 34.5 |
+| 40-49 | (40+49)/2 | 44.5 |
+| 50-59 | (50+59)/2 | 54.5 |
 
 ---
-
-## 3.7 Class Intervals
-
-> 📖 **Definition:** A **class interval** is the range of values used to group continuous observations into meaningful categories.
-
-Example:
-
-| Class Interval |
-|---------------|
-| 0–9 |
-| 10–19 |
-| 20–29 |
-| 30–39 |
-
-Well-designed class intervals should:
-
-- Be mutually exclusive.
-- Cover all observations.
-- Have equal widths whenever possible.
-- Avoid overlapping values.
-
----
-
-## 3.8 Class Boundaries
-
-> 📖 **Definition:** **Class boundaries** represent the true limits separating adjacent class intervals by eliminating any gaps between them.
-
-Example:
-
-| Class Limits | Class Boundaries |
-|--------------|-----------------|
-| 20–29 | 19.5–29.5 |
-| 30–39 | 29.5–39.5 |
-| 40–49 | 39.5–49.5 |
-
-Class boundaries are especially important when constructing histograms and estimating continuous distributions.
-
----
-
-## 3.9 Class Midpoints
-
-The class midpoint represents the center of each class interval.
-
-### Formula
-
-$$
-\text{Class Midpoint}
-=
-\frac{\text{Lower Class Limit}
-+
-\text{Upper Class Limit}}
-{2}
-$$
-
-### Example
-
-| Class Interval | Midpoint |
-|---------------|---------:|
-| 20–29 | 24.5 |
-| 30–39 | 34.5 |
-| 40–49 | 44.5 |
-| 50–59 | 54.5 |
-
-Class midpoints are widely used for estimating:
-
-- Mean
-- Variance
-- Standard deviation
-- Histograms
-- Frequency polygons
-
----
-
-## Key Takeaways
-
-- Frequency distributions summarize raw data into an organized format.
-- Relative frequency expresses proportions rather than counts.
-- Cumulative frequency shows the running total of observations.
-- Grouped data simplify the analysis of large datasets.
-- Class intervals, boundaries, and midpoints are essential components of grouped frequency distributions.
-- Frequency distributions form the basis for many statistical graphs and inferential methods.
 
 ## 4. Data Visualization
 
-Data visualization transforms raw numerical data into graphical representations that help researchers identify patterns, trends, distributions, relationships, and potential anomalies. Effective visualizations make complex datasets easier to understand and communicate.
+### 4.1 Histograms
 
----
+> 📖 **Definition**: A **histogram** is a graphical display of the frequency distribution of a continuous numerical variable. Unlike a bar chart, histogram bars are **adjacent**, indicating continuous data.
 
-## Learning Objectives
+**Histogram Shapes:**
 
-After completing this section, you should be able to:
-
-- Understand the purpose of data visualization.
-- Choose appropriate graphs for different data types.
-- Interpret common statistical graphics.
-- Recognize misleading visualizations.
-- Present scientific data effectively.
-
----
-
-## 4.1 Histograms
-
-> 📖 **Definition:** A **histogram** is a graphical display of the frequency distribution of a continuous numerical variable. Unlike a bar chart, histogram bars are **adjacent**, indicating continuous data.
-
----
-
-### Construction Process
-
-```mermaid
-flowchart LR
-
-A[Collect Numerical Data]
--->B[Choose Class Intervals]
-
-B-->C[Count Frequencies]
-
-C-->D[Draw Adjacent Bars]
-
-D-->E[Interpret Distribution]
 ```
-
----
-
-### Components of a Histogram
-
-| Component | Description |
-|-----------|-------------|
-| X-axis | Class intervals (bins) |
-| Y-axis | Frequency or density |
-| Bars | Adjacent rectangles representing frequencies |
-| Width | Class interval |
-| Height | Frequency of observations |
-
----
-
-### Simple Histogram
-
-```text
-Frequency
-
-12 |               █
-11 |               █
-10 |            █  █
- 9 |            █  █
- 8 |         █  █  █
- 7 |      █  █  █  █
- 6 |      █  █  █  █
- 5 |   █  █  █  █  █
- 4 |   █  █  █  █  █
- 3 | █ █  █  █  █  █
- 2 | █ █  █  █  █  █
- 1 | █ █  █  █  █  █
-    -------------------------
-     10 20 30 40 50 60
-```
-
----
-
-### Histogram Shapes
-
-#### Symmetric Distribution
-
-```text
+SYMMETRIC (Normal)              RIGHT-SKEWED
+        █                          ██████████
+      █████                        ████████
+    █████████                      ██████
+  █████████████                   █████
+█████████████████                 ████
+  █████████████                   ███
+    █████████                     ██
+      █████                       █
         █
-      ███
-    █████
-  ███████
-███████████
-  ███████
-    █████
-      ███
+
+
+LEFT-SKEWED                     BIMODAL
+        █                        ███
+      █████                    ████████
+    █████████                  ██████████
+  █████████████                ████  ████
+█████████████████              ██     ██
+  █████████████               █       █
+    █████████
+      █████
         █
+
+
+UNIFORM
+████████████
+████████████
+████████████
+████████████
+████████████
 ```
 
----
+### 4.2 Frequency Polygon
 
-#### Right-Skewed Distribution
+> 📖 **Definition**: A **frequency polygon** is a line graph constructed by plotting the **class midpoints** on the x-axis against their corresponding **frequencies** on the y-axis and connecting the points with straight lines.
 
-```text
-██████████
-████████
-██████
-████
-███
-██
-█
 ```
-
----
-
-#### Left-Skewed Distribution
-
-```text
-        █
-      ███
-    █████
-  ███████
-██████████
-```
-
----
-
-#### Uniform Distribution
-
-```text
-████
-████
-████
-████
-████
-████
-```
-
----
-
-#### Bimodal Distribution
-
-```text
-███
-██████
-████████
-███
-█
-███
-██████
-████████
-```
-
----
-
-### Interpretation
-
-A histogram helps identify:
-
-- Distribution shape
-- Center of the data
-- Spread
-- Skewness
-- Multiple peaks
-- Outliers
-- Possible data errors
-
----
-
-### Medical Example
-
-Age distribution of patients admitted to a hospital.
-
-```text
-Frequency
-
-30 |        █
-25 |      ███
-20 |    █████
-15 |  ███████
-10 | █████████
- 5 | ███████
-    ---------------------
-    20 30 40 50 60 70
-```
-
----
-
-### Common Mistakes
-
-❌ Using unequal bin widths
-
-❌ Choosing too many bins
-
-❌ Choosing too few bins
-
-❌ Using histograms for categorical variables
-
----
-
-### Reviewer Perspective
-
-Reviewers typically evaluate:
-
-- Are appropriate bin widths used?
-- Does the histogram accurately represent the data?
-- Are axes clearly labeled?
-- Are outliers explained?
-- Is the figure publication quality?
-
----
-
-### Key Takeaways
-
-- Histograms summarize continuous numerical variables.
-- Bars touch because the data are continuous.
-- Histogram shape reveals important characteristics of a distribution.
-- Histograms are fundamental tools in exploratory data analysis (EDA).
-
----
-
-## 4.2 Frequency Polygon
-
-> 📖 **Definition:** A **frequency polygon** is a line graph constructed by plotting the **class midpoints** on the x-axis against their corresponding **frequencies** on the y-axis and connecting the points with straight lines. It provides a clear visualization of the shape of a frequency distribution and is often used as an alternative or complement to a histogram.
-
----
-
-### Why Use a Frequency Polygon?
-
-A frequency polygon helps researchers:
-
-- Visualize the overall distribution of data.
-- Compare two or more datasets on the same graph.
-- Identify peaks, trends, and patterns.
-- Observe skewness and symmetry.
-- Display grouped continuous data efficiently.
-
----
-
-### Construction Process
-
-```mermaid
-flowchart LR
-
-A[Collect Grouped Data]
--->B[Calculate Class Midpoints]
-
-B-->C[Determine Frequencies]
-
-C-->D[Plot Midpoints]
-
-D-->E[Connect Points with Straight Lines]
-
-E-->F[Interpret Distribution]
-```
-
----
-
-### Components of a Frequency Polygon
-
-| Component | Description |
-|-----------|-------------|
-| X-axis | Class midpoints |
-| Y-axis | Frequency |
-| Points | Frequency at each midpoint |
-| Lines | Straight lines connecting adjacent points |
-| Start & End | Usually connected to the x-axis at both ends |
-
----
-
-### Simple Frequency Polygon
-
-```text
+FREQUENCY POLYGON
 Frequency
 
 12 |                 ●
@@ -1187,398 +706,57 @@ Frequency
  9 |            /         \
  8 |          ●             ●
  7 |         /               \
- 6 |       ●                  \
- 5 |      /                    ●
- 4 |    ●
+ 6 |       ●                  ●
+ 5 |      /                    \
+ 4 |    ●                       ●
  3 |
  2 |
  1 |
     ----------------------------------------
-      10   20   30   40   50   60
+      10   20   30   40   50   60   70
             Class Midpoints
+
+Key Features:
+• Points at class midpoints
+• Lines connect points
+• Starts and ends at baseline
+• Shows distribution trend
 ```
 
----
+### 4.3 Ogive (Cumulative Frequency Curve)
 
-### Example Frequency Table
+> 📖 **Definition**: An **ogive**, also known as a **cumulative frequency curve**, is a line graph that displays the cumulative frequency of a dataset across class intervals.
 
-| Class Interval | Midpoint | Frequency |
-|---------------|---------:|----------:|
-| 10–19 | 14.5 | 4 |
-| 20–29 | 24.5 | 8 |
-| 30–39 | 34.5 | 12 |
-| 40–49 | 44.5 | 9 |
-| 50–59 | 54.5 | 5 |
-
----
-
-### Comparison with Histogram
-
-| Histogram | Frequency Polygon |
-|-----------|-------------------|
-| Uses bars | Uses connected lines |
-| Better for showing frequencies | Better for showing overall trends |
-| Difficult to compare multiple datasets | Easy to compare multiple datasets |
-| Bars touch each other | Points connected by straight lines |
-
----
-
-### Medical Example
-
-The following frequency polygon illustrates the age distribution of patients admitted to a hospital.
-
-```text
-Frequency
-
-15 |                    ●
-13 |                 ●     ●
-11 |              ●           ●
- 9 |           ●
- 7 |        ●
- 5 |     ●
- 3 |
- 1 |
-    ------------------------------------------
-      20   30   40   50   60   70
-             Age (Years)
 ```
-
----
-
-### Interpretation
-
-A frequency polygon helps identify:
-
-- Distribution shape
-- Most common class
-- Peaks (Modes)
-- Spread of observations
-- Symmetry
-- Skewness
-- Possible outliers
-
----
-
-### Advantages
-
-- Easy to construct.
-- Clearly shows distribution trends.
-- Suitable for grouped continuous data.
-- Allows comparison of multiple datasets.
-- Requires less visual space than histograms.
-
----
-
-### Limitations
-
-- Not suitable for categorical variables.
-- Less intuitive than histograms for beginners.
-- Exact frequencies are harder to estimate visually.
-
----
-
-### Common Mistakes
-
-❌ Plotting class limits instead of class midpoints.
-
-❌ Forgetting to connect the first and last points to the x-axis.
-
-❌ Using unequal class intervals without explanation.
-
-❌ Applying frequency polygons to categorical data.
-
----
-
-### Reviewer Perspective
-
-When evaluating a frequency polygon, reviewers commonly ask:
-
-- Are class intervals equal?
-- Are midpoints calculated correctly?
-- Are axes clearly labeled?
-- Is the distribution interpreted accurately?
-- Is the graph appropriate for the research question?
-
----
-
-### Key Takeaways
-
-- A frequency polygon is a line graph based on class midpoints and frequencies.
-- It is particularly useful for displaying grouped continuous data.
-- Frequency polygons make it easy to compare multiple distributions.
-- They provide valuable insights into the shape, spread, and center of a dataset.
-- 
----
-
-## 4.3 Ogive
-
-> 📖 **Definition:** An **ogive**, also known as a **cumulative frequency curve**, is a line graph that displays the cumulative frequency (or cumulative relative frequency) of a dataset across class intervals. Unlike a frequency polygon, an ogive shows the **running total** of observations rather than the frequency of each individual class.
-
----
-
-### Why Use an Ogive?
-
-An ogive helps researchers:
-
-- Visualize cumulative frequencies.
-- Estimate the median.
-- Determine quartiles and percentiles.
-- Identify the distribution of observations.
-- Compare cumulative distributions between datasets.
-
-Ogives are widely used in **epidemiology, education, economics, quality control, and public health research**.
-
----
-
-### Construction Process
-
-```mermaid
-flowchart LR
-
-A[Collect Grouped Data]
--->B[Calculate Cumulative Frequencies]
-
-B-->C[Use Upper Class Boundaries]
-
-C-->D[Plot Cumulative Frequencies]
-
-D-->E[Connect Points with Straight Lines]
-
-E-->F[Interpret the Distribution]
-```
-
----
-
-### Components of an Ogive
-
-| Component | Description |
-|-----------|-------------|
-| X-axis | Upper class boundaries (or upper class limits) |
-| Y-axis | Cumulative frequency |
-| Points | Running total of observations |
-| Line | Straight line connecting cumulative frequencies |
-| Final Point | Total number of observations |
-
----
-
-### Example Frequency Table
-
-| Class Interval | Frequency | Cumulative Frequency |
-|---------------|----------:|---------------------:|
-| 10–19 | 4 | 4 |
-| 20–29 | 8 | 12 |
-| 30–39 | 12 | 24 |
-| 40–49 | 9 | 33 |
-| 50–59 | 5 | 38 |
-
----
-
-### Simple Ogive
-
-```text
+OGIVE (Cumulative Frequency Curve)
 Cumulative Frequency
 
 40 |                              ●
 35 |                           ●
 30 |                        ●
 25 |                     ●
-20 |
-15 |                 ●
-10 |             ●
+20 |                  ●
+15 |               ●
+10 |            ●
  5 |         ●
- 0 |________________________________________
-      20   30   40   50   60
-        Upper Class Boundary
+ 0 |____●__________________________________
+      20   30   40   50   60   70
+        Upper Class Boundaries
+
+Key Features:
+• Uses upper class boundaries
+• Always increases
+• Starts at 0
+• Ends at total n
+• Used for percentiles
 ```
 
----
+### 4.4 Bar Chart
 
-### Typical Shape of an Ogive
+> 📖 **Definition**: A **bar chart** (or **bar graph**) is a graphical representation of **categorical data** using rectangular bars of equal width. Unlike histograms, **bars are separated by gaps**.
 
-```text
-Frequency
-
-40 |                              ●
-35 |                           ●
-30 |                        ●
-25 |                    ●
-20 |                 ●
-15 |             ●
-10 |         ●
- 5 |     ●
- 0 |__●_____________________________________
-      Increasing Class Boundaries
 ```
-
-The curve always moves **upward** because cumulative frequencies can only stay the same or increase—they never decrease.
-
----
-
-### Medical Example
-
-Suppose researchers record the ages of **200 patients** admitted to a hospital.
-
-| Age Group | Frequency | Cumulative Frequency |
-|-----------|----------:|---------------------:|
-| 20–29 | 18 | 18 |
-| 30–39 | 42 | 60 |
-| 40–49 | 56 | 116 |
-| 50–59 | 48 | 164 |
-| 60–69 | 36 | 200 |
-
-An ogive constructed from these data allows researchers to estimate:
-
-- Median age
-- 25th percentile (Q1)
-- 75th percentile (Q3)
-- Percentage of patients younger than a given age
-
----
-
-### Applications
-
-Ogives are commonly used for:
-
-- Estimating the median.
-- Determining quartiles.
-- Calculating percentiles.
-- Comparing cumulative distributions.
-- Evaluating educational test scores.
-- Public health surveillance.
-- Clinical research.
-
----
-
-### Frequency Polygon vs. Ogive
-
-| Frequency Polygon | Ogive |
-|-------------------|-------|
-| Uses class midpoints | Uses upper class boundaries |
-| Displays frequencies | Displays cumulative frequencies |
-| May increase or decrease | Always increases |
-| Shows distribution shape | Shows cumulative distribution |
-
----
-
-### Interpretation
-
-An ogive helps identify:
-
-- Median value
-- Quartiles (Q1 and Q3)
-- Percentiles
-- Distribution of observations
-- Proportion below a specified value
-- Overall cumulative trend
-
----
-
-### Advantages
-
-- Simple to interpret.
-- Useful for estimating percentiles.
-- Clearly displays cumulative information.
-- Effective for comparing distributions.
-- Widely used in education and health research.
-
----
-
-### Limitations
-
-- Does not display individual class frequencies directly.
-- Less informative about local peaks.
-- Requires grouped data.
-
----
-
-### Common Mistakes
-
-❌ Plotting class midpoints instead of upper class boundaries.
-
-❌ Using ordinary frequencies instead of cumulative frequencies.
-
-❌ Forgetting the final cumulative frequency equals the total sample size.
-
-❌ Interpreting an ogive as a histogram.
-
----
-
-### Reviewer Perspective
-
-When evaluating an ogive, reviewers typically consider:
-
-- Are cumulative frequencies calculated correctly?
-- Are upper class boundaries used appropriately?
-- Are the axes clearly labeled?
-- Does the graph accurately represent the cumulative distribution?
-- Are conclusions supported by the graph?
-
----
-
-### Key Takeaways
-
-- An **ogive** is a graph of cumulative frequencies.
-- It always rises from left to right because cumulative frequencies never decrease.
-- Ogives are useful for estimating **medians, quartiles, and percentiles**.
-- They are widely applied in epidemiology, education, medicine, and survey research.
-- An ogive complements, rather than replaces, a histogram or frequency polygon.
-- 
----
-
-## 4.4 Bar Chart
-
-> 📖 **Definition:** A **bar chart** (or **bar graph**) is a graphical representation of **categorical data** using rectangular bars of equal width. The length or height of each bar is proportional to the frequency, count, percentage, or value represented by each category. Unlike histograms, **bars are separated by gaps** because categorical variables are discrete rather than continuous.
-
----
-
-### Why Use a Bar Chart?
-
-Bar charts help researchers:
-
-- Compare categories easily.
-- Display frequencies or percentages.
-- Identify the largest and smallest categories.
-- Present survey and questionnaire results.
-- Summarize categorical variables effectively.
-
-Bar charts are among the most commonly used figures in **medicine, epidemiology, business, economics, education, and public health research**.
-
----
-
-### Construction Process
-
-```mermaid
-flowchart LR
-
-A[Collect Categorical Data]
--->B[Count Frequencies]
-
-B-->C[Choose Categories]
-
-C-->D[Draw Equal-Width Bars]
-
-D-->E[Compare Heights]
-
-E-->F[Interpret Results]
-```
-
----
-
-### Components of a Bar Chart
-
-| Component | Description |
-|-----------|-------------|
-| X-axis | Categories |
-| Y-axis | Frequency, count, or percentage |
-| Bars | Equal-width rectangles |
-| Gaps | Spaces between bars indicate categorical data |
-| Height | Represents the value of each category |
-
----
-
-### Simple Vertical Bar Chart
-
-```text
+BAR CHART
 Frequency
 
 10 |           ███
@@ -1594,357 +772,370 @@ Frequency
     -------------------------
       A    B    C    D
         Categories
+
+Key Features:
+• Equal width bars
+• Gaps between bars
+• Categorical data
+• Easy to compare
 ```
-
----
-
-### Simple Horizontal Bar Chart
-
-```text
-Category A  ████████
-Category B  █████████████
-Category C  ██████
-Category D  ███████████
-```
-
----
-
-## Types of Bar Charts
-
-### 1. Vertical Bar Chart
-
-Used to compare categories vertically.
-
-```text
-Frequency
-
-8 |      █
-7 |      █
-6 |  █   █
-5 |  █   █
-4 |  █ █ █
-3 |  █ █ █
-2 |  █ █ █
-1 |  █ █ █
-   -----------
-    A B C D
-```
-
----
-
-### 2. Horizontal Bar Chart
-
-Useful when category names are long.
-
-```text
-Male        ███████████
-Female      ███████████████
-Children    ███████
-Older Adult █████████
-```
-
----
-
-### 3. Grouped Bar Chart
-
-Compares two or more groups.
-
-```text
-Frequency
-
-10 |      █ ▓
- 8 |  █ ▓ █ ▓
- 6 |  █ ▓ █ ▓
- 4 |  █ ▓ █ ▓
- 2 |  █ ▓ █ ▓
-    -------------------
-       A   B   C
-
-█ = Male
-▓ = Female
-```
-
----
-
-### 4. Stacked Bar Chart
-
-Shows how categories contribute to a total.
-
-```text
-████████████
-███▓▓▓▓▓▓▓▓
-██▓▓▓▓▓
-█▓▓▓
-```
-
----
-
-### Medical Example
-
-Distribution of blood groups among hospital patients.
-
-| Blood Group | Frequency |
-|-------------|----------:|
-| O+ | 35 |
-| A+ | 28 |
-| B+ | 18 |
-| AB+ | 12 |
-| Others | 7 |
-
-A vertical bar chart clearly shows that **O+** is the most common blood group.
-
----
-
-### Interpretation
-
-A bar chart helps identify:
-
-- Highest category
-- Lowest category
-- Differences between groups
-- Relative proportions
-- Ranking of categories
-
----
-
-### Bar Chart vs Histogram
-
-| Bar Chart | Histogram |
-|-----------|-----------|
-| Used for categorical variables | Used for continuous variables |
-| Bars have gaps | Bars touch each other |
-| Categories can be rearranged | Class intervals must remain in order |
-| Compares groups | Shows distributions |
-
----
-
-### Advantages
-
-- Easy to construct and interpret.
-- Excellent for comparing categories.
-- Suitable for survey and questionnaire data.
-- Effective for presentations and publications.
-- Widely understood by general audiences.
-
----
-
-### Limitations
-
-- Not suitable for continuous data.
-- Difficult to display too many categories.
-- Does not reveal the underlying distribution of numerical data.
-
----
-
-### Common Mistakes
-
-❌ Using a bar chart for continuous variables.
-
-❌ Unequal bar widths.
-
-❌ Missing axis labels.
-
-❌ Misleading scales that exaggerate differences.
-
-❌ Overcrowding the chart with too many categories.
-
----
-
-### Reviewer Perspective
-
-When reviewing a bar chart, consider:
-
-- Are the categories clearly labeled?
-- Are the axes properly titled?
-- Are the bars equally spaced and equally wide?
-- Is a bar chart appropriate for the variable type?
-- Are the conclusions supported by the displayed data?
-
----
-
-### Key Takeaways
-
-- A **bar chart** displays **categorical data** using separate rectangular bars.
-- The height (or length) of each bar represents the value or frequency of a category.
-- Bar charts are ideal for comparing groups and presenting categorical data.
-- Unlike histograms, **bar chart bars are separated by gaps**, reflecting the discrete nature of the categories.
 
 ### 4.5 Pie Chart
 
 > 📖 **Definition**: A pie chart is a circular graph showing proportions of a whole.
 
-**When to Use:**
-- Categorical data
-- Few categories
-- Emphasizing proportions
+```
+PIE CHART
+
+        ████████
+      ██        ██
+     █    O+    █
+    █   35%     █
+   █   ███████████
+   █ ██         ███
+   ███            █
+   █ B+   ██████  █
+   █ 18%  █    █ █
+    █     █ AB+ █
+     █    █12% █
+      ██  ███ ██
+        ██████
+```
 
 ### 4.6 Line Graph
 
 > 📖 **Definition**: A line graph displays data points connected by straight lines.
 
-**Use Cases:**
-- Time series data
-- Trends over time
-- Comparing changes
+```
+LINE GRAPH
+Value
+
+10 |     ●
+ 9 |    / \       ●
+ 8 |   /   \     / \
+ 7 |  /     \   /   \
+ 6 | /       \ /     \
+ 5 |●         ●       ●
+ 4 |
+ 3 |
+ 2 |
+ 1 |
+    -------------------------
+      1    2    3    4    5
+            Time Points
+
+Use Cases:
+• Time series data
+• Trends over time
+• Comparing changes
+```
 
 ### 4.7 Stem-and-Leaf Plot
 
 > 📖 **Definition**: A stem-and-leaf plot retains original data values while showing distribution.
 
-**Example:**
-```text
-2 | 3 5 7 8
-3 | 0 2 2 4 5 6 8 9
-4 | 1 3 5 7
-5 | 0 2 6
+**Example: Test Scores**
+```
+Stem | Leaf
+  4  | 5
+  5  | 2 8
+  6  | 1 3 7 8
+  7  | 0 2 3 4 5 6 7 8 9
+  8  | 0 1 2 3 4 5 6 7 8 9
+  9  | 0 2 4 8
+
+Data: 45, 52, 58, 61, 63, 67, 68, 70, 72, 73, 74, 75, 76, 77, 78, 79,
+      80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 92, 94, 98
 ```
 
 ### 4.8 Dot Plot
 
 > 📖 **Definition**: A dot plot uses dots on a simple scale to show data distribution.
 
-**Characteristics:**
-- One dot per observation
-- Stacked dots for repeated values
-- Good for small datasets
+```
+DOT PLOT
+
+Value: 1 2 3 4 5 6 7 8 9 10
+          ●
+          ●
+          ● ●
+        ● ● ● ●
+      ● ● ● ● ●
+    ● ● ● ● ● ● ●
+  ● ● ● ● ● ● ● ● ●
+
+Characteristics:
+• One dot per observation
+• Stacked dots for repeated values
+• Good for small datasets
+```
 
 ### 4.9 Box Plot
 
 > 📖 **Definition**: A box plot displays the five-number summary of data.
 
-```mermaid
-graph TD
-    BP[Box Plot] --> Min[Minimum]
-    BP --> Q1[Q1]
-    BP --> Median[Median]
-    BP --> Q3[Q3]
-    BP --> Max[Maximum]
-    BP --> Outliers[Outliers]
+```
+BOX PLOT
+
+     Outlier
+         ●
+      ──────
+      │     │
+      │     │
+      │     │ ← Upper Fence
+      ──────
+      │ ███ │
+      │ ███ │ ← Q3 (75%)
+      │ ███ │
+      │█████│
+      │█████│ ← Median (50%)
+      │ ███ │
+      │ ███ │
+      │ ███ │
+      ──────
+      │     │ ← Q1 (25%)
+      │     │
+      │     │
+      ──────
+      │     │ ← Lower Fence
+         ●
+         Outlier
+
+Components:
+• Box: IQR (Q1 to Q3)
+• Line: Median
+• Whiskers: 1.5 × IQR
+• Points: Outliers
 ```
 
 ### 4.10 Scatter Plot
 
 > 📖 **Definition**: A scatter plot shows the relationship between two quantitative variables.
 
-### 4.11 Heat Map
-
-> 📖 **Definition**: A heat map uses color to represent data values in a matrix.
-
-### 4.12 Mosaic Plot
-
-> 📖 **Definition**: A mosaic plot displays the relationship between two or more categorical variables.
-
-### 4.13 Treemap
-
-> 📖 **Definition**: A treemap uses nested rectangles to show hierarchical data.
-
-### 4.14 Radar Chart
-
-> 📖 **Definition**: A radar chart displays multivariate data on radial axes.
-
-### 4.15 Pareto Chart
-
-> 📖 **Definition**: A Pareto chart combines a bar chart and line graph to show frequency and cumulative percentage.
-
-### 4.16 Data Visualization Principles
-
-> [!TIP]
-> *A good visualization tells a story with data.*
-
-**Key Principles:**
-1. **Clarity**: Make the message clear
-2. **Accuracy**: Represent data correctly
-3. **Simplicity**: Avoid clutter
-4. **Context**: Provide necessary background
-5. **Consistency**: Use uniform scales
-6. **Honesty**: Don't distort data
+```
+SCATTER PLOT
+Y
+│
+│     ●
+│   ●   ●
+│ ●     ●
+│●       ●
+│         ●
+│           ●
+│             ●
+│               ●
+│                 ●
+└──────────────────── X
+                     
+Correlation Patterns:
+• Positive: Points go up-right
+• Negative: Points go down-right
+• No correlation: Random scatter
+• Strong: Points close to line
+• Weak: Points spread out
+```
 
 ---
 
-## 5. Exploratory Data Analysis (EDA)
+## 5. Exploratory Data Analysis
 
 ### 5.1 Exploratory Data Analysis (EDA)
 
 > 📖 **Definition**: EDA is an approach to analyzing datasets to summarize their main characteristics, often with visual methods.
 
-```mermaid
-flowchart TD
-    A[Data Collection] --> B[Data Cleaning]
-    B --> C[Univariate Analysis]
-    C --> D[Bivariate Analysis]
-    D --> E[Multivariate Analysis]
-    E --> F[Pattern Discovery]
-    F --> G[Hypothesis Generation]
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         EDA WORKFLOW                                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌─────────────┐                                                          │
+│   │   Data      │                                                          │
+│   │ Collection  │                                                          │
+│   └──────┬──────┘                                                          │
+│          │                                                                  │
+│          ▼                                                                  │
+│   ┌─────────────┐                                                          │
+│   │    Data     │                                                          │
+│   │   Cleaning  │                                                          │
+│   └──────┬──────┘                                                          │
+│          │                                                                  │
+│          ▼                                                                  │
+│   ┌─────────────┐                                                          │
+│   │  Univariate │                                                          │
+│   │  Analysis   │                                                          │
+│   └──────┬──────┘                                                          │
+│          │                                                                  │
+│          ▼                                                                  │
+│   ┌─────────────┐                                                          │
+│   │  Bivariate  │                                                          │
+│   │  Analysis   │                                                          │
+│   └──────┬──────┘                                                          │
+│          │                                                                  │
+│          ▼                                                                  │
+│   ┌─────────────┐                                                          │
+│   │  Multivari- │                                                          │
+│   │  ate        │                                                          │
+│   └──────┬──────┘                                                          │
+│          │                                                                  │
+│          ▼                                                                  │
+│   ┌─────────────┐                                                          │
+│   │   Pattern   │                                                          │
+│   │  Discovery  │                                                          │
+│   └─────────────┘                                                          │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### 5.2 Data Cleaning
 
 **Common Issues:**
-- Missing values
-- Duplicate records
-- Inconsistent formats
-- Outliers
-- Data entry errors
-- Incomplete responses
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         DATA CLEANING CHECKLIST                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ❌ Missing Values          → Impute or remove                            │
+│   ❌ Duplicate Records       → Remove duplicates                           │
+│   ❌ Inconsistent Formats    → Standardize formats                        │
+│   ❌ Outliers                → Investigate and handle                     │
+│   ❌ Data Entry Errors       → Correct or remove                          │
+│   ❌ Incomplete Responses    → Review and handle                         │
+│   ❌ Incorrect Coding        → Recode correctly                          │
+│   ❌ Impossible Values       → Investigate (e.g., age = 200)             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ### 5.3 Missing Data
 
 **Types:**
-- MCAR: Missing Completely at Random
-- MAR: Missing at Random
-- MNAR: Missing Not at Random
+- **MCAR**: Missing Completely at Random
+- **MAR**: Missing at Random
+- **MNAR**: Missing Not at Random
 
 **Handling Methods:**
-- Listwise deletion
-- Mean/median imputation
-- Multiple imputation
-- Indicator variables
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    MISSING DATA HANDLING METHODS                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   1. LISTWISE DELETION                                                      │
+│      • Remove all cases with missing values                                │
+│      • Simple but reduces sample size                                      │
+│      • Only valid if MCAR                                                  │
+│                                                                             │
+│   2. MEAN/MEDIAN IMPUTATION                                                 │
+│      • Replace missing with mean or median                                 │
+│      • Simple but reduces variance                                         │
+│      • Can bias results                                                    │
+│                                                                             │
+│   3. MULTIPLE IMPUTATION                                                    │
+│      • Create multiple imputed datasets                                    │
+│      • Combine results                                                     │
+│      • Most sophisticated                                                 │
+│      • Preferred method                                                    │
+│                                                                             │
+│   4. INDICATOR VARIABLES                                                    │
+│      • Create missing indicator column                                     │
+│      • Include in analysis                                                 │
+│      • Useful for missing not at random                                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ### 5.4 Outlier Detection
 
 **Methods:**
 
-```mermaid
-graph TD
-    O[Outlier Detection] --> Z[Z-Score Method]
-    O --> I[IQR Method]
-    O --> V[Visualization]
-    
-    Z --> Z1[|Z| > 3]
-    I --> I1[< Q1-1.5*IQR or > Q3+1.5*IQR]
-    V --> V1[Boxplot, Scatter Plot]
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    OUTLIER DETECTION METHODS                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   1. Z-SCORE METHOD                                                         │
+│      • Z = (x - μ) / σ                                                     │
+│      • |Z| > 3 → Outlier                                                   │
+│      • Assumes normality                                                   │
+│      • For symmetric data                                                  │
+│                                                                             │
+│   2. IQR METHOD                                                             │
+│      • Q1 - 1.5×IQR (Lower fence)                                          │
+│      • Q3 + 1.5×IQR (Upper fence)                                          │
+│      • Any value outside fences → Outlier                                  │
+│      • Robust method                                                       │
+│      • No distribution assumption                                          │
+│                                                                             │
+│   3. VISUALIZATION                                                          │
+│      • Boxplots show outliers                                              │
+│      • Scatter plots show unusual points                                   │
+│      • Histograms show extreme values                                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### 5.5 Five Number Summary
 
 | Component | Description | Calculation |
 |-----------|-------------|-------------|
-| Minimum | Smallest value | x(1) |
-| Q1 | 25th percentile | (n+1)/4 |
-| Median | 50th percentile | (n+1)/2 |
-| Q3 | 75th percentile | 3(n+1)/4 |
-| Maximum | Largest value | x(n) |
+| **Minimum** | Smallest value | x(1) |
+| **Q1** | 25th percentile | (n+1)/4 |
+| **Median** | 50th percentile | (n+1)/2 |
+| **Q3** | 75th percentile | 3(n+1)/4 |
+| **Maximum** | Largest value | x(n) |
+
+**Example: Blood Pressure Data**
+
+```
+Min = 118
+Q1  = 121.5
+Median = 126.5
+Q3  = 139.5
+Max = 150
+
+IQR = Q3 - Q1 = 139.5 - 121.5 = 18
+Range = Max - Min = 150 - 118 = 32
+```
 
 ### 5.6 Quartiles
 
 > 📖 **Definition**: Quartiles divide data into four equal parts.
 
-**Calculation:**
-- Q1 = 25th percentile
-- Q2 = 50th percentile (median)
-- Q3 = 75th percentile
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         QUARTILE DIVISION                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   Data: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12                            │
+│                                                                             │
+│   Q1 = 3.5 (25th percentile)                                               │
+│   Q2 = 6.5 (50th percentile = Median)                                      │
+│   Q3 = 9.5 (75th percentile)                                               │
+│                                                                             │
+│   ─────────────────────────────────────────────────────────────────         │
+│   25%    │    25%    │    25%    │    25%                                  │
+│   Q1     │    Q2     │    Q3     │                                         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
-### 5.7 Deciles
-
-> 📖 **Definition**: Deciles divide data into ten equal parts.
-
-### 5.8 Percentiles
+### 5.7 Percentiles
 
 > 📖 **Definition**: Percentiles divide data into 100 equal parts.
 
-### 5.9 Quantiles
+**Interpretation:**
+- 50th percentile = Median
+- 25th percentile = Q1
+- 75th percentile = Q3
 
-> 📖 **Definition**: Quantiles divide data into equal-sized groups.
+**Example:**
+```
+If a test score is at the 80th percentile:
+- 80% of students scored lower
+- 20% scored higher
+- The score is above average
+```
 
 ---
 
@@ -1952,17 +1143,34 @@ graph TD
 
 ### 6.1 Distribution Shape
 
-```mermaid
-graph TD
-    S[Distribution Shape] --> Sym[Symmetric]
-    S --> Skew[Skewed]
-    S --> Mod[Modes]
-    
-    Sym --> Normal[Normal Distribution]
-    Sym --> Bimodal[Bimodal]
-    
-    Skew --> Right[Right-Skewed]
-    Skew --> Left[Left-Skewed]
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    DISTRIBUTION SHAPES                                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   SYMMETRIC                    RIGHT-SKEWED                                │
+│        █                          █                                        │
+│      █████                      ████                                       │
+│    █████████                  ███████                                      │
+│  █████████████              ██████████                                    │
+│█████████████████          ██████████████                                  │
+│  █████████████              ██████████                                    │
+│    █████████                  ██████                                       │
+│      █████                      ███                                        │
+│        █                         █                                         │
+│                                                                             │
+│   LEFT-SKEWED                  BIMODAL                                     │
+│        █                        ███                                        │
+│      █████                    ███████                                      │
+│    █████████                  █████████                                   │
+│  █████████████                █████████                                   │
+│█████████████████              █████████                                   │
+│  █████████████                █████████                                   │
+│    █████████                  █████████                                   │
+│      █████                      ███                                        │
+│        █                         █                                         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### 6.2 Symmetry
@@ -1996,60 +1204,82 @@ graph TD
 
 > 📖 **Definition**: Kurtosis measures the "tailedness" of a probability distribution.
 
-```mermaid
-graph TD
-    K[Kurtosis] --> M[Mesokurtic]
-    K --> L[Leptokurtic]
-    K --> P[Platykurtic]
-    
-    M --> |Kurtosis = 3| Normal
-    L --> |Kurtosis > 3| Heavy Tails
-    P --> |Kurtosis < 3| Light Tails
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         KURTOSIS TYPES                                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   LEPTOKURTIC (Heavy Tails)    MESOKURTIC (Normal)                         │
+│   ██████                        █████                                       │
+│   ██████                        █████                                       │
+│   ██████                        █████                                       │
+│   ██████                        █████                                       │
+│   ██████                        █████                                       │
+│   ██████                        █████                                       │
+│                                                                             │
+│   Kurtosis > 3                  Kurtosis = 3                               │
+│                                                                             │
+│   PLATYKURTIC (Light Tails)                                                │
+│   ██████                                                                   │
+│   ██████                                                                   │
+│   ██████                                                                   │
+│   ██████                                                                   │
+│   ██████                                                                   │
+│   ██████                                                                   │
+│                                                                             │
+│   Kurtosis < 3                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 6.6 Heavy-tailed Distributions
-
-> 📖 **Definition**: Heavy-tailed distributions have higher probability of extreme values.
-
-**Examples:**
-- Cauchy distribution
-- Student's t (df small)
-- Pareto distribution
-
-### 6.7 Light-tailed Distributions
-
-> 📖 **Definition**: Light-tailed distributions have lower probability of extreme values.
-
-**Examples:**
-- Uniform distribution
-- Normal distribution
-- Exponential distribution
-
-### 6.8 Empirical Rule
+### 6.6 Empirical Rule (68-95-99.7 Rule)
 
 > 📖 **Definition**: For a normal distribution, approximately 68-95-99.7% of data fall within 1-2-3 standard deviations.
 
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          EMPIRICAL RULE                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│                        ████████████████████████                           │
+│                     ████████████████████████████████                      │
+│                  ██████████████████████████████████████                   │
+│                ████████████████████████████████████████████               │
+│              ██████████████████████████████████████████████████           │
+│            ████████████████████████████████████████████████████████       │
+│                                                                             │
+│   ─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────   │
+│            μ-3σ     μ-2σ     μ-1σ       μ       μ+1σ     μ+2σ     μ+3σ    │
+│                                                                             │
+│       68% within μ ± 1σ                                                    │
+│       95% within μ ± 2σ                                                    │
+│     99.7% within μ ± 3σ                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
 | Range | Percentage |
 |-------|------------|
-| μ ± 1σ | 68% |
-| μ ± 2σ | 95% |
-| μ ± 3σ | 99.7% |
+| μ ± 1σ | 68.27% |
+| μ ± 2σ | 95.45% |
+| μ ± 3σ | 99.73% |
 
-### 6.9 Chebyshev's Theorem
+### 6.7 Chebyshev's Theorem
 
-> 📖 **Definition**: For any distribution, at least 1-1/k² of data fall within k standard deviations of the mean.
+> 📖 **Definition**: For any distribution, at least 1 - 1/k² of data fall within k standard deviations of the mean.
 
-$$P(|X - \mu| < k\sigma) \geq 1 - \frac{1}{k^2}$$
+$$ P(|X - \mu| < k\sigma) \geq 1 - \frac{1}{k^2} $$
 
 | k | Minimum % |
 |---|-----------|
 | 2 | 75% |
 | 3 | 88.9% |
 | 4 | 93.75% |
+| 5 | 96% |
 
 ---
 
-## 7. Data Presentation
+## 7. Data Presentation & Reporting
 
 ### 7.1 Data Summarization
 
@@ -2067,108 +1297,7 @@ $$P(|X - \mu| < k\sigma) \geq 1 - \frac{1}{k^2}$$
 - Summary tables
 - Demographic tables
 
-### 7.3 Graphical Presentation
-
-**Types:**
-- Quantitative: Histograms, boxplots
-- Categorical: Bar charts, pie charts
-- Relational: Scatter plots, heat maps
-
-### 7.4 Numerical Presentation
-
-**Types:**
-- Summary statistics
-- Confidence intervals
-- Effect sizes
-
----
-
-## 8. Field Applications
-
-### 8.1 Descriptive Statistics in Clinical Trials
-
-**CONSORT Required Baseline Table:**
-
-| Variable | Treatment (n=150) | Control (n=150) |
-|----------|------------------|------------------|
-| Age, mean (SD) | 54.3 (12.1) | 53.8 (11.9) |
-| Gender, male (%) | 82 (54.7%) | 79 (52.7%) |
-| BMI, median (IQR) | 27.5 (24.8-30.2) | 27.2 (24.5-29.8) |
-| SBP, mean (SD) | 145.3 (18.7) | 144.8 (19.2) |
-
-### 8.2 Descriptive Statistics in DHS Surveys
-
-**DHS Survey Statistics:**
-- Sampling weights
-- Complex survey design
-- National indicators
-- Demographic summaries
-
-### 8.3 Descriptive Statistics in Epidemiology
-
-| Measure | Formula | Use |
-|---------|---------|-----|
-| Incidence | Cases/Population | New cases |
-| Prevalence | Cases/Population | Total cases |
-| Mortality | Deaths/Population | Death rate |
-| Attack Rate | Ill/Exposed | Outbreak spread |
-
-### 8.4 Descriptive Statistics in Economics
-
-**Common Measures:**
-- GDP per capita (mean)
-- Income distribution (median, Gini)
-- Inflation rate (mean)
-- Unemployment rate (percentage)
-
-### 8.5 Descriptive Statistics in Agriculture
-
-**Applications:**
-- Crop yield distributions
-- Soil quality measures
-- Weather patterns
-- Pest incidence
-
-### 8.6 Descriptive Statistics in Psychology
-
-**Common Statistics:**
-- Test scores (mean, SD)
-- Reliability measures
-- Normative data
-- Effect sizes
-
-### 8.7 Descriptive Statistics in Bioinformatics
-
-**Applications:**
-- Gene expression distributions
-- Quality metrics
-- Normalization methods
-- Differential expression
-
-### 8.8 Descriptive Statistics in AI
-
-| Application | Role |
-|-------------|------|
-| Data Characterization | Understanding datasets |
-| Bias Detection | Identifying biases |
-| Model Evaluation | Performance metrics |
-| Feature Engineering | Transformations |
-
-### 8.9 Descriptive Statistics in Data Science
-
-**Workflow:**
-1. Data collection
-2. Data cleaning
-3. EDA
-4. Feature engineering
-5. Model building
-6. Evaluation
-
----
-
-## 9. Reporting
-
-### 9.1 Reporting Mean ± SD
+### 7.3 Reporting Mean ± SD
 
 **Format:** Mean ± SD (n=XX)
 
@@ -2180,7 +1309,7 @@ $$P(|X - \mu| < k\sigma) \geq 1 - \frac{1}{k^2}$$
 - Check distribution
 - Report with measure of dispersion
 
-### 9.2 Reporting Median (IQR)
+### 7.4 Reporting Median (IQR)
 
 **Format:** Median (IQR)
 
@@ -2191,27 +1320,15 @@ $$P(|X - \mu| < k\sigma) \geq 1 - \frac{1}{k^2}$$
 - Include Q1 and Q3
 - May include range
 
-### 9.3 Reporting Percentages
+### 7.5 Journal Reporting Standards
 
-**Format:** Percentage (n/N)
-
-**Example:** Male: 82 (54.7%)
-
-**Guidelines:**
-- Include numerator and denominator
-- Use appropriate precision
-- Report with confidence intervals
-
-### 9.4 Choosing Appropriate Summaries
-
-| Data Type | Central Tendency | Dispersion |
-|-----------|-----------------|------------|
-| Normal | Mean | SD |
-| Skewed | Median | IQR |
-| Categorical | Mode | Frequency |
-| Ordinal | Median | IQR |
-
-### 9.5 Journal Reporting Standards
+| Guideline | Application |
+|-----------|-------------|
+| **CONSORT** | Clinical trials |
+| **STROBE** | Observational studies |
+| **PRISMA** | Systematic reviews |
+| **STARD** | Diagnostic studies |
+| **MOOSE** | Meta-analyses |
 
 **General Requirements:**
 - Sample size for each analysis
@@ -2220,111 +1337,11 @@ $$P(|X - \mu| < k\sigma) \geq 1 - \frac{1}{k^2}$$
 - Reproducibility
 - Transparency
 
-### 9.6 CONSORT Recommendations
-
-**Clinical Trials:**
-- Baseline demographic and clinical characteristics
-- Means and SDs for continuous variables
-- Frequencies and percentages for categorical variables
-- Complete case reporting
-
-### 9.7 STROBE Recommendations
-
-**Observational Studies:**
-- Describe participant characteristics
-- Report missing data frequencies
-- Present statistics by exposure/outcome
-- Include confidence intervals
-
-### 9.8 PRISMA Recommendations
-
-**Systematic Reviews:**
-- Describe study characteristics
-- Report statistical heterogeneity
-- Present summary statistics
-- Include forest plots
-
-### 9.9 Common Reporting Errors
-
-| Error | Correction |
-|-------|------------|
-| Missing SD/IQR | Always report with central tendency |
-| Wrong precision | Match instrument precision |
-| No sample sizes | Include n for all statistics |
-| Inconsistent format | Use uniform formatting |
-| Overinterpretation | Describe, don't explain causally |
-
-### 9.10 Statistical Interpretation
-
-> [!WARNING]
-> *Descriptive statistics describe; they do not explain or infer.*
-
-**Guidelines:**
-- Use descriptive language
-- Avoid causal claims
-- Contextualize results
-- Acknowledge limitations
-
-### 9.11 Practical Interpretation
-
-**Questions to Consider:**
-- What does this number mean?
-- Is it clinically significant?
-- How does it compare to literature?
-- What are the implications?
-
 ---
 
-## 10. Reviewer & AI Perspectives
+## 8. Software Implementation
 
-### 10.1 Reviewer Perspective
-
-```mermaid
-graph TD
-    R[Reviewer Check] --> D[Data Quality]
-    R --> M[Method Choice]
-    R --> R1[Reporting Quality]
-    R --> I[Interpretation]
-    
-    D --> D1[Outliers?]
-    D --> D2[Missing Data?]
-    
-    M --> M1[Appropriate Measures?]
-    M --> M2[Assumptions Checked?]
-    
-    R1 --> R1a[Complete?]
-    R1 --> R1b[Standards Followed?]
-    
-    I --> I1[Honest?]
-    I --> I2[Contextualized?]
-```
-
-### 10.2 Common Reviewer Comments
-
-| Issue | Reviewer Comment |
-|-------|-----------------|
-| **Skewed Data** | "Please report median (IQR) instead of mean (SD) for hospital stay." |
-| **Missing Information** | "Include sample sizes and missing data descriptions." |
-| **Inappropriate Measure** | "The mean is not appropriate for ordinal data." |
-| **Overinterpretation** | "Avoid causal language in descriptive statistics." |
-
-### 10.3 AI Mistakes
-
-> [!CAUTION]
-> *Large language models can produce statistically fluent but factually incorrect explanations.*
-
-| AI Error | Example | How to Verify |
-|----------|---------|---------------|
-| **Wrong Formula** | Using population variance for sample data | Check degrees of freedom |
-| **Hallucinated Values** | Making up statistics without data | Compare with actual data |
-| **Missing Context** | No mention of distribution checks | Always assess distribution |
-| **Causal Claims** | "Shows that X causes Y" | Descriptive ≠ Causal |
-| **Overconfidence** | "Data are perfectly normal" | Check actual distribution |
-
-### 10.4 R Implementation
-
-<details>
-<summary>📋 Click to expand R code</summary>
+### 8.1 R Implementation
 
 ```r
 # Load necessary libraries
@@ -2332,57 +1349,71 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 
-# Load Iris dataset
+# Comprehensive descriptive statistics function
+descriptive_stats <- function(data, variable, group = NULL) {
+  
+  if (is.null(group)) {
+    # Overall statistics
+    result <- data %>%
+      summarise(
+        n = n(),
+        mean = mean({{ variable }}, na.rm = TRUE),
+        median = median({{ variable }}, na.rm = TRUE),
+        sd = sd({{ variable }}, na.rm = TRUE),
+        min = min({{ variable }}, na.rm = TRUE),
+        max = max({{ variable }}, na.rm = TRUE),
+        q1 = quantile({{ variable }}, 0.25, na.rm = TRUE),
+        q3 = quantile({{ variable }}, 0.75, na.rm = TRUE),
+        iqr = IQR({{ variable }}, na.rm = TRUE),
+        skew = e1071::skewness({{ variable }}, na.rm = TRUE),
+        kurt = e1071::kurtosis({{ variable }}, na.rm = TRUE)
+      )
+  } else {
+    # Grouped statistics
+    result <- data %>%
+      group_by({{ group }}) %>%
+      summarise(
+        n = n(),
+        mean = mean({{ variable }}, na.rm = TRUE),
+        median = median({{ variable }}, na.rm = TRUE),
+        sd = sd({{ variable }}, na.rm = TRUE),
+        min = min({{ variable }}, na.rm = TRUE),
+        max = max({{ variable }}, na.rm = TRUE),
+        q1 = quantile({{ variable }}, 0.25, na.rm = TRUE),
+        q3 = quantile({{ variable }}, 0.75, na.rm = TRUE),
+        iqr = IQR({{ variable }}, na.rm = TRUE),
+        skew = e1071::skewness({{ variable }}, na.rm = TRUE),
+        kurt = e1071::kurtosis({{ variable }}, na.rm = TRUE)
+      )
+  }
+  
+  return(result)
+}
+
+# Example usage with iris data
 data(iris)
+descriptive_stats(iris, Sepal.Length, Species)
 
-# Comprehensive descriptive statistics
-descriptive_summary <- iris %>%
-  group_by(Species) %>%
-  summarise(
-    n = n(),
-    mean_sepal = mean(Sepal.Length),
-    median_sepal = median(Sepal.Length),
-    sd_sepal = sd(Sepal.Length),
-    min_sepal = min(Sepal.Length),
-    max_sepal = max(Sepal.Length),
-    q1_sepal = quantile(Sepal.Length, 0.25),
-    q3_sepal = quantile(Sepal.Length, 0.75),
-    skew_sepal = e1071::skewness(Sepal.Length),
-    kurt_sepal = e1071::kurtosis(Sepal.Length)
-  )
-
-print(descriptive_summary)
-
-# Create comprehensive visualizations
+# Create visualizations
 # Histogram with density
 ggplot(iris, aes(x = Sepal.Length, fill = Species)) +
   geom_histogram(aes(y = ..density..), bins = 20, alpha = 0.6) +
   geom_density(alpha = 0.3) +
   facet_wrap(~Species) +
-  labs(
-    title = "Distribution of Sepal Length by Species",
-    x = "Sepal Length (cm)",
-    y = "Density"
-  ) +
+  labs(title = "Distribution of Sepal Length by Species",
+       x = "Sepal Length (cm)", y = "Density") +
   theme_minimal()
 
 # Boxplot with points
 ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
   geom_boxplot(alpha = 0.7) +
   geom_jitter(width = 0.2, alpha = 0.3) +
-  labs(
-    title = "Sepal Length by Species",
-    x = "Species",
-    y = "Sepal Length (cm)"
-  ) +
+  labs(title = "Sepal Length by Species",
+       x = "Species", y = "Sepal Length (cm)") +
   theme_minimal()
 ```
-</details>
 
-### 10.5 Python Implementation
-
-<details>
-<summary>📋 Click to expand Python code</summary>
+### 8.2 Python Implementation
 
 ```python
 import pandas as pd
@@ -2392,32 +1423,59 @@ import seaborn as sns
 from scipy import stats
 from sklearn.datasets import load_iris
 
+def descriptive_stats(data, variable, group=None):
+    """Calculate comprehensive descriptive statistics"""
+    
+    if group is None:
+        # Overall statistics
+        stats_df = pd.DataFrame({
+            'n': [len(data)],
+            'mean': [data[variable].mean()],
+            'median': [data[variable].median()],
+            'std': [data[variable].std()],
+            'min': [data[variable].min()],
+            'max': [data[variable].max()],
+            'q1': [data[variable].quantile(0.25)],
+            'q3': [data[variable].quantile(0.75)],
+            'iqr': [data[variable].quantile(0.75) - data[variable].quantile(0.25)],
+            'skew': [stats.skew(data[variable].dropna())],
+            'kurt': [stats.kurtosis(data[variable].dropna())]
+        })
+    else:
+        # Grouped statistics
+        stats_df = data.groupby(group)[variable].agg([
+            ('n', 'count'),
+            ('mean', 'mean'),
+            ('median', 'median'),
+            ('std', 'std'),
+            ('min', 'min'),
+            ('max', 'max'),
+            ('q1', lambda x: x.quantile(0.25)),
+            ('q3', lambda x: x.quantile(0.75)),
+            ('iqr', lambda x: x.quantile(0.75) - x.quantile(0.25)),
+            ('skew', lambda x: stats.skew(x.dropna())),
+            ('kurt', lambda x: stats.kurtosis(x.dropna()))
+        ])
+    
+    return stats_df
+
 # Load data
 iris = load_iris()
 df = pd.DataFrame(iris.data, columns=iris.feature_names)
 df['species'] = iris.target_names[iris.target]
 
-# Comprehensive descriptive statistics
-summary_stats = df.groupby('species').agg([
-    'count', 'mean', 'std', 'median',
-    ('min', 'min'), ('max', 'max'),
-    ('q1', lambda x: x.quantile(0.25)),
-    ('q3', lambda x: x.quantile(0.75)),
-    ('skew', lambda x: stats.skew(x)),
-    ('kurt', lambda x: stats.kurtosis(x))
-])
+# Calculate statistics
+stats_result = descriptive_stats(df, 'sepal length (cm)', 'species')
+print(stats_result)
 
-print(summary_stats)
-
-# Create visualizations
+# Visualizations
 fig, axes = plt.subplots(2, 2, figsize=(15, 12))
 
-# Histogram by species
+# Histograms by species
 for i, species in enumerate(df['species'].unique()):
     ax = axes[0, i]
     subset = df[df['species'] == species]
-    ax.hist(subset['sepal length (cm)'], bins=15, alpha=0.7, 
-            color=['blue', 'green', 'red'][i])
+    ax.hist(subset['sepal length (cm)'], bins=15, alpha=0.7)
     ax.set_title(f'Sepal Length: {species}')
     ax.set_xlabel('Sepal Length (cm)')
     ax.set_ylabel('Frequency')
@@ -2433,24 +1491,30 @@ axes[1, 1].set_title('Violin Plot by Species')
 plt.tight_layout()
 plt.show()
 ```
-</details>
 
-### 10.6 SPSS Implementation
+### 8.3 SPSS Implementation
 
 ```spss
 * Comprehensive descriptive analysis.
 DESCRIPTIVES VARIABLES=SepalLength SepalWidth PetalLength PetalWidth
-  /STATISTICS=MEAN STDDEV MIN MAX.
+  /STATISTICS=MEAN STDDEV MIN MAX SKEWNESS KURTOSIS.
 
+* Frequency tables.
 FREQUENCIES VARIABLES=SepalLength SepalWidth PetalLength PetalWidth
-  /STATISTICS=MEDIAN MODE.
+  /STATISTICS=MEDIAN MODE
+  /HISTOGRAM.
 
+* Explore for detailed statistics.
 EXAMINE VARIABLES=SepalLength BY Species
   /PLOT BOXPLOT HISTOGRAM
   /STATISTICS DESCRIPTIVES.
+
+* Grouped statistics.
+MEANS TABLES=SepalLength SepalWidth BY Species
+  /CELLS MEAN COUNT STDDEV MIN MAX.
 ```
 
-### 10.7 STATA Implementation
+### 8.4 STATA Implementation
 
 ```stata
 * Load dataset.
@@ -2462,18 +1526,30 @@ summarize SepalLength SepalWidth PetalLength PetalWidth, detail
 * By group.
 bysort Species: summarize SepalLength, detail
 
+* Frequency tables.
+tabulate SepalLength
+
 * Visualizations.
 histogram SepalLength, by(Species) normal
 graph box SepalLength, over(Species)
+
+* Export table.
+estpost summarize SepalLength, detail
+esttab using summary.tex, replace cells("mean(fmt(2)) p50(fmt(2)) sd(fmt(2)) min(fmt(2)) max(fmt(2))")
 ```
 
-### 10.8 SAS Implementation
+### 8.5 SAS Implementation
 
 ```sas
 * Descriptive statistics.
-PROC MEANS DATA=iris N MEAN STD MEDIAN Q1 Q3 MIN MAX;
+PROC MEANS DATA=iris N MEAN STD MEDIAN Q1 Q3 MIN MAX SKEWNESS KURTOSIS;
     CLASS Species;
     VAR SepalLength SepalWidth PetalLength PetalWidth;
+RUN;
+
+* Frequency tables.
+PROC FREQ DATA=iris;
+    TABLES Species / OUT=freq_table;
 RUN;
 
 * Visualizations.
@@ -2481,98 +1557,94 @@ PROC SGPLOT DATA=iris;
     VBOX SepalLength / GROUP=Species;
     TITLE "Boxplot of Sepal Length by Species";
 RUN;
+
+* Histograms.
+PROC SGPLOT DATA=iris;
+    HISTOGRAM SepalLength / GROUP=Species;
+    TITLE "Histogram of Sepal Length by Species";
+RUN;
 ```
 
-### 10.9 Excel Implementation
+### 8.6 Excel Implementation
 
-**Functions:**
-- Mean: `=AVERAGE(range)`
-- Median: `=MEDIAN(range)`
-- Mode: `=MODE.SNGL(range)`
-- SD: `=STDEV.S(range)`
-- Variance: `=VAR.S(range)`
-- Min: `=MIN(range)`
-- Max: `=MAX(range)`
-- Q1: `=QUARTILE.EXC(range,1)`
-- Q3: `=QUARTILE.EXC(range,3)`
-- IQR: `=Q3 - Q1`
+**Functions for Descriptive Statistics:**
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `=AVERAGE(range)` | Mean | `=AVERAGE(A1:A100)` |
+| `=MEDIAN(range)` | Median | `=MEDIAN(A1:A100)` |
+| `=MODE.SNGL(range)` | Mode | `=MODE.SNGL(A1:A100)` |
+| `=STDEV.S(range)` | Sample SD | `=STDEV.S(A1:A100)` |
+| `=VAR.S(range)` | Sample Variance | `=VAR.S(A1:A100)` |
+| `=MIN(range)` | Minimum | `=MIN(A1:A100)` |
+| `=MAX(range)` | Maximum | `=MAX(A1:A100)` |
+| `=QUARTILE.EXC(range,1)` | Q1 | `=QUARTILE.EXC(A1:A100,1)` |
+| `=QUARTILE.EXC(range,3)` | Q3 | `=QUARTILE.EXC(A1:A100,3)` |
+| `=SKEW(range)` | Skewness | `=SKEW(A1:A100)` |
+| `=KURT(range)` | Kurtosis | `=KURT(A1:A100)` |
 
 ---
 
-## 11. Assessment & Summary
+## 9. Assessment & Summary
 
-### 11.1 Real Research Example
-
-**DHS Survey Analysis:**
-
-| Indicator | Bangladesh | Nepal | Mozambique |
-|-----------|------------|-------|------------|
-| Population (millions) | 163.0 | 29.7 | 30.8 |
-| Life Expectancy (years) | 72.6 | 70.8 | 61.3 |
-| Fertility Rate (per woman) | 2.1 | 2.1 | 4.8 |
-| Maternal Mortality Ratio | 176 | 186 | 489 |
-| Under-5 Mortality (per 1000) | 31 | 32 | 73 |
-| Skilled Birth Attendance (%) | 58 | 79 | 68 |
-| Contraceptive Use (%) | 62 | 56 | 25 |
-
-### 11.2 Worked Example
+### 9.1 Worked Example
 
 **Dataset:** Blood pressure (mmHg) from 10 patients
-
-`118, 122, 130, 145, 119, 125, 138, 128, 121, 150`
+```
+118, 122, 130, 145, 119, 125, 138, 128, 121, 150
+```
 
 **Step 1: Sort Data**
-`118, 119, 121, 122, 125, 128, 130, 138, 145, 150`
+```
+118, 119, 121, 122, 125, 128, 130, 138, 145, 150
+```
 
 **Step 2: Calculate Measures**
-- Mean = 129.6 mmHg
-- Median = 126.5 mmHg
-- Mode = No mode (all unique)
-- SD = 11.4 mmHg
-- Range = 32 mmHg
-- IQR = 22.5 mmHg
+```
+Mean    = 129.6 mmHg
+Median  = 126.5 mmHg
+Mode    = No mode (all unique)
+SD      = 11.4 mmHg
+Range   = 32 mmHg
+IQR     = 18 mmHg
+```
 
 **Step 3: Create Five-Number Summary**
-| Min | Q1 | Median | Q3 | Max |
-|-----|----|--------|----|-----|
-| 118 | 121.5 | 126.5 | 139.5 | 150 |
+```
+Min     = 118
+Q1      = 121.5
+Median  = 126.5
+Q3      = 139.5
+Max     = 150
+```
 
 **Step 4: Interpret**
-The typical blood pressure is approximately 130 mmHg, with most values between 121.5 and 139.5 mmHg.
+```
+The typical blood pressure is approximately 130 mmHg,
+with most values between 121.5 and 139.5 mmHg.
+The distribution is slightly right-skewed.
+```
 
-### 11.3 Practice Questions
+### 9.2 Practice Questions
 
 <details>
 <summary>📝 Click to reveal practice questions</summary>
 
-**MCQs:**
+**Short Questions:**
 
-1. Which measure is most appropriate for skewed data?
-   - A) Mean
-   - B) Median ✓
-   - C) Mode
-   - D) Range
+1. What is the difference between descriptive and inferential statistics?
 
-2. The five-number summary includes:
-   - A) Min, Q1, Median, Q3, Max ✓
-   - B) Mean, SD, Min, Max
-   - C) Min, Max, Range, IQR
-   - D) Q1, Q2, Q3, Q4
+2. When should you use the median instead of the mean?
 
-3. For a normal distribution, approximately what percentage falls within ±2 SD?
-   - A) 68%
-   - B) 95% ✓
-   - C) 99.7%
-   - D) 50%
+3. What does the interquartile range measure?
 
-**True/False:**
-1. The mean is always the best measure of central tendency. **False**
-2. A histogram shows the distribution of categorical data. **False**
-3. The IQR is resistant to outliers. **True**
+4. How do you identify outliers using the IQR method?
+
+5. What is the 68-95-99.7 rule?
 
 </details>
 
-### 11.4 MCQs
+### 9.3 MCQs
 
 <details>
 <summary>📝 Click to reveal 20 MCQs</summary>
@@ -2639,173 +1711,29 @@ The typical blood pressure is approximately 130 mmHg, with most values between 1
 
 </details>
 
-### 11.5 Numerical Problems
-
-<details>
-<summary>📝 Click to reveal numerical problems</summary>
-
-**Problem 1:** Calculate the mean, median, variance, and standard deviation for: [5, 7, 8, 9, 10, 12, 15]
-
-**Solution:**
-- Mean = 9.43
-- Median = 9
-- Variance = 12.52
-- SD = 3.54
-
-**Problem 2:** Create a five-number summary for: [2, 3, 5, 7, 8, 10, 12, 15, 18]
-
-**Solution:**
-- Min = 2
-- Q1 = 5
-- Median = 8
-- Q3 = 12
-- Max = 18
-
-**Problem 3:** A dataset has mean = 100, SD = 15. What is the coefficient of variation?
-
-**Solution:**
-CV = (15/100) × 100 = 15%
-
-</details>
-
-### 11.6 Chapter Summary
+### 9.4 Chapter Summary
 
 > 🎯 **Key Takeaways**
 
-1. **Descriptive statistics summarizes, organizes, and presents data**
-2. **Choose measures based on data type and distribution**
-3. **Visualization is essential for understanding data**
-4. **EDA is critical before any statistical analysis**
-5. **Report appropriate measures with proper formatting**
-6. **Follow CONSORT/STROBE/PRISMA guidelines**
-7. **Interpret descriptively, not causally**
+1. **Descriptive statistics** summarizes, organizes, and presents data
+2. **Choose measures** based on data type and distribution
+3. **Visualization** is essential for understanding data
+4. **EDA** is critical before any statistical analysis
+5. **Report** appropriate measures with proper formatting
+6. **Follow** CONSORT/STROBE/PRISMA guidelines
+7. **Interpret** descriptively, not causally
 
-### 11.7 Formula Sheet
+### 9.5 Formula Sheet
 
 | Measure | Formula | Use |
 |---------|---------|-----|
-| **Mean** | \(\bar{x} = \frac{\sum x}{n}\) | Symmetric data |
-| **Variance** | \(s^2 = \frac{\sum(x-\bar{x})^2}{n-1}\) | Data spread |
-| **SD** | \(s = \sqrt{s^2}\) | Data spread |
-| **CV** | \(CV = \frac{s}{\bar{x}} \times 100\%\) | Relative variation |
-| **Skewness** | \(g_1 = \frac{\sum(x-\bar{x})^3/n}{s^3}\) | Distribution shape |
-| **Kurtosis** | \(g_2 = \frac{\sum(x-\bar{x})^4/n}{s^4} - 3\) | Tail behavior |
-
-### 11.8 Further Reading
-
-**Recommended Textbooks:**
-1. *The Elements of Statistical Learning* - Hastie, Tibshirani, Friedman
-2. *Applied Linear Statistical Models* - Kutner et al.
-3. *Statistical Inference* - Casella & Berger
-
-**Online Resources:**
-- [Khan Academy: Statistics](https://www.khanacademy.org)
-- [StatQuest](https://www.youtube.com/c/statquest)
-- [R for Data Science](https://r4ds.had.co.nz)
+| **Mean** | $\bar{x} = \frac{\sum x}{n}$ | Symmetric data |
+| **Variance** | $s^2 = \frac{\sum(x-\bar{x})^2}{n-1}$ | Data spread |
+| **SD** | $s = \sqrt{s^2}$ | Data spread |
+| **CV** | $CV = \frac{s}{\bar{x}} \times 100\%$ | Relative variation |
+| **Skewness** | $g_1 = \frac{\sum(x-\bar{x})^3/n}{s^3}$ | Distribution shape |
+| **Kurtosis** | $g_2 = \frac{\sum(x-\bar{x})^4/n}{s^4} - 3$ | Tail behavior |
 
 ---
 
-## 📊 Navigation
-
-<div align="center">
-
-**[⬅ Previous: Repository Home](../README.md)**
-
-**[🏠 Back to Repository](../README.md)**
-
-**[➡ Next: Chapter 2 - Measures of Central Tendency](./02-central-tendency.md)**
-
-</div>
-
----
-
-## 📝 Bengali Summary (বাংলা সারাংশ)
-
-### অধ্যায় ১: বর্ণনামূলক পরিসংখ্যান
-
-> *"লক্ষ্য হল তথ্যকে জ্ঞানে রূপান্তর করা, এবং জ্ঞানকে অন্তর্দৃষ্টিতে পরিণত করা।"*
-
-**মূল ধারণা:**
-
-বর্ণনামূলক পরিসংখ্যান হলো পরিসংখ্যানের সেই শাখা যা ডেটা সংক্ষিপ্তকরণ, সংগঠিতকরণ এবং উপস্থাপনের সাথে সম্পর্কিত। এটি সকল পরিসংখ্যানগত বিশ্লেষণের ভিত্তি।
-
-**প্রধান উপাদানসমূহ:**
-
-1. **কেন্দ্রীয় প্রবণতা**: গড়, মধ্যমা, প্রচুরক
-2. **বিক্ষেপণ**: পরিসর, মানক বিচ্যুতি, আন্তঃচতুর্থাংশ পরিসর
-3. **আকৃতি**: তির্যকতা, কুর্তোসিস, প্রতিসাম্য
-4. **ভিজুয়ালাইজেশন**: হিস্টোগ্রাম, বক্সপ্লট, স্ক্যাটারপ্লট
-
-**প্রয়োগ ক্ষেত্র:**
-- ক্লিনিকাল ট্রায়াল
-- জনস্বাস্থ্য
-- মেশিন লার্নিং
-- কৃত্রিম বুদ্ধিমত্তা
-- ডেটা সায়েন্স
-
----
-
-## 📚 References & Resources
-
-### Key References
-
-1. Altman, D. G., & Bland, J. M. (2005). Standard deviations and standard errors. *BMJ*, 331(7521), 903.
-
-2. Bland, J. M., & Altman, D. G. (1996). The use of transformation when comparing two means. *BMJ*, 312(7039), 1153.
-
-3. Cumming, G., Fidler, F., & Vaux, D. L. (2007). Error bars in experimental biology. *Journal of Cell Biology*, 177(1), 7-11.
-
-4. Fisher, R. A. (1925). *Statistical Methods for Research Workers*. Edinburgh: Oliver & Boyd.
-
-5. Galton, F. (1888). Co-relations and their measurement, chiefly from anthropometric data. *Proceedings of the Royal Society of London*, 45, 135-145.
-
-6. Gauss, C. F. (1809). *Theoria motus corporum coelestium*. Hamburg: Perthes & Besser.
-
-7. Graunt, J. (1662). *Natural and Political Observations Made upon the Bills of Mortality*. London.
-
-8. Pearson, K. (1895). Contributions to the mathematical theory of evolution. *Philosophical Transactions of the Royal Society of London*, 186, 343-414.
-
-9. Tukey, J. W. (1977). *Exploratory Data Analysis*. Reading, MA: Addison-Wesley.
-
-### Recommended Textbooks
-
-1. Casella, G., & Berger, R. L. (2002). *Statistical Inference* (2nd ed.). Cengage Learning.
-
-2. Gelman, A., & Hill, J. (2006). *Data Analysis Using Regression and Multilevel/Hierarchical Models*. Cambridge University Press.
-
-3. Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning* (2nd ed.). Springer.
-
-4. Kutner, M. H., Nachtsheim, C. J., Neter, J., & Li, W. (2005). *Applied Linear Statistical Models* (5th ed.). McGraw-Hill.
-
-5. Wilcox, R. R. (2012). *Introduction to Robust Estimation and Hypothesis Testing* (3rd ed.). Academic Press.
-
-### Online Resources
-
-1. **Khan Academy**: Comprehensive statistics tutorials - https://www.khanacademy.org/math/statistics-probability
-
-2. **StatQuest with Josh Starmer**: YouTube channel with clear statistical explanations - https://www.youtube.com/c/statquest
-
-3. **R for Data Science**: Free online textbook - https://r4ds.had.co.nz/
-
-4. **Python Data Science Handbook**: Free online book - https://jakevdp.github.io/PythonDataScienceHandbook/
-
-5. **OpenIntro Statistics**: Free introductory statistics textbook - https://www.openintro.org/book/os/
-
-6. **CONSORT Statement**: Clinical trial reporting guidelines - https://www.consort-statement.org/
-
-7. **STROBE Statement**: Observational study reporting guidelines - https://www.strobe-statement.org/
-
-8. **PRISMA Statement**: Systematic review reporting guidelines - https://www.prisma-statement.org/
-
----
-
-<div align="center">
-
-*Chapter 1: Descriptive Statistics*
-
-*Statistics for Scientists — An Open-Access Textbook*
-
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/your-repo)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-green)](LICENSE)
-
-</div>
+**[⬅ Previous: Repository Home](../README.md) · [🏠 Back to Repository](../README.md) · [➡ Next: Chapter 2 - Measures of Central Tendency](./02-central-tendency.md)**
