@@ -1,1541 +1,557 @@
+# Chapter 2: Measures of Central Tendency
+# দ্বিতীয় অধ্যায়: কেন্দ্রীয় প্রবণতার পরিমাপ
 
-
-# 📊 Chapter 2: Measures of Central Tendency
-
-### *Mean, Median, Mode, and Beyond — The Art and Science of Finding the "Middle"*
-
-<div align="center">
-
-[![Open Access](https://img.shields.io/badge/Open%20Access-Free-success?style=for-the-badge)]()
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-green?style=for-the-badge)]()
-[![Level](https://img.shields.io/badge/Level-Beginner%20to%20Advanced-blue?style=for-the-badge)]()
-[![Software](https://img.shields.io/badge/Software-R%20%7C%20Python%20%7C%20SPSS%20%7C%20STATA%20%7C%20SAS%20%7C%20Excel-orange?style=for-the-badge)]()
-
-**[⬅ Previous: Chapter 1 - Descriptive Statistics](./01-descriptive-statistics.md) · [🏠 Home](../README.md) · [➡ Next: Chapter 3 - Measures of Dispersion](./03-dispersion.md)**
-
-</div>
+[⬅ Previous: Descriptive Statistics / পূর্ববর্তী: বর্ণনামূলক পরিসংখ্যান](./01-descriptive-statistics.md) | [🏠 Home / হোম](../README.md) | [➡ Next: Dispersion / পরবর্তী: বিস্তৃতি](./03-dispersion.md)
 
 ---
 
-> *"The average is a single number that attempts to describe the entire set of data — a profound act of compression."* — **Author Unknown**
+> [!NOTE]
+> **Bilingual Chapter / দ্বিভাষিক অধ্যায়**
+> This chapter is presented in **English and Bengali (বাংলা)** side by side, section by section, so that Bengali-speaking students can learn the exact same rigorous content in their first language without losing any mathematical precision. Formulas, code, and tables are universal and are not translated, since mathematics and programming syntax are language-independent — only the surrounding explanation is duplicated in both languages.
+>
+> এই অধ্যায়টি **ইংরেজি ও বাংলা** উভয় ভাষায়, অংশ অনুযায়ী, পাশাপাশি উপস্থাপন করা হয়েছে, যাতে বাংলাভাষী শিক্ষার্থীরা তাদের মাতৃভাষায় একই কঠোর, নির্ভুল বিষয়বস্তু শিখতে পারে গাণিতিক যথার্থতা না হারিয়ে। সূত্র, কোড এবং টেবিলগুলো সার্বজনীন এবং অনুবাদ করা হয়নি, কারণ গণিত ও প্রোগ্রামিং সিনট্যাক্স ভাষা-নিরপেক্ষ — শুধুমাত্র চারপাশের ব্যাখ্যাগুলো উভয় ভাষায় দেওয়া হয়েছে।
 
 ---
 
-## 📋 Table of Contents
+## Learning Objectives / শিখনফল
 
-```mermaid
-graph TD
-    A[Chapter 2: Measures of Central Tendency] --> B[Learning Objectives]
-    A --> C[Why This Topic Matters]
-    A --> D[Big Picture]
-    A --> E[Core Intuition]
-    A --> F[Mathematical Foundation]
-    A --> G[Measures of Central Tendency]
-    A --> H[Choosing the Right Measure]
-    A --> I[Worked Examples]
-    A --> J[Software Implementation]
-    A --> K[Real Research Examples]
-    A --> L[Common Mistakes]
-    A --> M[Reviewer Perspective]
-    A --> N[AI Evaluation]
-    A --> O[Assessment]
-    A --> P[Summary]
-    
-    G --> G1[Arithmetic Mean]
-    G --> G2[Weighted Mean]
-    G --> G3[Geometric Mean]
-    G --> G4[Harmonic Mean]
-    G --> G5[Median]
-    G --> G6[Mode]
-    G --> G7[Trimmed Mean]
-```
+**English:**
+- [ ] Compute mean, median, and mode by hand and in software
+- [ ] Understand the mathematical properties of the mean (least-squares property)
+- [ ] Choose the appropriate measure of central tendency given data shape
+- [ ] Compute weighted mean, trimmed mean, geometric mean, and harmonic mean
+- [ ] Understand how outliers and skew affect each measure
+- [ ] Critically interpret "average" claims in scientific and media reporting
+- [ ] Apply central tendency measures to real public health, clinical, and survey datasets
+- [ ] Recognize common statistical reporting errors involving central tendency
 
----
+**বাংলা:**
+- [ ] হাতে-কলমে এবং সফটওয়্যারে গড় (mean), মধ্যক (median), এবং প্রচুরক (mode) গণনা করতে পারা
+- [ ] গড়ের গাণিতিক বৈশিষ্ট্য (least-squares property) বোঝা
+- [ ] উপাত্তের গঠন অনুযায়ী সঠিক কেন্দ্রীয় প্রবণতার পরিমাপ নির্বাচন করতে পারা
+- [ ] ভারযুক্ত গড় (weighted mean), ছাঁটা গড় (trimmed mean), জ্যামিতিক গড় (geometric mean), এবং হারমোনিক গড় (harmonic mean) গণনা করতে পারা
+- [ ] ব্যতিক্রমী মান (outlier) এবং তির্যকতা (skew) কীভাবে প্রতিটি পরিমাপকে প্রভাবিত করে তা বোঝা
+- [ ] বৈজ্ঞানিক ও গণমাধ্যমের প্রতিবেদনে "গড়" সংক্রান্ত দাবিগুলো সমালোচনামূলকভাবে ব্যাখ্যা করতে পারা
+- [ ] বাস্তব জনস্বাস্থ্য, ক্লিনিক্যাল, এবং সার্ভে উপাত্তে কেন্দ্রীয় প্রবণতার পরিমাপ প্রয়োগ করতে পারা
+- [ ] কেন্দ্রীয় প্রবণতা সংক্রান্ত সাধারণ পরিসংখ্যানগত প্রতিবেদন ত্রুটি চিহ্নিত করতে পারা
 
-## 🎯 Learning Objectives
+## Prerequisites / পূর্বশর্ত
 
-| Level | Objectives |
-|-------|------------|
-| **Foundational** | ✅ Compute mean, median, and mode by hand and in software |
-| | ✅ Understand when each measure is appropriate |
-| | ✅ Interpret "average" claims in scientific literature |
-| **Intermediate** | ✅ Calculate weighted, geometric, and harmonic means |
-| | ✅ Understand the mathematical properties of the mean |
-| | ✅ Choose appropriate measures given data shape |
-| **Advanced** | ✅ Critically evaluate "average" claims in research |
-| | ✅ Detect and correct misuse of central tendency |
-| | ✅ Explain trade-offs between measures |
+**English**: Chapter 1 (Descriptive Statistics); summation notation ($\sum$); basic algebra.
+
+**বাংলা**: প্রথম অধ্যায় (বর্ণনামূলক পরিসংখ্যান); সমষ্টি নোটেশন ($\sum$); মৌলিক বীজগণিত।
+
+## Estimated Study Time / আনুমানিক অধ্যয়ন সময়
+
+⏱️ **English**: 3–4 hours (including bilingual reading and coding exercises)
+⏱️ **বাংলা**: ৩–৪ ঘণ্টা (দ্বিভাষিক পঠন এবং কোডিং অনুশীলনসহ)
 
 ---
 
-## 🧭 Prerequisites
-
-**Required Knowledge:**
-- Chapter 1: Descriptive Statistics
-- Summation notation (Σ)
-- Basic algebra
-
-**Estimated Study Time:** ⏱️ 2.5 – 4 hours
-
----
-
-## 💡 Why This Topic Matters
+## Why This Topic Matters / কেন এই বিষয়টি গুরুত্বপূর্ণ
 
 > [!TIP]
-> *"On average" is the most quoted — and most misused — phrase in scientific communication. Which average, computed how, determines whether a claim is honest or misleading.*
+> **English**: "On average" is the most quoted — and most misused — phrase in scientific communication. Which average, computed how, determines whether a claim is honest or misleading.
+>
+> **বাংলা**: "গড়ে" (on average) হলো বৈজ্ঞানিক যোগাযোগে সবচেয়ে বেশি উদ্ধৃত — এবং সবচেয়ে বেশি ভুলভাবে ব্যবহৃত — বাক্যাংশ। কোন গড়, কীভাবে গণনা করা হয়েছে, তার উপর নির্ভর করে একটি দাবি সৎ নাকি বিভ্রান্তিকর।
 
-### Real-World Impact
+**English**: Imagine a newspaper headline: "Average household income rose by 15% this year." If this "average" is the arithmetic mean and a handful of extremely wealthy households pulled the number up, most families may have seen no real improvement at all. Understanding *which* central tendency measure is being used — and why — is essential for reading science and news critically.
 
-| Field | Why Central Tendency Matters |
-|-------|-----------------------------|
-| 🏥 **Medicine** | Determining "normal" blood pressure, average survival time |
-| 💰 **Economics** | Average income, GDP per capita, inflation rates |
-| 🧪 **Clinical Trials** | Baseline characteristics, treatment effects |
-| 📊 **Public Health** | Average life expectancy, disease incidence |
-| 🤖 **Machine Learning** | Feature scaling, imputation, baseline models |
-| 🏭 **Quality Control** | Average product dimensions, process monitoring |
+**বাংলা**: একটি সংবাদপত্রের শিরোনাম কল্পনা করুন: "এই বছর গড় পারিবারিক আয় ১৫% বৃদ্ধি পেয়েছে।" যদি এই "গড়" গাণিতিক গড় (arithmetic mean) হয় এবং কয়েকটি অত্যন্ত ধনী পরিবার সংখ্যাটি উপরে টেনে তোলে, তাহলে বেশিরভাগ পরিবার আসলে কোনো প্রকৃত উন্নতি নাও দেখতে পারে। *কোন* কেন্দ্রীয় প্রবণতার পরিমাপ ব্যবহার করা হচ্ছে — এবং কেন — তা বোঝা বিজ্ঞান ও সংবাদ সমালোচনামূলকভাবে পড়ার জন্য অপরিহার্য।
 
----
-
-## 🌍 Big Picture
+## Big Picture / সামগ্রিক চিত্র
 
 ```mermaid
 flowchart TD
-    A[Central Tendency] --> B[Mean]
-    A --> C[Median]
-    A --> D[Mode]
-    
-    B --> B1[Arithmetic Mean]
-    B --> B2[Weighted Mean]
-    B --> B3[Geometric Mean]
-    B --> B4[Harmonic Mean]
-    B --> B5[Trimmed Mean]
-    
-    B1 --> |Uses all data| P1[Properties]
-    B2 --> |Weighted importance| P2[Survey Data]
-    B3 --> |Multiplicative data| P3[Growth Rates]
-    B4 --> |Rates & Ratios| P4[Speed, F1-Score]
-    B5 --> |Robust| P5[Outlier Resistant]
-    
-    C --> |Robust| R1[Skewed Data]
-    D --> |Categorical| R2[Nominal Data]
+    A[Central Tendency / কেন্দ্রীয় প্রবণতা] --> B[Mean / গড়]
+    A --> C[Median / মধ্যক]
+    A --> D[Mode / প্রচুরক]
+    B --> B1[Arithmetic / গাণিতিক]
+    B --> B2[Weighted / ভারযুক্ত]
+    B --> B3[Geometric / জ্যামিতিক]
+    B --> B4[Harmonic / হারমোনিক]
+    B --> B5[Trimmed / ছাঁটা]
 ```
 
-### The Central Tendency Spectrum
+## Historical Background / ঐতিহাসিক পটভূমি
 
-```mermaid
-graph LR
-    Robust[Robust<br>Median] --> Balanced[Balanced<br>Mean] --> Sensitive[Very Sensitive<br>Mean]
-    Style Robust fill:#2ecc71,color:#fff
-    Style Balanced fill:#f39c12,color:#fff
-    Style Sensitive fill:#e74c3c,color:#fff
-```
+**English**: The arithmetic mean has been used since antiquity for dividing goods and measuring astronomical observations, but its formal statistical justification came from Carl Friedrich Gauss and Adrien-Marie Legendre in the early 1800s through the method of least squares. The median's robustness properties were explored extensively by Francis Edgeworth in the 1880s. The geometric and harmonic means trace back to ancient Greek mathematics (Pythagoras), originally defined as "means" in the context of musical ratios and proportional reasoning, long before their statistical applications in growth rates and rates emerged.
+
+**বাংলা**: গাণিতিক গড় প্রাচীনকাল থেকে পণ্য বণ্টন এবং জ্যোতির্বিদ্যা সংক্রান্ত পর্যবেক্ষণ পরিমাপের জন্য ব্যবহৃত হয়ে আসছে, কিন্তু এর আনুষ্ঠানিক পরিসংখ্যানগত যৌক্তিকতা এসেছে কার্ল ফ্রিডরিখ গাউস এবং আদ্রিয়াঁ-মারি লেজেন্দ্রের কাছ থেকে, ১৮০০ সালের প্রথম দিকে ন্যূনতম বর্গের পদ্ধতির (method of least squares) মাধ্যমে। মধ্যকের দৃঢ়তার (robustness) বৈশিষ্ট্য ১৮৮০-এর দশকে ফ্রান্সিস এজওয়ার্থ ব্যাপকভাবে অনুসন্ধান করেছিলেন। জ্যামিতিক ও হারমোনিক গড় প্রাচীন গ্রিক গণিতে (পিথাগোরাস) ফিরে যায়, মূলত সাঙ্গীতিক অনুপাত এবং আনুপাতিক যুক্তির প্রেক্ষাপটে "গড়" হিসেবে সংজ্ঞায়িত, প্রবৃদ্ধির হার এবং হারের পরিসংখ্যানগত প্রয়োগ আসার অনেক আগে।
+
+## Core Intuition / মূল স্বজ্ঞা
+
+**English**: Central tendency answers: **"If I had to describe this dataset with one number, what would it be?"** The three classical answers — mean, median, mode — each optimize a different criterion, and each can give a dramatically different answer for the same dataset when the data are skewed.
+
+**বাংলা**: কেন্দ্রীয় প্রবণতা এই প্রশ্নের উত্তর দেয়: **"যদি আমাকে এই ডেটাসেটটিকে একটি সংখ্যা দিয়ে বর্ণনা করতে হয়, তবে সেটি কী হবে?"** তিনটি ধ্রুপদী উত্তর — গড়, মধ্যক, প্রচুরক — প্রতিটি ভিন্ন ভিন্ন মানদণ্ড অপ্টিমাইজ করে, এবং উপাত্ত তির্যক (skewed) হলে একই ডেটাসেটের জন্য প্রতিটি নাটকীয়ভাবে ভিন্ন উত্তর দিতে পারে।
 
 ---
 
-## 🧠 Core Intuition
+## Mathematical Foundation / গাণিতিক ভিত্তি
 
-### The Three Perspectives
-
-Central tendency answers: **"If I had to describe this dataset with one number, what would it be?"** The three classical answers — mean, median, mode — each optimize a different criterion:
-
-```mermaid
-graph TD
-    A[Which "Middle" Should You Choose?] --> B[Mean]
-    A --> C[Median]
-    A --> D[Mode]
-    
-    B --> B1[Minimizes<br>Sum of Squares]
-    C --> C1[Minimizes<br>Sum of Absolute Deviations]
-    D --> D1[Maximizes<br>Frequency]
-    
-    B1 --> I1[Balance Point]
-    C1 --> I2[Middle Point]
-    D1 --> I3[Typical Category]
-```
-
-### The "Restaurant Analogy"
-
-Imagine you're reviewing a restaurant:
-
-| Statistic | Restaurant Example | Statistical Equivalent |
-|-----------|-------------------|----------------------|
-| Most common dish ordered | **Mode** | Most frequent value |
-| Middle-priced dish | **Median** | Middle value |
-| Average price of all dishes | **Mean** | Arithmetic average |
-| Price that accounts for portions | **Weighted Mean** | Weighted average |
-| Average price increase over years | **Geometric Mean** | Multiplicative growth |
-
----
-
-## 📐 Mathematical Foundation
-
-### Key Definitions
-
-#### Arithmetic Mean
-
-> 📖 **Definition**: The arithmetic mean is the sum of all observations divided by the number of observations.
+### Arithmetic Mean / গাণিতিক গড়
 
 $$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$
 
-**Population Mean:**
-$$\mu = \frac{1}{N}\sum_{i=1}^{N} x_i$$
+**English — Least-squares property**: the mean is the value $c$ that minimizes $\sum_{i=1}^n (x_i - c)^2$. This is proved by differentiating with respect to $c$ and setting to zero:
 
-**Sample Mean:**
-$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$
+$$\frac{d}{dc}\sum (x_i - c)^2 = -2\sum(x_i - c) = 0 \implies \sum x_i = nc \implies c = \bar{x}$$
 
-#### Properties of the Mean
+**বাংলা — ন্যূনতম বর্গের বৈশিষ্ট্য**: গড় হলো সেই মান $c$ যা $\sum_{i=1}^n (x_i - c)^2$ কে সর্বনিম্ন করে। এটি $c$ এর সাপেক্ষে অন্তরীকরণ (differentiate) করে এবং শূন্যের সমান বসিয়ে প্রমাণ করা হয়:
 
-> 📊 **The Five Key Properties**
+$$\frac{d}{dc}\sum (x_i - c)^2 = -2\sum(x_i - c) = 0 \implies \sum x_i = nc \implies c = \bar{x}$$
 
-1. **Least-Squares Property**: The mean minimizes the sum of squared deviations
-   $$\sum_{i=1}^n (x_i - c)^2 \text{ is minimized when } c = \bar{x}$$
+**English**: In plain language, this means the mean is the "balance point" of the data — the point where the sum of distances (squared) to every data point is as small as possible. This is exactly analogous to a physical center of mass on a number line.
 
-2. **Linearity**: For transformed variables \(y_i = ax_i + b\)
-   $$\bar{y} = a\bar{x} + b$$
+**বাংলা**: সহজ ভাষায়, এর অর্থ হলো গড় হলো ডেটার "ভারসাম্য বিন্দু" (balance point) — সেই বিন্দু যেখানে প্রতিটি ডেটা পয়েন্টের দূরত্বের বর্গের সমষ্টি যতটা সম্ভব ছোট হয়। এটি একটি সংখ্যারেখায় ভরকেন্দ্রের (center of mass) সাথে সম্পূর্ণরূপে সাদৃশ্যপূর্ণ।
 
-3. **Unbiasedness**: The expected value equals the population mean
-   $$E[\bar{x}] = \mu$$
+### Median / মধ্যক
 
-4. **Sum of Deviations**: The sum of deviations from the mean is zero
-   $$\sum_{i=1}^n (x_i - \bar{x}) = 0$$
+The middle value when data are ordered. For $n$ observations:
 
-5. **Efficiency**: Among all unbiased estimators, the mean has the lowest variance
+$$\text{Median} = \begin{cases} x_{\left(\frac{n+1}{2}\right)} & n \text{ odd} \\[4pt] \frac{1}{2}\left(x_{(n/2)} + x_{(n/2 + 1)}\right) & n \text{ even} \end{cases}$$
 
-#### Derivation of the Mean
+**English — Least-absolute-deviations property**: the median minimizes $\sum_{i=1}^n |x_i - c|$.
 
-**The Optimization Problem:**
+**বাংলা — ন্যূনতম পরম বিচ্যুতির বৈশিষ্ট্য**: মধ্যক $\sum_{i=1}^n |x_i - c|$ কে সর্বনিম্ন করে।
 
-Find \(c\) that minimizes \(S(c) = \sum_{i=1}^n (x_i - c)^2\)
+**English**: This absolute-value (rather than squared) criterion is exactly why the median doesn't "care" how far an extreme value is from the rest of the data — only that it's on one side or the other. This is the mathematical root of the median's famous robustness to outliers.
 
-**Step 1:** Take the derivative with respect to c
-$$\frac{dS}{dc} = -2\sum_{i=1}^n (x_i - c)$$
+**বাংলা**: এই পরম মান (squared নয়) মানদণ্ডই মূলত কারণ কেন মধ্যক "চিন্তা করে না" একটি চরম মান বাকি ডেটা থেকে কতদূরে — শুধু এটি একপাশে না অন্যপাশে তা গুরুত্বপূর্ণ। এটিই মধ্যকের বিখ্যাত outlier-দৃঢ়তার (robustness) গাণিতিক মূল।
 
-**Step 2:** Set derivative to zero
-$$-2\sum_{i=1}^n (x_i - c) = 0$$
+### Mode / প্রচুরক
 
-**Step 3:** Solve for c
-$$\sum_{i=1}^n (x_i - c) = 0$$
-$$\sum_{i=1}^n x_i - nc = 0$$
-$$nc = \sum_{i=1}^n x_i$$
-$$c = \frac{1}{n}\sum_{i=1}^n x_i = \bar{x}$$
+**English**: The most frequently occurring value. The only measure valid for nominal data. A distribution can be unimodal, bimodal, or multimodal.
 
-**Step 4:** Verify it's a minimum (second derivative is positive)
-$$\frac{d^2S}{dc^2} = 2n > 0$$
+**বাংলা**: সবচেয়ে বেশি ঘটে যাওয়া মান। শুধুমাত্র নামসূচক (nominal) ডেটার জন্য বৈধ একমাত্র পরিমাপ। একটি বণ্টন এককরূপী (unimodal), দ্বিরূপী (bimodal), অথবা বহুরূপী (multimodal) হতে পারে।
 
-#### The Median as an Optimization
-
-The median minimizes the sum of absolute deviations:
-
-$$\sum_{i=1}^n |x_i - c| \text{ is minimized when } c \text{ is the median}$$
-
-**Proof Intuition:** The derivative of \(|x_i - c|\) is:
-- \(-1\) when \(x_i > c\)
-- \(+1\) when \(x_i < c\)
-- Undefined at \(x_i = c\)
-
-The minimum occurs when there are equal numbers of observations on both sides.
-
----
-
-## 📊 Measures of Central Tendency
-
-### 1. Arithmetic Mean
-
-#### Full Derivation
-
-**The Least-Squares Derivation:**
-
-We want to find the value \(c\) that minimizes:
-
-$$S(c) = \sum_{i=1}^n (x_i - c)^2$$
-
-**Proof:**
-1. Expand \(S(c)\):
-   $$S(c) = \sum_{i=1}^n x_i^2 - 2c\sum_{i=1}^n x_i + nc^2$$
-
-2. Differentiate:
-   $$\frac{dS}{dc} = -2\sum_{i=1}^n x_i + 2nc$$
-
-3. Set to zero:
-   $$-2\sum_{i=1}^n x_i + 2nc = 0$$
-   $$nc = \sum_{i=1}^n x_i$$
-   $$c = \frac{1}{n}\sum_{i=1}^n x_i = \bar{x}$$
-
-#### Properties in Detail
-
-| Property | Mathematical Statement | Implication |
-|----------|----------------------|-------------|
-| **Linearity** | \(\overline{ax + b} = a\bar{x} + b\) | Scale transformations are predictable |
-| **Unbiasedness** | \(E[\bar{x}] = \mu\) | No systematic error |
-| **Efficiency** | \(\text{Var}(\bar{x}) = \sigma^2/n\) | Variance decreases with n |
-| **Consistency** | \(\bar{x} \xrightarrow{p} \mu\) | Converges to true mean |
-| **Additivity** | \(\overline{x + y} = \bar{x} + \bar{y}\) | Separable |
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✓ Uses all available data | ✗ Highly sensitive to outliers |
-| ✓ Mathematically tractable | ✗ Not robust to skewness |
-| ✓ Has excellent statistical properties | ✗ May not represent "typical" value |
-| ✓ Unbiased estimator | ✗ Only valid for quantitative data |
-| ✓ Basis for many statistical methods | ✗ Requires interval/ratio scale |
-
-#### Interpretation Guide
-
-> 💡 **Key Insight**: The mean is the **balance point** of the data, where the sum of positive and negative deviations exactly cancel.
-
-**Contextual Interpretations:**
-
-| Context | Interpretation |
-|---------|----------------|
-| **Normal distribution** | The typical or average value |
-| **Symmetric distribution** | Central tendency |
-| **Skewed distribution** | Might be misleading as "typical" |
-| **Medical research** | Average effect or baseline characteristic |
-| **Public health** | Population average indicator |
-
----
-
-### 2. Weighted Mean
-
-#### Mathematical Definition
+### Weighted Mean / ভারযুক্ত গড়
 
 $$\bar{x}_w = \frac{\sum_{i=1}^n w_i x_i}{\sum_{i=1}^n w_i}$$
 
-#### Derivation
+**English**: Used extensively in survey statistics (Chapter 16, planned) where each observation carries a sampling weight — some individuals in a survey represent more people in the underlying population than others, and ignoring this systematically biases the estimate.
 
-**The Optimization Problem:**
+**বাংলা**: সার্ভে পরিসংখ্যানে ব্যাপকভাবে ব্যবহৃত হয় (১৬শ অধ্যায়, পরিকল্পিত) যেখানে প্রতিটি পর্যবেক্ষণ একটি নমুনা ওজন (sampling weight) বহন করে — একটি সার্ভেতে কিছু ব্যক্তি অন্তর্নিহিত জনসংখ্যার তুলনায় বেশি মানুষের প্রতিনিধিত্ব করে, এবং এটি উপেক্ষা করলে অনুমান পদ্ধতিগতভাবে পক্ষপাতদুষ্ট (biased) হয়ে যায়।
 
-Minimize the weighted sum of squared deviations:
+### Geometric Mean / জ্যামিতিক গড়
 
-$$S_w(c) = \sum_{i=1}^n w_i (x_i - c)^2$$
+$$GM = \left(\prod_{i=1}^n x_i\right)^{1/n}$$
 
-**Step 1:** Differentiate with respect to c
-$$\frac{dS_w}{dc} = -2\sum_{i=1}^n w_i(x_i - c)$$
+**English**: Used for growth rates, ratios, and log-normally distributed data (e.g., viral load, antibody titers in immunology, or compound annual growth rates in economics).
 
-**Step 2:** Set to zero
-$$\sum_{i=1}^n w_i x_i - c\sum_{i=1}^n w_i = 0$$
+**বাংলা**: প্রবৃদ্ধির হার, অনুপাত, এবং লগ-নরমাল বিতরণকৃত ডেটার (যেমন, ভাইরাল লোড, ইমিউনোলজিতে অ্যান্টিবডি টাইটার, অথবা অর্থনীতিতে যৌগিক বার্ষিক প্রবৃদ্ধির হার) জন্য ব্যবহৃত হয়।
 
-**Step 3:** Solve for c
-$$c = \frac{\sum_{i=1}^n w_i x_i}{\sum_{i=1}^n w_i} = \bar{x}_w$$
+### Harmonic Mean / হারমোনিক গড়
 
-#### Common Weight Types
+$$HM = \frac{n}{\sum_{i=1}^n \frac{1}{x_i}}$$
 
-| Weight Type | Example | Use Case |
-|-------------|---------|----------|
-| **Frequency** | Number of observations in each group | Aggregating grouped data |
-| **Inverse Variance** | \(1/s_i^2\) | Meta-analysis, combining estimates |
-| **Survey Design** | Sampling weights | Complex survey data (DHS, NHANES) |
-| **Distance Weighting** | Inverse distance | Spatial statistics |
-| **Importance Weighting** | Expert assigned weights | Composite indices |
+**English**: Used for rates (e.g., average speed over a fixed distance, or the F1-score in machine learning — Chapter 24, planned — which is the harmonic mean of precision and recall).
 
-#### Applications
+**বাংলা**: হারের জন্য ব্যবহৃত হয় (যেমন, একটি নির্দিষ্ট দূরত্বের উপর গড় গতি, অথবা মেশিন লার্নিংয়ে F1-স্কোর — ২৪শ অধ্যায়, পরিকল্পিত — যা precision এবং recall-এর হারমোনিক গড়)।
 
-**1. Survey Research**
-- Adjusting for oversampling or undersampling
-- Population weighting in DHS surveys
-- Post-stratification adjustments
+### Trimmed Mean / ছাঁটা গড়
 
-**2. Meta-Analysis**
-- Combining study results
-- Weighting by precision (inverse variance)
-- Random effects vs. fixed effects
+**English**: Computed by removing a fixed percentage of the smallest and largest values before averaging the rest. It sits conceptually between the mean (uses all data, sensitive to outliers) and the median (ignores magnitude entirely, maximally robust). A 10% trimmed mean removes the bottom and top 10% of sorted values.
 
-**3. Composite Indices**
-- Human Development Index (HDI)
-- Health quality metrics
-- Multi-dimensional poverty index
-
-#### Real Example: Weighted Mean in DHS Surveys
-
-```text
-DHS Surveys use sampling weights (v005) to adjust for:
-- Unequal probability of selection
-- Non-response
-- Post-stratification
-
-Weighted Mean Formula:
-\bar{x}_w = \frac{\sum_{i=1}^n w_i x_i}{\sum_{i=1}^n w_i}
-
-Where w_i = sampling weight / 1,000,000
-```
+**বাংলা**: বাকি অংশের গড় নেওয়ার আগে সবচেয়ে ছোট এবং বড় মানগুলোর একটি নির্দিষ্ট শতাংশ অপসারণ করে গণনা করা হয়। এটি ধারণাগতভাবে গড়ের (সব ডেটা ব্যবহার করে, outlier-সংবেদনশীল) এবং মধ্যকের (মাত্রাকে সম্পূর্ণরূপে উপেক্ষা করে, সর্বোচ্চ দৃঢ়) মধ্যে অবস্থান করে। একটি ১০% ছাঁটা গড় সাজানো মানগুলোর নিচের এবং উপরের ১০% অপসারণ করে।
 
 ---
 
-### 3. Geometric Mean
-
-#### Mathematical Definition
-
-$$G = \left(\prod_{i=1}^n x_i\right)^{1/n}$$
-
-**Logarithmic Form:**
-$$G = \exp\left(\frac{1}{n}\sum_{i=1}^n \ln x_i\right)$$
-
-#### Derivation
-
-**Step 1:** Take the natural log of both sides
-$$\ln G = \ln\left[\left(\prod_{i=1}^n x_i\right)^{1/n}\right]$$
-
-**Step 2:** Use log rules
-$$\ln G = \frac{1}{n}\sum_{i=1}^n \ln x_i$$
-
-**Step 3:** This is the arithmetic mean of the logged values
-
-**Step 4:** Exponentiate to get G
-$$G = \exp\left(\frac{1}{n}\sum_{i=1}^n \ln x_i\right)$$
-
-#### Properties
-
-> 📊 **Key Properties**
-
-1. **Multiplicative**: \(G\) is the value that, if multiplied n times, gives the product of all values
-2. **Scale-Invariant**: \(G(aX) = a \cdot G(X)\) for \(a > 0\)
-3. **Log-Normal**: For log-normal data, G is the median
-4. **Relationship**: For positive values, \(H \leq G \leq A\)
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✓ Appropriate for multiplicative data | ✗ Requires positive values |
-| ✓ Handles ratios and growth rates well | ✗ Less intuitive interpretation |
-| ✓ Less affected by large values | ✗ Not defined for negative values |
-| ✓ Natural for log-normal data | ✗ Can be 0 if any value is 0 |
-
-#### Applications
-
-**Medical Example: Antibody Titers**
-
-```text
-Study: Vaccine response in immunology
-Data: Antibody titers (dilution factors)
-- Patient 1: 1:40
-- Patient 2: 1:80
-- Patient 3: 1:160
-- Patient 4: 1:320
-- Patient 5: 1:640
-
-Geometric Mean = (40 × 80 × 160 × 320 × 640)^(1/5)
-                 = (1.048 × 10^10)^(0.2)
-                 ≈ 160
-
-Interpretation: The typical antibody titer is about 1:160
-```
-
-**Public Health Example: Environmental Exposure**
-
-```text
-Study: Air pollution exposure in urban areas
-Data: PM2.5 concentrations (μg/m³)
-- 15, 22, 18, 45, 12, 25, 30, 19, 23, 17
-
-Geometric Mean = exp(mean(log(data)))
-               = exp(mean(2.71, 3.09, 2.89, 3.81, 2.48, 
-                         3.22, 3.40, 2.94, 3.14, 2.83))
-               = exp(3.05)
-               ≈ 21.1 μg/m³
-
-Interpretation: The geometric mean better represents central 
-exposure in log-normal distributions
-```
-
-**Machine Learning Example: Feature Engineering**
-
-```python
-# Log transformation for multiplicative features
-import numpy as np
-
-# Price data (multiplicative process)
-prices = np.array([15, 22, 18, 45, 12, 25, 30, 19, 23, 17])
-
-# Geometric mean
-gm = np.exp(np.mean(np.log(prices)))
-print(f"Geometric mean: {gm:.2f}")
-
-# Use for feature scaling in ML
-log_prices = np.log(prices)  # Log transformation
-```
-
----
-
-### 4. Harmonic Mean
-
-#### Mathematical Definition
-
-$$H = \frac{n}{\sum_{i=1}^n \frac{1}{x_i}}$$
-
-#### Derivation
-
-**Step 1:** Take the reciprocal of the arithmetic mean of reciprocals
-$$\frac{1}{H} = \frac{1}{n}\sum_{i=1}^n \frac{1}{x_i}$$
-
-**Step 2:** Solve for H
-$$H = \frac{n}{\sum_{i=1}^n \frac{1}{x_i}}$$
-
-#### Properties
-
-> 📊 **Key Properties**
-
-1. **Rate Averaging**: Appropriate for rates and ratios
-2. **Small Value Influence**: Less influenced by large values, more by small values
-3. **Relationship**: For positive values, \(H \leq G \leq A\)
-4. **Equality**: \(H = G = A\) only when all values are equal
-
-#### Applications
-
-**1. Average Speed**
-
-```text
-Problem: Traveling 100 miles at 50 mph, then 100 miles at 60 mph
-
-Harmonic Mean Speed = 2 / (1/50 + 1/60)
-                    = 2 / (0.02 + 0.01667)
-                    = 2 / 0.03667
-                    ≈ 54.55 mph
-
-Arithmetic Mean Speed = (50 + 60) / 2 = 55 mph
-```
-
-**2. Machine Learning: F1-Score**
-
-$$F1 = \frac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$
-
-This is the harmonic mean of precision and recall.
-
----
-
-### 5. Median
-
-#### Mathematical Definition
-
-For ordered data \(x_{(1)} \leq x_{(2)} \leq ... \leq x_{(n)}\):
-
-$$\text{Median} = 
-\begin{cases}
-x_{(n+1)/2} & \text{if n is odd} \\
-\frac{x_{n/2} + x_{n/2+1}}{2} & \text{if n is even}
-\end{cases}$$
-
-#### Derivation as Optimization
-
-The median minimizes the sum of absolute deviations:
-
-$$m = \arg\min_c \sum_{i=1}^n |x_i - c|$$
-
-**Proof:**
-1. Let \(F(c) = \sum_{i=1}^n |x_i - c|\)
-2. The derivative \(F'(c) = \#\{x_i > c\} - \#\{x_i < c\}\)
-3. Set \(F'(c) = 0\): equal numbers on both sides
-4. This gives the median
-
-#### Properties
-
-> 📊 **Key Properties**
-
-1. **Robustness**: Resistant to outliers (breakdown point = 50%)
-2. **Invariance**: Median(\(aX + b\)) = \(a \cdot \text{Median}(X) + b\)
-3. **Order**: Depends only on relative order, not magnitude
-4. **Breakdown Point**: 50% of data can be corrupted without changing the median
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✓ Robust to outliers | ✗ Less efficient than mean |
-| ✓ Appropriate for ordinal data | ✗ Loses magnitude information |
-| ✓ Works with skewed distributions | ✗ Higher sampling variation |
-| ✓ Always exists | ✗ More complex for large datasets |
-| ✓ Easy to understand | ✗ Not algebraically tractable |
-
-#### Interpretation Guide
-
-> 💡 **Key Insight**: The median represents the **middle position** where 50% of observations fall on each side.
-
-**Contextual Interpretations:**
-
-| Context | Interpretation |
-|---------|----------------|
-| **Income data** | "Typical" person's income |
-| **Survival analysis** | Median survival time |
-| **Clinical research** | Median hospital stay |
-| **Public health** | Median household income |
-
----
-
-### 6. Mode
-
-#### Mathematical Definition
-
-$$\text{Mode} = \arg\max_x f(x)$$
-
-Where \(f(x)\) is the frequency of value \(x\).
-
-#### Properties
-
-> 📊 **Key Properties**
-
-1. **Uniqueness**: May be non-unique (multimodal)
-2. **Stability**: Stable for categorical data
-3. **Applicability**: Works for all data types
-4. **Existence**: May not exist if no value repeats
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✓ Works for all data types | ✗ May be non-unique |
-| ✓ Easy to understand | ✗ Not stable for small samples |
-| ✓ Represents typical category | ✗ Loses magnitude information |
-| ✓ No arithmetic needed | ✗ May be meaningless for continuous data |
-
-#### Applications
-
-**Medical Example: Blood Type**
-```text
-Most common blood type: O positive
-```
-
-**Public Health Example: Disease Outbreak**
-```text
-Most common age group: 25-34 years
-```
-
-**Machine Learning Example: Imputation**
-```python
-# Mode imputation for categorical missing values
-from sklearn.impute import SimpleImputer
-imputer = SimpleImputer(strategy='most_frequent')
-```
-
----
-
-### 7. Trimmed Mean
-
-#### Mathematical Definition
-
-For a 100α% trimmed mean:
-
-$$\bar{x}_{\text{trim}} = \frac{1}{n(1-2\alpha)}\sum_{i=\alpha n+1}^{n(1-\alpha)} x_{(i)}$$
-
-#### Properties
-
-> 📊 **Key Properties**
-
-1. **Robustness**: Less sensitive to outliers than the mean
-2. **Efficiency**: More efficient than the median
-3. **Trade-off**: Balances efficiency and robustness
-4. **Breakdown Point**: α (the trimming proportion)
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✓ More robust than mean | ✗ Less efficient than mean |
-| ✓ More efficient than median | ✗ Requires choosing trimming proportion |
-| ✓ Still uses most data | ✗ Not intuitive for some |
-| ✓ Good for moderate outliers | ✗ Loses some information |
-
-#### Applications
-
-**Sports Scoring**
-```text
-Olympic diving scores:
-- Judges: 9.5, 9.4, 9.6, 9.7, 4.5 (outlier!)
-- 20% trimmed mean: Remove highest and lowest
-- Result: (9.4 + 9.5 + 9.6) / 3 = 9.5
-```
-
-**Medical Example: Toxicological Studies**
-```text
-Study: Chemical exposure in occupational health
-Data: Daily exposure levels with some extreme values
-- 20% trimmed mean provides robust exposure estimate
-```
-
----
-
-## 📊 Choosing the Right Measure
-
-### Decision Framework
+## Choosing the Right Measure / সঠিক পরিমাপ নির্বাচন
 
 ```mermaid
 flowchart TD
-    A[What is the data type?] -->|Nominal| B[Mode]
-    A -->|Ordinal| C[Median or Mode]
-    A -->|Interval/Ratio| D{Is data skewed or has outliers?}
-    D -->|Yes| E[Median]
-    D -->|No, symmetric| F[Mean]
-    D -->|Ratios/growth rates| G[Geometric Mean]
-    D -->|Rates| H[Harmonic Mean]
-    D -->|Some outliers| I[Trimmed Mean]
+    A{What is the data type? / ডেটার ধরন কী?} -->|Nominal / নামসূচক| B[Mode / প্রচুরক]
+    A -->|Ordinal / ক্রমসূচক| C[Median or Mode / মধ্যক বা প্রচুরক]
+    A -->|Interval/Ratio / ব্যবধান/অনুপাত| D{Is data skewed or has outliers? / তির্যক নাকি outlier আছে?}
+    D -->|Yes / হ্যাঁ| E[Median / মধ্যক]
+    D -->|No, symmetric / না, প্রতিসম| F[Mean / গড়]
+    D -->|Ratios/growth rates / অনুপাত/প্রবৃদ্ধির হার| G[Geometric Mean / জ্যামিতিক গড়]
+    D -->|Rates / হার| H[Harmonic Mean / হারমোনিক গড়]
 ```
 
-### Comparison Table
-
-| Measure | Sensitive to Outliers? | Uses All Data? | Valid Scale | Interpretation |
-|---------|----------------------|----------------|-------------|----------------|
-| **Mean** | Yes (highly) | Yes | Interval, Ratio | Balance point |
-| **Weighted Mean** | Yes | Yes | Interval, Ratio | Weighted balance |
-| **Geometric Mean** | Yes (for large) | Yes | Ratio (positive) | Multiplicative center |
-| **Harmonic Mean** | Yes (for small) | Yes | Ratio (positive) | Rate center |
-| **Median** | No (robust) | No (only order) | Ordinal, Interval, Ratio | Middle position |
-| **Mode** | No | No | All types | Most frequent |
-| **Trimmed Mean** | Moderately | Mostly | Interval, Ratio | Robust center |
-
-### When to Use What
-
-| Situation | Best Choice |
-|-----------|-------------|
-| Symmetric, no outliers | Mean |
-| Skewed data | Median |
-| Categorical data | Mode |
-| Survey data | Weighted Mean |
-| Growth rates | Geometric Mean |
-| Rates (speed, F1) | Harmonic Mean |
-| Some outliers | Trimmed Mean |
-| Ordinal data | Median |
+| Measure / পরিমাপ | Sensitive to Outliers? / Outlier-সংবেদনশীল? | Uses All Data? / সব ডেটা ব্যবহার করে? | Valid Scale / বৈধ স্কেল |
+|---|---|---|---|
+| Mean / গড় | Yes (highly) / হ্যাঁ (অত্যধিক) | Yes / হ্যাঁ | Interval, Ratio |
+| Median / মধ্যক | No (robust) / না (দৃঢ়) | No (only order) / না (শুধু ক্রম) | Ordinal, Interval, Ratio |
+| Mode / প্রচুরক | No / না | No / না | Nominal, Ordinal, Interval, Ratio |
+| Geometric Mean / জ্যামিতিক গড় | Yes / হ্যাঁ | Yes / হ্যাঁ | Ratio (positive values only / শুধু ধনাত্মক মান) |
+| Harmonic Mean / হারমোনিক গড় | Yes / হ্যাঁ | Yes / হ্যাঁ | Ratio (positive values only / শুধু ধনাত্মক মান) |
+| Trimmed Mean / ছাঁটা গড় | Reduced / হ্রাসকৃত | Partially / আংশিকভাবে | Interval, Ratio |
 
 ---
 
-## ✏️ Worked Examples
+## Worked Example 1 — Blood Pressure / উদাহরণ ১ — রক্তচাপ
 
-### Example 1: Clinical Trial Baseline Data
+**English**: Continuing the systolic BP dataset from Chapter 1:
 
-**Dataset:** Blood pressure (mmHg) from a clinical trial
+**বাংলা**: প্রথম অধ্যায়ের সিস্টোলিক রক্তচাপ ডেটাসেট অব্যাহত রেখে:
 
-`118, 119, 121, 122, 125, 128, 130, 138, 145, 150`
+`118, 119, 121, 122, 125, 128, 130, 138, 145, 150` (n = 10, sorted / সাজানো)
 
-**Step 1:** Sort data (already sorted)
+**Mean / গড়**:
+$$\bar{x} = \frac{118+119+121+122+125+128+130+138+145+150}{10} = \frac{1296}{10} = 129.6 \text{ mmHg}$$
 
-**Step 2:** Calculate the Mean
-$$\bar{x} = \frac{118+119+121+122+125+128+130+138+145+150}{10}$$
-$$\bar{x} = \frac{1296}{10} = 129.6 \text{ mmHg}$$
-
-**Step 3:** Calculate the Median (n = 10, even)
+**Median / মধ্যক** (n = 10, even / জোড়):
 $$\text{Median} = \frac{125 + 128}{2} = 126.5 \text{ mmHg}$$
 
-**Step 4:** Calculate the Mode
-No value repeats → **no mode**
+**Mode / প্রচুরক**: No value repeats → this dataset has **no mode**.
+কোনো মান পুনরাবৃত্তি হয় না → এই ডেটাসেটের **কোনো প্রচুরক নেই**।
 
-**Step 5:** Calculate Trimmed Mean (10% trim)
-Remove 1 smallest and 1 largest:
-$$\bar{x}_{\text{trim}} = \frac{119+121+122+125+128+130+138+145}{8}$$
-$$\bar{x}_{\text{trim}} = \frac{1028}{8} = 128.5 \text{ mmHg}$$
+**English — Effect of an outlier**: Suppose the last patient's BP was mistakenly entered as 250 instead of 150.
+- New mean = 141.6 mmHg (jumps by 12 points)
+- New median = 126.5 mmHg (**unchanged** — median is robust)
 
-### Example 2: Effect of an Outlier
+**বাংলা — Outlier-এর প্রভাব**: ধরুন শেষ রোগীর রক্তচাপ ভুলবশত ১৫০ এর পরিবর্তে ২৫০ লেখা হয়েছে।
+- নতুন গড় = ১৪১.৬ mmHg (১২ পয়েন্ট বৃদ্ধি পায়)
+- নতুন মধ্যক = ১২৬.৫ mmHg (**অপরিবর্তিত** — মধ্যক দৃঢ়)
 
-**Original:** `118, 119, 121, 122, 125, 128, 130, 138, 145, 150`
-- Mean: 129.6 mmHg
-- Median: 126.5 mmHg
+**English**: This single example is the clearest demonstration of why medians are preferred for skewed clinical data such as length of hospital stay, cost data, or viral load.
 
-**With Outlier:** `118, 119, 121, 122, 125, 128, 130, 138, 145, 250`
-- New Mean: 139.6 mmHg (↑ 10 mmHg)
-- New Median: 126.5 mmHg (unchanged!)
+**বাংলা**: এই একটি উদাহরণই সবচেয়ে স্পষ্টভাবে দেখায় কেন হাসপাতালে থাকার দৈর্ঘ্য, খরচের ডেটা, বা ভাইরাল লোডের মতো তির্যক ক্লিনিক্যাল ডেটার জন্য মধ্যক পছন্দ করা হয়।
 
-> [!IMPORTANT]
-> **Key Insight:** This single example is the clearest demonstration of why medians are preferred for skewed clinical data such as length of hospital stay, cost data, or viral load.
+## Worked Example 2 — Household Income (Geometric Mean) / উদাহরণ ২ — পারিবারিক আয় (জ্যামিতিক গড়)
 
-### Example 3: Geometric Mean
+**English**: Consider five households with monthly income (in thousands of BDT): `20, 25, 30, 40, 500`. The last household is a very high earner.
 
-**Dataset:** Antibody titers: 40, 80, 160, 320, 640
+**বাংলা**: পাঁচটি পরিবারের মাসিক আয় (হাজার টাকায়) বিবেচনা করুন: `২০, ২৫, ৩০, ৪০, ৫০০`। শেষ পরিবারটি খুব বেশি আয় করে।
 
-**Step 1:** Take natural logs
-$$\ln 40 = 3.689, \ln 80 = 4.382, \ln 160 = 5.075, \ln 320 = 5.768, \ln 640 = 6.461$$
+**Arithmetic mean / গাণিতিক গড়**:
+$$\bar{x} = \frac{20+25+30+40+500}{5} = \frac{615}{5} = 123 \text{ thousand BDT}$$
 
-**Step 2:** Calculate mean of logs
-$$\frac{3.689 + 4.382 + 5.075 + 5.768 + 6.461}{5} = \frac{25.375}{5} = 5.075$$
+**English**: This "average" of 123,000 BDT does not represent any household well — four of five households earn far less than this.
 
-**Step 3:** Exponentiate
-$$G = e^{5.075} = 160$$
+**বাংলা**: এই "গড়" ১,২৩,০০০ টাকা কোনো পরিবারকেই ভালোভাবে প্রতিনিধিত্ব করে না — পাঁচটির মধ্যে চারটি পরিবার এর চেয়ে অনেক কম আয় করে।
 
-**Interpretation:** The typical antibody titer is 1:160
+**Median / মধ্যক**: sorted data `20, 25, 30, 40, 500` → middle value = **30 thousand BDT**, a far more representative "typical" income.
 
-### Example 4: Weighted Mean
+**Geometric mean / জ্যামিতিক গড়**:
+$$GM = (20 \times 25 \times 30 \times 40 \times 500)^{1/5} = (300{,}000{,}000)^{1/5} \approx 49.6 \text{ thousand BDT}$$
 
-**Dataset:** Survey data with weights
+**English**: The geometric mean (49.6) sits between the median and the mean — it is less distorted by the single extreme value than the arithmetic mean, which is why economists often use geometric means for income and growth data.
 
-| Group | n | Mean Income | Weight (inverse variance) |
-|-------|---|-------------|--------------------------|
-| Urban | 50 | $65,000 | 0.8 |
-| Suburban | 30 | $72,000 | 1.2 |
-| Rural | 20 | $58,000 | 1.0 |
+**বাংলা**: জ্যামিতিক গড় (৪৯.৬) মধ্যক এবং গড়ের মধ্যে অবস্থান করে — এটি একক চরম মান দ্বারা গাণিতিক গড়ের তুলনায় কম বিকৃত হয়, এই কারণেই অর্থনীতিবিদরা প্রায়ই আয় এবং প্রবৃদ্ধির ডেটার জন্য জ্যামিতিক গড় ব্যবহার করেন।
 
-**Step 1:** Calculate weighted mean
-$$\bar{x}_w = \frac{50(65000) + 30(72000) + 20(58000)}{50 + 30 + 20}$$
-$$\bar{x}_w = \frac{3,250,000 + 2,160,000 + 1,160,000}{100}$$
-$$\bar{x}_w = \frac{6,570,000}{100} = \$65,700$$
+## Worked Example 3 — Mode with Categorical Data / উদাহরণ ৩ — শ্রেণীগত ডেটাসহ প্রচুরক
+
+**English**: In a survey of 20 patients' blood types: `O+ (8), A+ (6), B+ (4), AB+ (2)`. Since blood type is nominal, only the mode is valid: **O+** is the modal blood type.
+
+**বাংলা**: ২০ জন রোগীর রক্তের গ্রুপের একটি জরিপে: `O+ (৮), A+ (৬), B+ (৪), AB+ (২)`। যেহেতু রক্তের গ্রুপ নামসূচক, শুধুমাত্র প্রচুরক বৈধ: **O+** হলো প্রচুরক রক্তের গ্রুপ।
 
 ---
 
-## 💻 Software Implementation
+## Software Implementation / সফটওয়্যার বাস্তবায়ন
 
-### R Implementation
+**English**: The code blocks below are identical regardless of language — code syntax does not need translation, since programming languages are already universal. Comments are provided in English; Bengali-speaking learners are encouraged to add their own Bengali comments as they practice.
 
-<details>
-<summary>📋 Click to expand R code</summary>
+**বাংলা**: নিচের কোড ব্লকগুলো ভাষা নির্বিশেষে অভিন্ন — কোড সিনট্যাক্সের অনুবাদের প্রয়োজন নেই, কারণ প্রোগ্রামিং ভাষা ইতিমধ্যে সার্বজনীন। মন্তব্য (comments) ইংরেজিতে দেওয়া হয়েছে; বাংলাভাষী শিক্ষার্থীদের অনুশীলনের সময় নিজেদের বাংলা মন্তব্য যোগ করতে উৎসাহিত করা হচ্ছে।
+
+### R
 
 ```r
-# Load necessary libraries
-library(dplyr)
-library(psych)
-
-# Create dataset
 bp <- c(118, 122, 130, 145, 119, 125, 138, 128, 121, 150)
 
-# Basic measures
-mean_bp <- mean(bp)
-median_bp <- median(bp)
+mean(bp)
+median(bp)
 
-# Mode function
+# Mode (R has no built-in mode function)
 get_mode <- function(v) {
   uniq_v <- unique(v)
   uniq_v[which.max(tabulate(match(v, uniq_v)))]
 }
-mode_bp <- get_mode(bp)
+get_mode(bp)
 
-# Trimmed mean (10% trim)
-trim_mean <- mean(bp, trim = 0.1)
+# Trimmed mean (removes top/bottom 10%)
+mean(bp, trim = 0.1)
 
 # Weighted mean
-weights <- c(1, 1, 2, 1, 1, 1, 1, 1, 1, 3)
-w_mean <- weighted.mean(bp, weights)
+w <- c(1,1,2,1,1,1,1,1,1,3)
+weighted.mean(bp, w)
 
 # Geometric mean
-g_mean <- exp(mean(log(bp)))
+exp(mean(log(bp)))
 
 # Harmonic mean
-h_mean <- length(bp) / sum(1/bp)
-
-# Create summary
-summary_stats <- data.frame(
-  Measure = c("Mean", "Median", "Mode", "Trimmed Mean", 
-              "Weighted Mean", "Geometric Mean", "Harmonic Mean"),
-  Value = c(mean_bp, median_bp, mode_bp, trim_mean,
-            w_mean, g_mean, h_mean)
-)
-
-print(summary_stats)
-
-# Using psych package for more detailed output
-library(psych)
-describe(bp)
-
-# Visual comparison
-library(ggplot2)
-df <- data.frame(bp = bp)
-ggplot(df, aes(x = bp)) +
-  geom_histogram(bins = 10, alpha = 0.7, fill = "steelblue") +
-  geom_vline(aes(xintercept = mean(bp)), color = "red", 
-             linetype = "dashed", size = 1) +
-  geom_vline(aes(xintercept = median(bp)), color = "blue", 
-             linetype = "dashed", size = 1) +
-  geom_vline(aes(xintercept = get_mode(bp)), color = "green", 
-             linetype = "dashed", size = 1) +
-  labs(
-    title = "Measures of Central Tendency",
-    x = "Blood Pressure (mmHg)",
-    y = "Frequency"
-  ) +
-  theme_minimal()
+length(bp) / sum(1/bp)
 ```
-</details>
 
-### Python Implementation
-
-<details>
-<summary>📋 Click to expand Python code</summary>
+### Python
 
 ```python
 import numpy as np
 from scipy import stats
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-# Create dataset
 bp = np.array([118, 122, 130, 145, 119, 125, 138, 128, 121, 150])
 
-# Basic measures
-mean_bp = np.mean(bp)
-median_bp = np.median(bp)
-mode_bp = stats.mode(bp, keepdims=True).mode[0]
+print("Mean:", np.mean(bp))
+print("Median:", np.median(bp))
+print("Mode:", stats.mode(bp, keepdims=True))
+print("Trimmed mean:", stats.trim_mean(bp, 0.1))
+print("Geometric mean:", stats.gmean(bp))
+print("Harmonic mean:", stats.hmean(bp))
 
-# Trimmed mean (10% trim)
-trim_mean = stats.trim_mean(bp, 0.1)
-
-# Weighted mean
-weights = np.array([1, 1, 2, 1, 1, 1, 1, 1, 1, 3])
-w_mean = np.average(bp, weights=weights)
-
-# Geometric mean
-g_mean = stats.gmean(bp)
-
-# Harmonic mean
-h_mean = stats.hmean(bp)
-
-# Create summary table
-summary_df = pd.DataFrame({
-    'Measure': ['Mean', 'Median', 'Mode', 'Trimmed Mean', 
-                'Weighted Mean', 'Geometric Mean', 'Harmonic Mean'],
-    'Value': [mean_bp, median_bp, mode_bp, trim_mean,
-              w_mean, g_mean, h_mean]
-})
-
-print(summary_df.to_string(index=False))
-
-# Additional descriptive statistics
-print("\nDetailed Statistics:")
-print(f"Count: {len(bp)}")
-print(f"Min: {np.min(bp)}")
-print(f"Max: {np.max(bp)}")
-print(f"Variance: {np.var(bp, ddof=1)}")
-print(f"Skewness: {stats.skew(bp)}")
-print(f"Kurtosis: {stats.kurtosis(bp)}")
-
-# Visual comparison
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-# Histogram with central tendency lines
-ax = axes[0]
-ax.hist(bp, bins=10, alpha=0.7, color='steelblue', edgecolor='black')
-ax.axvline(mean_bp, color='red', linestyle='--', linewidth=2, label=f'Mean: {mean_bp:.1f}')
-ax.axvline(median_bp, color='blue', linestyle='--', linewidth=2, label=f'Median: {median_bp:.1f}')
-ax.axvline(mode_bp, color='green', linestyle='--', linewidth=2, label=f'Mode: {mode_bp}')
-ax.set_xlabel('Blood Pressure (mmHg)')
-ax.set_ylabel('Frequency')
-ax.set_title('Histogram with Central Tendency Measures')
-ax.legend()
-
-# Boxplot
-ax = axes[1]
-bp_data = [bp]
-ax.boxplot(bp_data, patch_artist=True)
-ax.set_xticklabels(['BP'])
-ax.set_ylabel('Blood Pressure (mmHg)')
-ax.set_title('Boxplot of Blood Pressure')
-ax.grid(True, alpha=0.3)
-
-plt.tight_layout()
-plt.show()
-
-# Comparison with outlier
-bp_with_outlier = np.append(bp, 250)
-print("\nEffect of Outlier:")
-print(f"Original mean: {np.mean(bp):.1f}")
-print(f"Mean with outlier: {np.mean(bp_with_outlier):.1f}")
-print(f"Original median: {np.median(bp):.1f}")
-print(f"Median with outlier: {np.median(bp_with_outlier):.1f}")
+weights = np.array([1,1,2,1,1,1,1,1,1,3])
+print("Weighted mean:", np.average(bp, weights=weights))
 ```
-</details>
 
-### SPSS Syntax
-
-<details>
-<summary>📋 Click to expand SPSS syntax</summary>
+### SPSS
 
 ```spss
-* Descriptive statistics for BP.
 DESCRIPTIVES VARIABLES=bp
   /STATISTICS=MEAN MEDIAN.
 
-* Frequency with mode.
 FREQUENCIES VARIABLES=bp
   /STATISTICS=MODE.
-
-* Explore for trimmed mean and other stats.
-EXAMINE VARIABLES=bp
-  /PLOT BOXPLOT HISTOGRAM
-  /STATISTICS DESCRIPTIVES
-  /MISSING PAIRWISE.
-
-* Compute weighted mean.
-WEIGHT BY weight_var.
-DESCRIPTIVES VARIABLES=bp
-  /STATISTICS=MEAN.
-WEIGHT OFF.
-
-* Compute geometric mean in SPSS.
-COMPUTE log_bp = LN(bp).
-DESCRIPTIVES VARIABLES=log_bp
-  /STATISTICS=MEAN.
-COMPUTE geom_mean = EXP(MEAN_OF_LOG_BP).
 ```
-</details>
 
-### STATA Code
-
-<details>
-<summary>📋 Click to expand STATA code</summary>
+### STATA
 
 ```stata
-* Load data.
-clear all
-input bp
-118
-122
-130
-145
-119
-125
-138
-128
-121
-150
-end
-
-* Descriptive statistics.
 summarize bp, detail
+* Displays mean, median (p50), and percentiles
 
-* With weights.
-gen weight = 1 in 1/10
-replace weight = 3 in 10
-summarize bp [aweight=weight]
-
-* Geometric mean.
-gen log_bp = log(bp)
-summarize log_bp
-gen geom_mean = exp(r(mean))
-
-* Harmonic mean.
-gen inv_bp = 1/bp
-summarize inv_bp
-gen harm_mean = 1/r(mean)
-
-* Visualization.
-histogram bp, normal
-graph box bp
+* Mode
+tabulate bp, sort
 ```
-</details>
 
-### SAS Program
-
-<details>
-<summary>📋 Click to expand SAS code</summary>
+### SAS
 
 ```sas
-* Create dataset.
-DATA bp_data;
-    INPUT bp;
-    DATALINES;
-118
-122
-130
-145
-119
-125
-138
-128
-121
-150
-;
-RUN;
-
-* Basic descriptive statistics.
-PROC MEANS DATA=bp_data MEAN MEDIAN MODE;
+PROC MEANS DATA=work.patients MEAN MEDIAN MODE;
     VAR bp;
 RUN;
-
-* Detailed statistics.
-PROC UNIVARIATE DATA=bp_data;
-    VAR bp;
-    HISTOGRAM / NORMAL;
-RUN;
-
-* Weighted mean.
-DATA bp_data;
-    SET bp_data;
-    weight = 1;
-    IF _N_ = 10 THEN weight = 3;
-RUN;
-
-PROC MEANS DATA=bp_data MEAN WEIGHT;
-    VAR bp;
-    WEIGHT weight;
-RUN;
-</details>
-
-### Excel Instructions
-
-<details>
-<summary>📋 Click to expand Excel instructions</summary>
-
-**Step 1:** Enter data in column A (A1:A10)
-
-**Step 2:** Calculate Measures
-```
-Cell B1: =AVERAGE(A1:A10)           (Mean)
-Cell B2: =MEDIAN(A1:A10)            (Median)
-Cell B3: =MODE.SNGL(A1:A10)         (Mode)
-Cell B4: =TRIMMEAN(A1:A10, 0.1)     (10% Trimmed Mean)
 ```
 
-**Step 3:** Weighted Mean
-```
-Cell C1: =SUMPRODUCT(A1:A10, B1:B10)/SUM(B1:B10)
-```
-
-**Step 4:** Geometric Mean
-```
-Cell C2: =GEOMEAN(A1:A10)
-```
-
-**Step 5:** Create Visualization
-1. Select data
-2. Insert → Histogram
-3. Insert → Box and Whisker (Excel 2016+)
-4. Format for publication quality
-</details>
-
----
-
-## 🏥 Real Research Examples
-
-### Example 1: Public Health — Household Income
-
-> [!TIP]
-> *Reporting an arithmetic mean of household income without noting the underlying skew is a frequent target of reviewer criticism in health economics journals.*
-
-**Context:** DHS Survey Household Income Data
+### Excel
 
 ```text
-Household Incomes (USD/month):
-- 5th percentile: $200
-- 25th percentile: $800
-- Median: $1,200
-- 75th percentile: $2,500
-- 95th percentile: $12,000
-- Mean: $3,400
-
-Observation: Mean > Median indicates right skew
-- The "average" person earns $1,200 (median)
-- The mean is pulled up by the wealthiest 5%
-- For policy decisions, median is more meaningful
+=AVERAGE(A2:A11)        ' Arithmetic mean
+=MEDIAN(A2:A11)         ' Median
+=MODE.SNGL(A2:A11)      ' Mode
+=TRIMMEAN(A2:A11, 0.2)  ' 10% trimmed from each side (20% total)
+=GEOMEAN(A2:A11)        ' Geometric mean
+=HARMEAN(A2:A11)        ' Harmonic mean
+=SUMPRODUCT(A2:A11,B2:B11)/SUM(B2:B11)   ' Weighted mean (weights in column B)
 ```
 
-### Example 2: Clinical Trial — Baseline Characteristics
+### SQL
 
-> [!WARNING]
-> *In clinical trials, baseline characteristics should be reported with the appropriate measure: mean (SD) for normal data, median (IQR) for skewed data.*
+```sql
+-- Arithmetic mean
+SELECT AVG(bp) AS mean_bp FROM patients;
 
-**CONSORT Guidelines:**
+-- Median (varies by database; PostgreSQL example using percentile_cont)
+SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY bp) AS median_bp
+FROM patients;
 
-| Characteristic | Treatment (n=150) | Control (n=150) | Reporting Standard |
-|----------------|------------------|------------------|-------------------|
-| Age (years) | 54.3 ± 12.1 | 53.8 ± 11.9 | Mean ± SD |
-| BMI (kg/m²) | 27.5 (24.8-30.2) | 27.2 (24.5-29.8) | Median (IQR) |
-| Hospital Stay (days) | 5 (3-8) | 6 (4-9) | Median (IQR) |
-| Gender (male) | 82 (54.7%) | 79 (52.7%) | n (%) |
+-- Mode (most frequent value)
+SELECT bp, COUNT(*) AS freq
+FROM patients
+GROUP BY bp
+ORDER BY freq DESC
+LIMIT 1;
 
-### Example 3: Machine Learning — Feature Scaling
-
-```python
-# Feature scaling with central tendency
-from sklearn.preprocessing import StandardScaler, RobustScaler
-import numpy as np
-
-# Data with outliers
-X = np.array([[1, 2], [2, 3], [3, 4], [100, 101], [4, 5]])
-
-# StandardScaler uses mean and SD (sensitive to outliers)
-scaler_std = StandardScaler()
-X_std = scaler_std.fit_transform(X)
-print("StandardScaler mean:", scaler_std.mean_)
-
-# RobustScaler uses median and IQR (robust to outliers)
-scaler_robust = RobustScaler()
-X_robust = scaler_robust.fit_transform(X)
-print("RobustScaler median:", scaler_robust.center_)
+-- Weighted mean using a weight column w
+SELECT SUM(bp * w) / SUM(w) AS weighted_mean_bp
+FROM patients;
 ```
 
 ---
 
-## ❌ Common Mistakes
+## Real Research Examples / বাস্তব গবেষণা উদাহরণ
 
-| Mistake | Consequence | Solution |
-|---------|-------------|----------|
-| **Reporting mean for skewed data** | Misrepresents "typical" value | Report median for skewed data |
-| **Computing mode for continuous data** | Often meaningless | Use binning or report no mode |
-| **Ignoring weights in survey data** | Biased population estimates | Always use survey weights |
-| **Confusing "average" with "mean"** | Ambiguous communication | Specify which measure used |
-| **Not checking for outliers** | Misleading results | Always examine data first |
-| **Using mean for ordinal data** | Invalid calculations | Use median or mode |
-| **Comparing means without checking assumptions** | Invalid conclusions | Check distribution first |
+### Public Health / জনস্বাস্থ্য
 
-### The SD > Mean Warning Sign
+**English**: In income and cost-effectiveness research, the **geometric mean** is standard because healthcare costs and income data are typically log-normally distributed. Reporting an arithmetic mean of household income without noting the underlying skew is a frequent target of reviewer criticism in health economics journals.
+
+**বাংলা**: আয় এবং খরচ-কার্যকারিতা গবেষণায়, **জ্যামিতিক গড়** মানসম্মত কারণ স্বাস্থ্যসেবার খরচ এবং আয়ের ডেটা সাধারণত লগ-নরমাল বিতরণকৃত হয়। অন্তর্নিহিত তির্যকতা উল্লেখ না করে পারিবারিক আয়ের গাণিতিক গড় প্রতিবেদন করা স্বাস্থ্য অর্থনীতি জার্নালে সমালোচকদের একটি ঘন ঘন লক্ষ্যবস্তু।
+
+### DHS Survey Data / DHS সার্ভে ডেটা
+
+**English**: Demographic and Health Survey (DHS) datasets require **weighted means** because of complex multi-stage cluster sampling — a household in a small, oversampled stratum should not count equally with a household in a large, undersampled stratum. Ignoring survey weights when computing a "national average" (e.g., average number of children per woman) produces a biased estimate that does not represent the true national population.
+
+**বাংলা**: ডেমোগ্রাফিক অ্যান্ড হেলথ সার্ভে (DHS) ডেটাসেটে **ভারযুক্ত গড়** প্রয়োজন জটিল বহু-পর্যায়ের ক্লাস্টার নমুনায়নের কারণে — একটি ছোট, অতি-নমুনাকৃত স্তরের একটি পরিবার একটি বড়, কম-নমুনাকৃত স্তরের একটি পরিবারের সমান গণনা করা উচিত নয়। "জাতীয় গড়" (যেমন, প্রতি নারীর গড় সন্তান সংখ্যা) গণনা করার সময় সার্ভে ওজন উপেক্ষা করলে একটি পক্ষপাতদুষ্ট অনুমান তৈরি হয় যা প্রকৃত জাতীয় জনসংখ্যাকে প্রতিনিধিত্ব করে না।
+
+### Clinical Trials / ক্লিনিক্যাল ট্রায়াল
+
+**English**: Length of ICU stay, time-to-recovery, and cost data in clinical trials are almost always right-skewed. Reporting only the mean (without median/IQR) in a CONSORT-style results table is a common reason for reviewer requests for revision.
+
+**বাংলা**: ক্লিনিক্যাল ট্রায়ালে ICU-তে থাকার দৈর্ঘ্য, আরোগ্যের সময়, এবং খরচের ডেটা প্রায় সবসময়ই ডানদিকে তির্যক (right-skewed)। একটি CONSORT-শৈলীর ফলাফল টেবিলে শুধুমাত্র গড় (মধ্যক/IQR ছাড়া) প্রতিবেদন করা সমালোচকদের সংশোধনের অনুরোধের একটি সাধারণ কারণ।
+
+---
+
+## Common Mistakes / সাধারণ ভুল
+
+| Mistake / ভুল | Consequence / পরিণতি |
+|---|---|
+| Reporting mean for heavily skewed data / ভারী তির্যক ডেটার জন্য গড় প্রতিবেদন করা | Misrepresents "typical" value / "সাধারণ" মানকে ভুলভাবে উপস্থাপন করে |
+| Computing mode for continuous data without binning / বিনিং ছাড়া অবিচ্ছিন্ন ডেটার জন্য প্রচুরক গণনা করা | Often meaningless (every value unique) / প্রায়ই অর্থহীন (প্রতিটি মান অনন্য) |
+| Ignoring weights in survey data means / সার্ভে ডেটার গড়ে ওজন উপেক্ষা করা | Biased population estimate / পক্ষপাতদুষ্ট জনসংখ্যা অনুমান |
+| Confusing "average" with "mean" in lay communication / সাধারণ যোগাযোগে "গড়" ও "mean" গুলিয়ে ফেলা | Ambiguity — always specify which measure / অস্পষ্টতা — সর্বদা নির্দিষ্ট করুন কোন পরিমাপ |
+| Using arithmetic mean for ratio/rate data / অনুপাত/হার ডেটার জন্য গাণিতিক গড় ব্যবহার করা | Should use geometric or harmonic mean instead / পরিবর্তে জ্যামিতিক বা হারমোনিক গড় ব্যবহার করা উচিত |
+
+## Reviewer Perspective / পর্যালোচক দৃষ্টিভঙ্গি
 
 > [!NOTE]
-> **Reviewer Heuristic**: If SD > Mean for a non-negative variable, the distribution is very likely right-skewed, and the mean is a poor summary.
+> **English — Typical Reviewer Comment**: *"The authors report the mean number of ICU days (mean = 14.2, SD = 22.1). Given SD > mean, this variable is almost certainly right-skewed. Please report median (IQR) instead."*
+>
+> **বাংলা — সাধারণ পর্যালোচক মন্তব্য**: *"লেখকরা ICU দিনের গড় সংখ্যা প্রতিবেদন করেছেন (গড় = ১৪.২, SD = ২২.১)। যেহেতু SD > গড়, এই ভেরিয়েবলটি প্রায় নিশ্চিতভাবে ডানদিকে তির্যক। অনুগ্রহ করে পরিবর্তে মধ্যক (IQR) প্রতিবেদন করুন।"*
 
-**Example:**
-```text
-Length of Stay (days): 2, 3, 4, 5, 6, 7, 8, 9, 10, 45
-- Mean = 9.9 days
-- SD = 12.3 days
-- SD > Mean → Red Flag!
+**English**: A useful reviewer heuristic: **if SD > mean for a non-negative variable, the distribution is very likely skewed**, and the mean is a poor summary.
 
-Correct Reporting: Median = 7.0 days (IQR: 5.0-9.0)
-```
+**বাংলা**: একটি উপযোগী পর্যালোচক নিয়ম: **যদি একটি অ-ঋণাত্মক ভেরিয়েবলের জন্য SD > গড় হয়, তাহলে বিতরণটি খুব সম্ভবত তির্যক**, এবং গড় একটি দুর্বল সারাংশ।
 
----
+## AI Evaluation Perspective / AI মূল্যায়ন দৃষ্টিভঙ্গি
 
-## 🕵️ Reviewer Perspective
+**English**: Automated statistical review tools flag exactly this SD > mean pattern, along with mismatches between the stated central tendency measure and accompanying spread measure (e.g., mean reported with IQR instead of SD, or vice versa). AI-generated statistical summaries sometimes report a mean for skewed data without flagging skewness at all — always ask an AI tool to check the SD-to-mean ratio explicitly.
 
-### What Reviewers Look For
-
-> [!WARNING]
-> **Typical Reviewer Comment**: *"The authors report the mean number of ICU days (mean = 14.2, SD = 22.1). Given SD > mean, this variable is almost certainly right-skewed. Please report median (IQR) instead."*
-
-### Common Reviewer Red Flags
-
-| Red Flag | What Reviewers Check |
-|----------|---------------------|
-| **Inappropriate Mean** | Using mean for skewed data |
-| **Missing Measures** | No dispersion with central tendency |
-| **Data-Type Mismatch** | Mean for ordinal data |
-| **Ignoring Weights** | Survey data without weights |
-| **Overinterpretation** | Causal claims from descriptive statistics |
-| **Inconsistent Reporting** | Mean with IQR or median with SD |
-
-### Best Practices for Reporting
-
-1. **Always report both central tendency and dispersion**
-2. **Choose measures based on data type and distribution**
-3. **Report sample sizes for all analyses**
-4. **Use appropriate precision**
-5. **Follow CONSORT/STROBE guidelines**
-
-### Checklist for Reviewers
-
-- [ ] Is the measure of central tendency appropriate for the data type?
-- [ ] Has skewness been assessed?
-- [ ] Are outliers discussed?
-- [ ] Is the measure of dispersion matched to central tendency?
-- [ ] Are survey weights used appropriately?
-- [ ] Is the interpretation honest and accurate?
+**বাংলা**: স্বয়ংক্রিয় পরিসংখ্যানগত পর্যালোচনা টুল ঠিক এই SD > গড় প্যাটার্নটি চিহ্নিত করে, পাশাপাশি বর্ণিত কেন্দ্রীয় প্রবণতা পরিমাপ এবং সহগামী বিস্তৃতি পরিমাপের মধ্যে অমিল (যেমন, SD-এর পরিবর্তে IQR সহ গড় প্রতিবেদন করা, বা বিপরীতভাবে)। AI-জেনারেটেড পরিসংখ্যানগত সারাংশ কখনও কখনও তির্যকতা মোটেও চিহ্নিত না করে তির্যক ডেটার জন্য একটি গড় প্রতিবেদন করে — সর্বদা একটি AI টুলকে স্পষ্টভাবে SD-থেকে-গড় অনুপাত পরীক্ষা করতে বলুন।
 
 ---
 
-## 🤖 AI Evaluation Perspective
+## Frequently Asked Questions / প্রায়শই জিজ্ঞাসিত প্রশ্ন
 
-### Common AI Mistakes
+**Q (EN): Why does the median "ignore" extreme values?**
+A: Because it only depends on the *rank* of the middle observation(s), not their magnitude.
 
-> [!CAUTION]
-> *Automated statistical review tools flag exactly the SD > mean pattern, along with mismatches between the stated central tendency measure and accompanying spread measure.*
+**প্রশ্ন (বাংলা): মধ্যক কেন চরম মান "উপেক্ষা" করে?**
+উত্তর: কারণ এটি শুধুমাত্র মধ্যম পর্যবেক্ষণের *ক্রম* (rank) এর উপর নির্ভর করে, তাদের মাত্রার উপর নয়।
 
-| AI Error | Example | How to Verify |
-|----------|---------|---------------|
-| **Wrong Choice** | Recommending mean for skewed data | Check distribution |
-| **Fabricated Values** | Making up means without data | Compare with actual data |
-| **Missing Context** | No mention of outliers | Check data quality |
-| **Incorrect Interpretation** | Claiming causal relationship | Descriptive ≠ Causal |
-| **Formula Errors** | Using population formula for sample | Check denominator |
+**Q (EN): When would I use geometric mean over arithmetic mean?**
+A: When your data are ratios, growth rates, or multiplicative in nature (e.g., percentage changes, dilution titers).
 
-### How to Verify AI-Generated Statistics
+**প্রশ্ন (বাংলা): গাণিতিক গড়ের পরিবর্তে কখন জ্যামিতিক গড় ব্যবহার করব?**
+উত্তর: যখন আপনার ডেটা অনুপাত, প্রবৃদ্ধির হার, অথবা প্রকৃতিতে গুণনীয় (যেমন, শতাংশ পরিবর্তন, তরলীকরণ টাইটার)।
 
-```mermaid
-flowchart TD
-    A[AI-Generated Statistic] --> B{Verify}
-    B --> C[Check Formula]
-    B --> D[Run Software]
-    B --> E[Manual Check]
-    B --> F[Check Assumptions]
-    C --> G{Correct?}
-    D --> H{Matches?}
-    E --> I{Reasonable?}
-    F --> J{Met?}
-    G -->|No| K[Reject]
-    H -->|No| K
-    I -->|No| K
-    J -->|No| K
-```
+**Q (EN): Can a dataset have more than one mode?**
+A: Yes — this is called bimodal (two modes) or multimodal (more than two). It often signals that the data come from two or more distinct underlying groups.
 
-### Red Flags in AI-Generated Statistics
+**প্রশ্ন (বাংলা): একটি ডেটাসেটে কি একাধিক প্রচুরক থাকতে পারে?**
+উত্তর: হ্যাঁ — একে বলা হয় দ্বিরূপী (দুইটি প্রচুরক) বা বহুরূপী (দুইয়ের বেশি)। এটি প্রায়ই ইঙ্গিত দেয় যে ডেটা দুই বা ততোধিক ভিন্ন অন্তর্নিহিত গোষ্ঠী থেকে এসেছে।
 
-1. **Confidence without context**: "The data are perfectly normal"
-2. **No mention of assumptions**: Missing distribution checks
-3. **Overly precise values**: "Mean = 45.2345678"
-4. **Causal language**: "Shows that X causes Y"
-5. **Missing software verification**: No code provided
+**Q (EN): Is the trimmed mean commonly reported in published research?**
+A: Less commonly than mean or median, but it appears in robust statistics literature and in fields like sports analytics (e.g., trimmed scoring in judged competitions) where a small number of extreme scores should not dominate the summary.
+
+**প্রশ্ন (বাংলা): প্রকাশিত গবেষণায় কি ছাঁটা গড় সাধারণত প্রতিবেদন করা হয়?**
+উত্তর: গড় বা মধ্যকের তুলনায় কম সাধারণভাবে, তবে এটি দৃঢ় পরিসংখ্যান সাহিত্যে এবং স্পোর্টস অ্যানালিটিক্সের মতো ক্ষেত্রে দেখা যায় (যেমন, বিচারকৃত প্রতিযোগিতায় ছাঁটা স্কোরিং) যেখানে অল্প সংখ্যক চরম স্কোরের সারাংশে প্রাধান্য পাওয়া উচিত নয়।
 
 ---
 
-## 📝 Assessment
+## Practice Problems / অনুশীলনী সমস্যা
 
-### Multiple Choice Questions
+### MCQs / বহুনির্বাচনী প্রশ্ন
+
+1. Which measure minimizes the sum of squared deviations? / কোন পরিমাপ বর্গীয় বিচ্যুতির সমষ্টি সর্বনিম্ন করে?
+   (a) Mode / প্রচুরক (b) **Mean / গড়** (c) Median / মধ্যক (d) Geometric mean / জ্যামিতিক গড়
+
+2. For a nominal variable like blood type, which central tendency measure is valid? / রক্তের গ্রুপের মতো একটি নামসূচক ভেরিয়েবলের জন্য কোন কেন্দ্রীয় প্রবণতা পরিমাপ বৈধ?
+   (a) Mean / গড় (b) Median / মধ্যক (c) **Mode / প্রচুরক** (d) Geometric mean / জ্যামিতিক গড়
+
+3. Which measure is preferred for compound growth rates? / যৌগিক প্রবৃদ্ধির হারের জন্য কোন পরিমাপ পছন্দনীয়?
+   (a) Arithmetic mean / গাণিতিক গড় (b) **Geometric mean / জ্যামিতিক গড়** (c) Mode / প্রচুরক (d) Trimmed mean / ছাঁটা গড়
+
+4. F1-score in machine learning is the ______ of precision and recall. / মেশিন লার্নিংয়ে F1-স্কোর হলো precision এবং recall-এর ______।
+   (a) Arithmetic mean / গাণিতিক গড় (b) Median / মধ্যক (c) **Harmonic mean / হারমোনিক গড়** (d) Mode / প্রচুরক
+
+### Short Questions / সংক্ষিপ্ত প্রশ্ন
+
+1. Explain why SD > mean is a red flag for a non-negative variable. / ব্যাখ্যা করুন কেন একটি অ-ঋণাত্মক ভেরিয়েবলের জন্য SD > গড় একটি লাল পতাকা।
+2. Compute the mean and median of: 5, 7, 7, 9, 100. / গণনা করুন: ৫, ৭, ৭, ৯, ১০০ এর গড় এবং মধ্যক।
+3. In your own words, explain the difference between a trimmed mean and a median. / নিজের ভাষায়, ছাঁটা গড় এবং মধ্যকের মধ্যে পার্থক্য ব্যাখ্যা করুন।
+
+### Long Questions / দীর্ঘ প্রশ্ন
+
+1. Derive the least-squares property of the arithmetic mean from first principles, and explain why this derivation fails to hold for the median. / প্রথম নীতি থেকে গাণিতিক গড়ের ন্যূনতম বর্গের বৈশিষ্ট্য প্রতিপাদন করুন, এবং ব্যাখ্যা করুন কেন এই প্রতিপাদন মধ্যকের জন্য প্রযোজ্য হয় না।
+2. A hospital wants to report "typical" length of stay to a funding agency. Discuss which central tendency measure(s) you would recommend, and why, considering both statistical validity and how the funding agency might interpret the number. / একটি হাসপাতাল একটি অর্থায়ন সংস্থাকে "সাধারণ" থাকার দৈর্ঘ্য প্রতিবেদন করতে চায়। আলোচনা করুন আপনি কোন কেন্দ্রীয় প্রবণতা পরিমাপ(গুলি) সুপারিশ করবেন এবং কেন, পরিসংখ্যানগত বৈধতা এবং অর্থায়ন সংস্থা কীভাবে সংখ্যাটি ব্যাখ্যা করতে পারে উভয়ই বিবেচনা করে।
+
+### Programming Exercise / প্রোগ্রামিং অনুশীলনী
+
+**English**: Simulate 1,000 draws from a log-normal distribution in R or Python. Compare the arithmetic mean, geometric mean, and median. Which is closest to the "typical" value visually seen in a histogram?
+
+**বাংলা**: R বা Python-এ একটি লগ-নরমাল বিতরণ থেকে ১,০০০টি ড্র সিমুলেট করুন। গাণিতিক গড়, জ্যামিতিক গড়, এবং মধ্যক তুলনা করুন। হিস্টোগ্রামে দৃশ্যমান "সাধারণ" মানের সবচেয়ে কাছাকাছি কোনটি?
+
+### Real Dataset Exercise / বাস্তব ডেটাসেট অনুশীলনী
+
+**English**: Find a publicly available household income dataset (e.g., a national statistics bureau release) and compute the mean, median, and geometric mean of income. Write a short paragraph explaining which measure best represents "typical" income and why.
+
+**বাংলা**: একটি সর্বজনীনভাবে উপলব্ধ পারিবারিক আয় ডেটাসেট খুঁজুন (যেমন, একটি জাতীয় পরিসংখ্যান ব্যুরো প্রকাশনা) এবং আয়ের গড়, মধ্যক, এবং জ্যামিতিক গড় গণনা করুন। একটি সংক্ষিপ্ত অনুচ্ছেদ লিখুন ব্যাখ্যা করে কোন পরিমাপটি "সাধারণ" আয়কে সবচেয়ে ভালোভাবে প্রতিনিধিত্ব করে এবং কেন।
+
+### Sample Answers / নমুনা উত্তর
 
 <details>
-<summary>📝 Click to reveal answers</summary>
+<summary><strong>Click to reveal sample answer for Short Question 2 / ছোট প্রশ্ন ২-এর নমুনা উত্তর দেখতে ক্লিক করুন</strong></summary>
 
-1. Which measure minimizes the sum of squared deviations?
-   - A) Mode
-   - B) Mean ✓
-   - C) Median
-   - D) Geometric mean
+**English**: Data: 5, 7, 7, 9, 100 (n = 5, already sorted).
+Mean = (5+7+7+9+100)/5 = 128/5 = 25.6
+Median = middle value of sorted data = **7**
+Note how dramatically the single outlier (100) inflates the mean while leaving the median completely unaffected.
 
-2. For a nominal variable like blood type, which measure is valid?
-   - A) Mean
-   - B) Median
-   - C) Mode ✓
-   - D) Geometric mean
-
-3. If SD > Mean for a non-negative variable, what should you suspect?
-   - A) Normal distribution
-   - B) Right-skewed distribution ✓
-   - C) Left-skewed distribution
-   - D) Symmetric distribution
-
-4. Which measure is most robust to outliers?
-   - A) Mean
-   - B) Median ✓
-   - C) Mode
-   - D) Geometric mean
-
-5. The geometric mean is most appropriate for:
-   - A) Categorical data
-   - B) Growth rates ✓
-   - C) Speed problems
-   - D) Survey data
-
-6. Which measure of central tendency uses all data points?
-   - A) Mean ✓
-   - B) Median
-   - C) Mode
-   - D) All of the above
-
-7. The F1-score in machine learning uses which mean?
-   - A) Arithmetic mean
-   - B) Geometric mean
-   - C) Harmonic mean ✓
-   - D) Weighted mean
+**বাংলা**: ডেটা: ৫, ৭, ৭, ৯, ১০০ (n = ৫, ইতিমধ্যে সাজানো)।
+গড় = (৫+৭+৭+৯+১০০)/৫ = ১২৮/৫ = ২৫.৬
+মধ্যক = সাজানো ডেটার মধ্যম মান = **৭**
+লক্ষ্য করুন কীভাবে একক outlier (১০০) নাটকীয়ভাবে গড়কে স্ফীত করে অথচ মধ্যককে সম্পূর্ণ অপ্রভাবিত রাখে।
 
 </details>
 
-### True/False Questions
+---
 
-<details>
-<summary>📝 Click to reveal answers</summary>
+## Bilingual Glossary / দ্বিভাষিক শব্দকোষ
 
-1. The mean is always the best measure of central tendency. **False**
-2. A normal distribution has mean = median = mode. **True**
-3. The median is affected by outliers. **False**
-4. The mode can be used for categorical data. **True**
-5. The geometric mean is always greater than the arithmetic mean. **False**
-6. For right-skewed data, mean > median. **True**
-7. The weighted mean requires positive weights. **True**
-8. The harmonic mean is appropriate for averaging rates. **True**
-
-</details>
-
-### Short Questions
-
-1. Explain why the sample mean minimizes the sum of squared deviations.
-2. What is the relationship between skewness and the mean/median?
-3. When would you use the geometric mean instead of the arithmetic mean?
-4. Explain the difference between weighted and unweighted means.
-5. Why is the median preferred for household income data?
-6. What does it mean if SD > Mean for a positive variable?
-7. Describe the three types of "average" and when to use each.
-
-### Long Questions
-
-1. **Clinical Trial Question:** A clinical trial reports baseline characteristics with means and SDs. The variable "length of hospital stay" has mean = 14.2 and SD = 22.1. Critique this reporting and suggest improvements.
-
-2. **Public Health Question:** A health survey reports average household income as $65,000. The survey data show 25th percentile = $30,000, median = $50,000, 75th percentile = $85,000, and 95th percentile = $250,000. Which measure of central tendency is most appropriate and why?
-
-3. **Research Design Question:** Design a study to compare mean blood pressure between two groups. What assumptions must be met? What alternative measures would you recommend if assumptions are violated?
-
-### Numerical Problems
-
-<details>
-<summary>📝 Click to reveal solutions</summary>
-
-**Problem 1:** Calculate the mean, median, and mode for: [5, 7, 7, 8, 9, 10, 12, 15]
-
-**Solution:**
-- Mean = (5+7+7+8+9+10+12+15)/8 = 73/8 = 9.125
-- Median = (9+9.125)/2 = 9.125
-  Actually: n=8 even, positions 4 and 5 = 8 and 9, median = 8.5
-- Mode = 7 (appears twice)
-
-**Problem 2:** Compute the geometric mean for: [2, 4, 8, 16, 32]
-
-**Solution:**
-GM = (2×4×8×16×32)^(1/5) = (32768)^(0.2) = 8.00
-
-**Problem 3:** A survey gives weights: [0.5, 1.0, 0.8, 1.2] for observations [10, 15, 12, 18]. Calculate the weighted mean.
-
-**Solution:**
-Weighted Mean = (0.5×10 + 1.0×15 + 0.8×12 + 1.2×18) / (0.5+1.0+0.8+1.2)
-= (5 + 15 + 9.6 + 21.6) / 3.5
-= 51.2 / 3.5 = 14.63
-
-**Problem 4:** A dataset has mean = 100, median = 80, and mode = 60. What shape is the distribution?
-
-**Solution:** Mean > Median > Mode → Right-skewed (positive skew)
-
-</details>
-
-### Programming Exercises
-
-<details>
-<summary>📝 Click to reveal exercises</summary>
-
-1. **R Exercise:** Write a function that computes all measures of central tendency from Chapter 2 and returns them in a clean summary table.
-
-2. **Python Exercise:** Create a class `CentralTendency` that implements mean, median, mode, weighted mean, geometric mean, and harmonic mean methods.
-
-3. **SPSS Exercise:** Create a syntax file that computes all measures for five variables of different types.
-
-4. **STATA Exercise:** Write a do-file that computes and compares all measures for a given variable.
-
-5. **SAS Exercise:** Write a macro that computes all measures and identifies the most appropriate one.
-
-</details>
-
-### Real Research Exercises
-
-1. **DHS Data Analysis:** Download DHS data for a country and analyze household wealth indicators. Compare mean vs. median wealth and justify your choice.
-
-2. **Clinical Trial Simulation:** Simulate a clinical trial with baseline characteristics. Report them following CONSORT guidelines with appropriate measures.
-
-3. **Income Inequality Study:** Using Gini coefficient data, compare mean vs. median income across countries and explain the relationship.
-
-4. **Machine Learning Project:** Compare the effect of using mean vs. median imputation on model performance using a dataset with missing values.
-
-5. **Public Health Report:** Analyze a public health dataset (e.g., NHANES) and prepare a report on nutritional indicators using appropriate central tendency measures.
+| English Term | বাংলা পরিভাষা | Definition / সংজ্ঞা |
+|---|---|---|
+| Mean | গড় (গাণিতিক গড়) | Sum of values divided by count / মানের সমষ্টি সংখ্যা দিয়ে ভাগ |
+| Median | মধ্যক | Middle value of sorted data / সাজানো ডেটার মধ্যম মান |
+| Mode | প্রচুরক | Most frequent value / সবচেয়ে বেশি ঘটে যাওয়া মান |
+| Weighted Mean | ভারযুক্ত গড় | Mean adjusted by importance weights / গুরুত্বের ওজন দ্বারা সমন্বিত গড় |
+| Geometric Mean | জ্যামিতিক গড় | nth root of the product of n values / n সংখ্যক মানের গুণফলের n-তম মূল |
+| Harmonic Mean | হারমোনিক গড় | Reciprocal of the mean of reciprocals / বিপরীতমুখী মানের গড়ের বিপরীত |
+| Trimmed Mean | ছাঁটা গড় | Mean after removing extreme values / চরম মান অপসারণের পর গড় |
+| Outlier | ব্যতিক্রমী মান | Value far from the rest of the data / বাকি ডেটা থেকে অনেক দূরে অবস্থিত মান |
+| Skewness | তির্যকতা | Asymmetry in a distribution / একটি বিতরণে অপ্রতিসাম্যতা |
+| Robust (statistic) | দৃঢ় (পরিসংখ্যান) | Not strongly affected by outliers / outlier দ্বারা শক্তিশালীভাবে প্রভাবিত নয় |
+| Sampling Weight | নমুনা ওজন | Adjustment factor in survey data / সার্ভে ডেটায় সমন্বয় ফ্যাক্টর |
+| Unimodal / Bimodal | এককরূপী / দ্বিরূপী | One mode / two modes / একটি প্রচুরক / দুইটি প্রচুরক |
 
 ---
 
-## 📚 Chapter Summary
+## Chapter Summary / অধ্যায় সারসংক্ষেপ
 
-### Key Takeaways
+**English**:
+- Mean minimizes squared deviations; median minimizes absolute deviations; mode is the most frequent value.
+- Median is robust to outliers and skew; mean is not.
+- Specialized means (weighted, geometric, harmonic, trimmed) serve specific data structures (survey weights, ratios, rates, outlier-heavy data).
+- Real-world reporting failures (e.g., unweighted survey averages, mean-only reporting of skewed clinical data) are among the most common statistical errors flagged by reviewers.
 
-> 🎯 **Core Concepts to Remember**
+**বাংলা**:
+- গড় বর্গীয় বিচ্যুতি সর্বনিম্ন করে; মধ্যক পরম বিচ্যুতি সর্বনিম্ন করে; প্রচুরক হলো সবচেয়ে বেশি ঘটে যাওয়া মান।
+- মধ্যক outlier এবং তির্যকতার প্রতি দৃঢ়; গড় তা নয়।
+- বিশেষায়িত গড় (ভারযুক্ত, জ্যামিতিক, হারমোনিক, ছাঁটা) নির্দিষ্ট ডেটা গঠনের জন্য কাজ করে (সার্ভে ওজন, অনুপাত, হার, outlier-সমৃদ্ধ ডেটা)।
+- বাস্তব-জগতের প্রতিবেদন ব্যর্থতা (যেমন, ওজনহীন সার্ভে গড়, তির্যক ক্লিনিক্যাল ডেটার শুধুমাত্র-গড় প্রতিবেদন) পর্যালোচকদের দ্বারা চিহ্নিত সবচেয়ে সাধারণ পরিসংখ্যানগত ভুলগুলোর মধ্যে অন্যতম।
 
-1. **Mean**: Best for symmetric, continuous data; uses all data; sensitive to outliers
-2. **Median**: Best for skewed data; robust to outliers; works for ordinal data
-3. **Mode**: Best for categorical data; only measure for nominal scales
-4. **Weighted Mean**: Essential for survey data and meta-analysis
-5. **Geometric Mean**: Best for growth rates and multiplicative data
-6. **Harmonic Mean**: Best for rates and ratios (e.g., F1-score)
-7. **Trimmed Mean**: Compromise between mean and median robustness
-8. **Check Distribution First**: Always assess shape before choosing measures
-9. **Report Completely**: Always include measure of dispersion
-10. **Follow Guidelines**: Use CONSORT/STROBE reporting standards
+## Key Takeaways / মূল বিষয়সমূহ
 
-### Formula Sheet
+- 📌 **English**: Always inspect skew before choosing mean vs. median. / **বাংলা**: গড় বনাম মধ্যক বেছে নেওয়ার আগে সর্বদা তির্যকতা পরীক্ষা করুন।
+- 📌 **English**: SD > mean on a non-negative variable is a skewness warning sign. / **বাংলা**: একটি অ-ঋণাত্মক ভেরিয়েবলে SD > গড় একটি তির্যকতার সতর্কতা চিহ্ন।
+- 📌 **English**: Report the measure that matches the data's actual distributional behavior, not the one that is easiest to compute. / **বাংলা**: যে পরিমাপ গণনা করা সবচেয়ে সহজ তা নয়, বরং যেটি ডেটার প্রকৃত বণ্টন আচরণের সাথে মিলে যায় তা প্রতিবেদন করুন।
 
-| Measure | Formula | Best For |
-|---------|---------|----------|
-| **Arithmetic Mean** | \(\bar{x} = \frac{1}{n}\sum x_i\) | Symmetric data |
-| **Weighted Mean** | \(\bar{x}_w = \frac{\sum w_i x_i}{\sum w_i}\) | Survey data |
-| **Geometric Mean** | \(G = (\prod x_i)^{1/n}\) | Growth rates |
-| **Harmonic Mean** | \(H = \frac{n}{\sum 1/x_i}\) | Rates |
-| **Median** | Middle value | Skewed data |
-| **Mode** | Most frequent | Categorical data |
-| **Trimmed Mean** | \(\bar{x}_{trim}\) | Outlier-moderate data |
+## Recommended Papers / প্রস্তাবিত গবেষণাপত্র
 
-### Decision Table
+- Bland, J.M. & Altman, D.G. (1996). "The use of transformation when comparing two means." *BMJ*.
 
-| Situation | Recommended Measure | Why |
-|-----------|-------------------|-----|
-| Normal data, no outliers | Mean | Efficient, unbiased |
-| Skewed data | Median | Robust, interpretable |
-| Categorical data | Mode | Only valid measure |
-| Survey data | Weighted Mean | Accounts for design |
-| Growth rates | Geometric Mean | Multiplicative property |
-| F1-score | Harmonic Mean | Rate property |
-| Moderate outliers | Trimmed Mean | Balance robustness/efficiency |
-| Ordinal data | Median | Respects order |
+## Further Reading / আরও পঠন
+
+- Wilcox, R.R. (2012). *Introduction to Robust Estimation and Hypothesis Testing*.
+
+## References / তথ্যসূত্র
+
+1. Weisberg, H.F. (1992). *Central Tendency and Variability*. Sage Publications.
+2. Edgeworth, F.Y. (1887). "On Observations Relating to Several Quantities." *Hermathena*.
+3. Gauss, C.F. (1809). *Theoria Motus Corporum Coelestium* — early formalization of least squares.
 
 ---
 
-## 📖 Further Reading
+## Previous Chapter / পূর্ববর্তী অধ্যায়
+[⬅ Chapter 1: Descriptive Statistics / প্রথম অধ্যায়: বর্ণনামূলক পরিসংখ্যান](./01-descriptive-statistics.md)
 
-### Recommended Textbooks
-
-| Book | Author(s) | Chapter |
-|------|-----------|---------|
-| *Statistical Methods* | Cochran & Snedecor | Chapter 3 |
-| *Data Analysis Using Regression* | Gelman & Hill | Chapter 4 |
-| *Introduction to Modern Statistics* | Cetinkaya-Rundel | Chapter 2 |
-| *Modern Statistics for Behavioral Sciences* | Wilcox | Chapter 2 |
-
-### Key Papers
-
-1. Bland, J.M. & Altman, D.G. (1996). *The use of transformation when comparing two means*. BMJ.
-2. Altman, D.G. & Bland, J.M. (2005). *Standard deviations and standard errors*. BMJ.
-3. Land, K.C. (1978). *The mean and the median in epidemiology and public health*. Epidemiologic Reviews.
-
-### Online Resources
-
-- [Khan Academy: Measures of Central Tendency](https://www.khanacademy.org)
-- [StatQuest: Mean vs. Median](https://www.youtube.com/c/statquest)
-- [R for Data Science: Chapter 5](https://r4ds.had.co.nz)
-
----
-
-## 📑 References
-
-1. Bland, J.M. & Altman, D.G. (1996). The use of transformation when comparing two means. *BMJ*, 312(7039), 1153.
-2. Altman, D.G. & Bland, J.M. (2005). Standard deviations and standard errors. *BMJ*, 331(7521), 903.
-3. Wilcox, R.R. (2012). *Introduction to Robust Estimation and Hypothesis Testing*. Academic Press.
-4. Weisberg, H.F. (1992). *Central Tendency and Variability*. Sage Publications.
-5. Land, K.C. (1978). The mean and the median in epidemiology and public health. *Epidemiologic Reviews*, 1(1), 129-148.
-6. CONSORT Group (2010). CONSORT 2010 Statement. *BMJ*, 340, c332.
-7. Vandenbroucke, J.P. et al. (2007). Strengthening the Reporting of Observational Studies in Epidemiology (STROBE). *Annals of Internal Medicine*, 147(8), 573-577.
-
----
-
-## 🏠 Navigation
-
-<div align="center">
-
-**[⬅ Previous: Chapter 1 - Descriptive Statistics](./01-descriptive-statistics.md)**
-
-**[🏠 Back to Repository](../README.md)**
-
-**[➡ Next: Chapter 3 - Measures of Dispersion](./03-dispersion.md)**
-
-</div>
-
----
-
-## 📝 Bengali Summary (বাংলা সারাংশ)
-
-### পর্ব ২: কেন্দ্রীয় প্রবণতার পরিমাপ
-
-> *"গড়" সবচেয়ে বেশি উদ্ধৃত — এবং সবচেয়ে বেশি অপব্যবহৃত — বৈজ্ঞানিক যোগাযোগের শব্দ। কোন গড়, কীভাবে গণনা করা হয়েছে, তা নির্ধারণ করে একটি দাবি সত্য নাকি বিভ্রান্তিকর।*
-
-**মূল ধারণা:**
-
-কেন্দ্রীয় প্রবণতা এই প্রশ্নের উত্তর দেয়: **"যদি আমি এই ডেটাসেটকে একটি সংখ্যা দিয়ে বর্ণনা করতে চাই, তা কী হবে?"** তিনটি ধ্রুপদী উত্তর — গড়, মধ্যমা, এবং প্রচুরক — প্রতিটি ভিন্ন মানদণ্ড অপটিমাইজ করে।
-
-**তিনটি প্রধান পরিমাপ:**
-
-| পরিমাপ | বর্ণনা | কখন ব্যবহার করবেন |
-|--------|---------|------------------|
-| **গড় (Mean)** | সকল মানের সমষ্টি / মোট সংখ্যা | সমমিত, নিরবচ্ছিন্ন ডেটা |
-| **মধ্যমা (Median)** | মাঝের মান | তির্যক ডেটা, আউটলায়ার থাকলে |
-| **প্রচুরক (Mode)** | সবচেয়ে বেশি ঘটা মান | বিভাগীয় ডেটা |
-
-**মূল শিক্ষা:**
-
-- 📌 তির্যকতা পরীক্ষা না করে কখনও গড় ব্যবহার করবেন না
-- 📌 SD > Mean হলে ডেটা ডান-তির্যক হওয়ার সতর্কতা
-- 📌 ডেটার প্রকৃত বণ্টন অনুযায়ী পরিমাপ নির্বাচন করুন
-
----
-
-<div align="center">
-
-*Chapter 2: Measures of Central Tendency*
-
-*Statistics for Scientists — An Open-Access Textbook*
-
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/your-repo)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-green)](LICENSE)
-
-</div>
+## Next Chapter / পরবর্তী অধ্যায়
+[➡ Chapter 3: Dispersion / তৃতীয় অধ্যায়: বিস্তৃতি](./03-dispersion.md)
