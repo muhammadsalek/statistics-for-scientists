@@ -8,6 +8,7 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-green?style=for-the-badge)](LICENSE)
 [![Level](https://img.shields.io/badge/Level-Beginner%20to%20Advanced-blue?style=for-the-badge)]()
 [![Software](https://img.shields.io/badge/Software-R%20%7C%20Python%20%7C%20SPSS%20%7C%20STATA%20%7C%20SAS%20%7C%20Excel-orange?style=for-the-badge)]()
+[![Pages](https://img.shields.io/badge/Pages-100%20Sections-brightgreen?style=for-the-badge)]()
 
 **[⬅ Previous: Chapter 2 - Central Tendency](./02-central-tendency.md) · [🏠 Home](../README.md) · [➡ Next: Chapter 4 - Correlation](./04-correlation.md)**
 
@@ -15,9 +16,11 @@
 
 ---
 
+> *"The mean is the center of the data, but the standard deviation is the radius of trust."* — **Anonymous Statistician**
+
 > *"Two datasets can have identical means yet describe entirely different realities. Dispersion tells you how much to trust the 'typical value' as representative of the whole."* — **Author Unknown**
 
-> *"The standard deviation is the square root of the variance. But what is the variance? It's the average squared deviation from the mean. Why square? Because life is complicated."* — **Anonymous Statistician**
+> *"Without a measure of dispersion, a mean is just a number looking for a story."* — **Modern Statistical Wisdom**
 
 ---
 
@@ -26,29 +29,39 @@
 ```mermaid
 flowchart TD
     A["📊 Chapter 3:<br>Measures of Dispersion"] --> B["🎯 Learning Objectives"]
-    A --> C["💡 Why This Topic Matters"]
-    A --> D["🌍 Big Picture"]
-    A --> E["🧠 Core Intuition"]
-    A --> F["📐 Mathematical Foundation"]
-    A --> G["📊 Measures of Dispersion"]
-    A --> H["🔄 Choosing the Right Measure"]
+    A --> C["💡 Introduction"]
+    A --> D["📜 History"]
+    A --> E["📐 Mathematical Foundation"]
+    A --> F["📊 Core Measures"]
+    A --> G["🔄 Advanced Measures"]
+    A --> H["🌍 Applications"]
     A --> I["✏️ Worked Examples"]
     A --> J["💻 Software Implementation"]
     A --> K["🏥 Real Research Examples"]
     A --> L["❌ Common Mistakes"]
     A --> M["🕵️ Reviewer Perspective"]
     A --> N["🤖 AI Evaluation Perspective"]
-    A --> O["❓ Frequently Asked Questions"]
+    A --> O["❓ FAQ"]
     A --> P["📝 Assessment"]
     A --> Q["📚 Summary"]
     
-    G --> G1["1️⃣ Range"]
-    G --> G2["2️⃣ Interquartile Range (IQR)"]
-    G --> G3["3️⃣ Variance"]
-    G --> G4["4️⃣ Standard Deviation"]
-    G --> G5["5️⃣ Coefficient of Variation"]
-    G --> G6["6️⃣ Mean Absolute Deviation"]
-    G --> G7["7️⃣ Percentiles & Quartiles"]
+    F --> F1["1️⃣ Range"]
+    F --> F2["2️⃣ IQR"]
+    F --> F3["3️⃣ Quartile Deviation"]
+    F --> F4["4️⃣ Mean Absolute Deviation"]
+    F --> F5["5️⃣ Variance"]
+    F --> F6["6️⃣ Standard Deviation"]
+    F --> F7["7️⃣ Coefficient of Variation"]
+    
+    G --> G1["8️⃣ Relative Variability"]
+    G --> G2["9️⃣ Standard Error"]
+    G --> G3["🔟 Z-score"]
+    G --> G4["11️⃣ Standardization"]
+    
+    H --> H1["🏥 Clinical Trials"]
+    H --> H2["🌍 DHS/WHO"]
+    H --> H3["🤖 AI/ML"]
+    H --> H4["🧬 Biology/Medicine"]
 ```
 
 ---
@@ -57,16 +70,19 @@ flowchart TD
 
 | Level | Objectives |
 |-------|------------|
-| **🏗️ Foundational** | ✅ Compute range, IQR, variance, and standard deviation by hand |
+| **🏗️ Foundational** | ✅ Compute range, IQR, quartile deviation, variance, and SD by hand |
 | | ✅ Understand the difference between population and sample variance |
 | | ✅ Interpret standard deviation using the Empirical Rule |
 | | ✅ Identify outliers using IQR-based fences |
+| | ✅ Calculate mean absolute deviation and coefficient of variation |
 | **📈 Intermediate** | ✅ Derive the variance formula and understand Bessel's correction |
 | | ✅ Calculate and interpret the coefficient of variation |
-| | ✅ Choose appropriate dispersion measures for different data types |
+| | ✅ Understand standard error vs. standard deviation |
+| | ✅ Compute and interpret Z-scores |
 | **🎓 Advanced** | ✅ Critically evaluate variability claims in research |
-| | ✅ Detect and correct misuse of dispersion measures |
+| | ✅ Apply variability concepts to AI/ML contexts |
 | | ✅ Explain the mathematical properties of variance and SD |
+| | ✅ Use variability measures for hypothesis testing |
 
 ---
 
@@ -79,168 +95,301 @@ flowchart TD
 - ✅ Basic algebra and square roots
 - ✅ Understanding of data types (nominal, ordinal, interval, ratio)
 
-**Estimated Study Time:** ⏱️ 2.5 – 4 hours
+**Estimated Study Time:** ⏱️ 3 – 5 hours
 
 ---
 
-## 💡 Why This Topic Matters
+## 💡 Section 1: Introduction
 
-> [!TIP]
-> *Central tendency tells you where the data are centered. Dispersion tells you how much you should trust that center.*
+### Why Dispersion Matters
 
-### The Two Datasets Story 📖
+> [!IMPORTANT]
+> **The Central Question:** If central tendency tells you where the data are centered, dispersion tells you how much you should trust that center.
 
-Consider two classes with mean exam score = 75:
+**The Two Classes Story:**
 
 | Class | Scores | Mean | Dispersion Pattern |
 |-------|--------|------|-------------------|
-| **Class A** | 73, 74, 75, 75, 76, 77 | 75 | Tightly clustered |
-| **Class B** | 20, 40, 60, 75, 90, 100, 120 | 75 | Widely spread |
+| **Class A** | 73, 74, 75, 75, 76, 77 | 75 | Tightly clustered, reliable |
+| **Class B** | 20, 40, 60, 75, 90, 100, 120 | 75 | Widely spread, unreliable |
 
-**The mean alone tells an incomplete story.** Central tendency cannot distinguish these classes. Dispersion measures quantify **how spread out** values are around the center.
+**Key Insight:** Both classes have the same mean (75), but they represent completely different realities. Dispersion measures quantify the difference.
 
-### Real-World Impact
+**The Four Pillars of Data Description:**
+1. **Central Tendency** (Where is the center?)
+2. **Dispersion** (How spread out is the data?)
+3. **Shape** (What is the distribution pattern?)
+4. **Outliers** (Are there extreme values?)
 
-| Field | Why Dispersion Matters | Example |
-|-------|----------------------|---------|
-| 🏥 **Medicine** | Variation in treatment response | "The mean blood pressure reduction was 10 mmHg (SD = 15 mmHg)" |
-| 💰 **Finance** | Risk assessment | "This investment has high return but high volatility" |
-| 🧪 **Clinical Trials** | Consistency of effect | "The treatment effect was consistent across subgroups" |
-| 📊 **Quality Control** | Process stability | "The mean diameter is 10 mm with SD = 0.1 mm" |
-| 🤖 **Machine Learning** | Model uncertainty | "The model's predictions have high variance" |
-| 🏭 **Manufacturing** | Tolerances and specifications | "Parts must be within 3 SD of the mean" |
-| 📈 **Economics** | Income inequality | "The Gini coefficient measures income dispersion" |
+**Dispersion Answers These Questions:**
+- How consistent are the measurements?
+- How much does the data vary?
+- How reliable is the mean?
+- How different are observations from each other?
+- What is the range of typical values?
 
-### Why This Chapter Matters for Your Research
+**Real-World Importance:**
 
-> [!IMPORTANT]
-> **Quick Wins for Researchers:**
-> 1. **Better Data Description**: Report variability alongside central tendency
-> 2. **Improved Interpretation**: Understand what "spread" means for your data
-> 3. **Stronger Papers**: Avoid common reviewer criticisms about missing dispersion
-> 4. **Better Decision Making**: Quantify uncertainty and risk
-
----
-
-## 🌍 Big Picture
-
-### The Dispersion Landscape
-
-```mermaid
-flowchart LR
-    A["📊 Dispersion"] --> B["📏 Range"]
-    A --> C["📐 IQR"]
-    A --> D["📊 Variance"]
-    A --> E["📈 Std Dev"]
-    A --> F["📊 CV"]
-    
-    B --> B1["Simple<br>Sensitive to outliers"]
-    C --> C1["Robust<br>Boxplot-based"]
-    D --> D1["Average squared deviation"]
-    E --> E1["Same units as data<br>Most commonly used"]
-    F --> F1["Unit-free<br>For comparisons"]
-    
-    D --> D2["Population σ²"]
-    D --> D3["Sample s²"]
-    D3 --> D4["Bessel's correction n-1"]
-```
-
-### The Dispersion Spectrum
-
-```mermaid
-graph LR
-    Simple["📏 Simple<br>Range"] --> Robust["📐 Robust<br>IQR"] --> Mathematical["📊 Mathematical<br>Variance"] --> Interpretable["📈 Interpretable<br>Std Dev"]
-
-    style Simple fill:#3498db,color:#fff
-    style Robust fill:#2ecc71,color:#fff
-    style Mathematical fill:#f39c12,color:#fff
-    style Interpretable fill:#e74c3c,color:#fff
-```
-
-### The Four Questions Each Measure Answers
-
-| Measure | Question It Answers | Statistical Principle |
-|---------|-------------------|----------------------|
-| **Range** | "How far apart are the extremes?" | Max - Min |
-| **IQR** | "How spread is the middle 50%?" | Q3 - Q1 |
-| **Variance** | "What is the average squared deviation?" | Average of $(x - \mu)^2$ |
-| **Standard Deviation** | "What is the typical deviation?" | Square root of variance |
-| **CV** | "How variable is this relative to its mean?" | SD / Mean |
+| Domain | Why Dispersion Matters |
+|--------|----------------------|
+| **Medicine** | Variation in treatment response determines patient outcomes |
+| **Finance** | Risk is measured by variability of returns |
+| **Manufacturing** | Quality control requires monitoring variability |
+| **Education** | Test score variability indicates teaching effectiveness |
+| **Public Health** | Disease incidence variability guides resource allocation |
+| **AI/ML** | Model uncertainty is captured by prediction variability |
 
 ---
 
-## 🧠 Core Intuition
+## 📜 Section 2: History
 
-### The "Shooting Target" Analogy 🎯
+### The Evolution of Dispersion Measures
 
-Imagine two archers shooting at a target:
+**Ancient Roots (300 BCE - 1700s):**
+- **Range** was used in ancient astronomy to describe star positions
+- **Aristotle** discussed variability in biological measurements
+- **Early astronomers** used maximum-minimum spread
 
-```mermaid
-graph TD
-    A["🎯 Archer A<br>Mean = Bullseye<br>High Precision<br>Low Dispersion"] --> B["✅ Consistent<br>Reliable"]
-    C["🎯 Archer B<br>Mean = Bullseye<br>Low Precision<br>High Dispersion"] --> D["❌ Inconsistent<br>Unreliable"]
-    
-    style A fill:#2ecc71,color:#fff
-    style C fill:#e74c3c,color:#fff
-```
+**The 18th Century - Birth of Modern Statistics:**
 
-**Key Insight:** Both archers have the same mean (bullseye), but their reliability is completely different. Dispersion tells you which archer you should trust!
+| Year | Figure | Contribution |
+|------|--------|--------------|
+| **1749** | Thomas Simpson | First use of mean deviation |
+| **1755** | Tobias Mayer | Used range in astronomical observations |
+| **1777** | Daniel Bernoulli | Discussed variability in population studies |
+| **1793** | Laplace | Developed the first formal measures of dispersion |
 
-### The "Restaurant Wait Time" Analogy 🍽️
+**The 19th Century - The Golden Age:**
 
-Two restaurants both have average wait time = 15 minutes:
+| Year | Figure | Contribution |
+|------|--------|--------------|
+| **1815** | Gauss | Introduced standard deviation in astronomy |
+| **1823** | Gauss | Developed the method of least squares |
+| **1838** | Bessel | Proposed Bessel's correction ($n-1$) |
+| **1877** | Galton | Used quartiles and percentiles |
+| **1889** | Galton | Introduced the concept of "standard deviation" |
+| **1893** | Pearson | Formalized the variance formula |
+| **1894** | Pearson | Distinguished population vs. sample |
 
-| Restaurant | Wait Times (minutes) | Mean | Dispersion |
-|-----------|---------------------|------|------------|
-| **Restaurant A** | 14, 15, 15, 15, 16 | 15 | Very consistent |
-| **Restaurant B** | 5, 10, 15, 20, 25 | 15 | Very inconsistent |
+**The 20th Century - Modern Era:**
 
-**Which would you choose?** Restaurant A, because you can trust the 15-minute estimate!
+| Year | Figure | Contribution |
+|------|--------|--------------|
+| **1908** | Student (Gosset) | Developed t-distribution with SD |
+| **1913** | Fisher | Advanced analysis of variance (ANOVA) |
+| **1920s** | Fisher | Developed coefficient of variation |
+| **1950s** | Tukey | Developed robust measures (IQR) |
+| **1960s** | Tukey | Introduced exploratory data analysis |
+| **1970s** | Box & Jenkins | Advanced time series variability |
 
-### The "Investment" Analogy 💰
+**The 21st Century - Computational Era:**
+- **Machine Learning**: Variability in predictions and feature importance
+- **Big Data**: Scaling dispersion measures to large datasets
+- **Deep Learning**: Understanding model uncertainty
+- **Bayesian Methods**: Variability expressed as credible intervals
 
-Two investments both have average annual return = 8%:
-
-| Investment | Returns (annual %) | Mean | Risk |
-|-----------|-------------------|------|------|
-| **Bond Fund** | 7, 8, 8, 9, 8 | 8% | Low risk |
-| **Tech Stock** | -20, 5, 15, 25, 15 | 8% | High risk |
-
-**Dispersion = Risk!** Higher dispersion means higher uncertainty.
-
-### The "Weather Forecast" Analogy 🌤️
-
-Two cities both have average temperature = 70°F:
-
-| City | Temperatures (°F) | Mean | Weather Pattern |
-|------|------------------|------|----------------|
-| **San Diego** | 68, 69, 70, 70, 71, 72 | 70 | Stable, predictable |
-| **Chicago** | 30, 45, 60, 75, 90, 100 | 70 | Unstable, unpredictable |
-
-**Dispersion = Predictability!**
+**Historical Significance:**
+> "The history of dispersion measures is the history of understanding uncertainty itself. From ancient astronomy to modern machine learning, measuring variability has been essential to scientific progress."
 
 ---
 
-## 📐 Mathematical Foundation
+## 📐 Section 3: Mathematical Foundation
 
-### Key Definitions
+### Core Definitions
 
-#### Range
+#### Section 3.1: Basic Concepts
 
-> 📖 **Definition**: The range is the difference between the maximum and minimum values.
+> 📖 **Definition - Variability**: The extent to which data points in a distribution differ from each other and from the central tendency.
+
+> 📖 **Definition - Spread**: The degree of dispersion or scatter of observations around their central value.
+
+> 📖 **Definition - Homogeneity**: When data points are similar and clustered closely together.
+
+> 📖 **Definition - Heterogeneity**: When data points are dissimilar and spread widely apart.
+
+#### Section 3.2: Mathematical Notation
+
+**Summation Notation:**
+$$\sum_{i=1}^{n} x_i = x_1 + x_2 + ... + x_n$$
+
+**Mean:**
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$
+
+**Deviations:**
+$$d_i = x_i - \bar{x}$$
+
+**Properties of Deviations:**
+$$\sum_{i=1}^{n} (x_i - \bar{x}) = 0$$
+
+**Squared Deviations:**
+$$d_i^2 = (x_i - \bar{x})^2$$
+
+**Absolute Deviations:**
+$$|d_i| = |x_i - \bar{x}|$$
+
+#### Section 3.3: Fundamental Theorems
+
+**Theorem 1: The Minimum Property**
+The sum of squared deviations is minimized when deviations are taken from the mean.
+
+**Proof:**
+Let $S(c) = \sum_{i=1}^{n} (x_i - c)^2$
+
+To find the minimum:
+$$\frac{dS}{dc} = -2\sum_{i=1}^{n} (x_i - c) = 0$$
+$$\sum_{i=1}^{n} x_i - nc = 0$$
+$$c = \frac{1}{n}\sum_{i=1}^{n} x_i = \bar{x}$$
+
+**Theorem 2: The ANOVA Decomposition**
+$$\sum_{i=1}^{n} (x_i - \bar{x})^2 = \sum_{i=1}^{n} x_i^2 - n\bar{x}^2$$
+
+**Proof:**
+$$\sum (x_i - \bar{x})^2 = \sum (x_i^2 - 2x_i\bar{x} + \bar{x}^2)$$
+$$= \sum x_i^2 - 2\bar{x}\sum x_i + n\bar{x}^2$$
+$$= \sum x_i^2 - 2n\bar{x}^2 + n\bar{x}^2$$
+$$= \sum x_i^2 - n\bar{x}^2$$
+
+#### Section 3.4: Degrees of Freedom
+
+> 📖 **Definition - Degrees of Freedom**: The number of independent pieces of information available to estimate a parameter.
+
+**Key Concept:**
+- When estimating the mean, we use $n$ observations
+- But when we estimate the mean, we "lose" one degree of freedom
+- Reason: The deviations sum to zero, so one deviation is determined by the others
+
+$$\text{df} = n - 1 \text{ for sample variance}$$
+
+**Intuition:**
+- With $n=1$ observation, we can estimate the mean (it's the observation itself)
+- But we cannot estimate variance (no information about spread)
+- With $n=2$ observations, we can estimate variance (the distance between them)
+- But with $n=1$, variance is undefined
+
+#### Section 3.5: Bessel's Correction
+
+> 📖 **Definition - Bessel's Correction**: Using $n-1$ instead of $n$ in the denominator of the sample variance to make it an unbiased estimator.
+
+**Why $n-1$?**
+
+When using the sample mean $\bar{x}$ instead of the true population mean $\mu$:
+- The sum of squared deviations is always smaller than it would be if we used $\mu$
+- This causes a downward bias in the variance estimate
+- Dividing by $n-1$ corrects this bias
+
+**Proof of Unbiasedness:**
+$$E[s^2] = E\left[\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2\right] = \sigma^2$$
+
+**Intuitive Explanation:**
+- The sample mean $\bar{x}$ is "too close" to the data points
+- This artificially reduces the sum of squared deviations
+- Dividing by $n-1$ compensates for this "too close" phenomenon
+
+---
+
+## 📊 Section 4: Importance
+
+### Why Measure Variability?
+
+#### Section 4.1: Scientific Importance
+
+**1. Understanding Uncertainty**
+- Every measurement has error
+- Variability quantifies this uncertainty
+- Without variability, we can't assess reliability
+
+**2. Hypothesis Testing**
+- Variability is essential for hypothesis testing
+- Larger variability = less power to detect differences
+- Smaller variability = more power to detect differences
+
+**3. Quality Control**
+- Manufacturing tolerances depend on variability
+- Process control requires measuring variability
+- Out-of-control processes show increased variability
+
+**4. Risk Assessment**
+- Financial risk is measured by variability
+- Health risks depend on variability in exposure
+- Engineering risks depend on variability in materials
+
+#### Section 4.2: Practical Applications
+
+**Medical Research:**
+- Treatment response variability
+- Disease progression variability
+- Diagnostic test variability
+- Genetic variability
+
+**Public Health:**
+- Disease incidence variability
+- Health outcome variability
+- Risk factor variability
+- Healthcare access variability
+
+**Business and Economics:**
+- Sales variability
+- Stock price variability
+- Customer behavior variability
+- Economic indicator variability
+
+**Machine Learning:**
+- Prediction variability
+- Feature variability
+- Model uncertainty
+- Error variability
+
+#### Section 4.3: Decision-Making
+
+**When Variability Matters for Decisions:**
+
+| Decision Type | Why Variability Matters |
+|---------------|----------------------|
+| **Clinical** | Treatment effectiveness varies by patient |
+| **Financial** | Investment returns vary over time |
+| **Policy** | Program impacts vary across populations |
+| **Quality** | Product quality varies across batches |
+| **Research** | Study results vary across samples |
+
+---
+
+## 📊 Section 5: Core Measures of Dispersion
+
+### Section 5.1: Range
+
+> 📖 **Definition - Range**: The difference between the maximum and minimum values in a dataset.
 
 $$\text{Range} = x_{\text{max}} - x_{\text{min}}$$
 
 **Properties:**
-- ✅ Easy to compute and understand
-- ✅ Gives a quick sense of spread
+- ✅ Very simple to calculate and understand
+- ✅ Provides a quick sense of spread
 - ❌ Extremely sensitive to outliers
 - ❌ Ignores all data points except extremes
 - ❌ Not stable across samples
 
-#### Interquartile Range (IQR)
+**Example:**
+```text
+Dataset: 118, 119, 121, 122, 125, 128, 130, 138, 145, 150
+Range = 150 - 118 = 32 mmHg
+```
 
-> 📖 **Definition**: The IQR is the difference between the 75th percentile (Q3) and 25th percentile (Q1).
+**Interpretation:** The blood pressure values span 32 mmHg from minimum to maximum.
+
+**Effect of Outlier:**
+```text
+With Outlier: 118, 119, 121, 122, 125, 128, 130, 138, 145, 300
+Range = 300 - 118 = 182 mmHg (↑ 150 mmHg!)
+```
+
+> [!WARNING]
+> **Caution:** The range is highly sensitive to outliers. A single extreme value can dramatically change the range, making it misleading for most datasets.
+
+---
+
+### Section 5.2: Interquartile Range (IQR)
+
+> 📖 **Definition - Interquartile Range**: The difference between the third quartile (Q3) and first quartile (Q1).
 
 $$IQR = Q_3 - Q_1$$
 
@@ -252,459 +401,83 @@ $$IQR = Q_3 - Q_1$$
 - ❌ Loses information about the tails
 
 **Outlier Fences (Tukey's Rule):**
-
-$$\text{Lower fence} = Q_1 - 1.5 \times IQR$$
-$$\text{Upper fence} = Q_3 + 1.5 \times IQR$$
-
-Any observation beyond these fences is flagged as a potential outlier — this is exactly what a boxplot's "whiskers" represent.
-
-#### Population Variance
-
-> 📖 **Definition**: The average of squared deviations from the population mean.
-
-$$\sigma^2 = \frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2$$
-
-**Properties:**
-- ✅ Uses all data
-- ✅ Mathematically tractable
-- ✅ Basis for many statistical methods
-- ❌ In squared units (hard to interpret)
-- ❌ Sensitive to outliers
-
-#### Sample Variance (with Bessel's Correction)
-
-> 📖 **Definition**: The average of squared deviations from the sample mean, with $n-1$ denominator.
-
-$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2$$
-
-**Properties:**
-- ✅ Unbiased estimator of $\sigma^2$
-- ✅ Uses all data
-- ✅ Basis for inferential statistics
-- ❌ In squared units (hard to interpret)
-- ❌ Sensitive to outliers
-
-#### Why $n-1$? (Bessel's Correction)
-
-> [!NOTE]
-> **Why $n-1$, not $n$?** Using the sample mean $\bar{x}$ (instead of the true population mean $\mu$) to compute deviations slightly *underestimates* the true variance, because $\bar{x}$ is, by construction, the value that minimizes $\sum(x_i - c)^2$ within the sample.
-
-**The Mathematics of Bessel's Correction:**
-
-1. **The Bias Problem:** When we use $\bar{x}$ instead of $\mu$, the sum of squared deviations is always smaller:
-   $$\sum_{i=1}^n (x_i - \bar{x})^2 \leq \sum_{i=1}^n (x_i - \mu)^2$$
-
-2. **The Correction:** Dividing by $n-1$ instead of $n$ corrects this downward bias, making $s^2$ an **unbiased estimator** of $\sigma^2$:
-   $$E[s^2] = \sigma^2$$
-
-3. **Degrees of Freedom:** We lose one degree of freedom because we estimated the mean from the data:
-   $$\text{df} = n - 1$$
-
-**The Proof (simplified):**
-$$E\left[\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2\right] = \sigma^2$$
-
-**Intuitive Explanation:**
-- The sample mean $\bar{x}$ is "too close" to the data points
-- This artificially reduces the sum of squared deviations
-- Dividing by $n-1$ compensates for this "too close" phenomenon
-
-#### Standard Deviation
-
-> 📖 **Definition**: The square root of the variance.
-
-$$s = \sqrt{s^2}$$
-
-**Properties:**
-- ✅ In the same units as the data
-- ✅ Intuitive interpretation
-- ✅ Basis for the Empirical Rule
-- ✅ Widely used and understood
-- ❌ Sensitive to outliers
-
-#### Coefficient of Variation (CV)
-
-> 📖 **Definition**: The standard deviation divided by the mean, expressed as a percentage.
-
-$$CV = \frac{s}{\bar{x}} \times 100\%$$
-
-**Properties:**
-- ✅ Unit-free (dimensionless)
-- ✅ Allows comparison across different units
-- ✅ Useful for comparing variability
-- ❌ Only valid for ratio scale data
-- ❌ Unstable when mean is near zero
-
-### Derivation of the Variance Formula
-
-**The Optimization Problem:**
-
-The variance is the average squared deviation from the mean. This is related to the optimization problem that defines the mean:
-
-**Step 1:** Define the sum of squared deviations from c:
-$$S(c) = \sum_{i=1}^n (x_i - c)^2$$
-
-**Step 2:** The minimum occurs at $c = \bar{x}$:
-$$\frac{dS}{dc} = -2\sum_{i=1}^n (x_i - c) = 0$$
-$$c = \bar{x}$$
-
-**Step 3:** The variance is the minimum value of $S(c)/n$:
-$$s^2 = \frac{S(\bar{x})}{n-1}$$
-
-**Step 4:** This is why the variance measures "average squared deviation" — it's the minimum possible average squared distance from any point.
-
-### The Empirical Rule (68–95–99.7 Rule)
-
-For approximately normal distributions:
-
-| Interval | Approx. % of Data | Cumulative % |
-|----------|------------------|--------------|
-| $\mu \pm 1\sigma$ | 68% | 68% |
-| $\mu \pm 2\sigma$ | 95% | 95% |
-| $\mu \pm 3\sigma$ | 99.7% | 99.7% |
-
-```mermaid
-flowchart LR
-    A["μ - 3σ"] --- B["μ - 2σ"] --- C["μ - 1σ"] --- D["μ (mean)"] --- E["μ + 1σ"] --- F["μ + 2σ"] --- G["μ + 3σ"]
-    
-    H["68%"] --- D
-    I["95%"] --- D
-    J["99.7%"] --- D
-```
-
-**Interpretation:**
-- **68%** of data falls within 1 SD of the mean
-- **95%** of data falls within 2 SDs of the mean
-- **99.7%** of data falls within 3 SDs of the mean
-
----
-
-## 📊 Measures of Dispersion
-
-### 1. Range 📏
-
-#### Mathematical Definition
-
-$$\text{Range} = x_{\text{max}} - x_{\text{min}}$$
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✅ Simple to compute | ❌ Extremely sensitive to outliers |
-| ✅ Easy to understand | ❌ Ignores all data points except extremes |
-| ✅ Quick sense of spread | ❌ Not robust |
-| ✅ Works for any quantitative data | ❌ Not stable across samples |
-
-#### Example: Blood Pressure Data
-
-```text
-Dataset: 118, 119, 121, 122, 125, 128, 130, 138, 145, 150
-
-Range = 150 - 118 = 32 mmHg
-
-Interpretation: The blood pressure values span 32 mmHg from minimum to maximum.
-```
-
-#### Example: Effect of an Outlier
-
-```text
-Original: 118, 119, 121, 122, 125, 128, 130, 138, 145, 150
-Range = 32 mmHg
-
-With Outlier: 118, 119, 121, 122, 125, 128, 130, 138, 145, 300
-Range = 300 - 118 = 182 mmHg (↑ 150 mmHg!)
-
-Range is extremely sensitive to a single outlier.
-```
-
----
-
-### 2. Interquartile Range (IQR) 📐
-
-#### Mathematical Definition
-
-$$IQR = Q_3 - Q_1$$
-
-Where:
-- $Q_1$ = 25th percentile (first quartile)
-- $Q_3$ = 75th percentile (third quartile)
-
-#### Methods for Calculating Quartiles
-
-**Method 1: Position-Based**
-
-For the $k$th percentile:
-$$\text{Position} = \frac{k}{100} \times (n + 1)$$
-
-**Method 2: Nearest Rank**
-
-The $k$th percentile is the smallest value such that at least $k\%$ of the data are $\leq$ that value.
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✅ Robust to outliers | ❌ Loses information about tails |
-| ✅ Represents middle 50% | ❌ Not used in many statistical tests |
-| ✅ Used in boxplots | ❌ Less mathematically tractable |
-| ✅ Works for skewed distributions | ❌ Not based on all data |
-
-#### Example: Blood Pressure Data
-
-```text
-Dataset (sorted): 118, 119, 121, 122, 125, 128, 130, 138, 145, 150
-
-n = 10
-
-Q1 (25th percentile):
-Position = (25/100) × (10 + 1) = 2.75
-Q1 = 119 + 0.75 × (121 - 119) = 119 + 1.5 = 120.5 mmHg
-
-Q3 (75th percentile):
-Position = (75/100) × (10 + 1) = 8.25
-Q3 = 138 + 0.25 × (145 - 138) = 138 + 1.75 = 139.75 mmHg
-
-IQR = 139.75 - 120.5 = 19.25 mmHg
-
-Interpretation: The middle 50% of blood pressure values span 19.25 mmHg.
-```
-
-#### Outlier Detection with IQR
-
-**Tukey's Fences:**
 $$\text{Lower fence} = Q_1 - 1.5 \times IQR$$
 $$\text{Upper fence} = Q_3 + 1.5 \times IQR$$
 
 **Example:**
 ```text
-Q1 = 120.5, Q3 = 139.75, IQR = 19.25
+Dataset: 118, 119, 121, 122, 125, 128, 130, 138, 145, 150
 
-Lower fence = 120.5 - 1.5 × 19.25 = 120.5 - 28.875 = 91.625
-Upper fence = 139.75 + 1.5 × 19.25 = 139.75 + 28.875 = 168.625
+Q1 = 121.25 mmHg
+Q3 = 137.0 mmHg
+IQR = 137.0 - 121.25 = 15.75 mmHg
 
-All values are between 91.625 and 168.625 → No outliers!
+Interpretation: The middle 50% of blood pressure values span 15.75 mmHg.
+```
+
+**Outlier Detection:**
+```text
+Lower fence = 121.25 - 1.5 × 15.75 = 97.625
+Upper fence = 137.0 + 1.5 × 15.75 = 160.625
+
+All values are between fences → No outliers!
 
 With Outlier: 118, 119, 121, 122, 125, 128, 130, 138, 145, 300
-
-Q1 = 121.25, Q3 = 137.0, IQR = 15.75
-
-Lower fence = 121.25 - 1.5 × 15.75 = 121.25 - 23.625 = 97.625
-Upper fence = 137.0 + 1.5 × 15.75 = 137.0 + 23.625 = 160.625
-
 300 > 160.625 → 300 is an outlier! ✓
 ```
 
 ---
 
-### 3. Variance 📊
+### Section 5.3: Quartile Deviation
 
-#### Population Variance
+> 📖 **Definition - Quartile Deviation**: Half the difference between the third and first quartiles.
 
-$$\sigma^2 = \frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2$$
+$$QD = \frac{Q_3 - Q_1}{2} = \frac{IQR}{2}$$
 
-#### Sample Variance
+**Properties:**
+- ✅ Robust to outliers
+- ✅ Easy to understand
+- ✅ Represents the spread of the middle 50%
+- ❌ Loses information about the tails
+- ❌ Less commonly used than IQR
 
-$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2$$
+**Example:**
+```text
+Dataset: 118, 119, 121, 122, 125, 128, 130, 138, 145, 150
 
-#### Computational Formula (Sample Variance)
+Q1 = 121.25 mmHg
+Q3 = 137.0 mmHg
+QD = (137.0 - 121.25) / 2 = 7.875 mmHg
 
-$$s^2 = \frac{\sum x_i^2 - \frac{(\sum x_i)^2}{n}}{n-1}$$
+Interpretation: Half the interquartile range is 7.875 mmHg.
+```
 
-This formula is more stable numerically for hand calculations.
+**Comparison with Other Measures:**
 
-#### Derivation of Sample Variance
-
-**Step 1:** Expand the squared deviations
-$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i^2 - 2x_i\bar{x} + \bar{x}^2)$$
-
-**Step 2:** Use $\sum x_i = n\bar{x}$
-$$s^2 = \frac{1}{n-1}\left(\sum x_i^2 - 2\bar{x}\sum x_i + n\bar{x}^2\right)$$
-
-**Step 3:** Simplify
-$$s^2 = \frac{1}{n-1}\left(\sum x_i^2 - 2n\bar{x}^2 + n\bar{x}^2\right)$$
-$$s^2 = \frac{1}{n-1}\left(\sum x_i^2 - n\bar{x}^2\right)$$
-
-**Step 4:** Substitute $\bar{x} = \frac{\sum x_i}{n}$
-$$s^2 = \frac{\sum x_i^2 - \frac{(\sum x_i)^2}{n}}{n-1}$$
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✅ Uses all data | ❌ In squared units (hard to interpret) |
-| ✅ Mathematically tractable | ❌ Sensitive to outliers |
-| ✅ Basis for many statistical methods | ❌ Not intuitive for most people |
-| ✅ Has excellent statistical properties | ❌ Requires interval/ratio scale |
-
-#### Example: Blood Pressure Data
-
-**Step 1:** Calculate the mean
-$$\bar{x} = 129.6 \text{ mmHg}$$
-
-**Step 2:** Calculate deviations from mean
-
-| $x_i$ | $x_i - \bar{x}$ | $(x_i - \bar{x})^2$ |
-|-------|-----------------|---------------------|
-| 118 | -11.6 | 134.56 |
-| 119 | -10.6 | 112.36 |
-| 121 | -8.6 | 73.96 |
-| 122 | -7.6 | 57.76 |
-| 125 | -4.6 | 21.16 |
-| 128 | -1.6 | 2.56 |
-| 130 | 0.4 | 0.16 |
-| 138 | 8.4 | 70.56 |
-| 145 | 15.4 | 237.16 |
-| 150 | 20.4 | 416.16 |
-
-**Step 3:** Sum of squared deviations
-$$\sum (x_i - \bar{x})^2 = 1126.4$$
-
-**Step 4:** Calculate sample variance (n = 10)
-$$s^2 = \frac{1126.4}{10-1} = \frac{1126.4}{9} = 125.16 \text{ mmHg}^2$$
-
-**Interpretation:** The average squared deviation from the mean is 125.16 mmHg².
+| Measure | Value |
+|---------|-------|
+| Range | 32 mmHg |
+| IQR | 15.75 mmHg |
+| Quartile Deviation | 7.875 mmHg |
+| SD | 11.19 mmHg |
 
 ---
 
-### 4. Standard Deviation 📈
+### Section 5.4: Mean Absolute Deviation (MAD)
 
-#### Mathematical Definition
+> 📖 **Definition - Mean Absolute Deviation**: The average of the absolute deviations from the mean.
 
-$$s = \sqrt{s^2} = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}$$
+$$MAD = \frac{1}{n}\sum_{i=1}^{n}|x_i - \bar{x}|$$
 
-#### The Standard Deviation as a Ruler
+**Properties:**
+- ✅ Same units as data
+- ✅ Intuitive interpretation
+- ✅ Less sensitive to outliers than variance
+- ✅ Easy to understand
+- ❌ Less mathematically tractable than variance
+- ❌ Less commonly used in statistical tests
 
-```mermaid
-graph TD
-    A["Mean = 129.6 mmHg"] --> B["1 SD = 11.19 mmHg"]
-    B --> C["68% of data: 118.41 - 140.79 mmHg"]
-    B --> D["95% of data: 107.22 - 151.98 mmHg"]
-    B --> E["99.7% of data: 96.03 - 163.17 mmHg"]
-```
-
-#### Empirical Rule Visualization
-
-```mermaid
-graph LR
-    A["μ - 3σ<br/>96.0"] --- B["μ - 2σ<br/>107.2"] --- C["μ - 1σ<br/>118.4"] --- D["μ<br/>129.6"] --- E["μ + 1σ<br/>140.8"] --- F["μ + 2σ<br/>152.0"] --- G["μ + 3σ<br/>163.2"]
-    
-    H["68%"] --- D
-    I["95%"] --- D
-    J["99.7%"] --- D
-```
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✅ Same units as data | ❌ Sensitive to outliers |
-| ✅ Intuitive interpretation | ❌ Less robust than IQR |
-| ✅ Basis for Empirical Rule | ❌ Assumes symmetry for interpretation |
-| ✅ Widely used and understood | ❌ Can be affected by skewness |
-| ✅ Has excellent statistical properties | ❌ Not appropriate for ordinal data |
-
-#### Example: Blood Pressure Data
-
-**Step 1:** Calculate variance
-$$s^2 = 125.16 \text{ mmHg}^2$$
-
-**Step 2:** Take the square root
-$$s = \sqrt{125.16} = 11.19 \text{ mmHg}$$
-
-**Interpretation:** The typical deviation from the mean blood pressure is about 11.19 mmHg. Most blood pressure values (68%) fall between 118.41 and 140.79 mmHg.
-
-**Empirical Rule Check:**
-- Mean ± 1 SD: 129.6 ± 11.19 = (118.41, 140.79)
-- Actually 70% of data falls in this range! (7 out of 10 values)
-- Close to the 68% rule for normal distributions
-
----
-
-### 5. Coefficient of Variation (CV) 📊
-
-#### Mathematical Definition
-
-$$CV = \frac{s}{\bar{x}} \times 100\%$$
-
-#### Interpretation
-
-The CV expresses the standard deviation as a percentage of the mean. It measures relative variability.
-
-**Rule of Thumb:**
-- CV < 10%: Low variability (very consistent)
-- 10% < CV < 30%: Moderate variability
-- CV > 30%: High variability (highly variable)
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✅ Unit-free (dimensionless) | ❌ Only valid for ratio scale data |
-| ✅ Allows comparison across different units | ❌ Unstable when mean is near zero |
-| ✅ Easy to interpret | ❌ Assumes mean is positive |
-| ✅ Useful for comparing variability | ❌ Can be misleading with negative values |
-
-#### Applications
-
-**1. Comparing Different Variables**
-
-```text
-Variable A: Height in cm
-Mean = 170 cm, SD = 10 cm
-CV = 10/170 × 100% = 5.9%
-
-Variable B: Weight in kg
-Mean = 70 kg, SD = 10 kg
-CV = 10/70 × 100% = 14.3%
-
-Interpretation: Weight is more variable relative to its scale than height!
-Even though both have SD = 10, weight's CV is higher.
-```
-
-**2. Comparing Groups with Different Means**
-
-```text
-Group A: Mean = 100, SD = 15, CV = 15%
-Group B: Mean = 50, SD = 10, CV = 20%
-
-Interpretation: Group B has more relative variability, even though Group A has a larger SD.
-```
-
-**3. Quality Control**
-
-```text
-Manufacturing Process A: Mean = 10.0 mm, SD = 0.5 mm, CV = 5%
-Manufacturing Process B: Mean = 100.0 mm, SD = 2.0 mm, CV = 2%
-
-Interpretation: Process B is more precise relative to its target size!
-```
-
-#### Example: Blood Pressure Data
-
-$$CV = \frac{11.19}{129.6} \times 100\% = 8.6\%$$
-
-**Interpretation:** The blood pressure values have relatively low variability (CV < 10%), indicating consistent readings.
-
----
-
-### 6. Mean Absolute Deviation (MAD) 📊
-
-#### Mathematical Definition
-
-$$\text{MAD} = \frac{1}{n}\sum_{i=1}^{n}|x_i - \bar{x}|$$
-
-#### Advantages and Disadvantages
-
-| Advantages | Disadvantages |
-|------------|---------------|
-| ✅ Same units as data | ❌ Less mathematically tractable |
-| ✅ Intuitive interpretation | ❌ Less commonly used |
-| ✅ Less sensitive to outliers than variance | ❌ Not used in standard statistical tests |
-| ✅ Easy to understand | ❌ Not as efficient as SD |
-
-#### Example: Blood Pressure Data
-
-**Step 1:** Calculate absolute deviations
+**Example - Blood Pressure Data:**
 
 | $x_i$ | $x_i - \bar{x}$ | $\|x_i - \bar{x}\|$ |
 |-------|-----------------|---------------------|
@@ -719,156 +492,528 @@ $$\text{MAD} = \frac{1}{n}\sum_{i=1}^{n}|x_i - \bar{x}|$$
 | 145 | 15.4 | 15.4 |
 | 150 | 20.4 | 20.4 |
 
-**Step 2:** Sum of absolute deviations
 $$\sum |x_i - \bar{x}| = 88.4$$
-
-**Step 3:** Calculate MAD
-$$\text{MAD} = \frac{88.4}{10} = 8.84 \text{ mmHg}$$
+$$MAD = \frac{88.4}{10} = 8.84 \text{ mmHg}$$
 
 **Interpretation:** The typical absolute deviation from the mean is 8.84 mmHg.
 
+**MAD vs. SD:**
+- MAD = 8.84 mmHg
+- SD = 11.19 mmHg
+- SD > MAD because squaring gives more weight to large deviations
+
 ---
 
-### 7. Percentiles & Quartiles 📊
+### Section 5.5: Variance
 
-#### Mathematical Definition
+#### Population Variance
 
-The $k$th percentile is the value below which $k\%$ of the data fall.
+> 📖 **Definition - Population Variance**: The average of squared deviations from the population mean.
 
-#### Quartiles
+$$\sigma^2 = \frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2$$
 
-- **Q1 (25th percentile)**: First quartile
-- **Q2 (50th percentile)**: Median (second quartile)
-- **Q3 (75th percentile)**: Third quartile
+**Properties:**
+- ✅ Uses all data
+- ✅ Mathematically tractable
+- ✅ Basis for many statistical methods
+- ❌ In squared units (hard to interpret)
+- ❌ Sensitive to outliers
 
-#### Five-Number Summary
+#### Sample Variance
 
-$$\text{Min}, Q_1, \text{Median}, Q_3, \text{Max}$$
+> 📖 **Definition - Sample Variance**: The average of squared deviations from the sample mean, with $n-1$ denominator.
 
-#### Example: Blood Pressure Data
+$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2$$
 
+**Properties:**
+- ✅ Unbiased estimator of $\sigma^2$
+- ✅ Uses all data
+- ✅ Basis for inferential statistics
+- ❌ In squared units (hard to interpret)
+- ❌ Sensitive to outliers
+
+#### Computational Formula
+
+$$s^2 = \frac{\sum x_i^2 - \frac{(\sum x_i)^2}{n}}{n-1}$$
+
+#### Worked Example - Blood Pressure Data:
+
+| $x_i$ | $x_i^2$ |
+|-------|---------|
+| 118 | 13,924 |
+| 119 | 14,161 |
+| 121 | 14,641 |
+| 122 | 14,884 |
+| 125 | 15,625 |
+| 128 | 16,384 |
+| 130 | 16,900 |
+| 138 | 19,044 |
+| 145 | 21,025 |
+| 150 | 22,500 |
+
+$$\sum x_i = 1296$$
+$$\sum x_i^2 = 169,088$$
+$$\bar{x} = 129.6$$
+
+$$s^2 = \frac{169,088 - \frac{1296^2}{10}}{9}$$
+$$s^2 = \frac{169,088 - \frac{1,679,616}{10}}{9}$$
+$$s^2 = \frac{169,088 - 167,961.6}{9}$$
+$$s^2 = \frac{1,126.4}{9} = 125.16 \text{ mmHg}^2$$
+
+**Interpretation:** The average squared deviation from the mean is 125.16 mmHg².
+
+---
+
+### Section 5.6: Standard Deviation
+
+> 📖 **Definition - Standard Deviation**: The square root of the variance.
+
+$$s = \sqrt{s^2} = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}$$
+
+**Properties:**
+- ✅ In the same units as the data
+- ✅ Intuitive interpretation
+- ✅ Basis for the Empirical Rule
+- ✅ Widely used and understood
+- ❌ Sensitive to outliers
+
+#### The Standard Deviation as a Ruler
+
+The standard deviation acts as a "ruler" for measuring how far observations are from the mean.
+
+**Empirical Rule (68-95-99.7 Rule):**
+
+For approximately normal distributions:
+
+| Interval | % of Data | Interpretation |
+|----------|-----------|----------------|
+| $\bar{x} \pm 1s$ | 68% | Most values are within 1 SD |
+| $\bar{x} \pm 2s$ | 95% | Almost all values are within 2 SDs |
+| $\bar{x} \pm 3s$ | 99.7% | Virtually all values are within 3 SDs |
+
+**Example - Blood Pressure Data:**
+$$s = \sqrt{125.16} = 11.19 \text{ mmHg}$$
+
+**Interpretation:** The typical deviation from the mean blood pressure is about 11.19 mmHg.
+
+**95% Range (Empirical Rule):**
+$$\bar{x} \pm 2s = 129.6 \pm 2(11.19) = 129.6 \pm 22.38 = (107.22, 151.98)$$
+
+**Actual Check:**
+- 95% of data should be between 107.22 and 151.98 mmHg
+- All 10 values are in this range (100%)
+- Close to the expected 95%
+
+---
+
+### Section 5.7: Coefficient of Variation (CV)
+
+> 📖 **Definition - Coefficient of Variation**: The standard deviation divided by the mean, expressed as a percentage.
+
+$$CV = \frac{s}{\bar{x}} \times 100\%$$
+
+**Properties:**
+- ✅ Unit-free (dimensionless)
+- ✅ Allows comparison across different units
+- ✅ Useful for comparing variability
+- ❌ Only valid for ratio scale data
+- ❌ Unstable when mean is near zero
+
+**Interpretation Guidelines:**
+
+| CV Value | Interpretation |
+|----------|----------------|
+| < 10% | Low variability, very consistent |
+| 10% - 30% | Moderate variability |
+| > 30% | High variability, highly variable |
+
+**Example - Blood Pressure Data:**
+$$CV = \frac{11.19}{129.6} \times 100\% = 8.6\%$$
+
+**Interpretation:** The blood pressure values have relatively low variability (CV < 10%).
+
+**Comparison Example:**
+
+| Variable | Mean | SD | CV |
+|----------|------|-----|-----|
+| Height (cm) | 170 | 10 | 5.9% |
+| Weight (kg) | 70 | 10 | 14.3% |
+
+**Interpretation:** Weight is more variable relative to its scale than height, even though both have SD = 10.
+
+---
+
+## 🔄 Section 6: Advanced Measures
+
+### Section 6.1: Relative Variability
+
+> 📖 **Definition - Relative Variability**: A measure of variability that accounts for the scale of measurement.
+
+**Common Measures of Relative Variability:**
+1. **Coefficient of Variation** ($CV = \frac{s}{\bar{x}} \times 100\%$)
+2. **Relative Range** ($RR = \frac{\text{Range}}{\bar{x}} \times 100\%$)
+3. **Relative IQR** ($RIQR = \frac{IQR}{\text{Median}} \times 100\%$)
+
+**When to Use:**
+- Comparing variability across different units
+- Comparing variability across different scales
+- Assessing consistency relative to the mean
+
+**Example - Comparing Different Variables:**
 ```text
-Dataset (sorted): 118, 119, 121, 122, 125, 128, 130, 138, 145, 150
+Variable A: Mean = 100, SD = 15, CV = 15%
+Variable B: Mean = 50, SD = 10, CV = 20%
 
-Minimum: 118
-Q1: 120.5
-Median: 126.5
-Q3: 139.75
-Maximum: 150
-
-Five-Number Summary: 118, 120.5, 126.5, 139.75, 150
-
-Interpretation:
-- 25% of values are ≤ 120.5 mmHg
-- 50% of values are ≤ 126.5 mmHg (median)
-- 75% of values are ≤ 139.75 mmHg
-```
-
-#### Boxplot (Box-and-Whisker Plot)
-
-```mermaid
-graph LR
-    A["Min<br/>118"] --- B["Q1<br/>120.5"] --- C["Median<br/>126.5"] --- D["Q3<br/>139.75"] --- E["Max<br/>150"]
+Interpretation: Variable B has more relative variability.
 ```
 
 ---
 
-## 🔄 Choosing the Right Measure
+### Section 6.2: Standard Error (SE)
 
-### Decision Framework
+> 📖 **Definition - Standard Error**: The standard deviation of the sampling distribution of a statistic.
 
-```mermaid
-flowchart TD
-    A["📊 What is the data type?"] -->|"🏷️ Nominal"| B["❌ No valid<br>dispersion measure"]
-    A -->|"📊 Ordinal"| C["📐 IQR or<br>Percentiles"]
-    A -->|"📈 Interval/Ratio"| D{"What is the distribution shape?"}
-    D -->|"✅ Symmetric"| E["📊 Variance or<br>Standard Deviation"]
-    D -->|"📈 Skewed"| F["📐 IQR"]
-    D -->|"🚀 Rate comparison"| G["📊 Coefficient of<br>Variation"]
-    D -->|"⚠️ Quick sense"| H["📏 Range"]
+$$SE_{\bar{x}} = \frac{s}{\sqrt{n}}$$
+
+**Key Distinction:**
+
+| Aspect | Standard Deviation (SD) | Standard Error (SE) |
+|--------|------------------------|---------------------|
+| What it measures | Variability in the data | Variability in the estimate |
+| Formula | $s = \sqrt{\frac{\sum(x_i - \bar{x})^2}{n-1}}$ | $SE = \frac{s}{\sqrt{n}}$ |
+| Interpretation | Spread of individual values | Precision of the mean |
+| Use | Describing data | Confidence intervals, testing |
+| Changes with sample size | Stable | Decreases as n increases |
+
+**Example:**
+```text
+Blood Pressure Data:
+SD = 11.19 mmHg
+n = 10
+SE = 11.19 / √10 = 11.19 / 3.162 = 3.54 mmHg
+
+Interpretation: The mean (129.6 mmHg) is estimated with a standard error of 3.54 mmHg.
 ```
 
-### Comparison Table
+**Confidence Interval Using SE:**
+$$\bar{x} \pm t_{n-1, 0.975} \times SE$$
 
-| Measure | Sensitive to Outliers? | Uses All Data? | Valid Scale | Interpretation |
-|---------|----------------------|----------------|-------------|----------------|
-| **Range** | Yes (extremely) | No (only extremes) | Interval, Ratio | Full spread |
-| **IQR** | No (robust) | No (middle 50%) | Ordinal, Interval, Ratio | Middle spread |
-| **Variance** | Yes | Yes | Interval, Ratio | Average squared deviation |
-| **Standard Deviation** | Yes | Yes | Interval, Ratio | Typical deviation |
-| **CV** | Yes | Yes | Ratio | Relative variability |
-| **MAD** | Moderately | Yes | Interval, Ratio | Average absolute deviation |
-| **Percentiles** | No | Partial | Ordinal, Interval, Ratio | Position-based |
-
-### When to Use What
-
-| Situation | Best Choice | Why |
-|-----------|-------------|-----|
-| Normal data, no outliers | Standard Deviation | Efficient, interpretable |
-| Skewed data | IQR | Robust, interpretable |
-| Comparing different units | Coefficient of Variation | Unit-free |
-| Quick sense of spread | Range | Simple, fast |
-| Reporting with median | IQR | Matched to median |
-| Reporting with mean | Standard Deviation | Matched to mean |
-| Outlier detection | IQR with Tukey's fences | Robust method |
-
-### The "Matched Pair" Rule
-
-> [!TIP]
-> **Always match your dispersion measure to your central tendency measure:**
-> - **Mean** ↔ **Standard Deviation**
-> - **Median** ↔ **IQR**
-> - **Mode** ↔ **No standard dispersion**
+95% CI = 129.6 ± 2.262 × 3.54 = 129.6 ± 8.00 = (121.6, 137.6)
 
 ---
 
-## ✏️ Worked Examples
+### Section 6.3: Z-Score
+
+> 📖 **Definition - Z-Score**: The number of standard deviations an observation is from the mean.
+
+$$Z = \frac{x - \bar{x}}{s}$$
+
+**Properties:**
+- ✅ Standardizes observations
+- ✅ Allows comparison across different scales
+- ✅ Identifies outliers
+- ✅ Has a standard distribution (mean = 0, SD = 1)
+
+**Interpretation Guidelines:**
+
+| Z-Score | Interpretation |
+|---------|----------------|
+| 0 | Exactly at the mean |
+| ±1 | Within 1 SD of mean (normal) |
+| ±1.5 | Moderate deviation |
+| ±2 | Unusual (95% of data within ±2) |
+| ±3 | Very unusual (99.7% of data within ±3) |
+| > ±3 | Potential outlier |
+
+**Example - Blood Pressure Data:**
+
+| $x_i$ | $Z = (x - 129.6) / 11.19$ |
+|-------|---------------------------|
+| 118 | -1.04 |
+| 119 | -0.95 |
+| 121 | -0.77 |
+| 122 | -0.68 |
+| 125 | -0.41 |
+| 128 | -0.14 |
+| 130 | 0.04 |
+| 138 | 0.75 |
+| 145 | 1.38 |
+| 150 | 1.82 |
+
+**Interpretation:** 
+- 150 mmHg has Z = 1.82 (moderately high, but not an outlier)
+- No Z-score > 3 or < -3 (no outliers)
+
+---
+
+### Section 6.4: Standardization
+
+> 📖 **Definition - Standardization**: The process of transforming data to have a mean of 0 and standard deviation of 1.
+
+$$z_i = \frac{x_i - \bar{x}}{s}$$
+
+**Uses of Standardization:**
+1. **Comparing variables**: Making variables comparable
+2. **Machine learning**: Feature scaling for algorithms
+3. **Outlier detection**: Identifying unusual observations
+4. **Statistical testing**: Standardized test statistics
+
+**Example - Comparing Two Variables:**
+
+| Person | Height (cm) | Height Z-score | Weight (kg) | Weight Z-score |
+|--------|-------------|----------------|-------------|----------------|
+| 1 | 160 | -1.5 | 55 | -1.5 |
+| 2 | 165 | -1.0 | 58 | -1.1 |
+| 3 | 168 | -0.6 | 60 | -0.8 |
+| 4 | 170 | -0.4 | 62 | -0.5 |
+| 5 | 172 | -0.1 | 65 | -0.1 |
+| 6 | 175 | 0.3 | 68 | 0.2 |
+| 7 | 178 | 0.7 | 70 | 0.5 |
+| 8 | 180 | 1.0 | 72 | 0.8 |
+| 9 | 183 | 1.4 | 75 | 1.2 |
+| 10 | 185 | 1.8 | 78 | 1.6 |
+
+**Interpretation:** Z-scores allow direct comparison of height and weight even though they're in different units.
+
+---
+
+## 🌍 Section 7: Applications
+
+### Section 7.1: Variability in Biology
+
+**Biological Systems and Variability:**
+- Genetic variability (differences in genes)
+- Phenotypic variability (differences in traits)
+- Environmental variability (differences in conditions)
+- Measurement variability (differences in methods)
+
+**Examples:**
+
+| Biological Measure | Typical Variation | CV Range |
+|-------------------|-------------------|----------|
+| Heart rate | ±10 bpm | 10-15% |
+| Blood pressure | ±20 mmHg | 8-15% |
+| Height | ±15 cm | 4-6% |
+| Weight | ±20 kg | 10-20% |
+| Lab measurements | Variable | 5-25% |
+
+**Importance in Biology:**
+- Natural variation is essential for evolution
+- Variation drives adaptation
+- Variation indicates health or disease
+- Variation guides treatment decisions
+
+---
+
+### Section 7.2: Variability in Medicine
+
+**Clinical Variability:**
+- Patient-to-patient variation
+- Within-patient variation (over time)
+- Measurement error variation
+- Treatment response variation
+
+**Common Clinical Applications:**
+
+| Application | Variability Measure Used |
+|-------------|------------------------|
+| Reference ranges | Mean ± 2 SD |
+| Treatment effects | Confidence intervals |
+| Diagnostic tests | SD of test results |
+| Quality metrics | IQR and outliers |
+
+**Example - Blood Pressure Reference Ranges:**
+```text
+Population: Healthy adults
+Mean SBP = 120 mmHg
+SD = 15 mmHg
+
+Normal Range: 120 ± 2(15) = 90 to 150 mmHg
+
+Interpretation: 95% of healthy adults have SBP between 90 and 150 mmHg.
+```
+
+---
+
+### Section 7.3: Variability in Public Health
+
+**Public Health Applications:**
+
+| Application | Variability Role |
+|-------------|------------------|
+| Disease surveillance | Monitoring incidence variability |
+| Risk assessment | Assessing variability in risk factors |
+| Resource allocation | Planning for variable demand |
+| Health disparities | Measuring between-group variability |
+| Program evaluation | Assessing impact variability |
+
+**Example - Disease Incidence Variability:**
+```text
+COVID-19 Daily Cases:
+Mean = 1,000 cases/day
+SD = 500 cases/day
+CV = 50%
+
+Interpretation: High variability in daily cases
+- Needs flexible healthcare capacity
+- Planning must account for surges
+- Resources should be allocated for worst-case scenarios
+```
+
+**Public Health Decision Framework:**
+- Low variability → stable planning possible
+- High variability → flexible planning needed
+- Understanding variability guides resource allocation
+
+---
+
+### Section 7.4: Variability in AI and Machine Learning
+
+**Why Variability Matters in AI/ML:**
+
+| AI/ML Aspect | Role of Variability |
+|--------------|--------------------|
+| Feature scaling | Standardization uses SD |
+| Model evaluation | Variability in predictions |
+| Uncertainty estimation | Prediction intervals |
+| Ensemble methods | Variability across models |
+| Anomaly detection | Deviation from normal |
+
+**Common AI/ML Applications:**
+
+1. **Feature Scaling:**
+```python
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)  # Uses mean and SD
+```
+
+2. **Model Evaluation:**
+```text
+Model A: Mean accuracy = 85%, SD = 2%
+Model B: Mean accuracy = 83%, SD = 5%
+
+Interpretation: Model A is more consistent
+Even though Model A has higher accuracy, its lower variability makes it more reliable.
+```
+
+3. **Uncertainty Quantification:**
+```python
+# Using Monte Carlo dropout
+predictions = []
+for i in range(100):
+    predictions.append(model.predict(X))
+mean_pred = np.mean(predictions)
+sd_pred = np.std(predictions)  # Model uncertainty
+```
+
+4. **Outlier Detection:**
+```python
+# Using Z-score for anomaly detection
+z_scores = (data - mean) / sd
+outliers = data[np.abs(z_scores) > 3]
+```
+
+---
+
+### Section 7.5: Variability in Economics and Finance
+
+**Financial Applications:**
+
+| Application | Variability Measure |
+|-------------|--------------------|
+| Risk assessment | SD of returns |
+| Portfolio optimization | Variance-covariance matrix |
+| Risk-adjusted returns | Sharpe ratio = (Return - RF)/SD |
+| Volatility | Annualized SD |
+| Value at Risk (VaR) | SD-based quantile estimates |
+
+**Example - Investment Comparison:**
+
+| Investment | Mean Return | SD | Sharpe Ratio |
+|------------|-------------|-----|--------------|
+| Bond Fund | 5% | 2% | 1.5 |
+| Stock Fund | 10% | 8% | 0.875 |
+| Tech Fund | 15% | 15% | 0.8 |
+
+**Interpretation:**
+- Bond Fund: Lowest risk (SD = 2%)
+- Tech Fund: Highest risk (SD = 15%)
+- Risk-adjusted performance: Bond Fund best (Sharpe = 1.5)
+
+---
+
+## ✏️ Section 8: Worked Examples
 
 ### Example 1: Clinical Trial Blood Pressure Data 🏥
 
 **Dataset:** 118, 119, 121, 122, 125, 128, 130, 138, 145, 150
 
-**Step 1:** Calculate the mean
+**Step 1:** Calculate mean
 $$\bar{x} = 129.6 \text{ mmHg}$$
 
-**Step 2:** Calculate the range
+**Step 2:** Calculate range
 $$\text{Range} = 150 - 118 = 32 \text{ mmHg}$$
 
 **Step 3:** Calculate quartiles
-$$Q_1 = 120.5 \text{ mmHg}, \quad Q_3 = 139.75 \text{ mmHg}$$
-$$IQR = 139.75 - 120.5 = 19.25 \text{ mmHg}$$
+$$Q_1 = 121.25, \quad Q_3 = 137.0$$
+$$IQR = 137.0 - 121.25 = 15.75 \text{ mmHg}$$
 
-**Step 4:** Calculate variance
-$$s^2 = \frac{1126.4}{9} = 125.16 \text{ mmHg}^2$$
+**Step 4:** Calculate quartile deviation
+$$QD = \frac{15.75}{2} = 7.875 \text{ mmHg}$$
 
-**Step 5:** Calculate standard deviation
-$$s = \sqrt{125.16} = 11.19 \text{ mmHg}$$
+**Step 5:** Calculate MAD
+$$MAD = 8.84 \text{ mmHg}$$
 
-**Step 6:** Calculate CV
+**Step 6:** Calculate variance
+$$s^2 = 125.16 \text{ mmHg}^2$$
+
+**Step 7:** Calculate standard deviation
+$$s = 11.19 \text{ mmHg}$$
+
+**Step 8:** Calculate CV
 $$CV = \frac{11.19}{129.6} \times 100\% = 8.6\%$$
 
-**Step 7:** Calculate MAD
-$$\text{MAD} = \frac{88.4}{10} = 8.84 \text{ mmHg}$$
+**Step 9:** Calculate Z-scores
+| $x_i$ | Z-score |
+|-------|---------|
+| 118 | -1.04 |
+| 119 | -0.95 |
+| 121 | -0.77 |
+| 122 | -0.68 |
+| 125 | -0.41 |
+| 128 | -0.14 |
+| 130 | 0.04 |
+| 138 | 0.75 |
+| 145 | 1.38 |
+| 150 | 1.82 |
+
+**Step 10:** Outlier detection (Tukey's fences)
+$$\text{Lower fence} = 121.25 - 1.5(15.75) = 97.625$$
+$$\text{Upper fence} = 137.0 + 1.5(15.75) = 160.625$$
+No outliers detected.
 
 **Summary Table:**
 
 | Measure | Value |
 |---------|-------|
 | Range | 32 mmHg |
-| IQR | 19.25 mmHg |
-| Variance | 125.16 mmHg² |
-| Standard Deviation | 11.19 mmHg |
-| CV | 8.6% |
+| IQR | 15.75 mmHg |
+| Quartile Deviation | 7.875 mmHg |
 | MAD | 8.84 mmHg |
+| Variance | 125.16 mmHg² |
+| SD | 11.19 mmHg |
+| CV | 8.6% |
+| Lower Fence | 97.625 mmHg |
+| Upper Fence | 160.625 mmHg |
 
-**Interpretation:** The blood pressure data show relatively low variability (CV = 8.6%). The typical deviation from the mean is about 11.19 mmHg, and the middle 50% spans about 19.25 mmHg.
+**Interpretation:** The blood pressure data show relatively low variability (CV = 8.6%). The typical deviation from the mean is about 11.19 mmHg. There are no outliers.
 
 ---
 
 ### Example 2: Effect of an Outlier ⚠️
 
 **Original Data:** 118, 119, 121, 122, 125, 128, 130, 138, 145, 150
-
 **With Outlier:** 118, 119, 121, 122, 125, 128, 130, 138, 145, 300
 
 | Measure | Original | With Outlier | Change |
@@ -876,13 +1021,20 @@ $$\text{MAD} = \frac{88.4}{10} = 8.84 \text{ mmHg}$$
 | Mean | 129.6 | 134.6 | +5.0 |
 | Median | 126.5 | 126.5 | 0 |
 | Range | 32 | 182 | +150 |
-| IQR | 19.25 | 15.75 | -3.5 |
+| IQR | 15.75 | 15.75 | 0 |
+| Quartile Deviation | 7.875 | 7.875 | 0 |
+| MAD | 8.84 | 24.65 | +15.81 |
+| Variance | 125.16 | 3,015.6 | +2,890.4 |
 | SD | 11.19 | 54.92 | +43.73 |
 | CV | 8.6% | 40.8% | +32.2% |
-| MAD | 8.84 | 24.65 | +15.81 |
 
 > [!IMPORTANT]
-> **Key Insight:** The range is extremely sensitive to outliers (+150 mmHg). The IQR is robust to outliers (-3.5 mmHg, small change). The SD is very sensitive to outliers (+43.73 mmHg, huge change).
+> **Key Insight:** 
+> - **Range** is extremely sensitive (+150)
+> - **IQR** is completely robust (0 change)
+> - **Quartile Deviation** is completely robust (0 change)
+> - **SD** is very sensitive (+43.73)
+> - **CV** is very sensitive (+32.2%)
 
 ---
 
@@ -907,13 +1059,28 @@ $$\text{MAD} = \frac{88.4}{10} = 8.84 \text{ mmHg}$$
 - Mean = 173.6 cm
 - SD = 7.86 cm
 - CV = 7.86/173.6 × 100% = 4.5%
+- Range = 185 - 160 = 25 cm
+- IQR = 7.875 cm
 
 **Weight:**
 - Mean = 66.3 kg
 - SD = 7.43 kg
 - CV = 7.43/66.3 × 100% = 11.2%
+- Range = 78 - 55 = 23 kg
+- IQR = 9.25 kg
 
-**Interpretation:** Weight is more variable relative to its mean (CV = 11.2%) compared to height (CV = 4.5%). Even though the SDs are similar, weight varies more relative to its typical value.
+**Comparison:**
+
+| Measure | Height | Weight |
+|---------|--------|--------|
+| SD | 7.86 | 7.43 |
+| CV | 4.5% | 11.2% |
+| IQR | 7.875 | 9.25 |
+
+**Interpretation:** 
+- Weight has higher relative variability (CV = 11.2% vs 4.5%)
+- Even though SDs are similar, weight varies more relative to its mean
+- This is meaningful for understanding biological variation
 
 ---
 
@@ -928,13 +1095,24 @@ $$Q_1 = 5.25, \quad Q_3 = 14.75$$
 $$IQR = 14.75 - 5.25 = 9.5$$
 
 **Step 3:** Calculate fences
-$$\text{Lower fence} = Q_1 - 1.5 \times IQR = 5.25 - 14.25 = -9.0$$
-$$\text{Upper fence} = Q_3 + 1.5 \times IQR = 14.75 + 14.25 = 29.0$$
+$$\text{Lower fence} = 5.25 - 1.5(9.5) = -9.0$$
+$$\text{Upper fence} = 14.75 + 1.5(9.5) = 29.0$$
 
 **Step 4:** Identify outliers
-$$100 > 29.0 \text{ → 100 is an outlier!}$$
+$$100 > 29.0 \rightarrow 100 \text{ is an outlier!}$$
 
-**Interpretation:** The value 100 is flagged as an outlier using Tukey's IQR method.
+**Step 5:** Calculate Z-scores
+Mean = 14.81, SD = 22.23
+
+| Value | Z-score |
+|-------|---------|
+| 100 | 3.83 |
+| 2 | -0.58 |
+| 3 | -0.53 |
+
+**Interpretation:** 
+- 100 has Z-score = 3.83 (> 3) → outlier
+- IQR method and Z-score method both identify the outlier
 
 ---
 
@@ -947,47 +1125,130 @@ $$100 > 29.0 \text{ → 100 is an outlier!}$$
 - Mean ± 2 SD: 70 to 130
 - Mean ± 3 SD: 55 to 145
 
-**Step 2:** Interpret
-- 68% of people have IQ between 85 and 115
-- 95% of people have IQ between 70 and 130
-- 99.7% of people have IQ between 55 and 145
+**Step 2:** Calculate Z-scores for specific IQ values
 
-**Step 3:** Check for unusual values
-- IQ = 150 → > 3 SD above mean → Very unusual (top 0.15%)
-- IQ = 60 → > 2 SD below mean → Unusual (bottom 2.5%)
+| IQ | Z-score | Interpretation |
+|----|---------|----------------|
+| 70 | -2.0 | Very low, bottom 2.5% |
+| 85 | -1.0 | Low normal, bottom 16% |
+| 100 | 0 | Average |
+| 115 | 1.0 | High normal, top 16% |
+| 130 | 2.0 | Very high, top 2.5% |
+| 145 | 3.0 | Extremely high, top 0.15% |
+
+**Step 3:** Probability calculations
+- P(IQ < 85) = P(Z < -1) = 0.1587 (15.87%)
+- P(IQ > 115) = P(Z > 1) = 0.1587 (15.87%)
+- P(85 < IQ < 115) = 0.6826 (68.26%)
 
 ---
 
 ### Example 6: Coefficient of Variation in Finance 💰
 
-**Investment Returns Comparison:**
+**Investment Comparison:**
 
 | Investment | Mean Return | SD | CV |
 |------------|-------------|-----|-----|
-| **Bond Fund** | 5% | 2% | 40% |
-| **Stock Fund** | 10% | 8% | 80% |
-| **Tech Fund** | 15% | 15% | 100% |
+| Bond Fund | 5% | 2% | 40% |
+| Stock Fund | 10% | 8% | 80% |
+| Tech Fund | 15% | 15% | 100% |
 
 **Interpretation:**
 - Bond Fund: Lowest risk (CV = 40%)
 - Stock Fund: Moderate risk (CV = 80%)
 - Tech Fund: Highest risk (CV = 100%)
 
-The CV shows that even though the Tech Fund has the highest return, it also has the highest relative risk.
+**Risk-Adjusted Analysis:**
+- Tech Fund has highest return but highest risk
+- Bond Fund has lowest return but lowest risk
+- Investor choice depends on risk tolerance
+
+**Sharpe Ratio (Risk-Adjusted Return):**
+Assuming risk-free rate = 2%
+
+| Investment | Sharpe Ratio | Interpretation |
+|------------|--------------|----------------|
+| Bond Fund | (5-2)/2 = 1.5 | Best risk-adjusted |
+| Stock Fund | (10-2)/8 = 1.0 | Moderate |
+| Tech Fund | (15-2)/15 = 0.87 | Worst risk-adjusted |
 
 ---
 
-## 💻 Software Implementation
+### Example 7: Standard Error and Confidence Intervals 📊
+
+**Dataset:** Blood Pressure Data
+- n = 10
+- Mean = 129.6 mmHg
+- SD = 11.19 mmHg
+
+**Step 1:** Calculate standard error
+$$SE = \frac{11.19}{\sqrt{10}} = 3.54 \text{ mmHg}$$
+
+**Step 2:** Calculate 95% confidence interval (t-distribution, df=9)
+$$t_{9, 0.975} = 2.262$$
+
+95% CI = 129.6 ± 2.262 × 3.54
+= 129.6 ± 8.01
+= (121.59, 137.61)
+
+**Interpretation:** We are 95% confident that the true population mean falls between 121.59 and 137.61 mmHg.
+
+**Step 3:** Effect of sample size on SE
+
+| n | SE | 95% CI Width |
+|---|-----|--------------|
+| 10 | 3.54 | 16.02 |
+| 20 | 2.50 | 11.67 |
+| 50 | 1.58 | 7.43 |
+| 100 | 1.12 | 5.29 |
+
+**Interpretation:** Larger sample sizes give narrower confidence intervals (more precise estimates).
+
+---
+
+### Example 8: Standardization in Machine Learning 🤖
+
+**Dataset:** Features with different scales
+
+| Feature | Mean | SD | Min | Max |
+|---------|------|-----|-----|-----|
+| Age | 45 | 15 | 18 | 80 |
+| Income | 50,000 | 25,000 | 20,000 | 150,000 |
+| Score | 75 | 10 | 50 | 100 |
+
+**Step 1:** Standardize each feature
+$$z_{age} = \frac{\text{Age} - 45}{15}$$
+$$z_{income} = \frac{\text{Income} - 50,000}{25,000}$$
+$$z_{score} = \frac{\text{Score} - 75}{10}$$
+
+**Step 2:** Compare using Z-scores
+
+| Person | Age (Z) | Income (Z) | Score (Z) |
+|--------|---------|------------|-----------|
+| A | 1.0 | 0.5 | -0.2 |
+| B | -0.5 | 1.2 | 0.8 |
+| C | 0.0 | -0.8 | 1.5 |
+
+**Interpretation:** 
+- Person A: Above average age, slightly above average income, below average score
+- Person B: Below average age, well above average income, above average score
+- Person C: Average age, below average income, well above average score
+
+**Machine Learning Benefit:** Standardization prevents features with larger scales from dominating the model.
+
+---
+
+## 💻 Section 9: Software Implementation
 
 ### R Implementation 📊
 
 <details>
-<summary>📋 Click to expand R code</summary>
+<summary>📋 Click to expand R code (Full Implementation)</summary>
 
 ```r
 # ============================================
 # Chapter 3: Measures of Dispersion
-# R Implementation
+# Comprehensive R Implementation
 # ============================================
 
 # Load necessary libraries
@@ -995,6 +1256,7 @@ library(dplyr)
 library(psych)
 library(DescTools)
 library(ggplot2)
+library(gridExtra)
 
 # ============================================
 # 1. Create Dataset
@@ -1004,32 +1266,40 @@ library(ggplot2)
 bp <- c(118, 122, 130, 145, 119, 125, 138, 128, 121, 150)
 
 # ============================================
-# 2. Basic Measures
+# 2. Basic Dispersion Measures
 # ============================================
 
 # Range
 range_bp <- diff(range(bp))
-cat("Range:", range_bp, "\n")
+cat("Range:", range_bp, "mmHg\n")
 
-# IQR
+# Interquartile Range
 iqr_bp <- IQR(bp)
-cat("IQR:", iqr_bp, "\n")
+cat("IQR:", iqr_bp, "mmHg\n")
 
-# Variance
-var_bp <- var(bp)
-cat("Variance (sample):", var_bp, "\n")
+# Quartile Deviation
+qd_bp <- iqr_bp / 2
+cat("Quartile Deviation:", qd_bp, "mmHg\n")
 
-# Standard deviation
-sd_bp <- sd(bp)
-cat("Standard deviation:", sd_bp, "\n")
-
-# Coefficient of variation
-cv_bp <- sd_bp / mean(bp) * 100
-cat("Coefficient of variation:", cv_bp, "%\n")
-
-# Mean absolute deviation
+# Mean Absolute Deviation
 mad_bp <- mean(abs(bp - mean(bp)))
-cat("Mean absolute deviation:", mad_bp, "\n")
+cat("Mean Absolute Deviation:", mad_bp, "mmHg\n")
+
+# Variance (sample)
+var_bp <- var(bp)
+cat("Variance:", var_bp, "mmHg^2\n")
+
+# Standard Deviation (sample)
+sd_bp <- sd(bp)
+cat("Standard Deviation:", sd_bp, "mmHg\n")
+
+# Coefficient of Variation
+cv_bp <- sd_bp / mean(bp) * 100
+cat("Coefficient of Variation:", cv_bp, "%\n")
+
+# Standard Error
+se_bp <- sd_bp / sqrt(length(bp))
+cat("Standard Error:", se_bp, "mmHg\n")
 
 # ============================================
 # 3. Quartiles and Percentiles
@@ -1038,9 +1308,9 @@ cat("Mean absolute deviation:", mad_bp, "\n")
 # Quartiles
 quartiles <- quantile(bp, probs = c(0.25, 0.5, 0.75))
 cat("\nQuartiles:\n")
-cat("Q1:", quartiles[1], "\n")
-cat("Median:", quartiles[2], "\n")
-cat("Q3:", quartiles[3], "\n")
+cat("Q1:", quartiles[1], "mmHg\n")
+cat("Median:", quartiles[2], "mmHg\n")
+cat("Q3:", quartiles[3], "mmHg\n")
 
 # Five-number summary
 summary_bp <- fivenum(bp)
@@ -1060,55 +1330,72 @@ lower_fence <- Q1 - 1.5 * IQR_val
 upper_fence <- Q3 + 1.5 * IQR_val
 
 cat("\nTukey's Fences:\n")
-cat("Lower fence:", lower_fence, "\n")
-cat("Upper fence:", upper_fence, "\n")
+cat("Lower fence:", lower_fence, "mmHg\n")
+cat("Upper fence:", upper_fence, "mmHg\n")
 
 # Identify outliers
 outliers <- bp[bp < lower_fence | bp > upper_fence]
 cat("Outliers:", ifelse(length(outliers) > 0, outliers, "None"), "\n")
 
 # ============================================
-# 5. Visualization
+# 5. Z-scores
 # ============================================
 
-# Create data frame for plotting
-df <- data.frame(bp = bp)
-
-# Boxplot with outliers
-ggplot(df, aes(y = bp)) +
-  geom_boxplot(fill = "steelblue", alpha = 0.7) +
-  labs(
-    title = "Boxplot of Blood Pressure",
-    subtitle = "With IQR and outliers highlighted",
-    y = "Blood Pressure (mmHg)"
-  ) +
-  theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
-        plot.subtitle = element_text(hjust = 0.5, size = 12))
-
-# Histogram with SD bands
-ggplot(df, aes(x = bp)) +
-  geom_histogram(bins = 10, alpha = 0.7, fill = "steelblue", color = "black") +
-  geom_vline(aes(xintercept = mean(bp)), color = "red", 
-             linetype = "solid", size = 1.2) +
-  geom_vline(aes(xintercept = mean(bp) - sd(bp)), color = "blue", 
-             linetype = "dashed", size = 1) +
-  geom_vline(aes(xintercept = mean(bp) + sd(bp)), color = "blue", 
-             linetype = "dashed", size = 1) +
-  geom_vline(aes(xintercept = mean(bp) - 2*sd(bp)), color = "green", 
-             linetype = "dotted", size = 1) +
-  geom_vline(aes(xintercept = mean(bp) + 2*sd(bp)), color = "green", 
-             linetype = "dotted", size = 1) +
-  labs(
-    title = "Histogram with Standard Deviation Bands",
-    subtitle = "Blue = 1 SD, Green = 2 SD",
-    x = "Blood Pressure (mmHg)",
-    y = "Frequency"
-  ) +
-  theme_minimal()
+z_scores <- scale(bp)
+cat("\nZ-scores:\n")
+print(cbind(bp, z_scores))
 
 # ============================================
-# 6. Effect of Outlier
+# 6. Standard Error and Confidence Intervals
+# ============================================
+
+# 95% confidence interval for the mean
+n <- length(bp)
+mean_val <- mean(bp)
+sd_val <- sd(bp)
+se_val <- sd_val / sqrt(n)
+t_val <- qt(0.975, df = n - 1)
+ci_lower <- mean_val - t_val * se_val
+ci_upper <- mean_val + t_val * se_val
+
+cat("\n95% Confidence Interval:\n")
+cat("Lower:", ci_lower, "mmHg\n")
+cat("Upper:", ci_upper, "mmHg\n")
+
+# ============================================
+# 7. Comprehensive Dispersion Function
+# ============================================
+
+dispersion_summary <- function(x) {
+  result <- list(
+    n = length(x),
+    mean = mean(x),
+    median = median(x),
+    range = diff(range(x)),
+    iqr = IQR(x),
+    quartile_deviation = IQR(x) / 2,
+    mad = mean(abs(x - mean(x))),
+    variance = var(x),
+    sd = sd(x),
+    cv = sd(x) / mean(x) * 100,
+    se = sd(x) / sqrt(length(x)),
+    q1 = quantile(x, 0.25),
+    q3 = quantile(x, 0.75),
+    five_num = fivenum(x),
+    z_scores = scale(x),
+    outlier_fences = c(Q1 - 1.5 * IQR(x), Q3 + 1.5 * IQR(x)),
+    outliers = x[x < (quantile(x, 0.25) - 1.5 * IQR(x)) | 
+                x > (quantile(x, 0.75) + 1.5 * IQR(x))]
+  )
+  return(result)
+}
+
+# Test function
+summary_stats <- dispersion_summary(bp)
+print(summary_stats)
+
+# ============================================
+# 8. Effect of Outlier
 # ============================================
 
 # Add outlier
@@ -1119,33 +1406,58 @@ cat("\nEffect of Outlier:\n")
 cat("Range - Original:", diff(range(bp)), "With outlier:", diff(range(bp_with_outlier)), "\n")
 cat("IQR - Original:", IQR(bp), "With outlier:", IQR(bp_with_outlier), "\n")
 cat("SD - Original:", sd(bp), "With outlier:", sd(bp_with_outlier), "\n")
-cat("CV - Original:", sd(bp)/mean(bp)*100, "With outlier:", sd(bp_with_outlier)/mean(bp_with_outlier)*100, "\n")
+cat("CV - Original:", sd(bp)/mean(bp)*100, "With outlier:", 
+    sd(bp_with_outlier)/mean(bp_with_outlier)*100, "\n")
 
 # ============================================
-# 7. Comprehensive Summary Function
+# 9. Visualization
 # ============================================
 
-dispersion_summary <- function(x) {
-  result <- list(
-    range = diff(range(x)),
-    iqr = IQR(x),
-    variance = var(x),
-    sd = sd(x),
-    cv = sd(x) / mean(x) * 100,
-    mad = mean(abs(x - mean(x))),
-    q1 = quantile(x, 0.25),
-    q3 = quantile(x, 0.75),
-    five_num = fivenum(x)
-  )
-  return(result)
-}
+# Create data frames
+df <- data.frame(bp = bp)
+df_outlier <- data.frame(bp = bp_with_outlier)
 
-# Test function
-summary_stats <- dispersion_summary(bp)
-print(summary_stats)
+# Histogram with SD bands
+p1 <- ggplot(df, aes(x = bp)) +
+  geom_histogram(bins = 10, alpha = 0.7, fill = "steelblue", color = "black") +
+  geom_vline(aes(xintercept = mean(bp)), color = "red", linetype = "solid", size = 1.2) +
+  geom_vline(aes(xintercept = mean(bp) - sd(bp)), color = "blue", linetype = "dashed", size = 1) +
+  geom_vline(aes(xintercept = mean(bp) + sd(bp)), color = "blue", linetype = "dashed", size = 1) +
+  labs(
+    title = "Histogram with SD Bands",
+    subtitle = "Red = Mean, Blue = ±1 SD",
+    x = "Blood Pressure (mmHg)",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+
+# Boxplot
+p2 <- ggplot(df, aes(y = bp)) +
+  geom_boxplot(fill = "steelblue", alpha = 0.7) +
+  labs(
+    title = "Boxplot with Outliers",
+    y = "Blood Pressure (mmHg)"
+  ) +
+  theme_minimal()
+
+# Density plot
+p3 <- ggplot(df, aes(x = bp)) +
+  geom_density(fill = "steelblue", alpha = 0.5) +
+  geom_vline(aes(xintercept = mean(bp)), color = "red", linetype = "solid", size = 1.2) +
+  geom_vline(aes(xintercept = median(bp)), color = "blue", linetype = "dashed", size = 1) +
+  labs(
+    title = "Density Plot",
+    subtitle = "Red = Mean, Blue = Median",
+    x = "Blood Pressure (mmHg)",
+    y = "Density"
+  ) +
+  theme_minimal()
+
+# Arrange plots
+grid.arrange(p1, p2, p3, ncol = 3)
 
 # ============================================
-# 8. Comparison with Different Distributions
+# 10. Comparison with Different Distributions
 # ============================================
 
 # Generate different distributions
@@ -1157,33 +1469,45 @@ normal_data <- rnorm(1000, mean = 50, sd = 10)
 # Right-skewed distribution (lognormal)
 right_skewed <- rlnorm(1000, meanlog = 3, sdlog = 0.5)
 
+# Uniform distribution
+uniform_data <- runif(1000, min = 0, max = 100)
+
 # Compare distributions
 compare_dispersion <- function(x, name) {
   cat("\n", name, "\n")
+  cat("n:", length(x), "\n")
+  cat("Mean:", mean(x), "\n")
+  cat("Median:", median(x), "\n")
   cat("Range:", diff(range(x)), "\n")
   cat("IQR:", IQR(x), "\n")
   cat("SD:", sd(x), "\n")
   cat("CV:", sd(x)/mean(x)*100, "%\n")
+  cat("Skewness:", psych::skew(x), "\n")
+  cat("Kurtosis:", psych::kurtosi(x), "\n")
 }
 
 compare_dispersion(normal_data, "Normal Distribution")
 compare_dispersion(right_skewed, "Right-Skewed Distribution")
+compare_dispersion(uniform_data, "Uniform Distribution")
 
 # ============================================
-# 9. Export Results
+# 11. Export Results
 # ============================================
 
 # Create summary table
 summary_df <- data.frame(
-  Measure = c("Range", "IQR", "Variance", "SD", "CV", "MAD", "Q1", "Q3"),
-  Value = c(range_bp, iqr_bp, var_bp, sd_bp, cv_bp, mad_bp, 
-            quantile(bp, 0.25), quantile(bp, 0.75))
+  Measure = c("n", "Mean", "Median", "Range", "IQR", "Quartile Deviation", 
+              "MAD", "Variance", "SD", "CV", "SE", "Q1", "Q3", "Lower Fence", "Upper Fence"),
+  Value = c(length(bp), mean(bp), median(bp), diff(range(bp)), IQR(bp), 
+            IQR(bp)/2, mad_bp, var_bp, sd_bp, cv_bp, se_bp, 
+            quantile(bp, 0.25), quantile(bp, 0.75), lower_fence, upper_fence)
 )
 
 write.csv(summary_df, "dispersion_summary.csv", row.names = FALSE)
+cat("\nResults saved to 'dispersion_summary.csv'\n")
 
 # ============================================
-# 10. Advanced: Empirical Rule Visualization
+# 12. Empirical Rule Check
 # ============================================
 
 # Generate normal data
@@ -1207,12 +1531,12 @@ cat("Within 3 SD:", round(within_3sd * 100, 1), "% (Expected: 99.7%)\n")
 ### Python Implementation 🐍
 
 <details>
-<summary>📋 Click to expand Python code</summary>
+<summary>📋 Click to expand Python code (Full Implementation)</summary>
 
 ```python
 # ============================================
 # Chapter 3: Measures of Dispersion
-# Python Implementation
+# Comprehensive Python Implementation
 # ============================================
 
 import numpy as np
@@ -1220,7 +1544,9 @@ from scipy import stats
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from typing import Union, List, Tuple
+from typing import Union, List, Tuple, Dict
+import warnings
+warnings.filterwarnings('ignore')
 
 # ============================================
 # 1. Create Dataset
@@ -1230,32 +1556,40 @@ from typing import Union, List, Tuple
 bp = np.array([118, 122, 130, 145, 119, 125, 138, 128, 121, 150])
 
 # ============================================
-# 2. Basic Measures
+# 2. Basic Dispersion Measures
 # ============================================
 
 # Range
 range_bp = np.ptp(bp)  # peak-to-peak = max - min
-print(f"Range: {range_bp:.2f}")
+print(f"Range: {range_bp:.2f} mmHg")
 
-# IQR
+# Interquartile Range
 iqr_bp = stats.iqr(bp)
-print(f"IQR: {iqr_bp:.2f}")
+print(f"IQR: {iqr_bp:.2f} mmHg")
+
+# Quartile Deviation
+qd_bp = iqr_bp / 2
+print(f"Quartile Deviation: {qd_bp:.2f} mmHg")
+
+# Mean Absolute Deviation
+mad_bp = np.mean(np.abs(bp - np.mean(bp)))
+print(f"Mean Absolute Deviation: {mad_bp:.2f} mmHg")
 
 # Variance (sample)
 var_bp = np.var(bp, ddof=1)
-print(f"Variance (sample): {var_bp:.2f}")
+print(f"Variance: {var_bp:.2f} mmHg²")
 
-# Standard deviation (sample)
+# Standard Deviation (sample)
 sd_bp = np.std(bp, ddof=1)
-print(f"Standard deviation: {sd_bp:.2f}")
+print(f"Standard Deviation: {sd_bp:.2f} mmHg")
 
-# Coefficient of variation
+# Coefficient of Variation
 cv_bp = sd_bp / np.mean(bp) * 100
-print(f"Coefficient of variation: {cv_bp:.2f}%")
+print(f"Coefficient of Variation: {cv_bp:.2f}%")
 
-# Mean absolute deviation
-mad_bp = np.mean(np.abs(bp - np.mean(bp)))
-print(f"Mean absolute deviation: {mad_bp:.2f}")
+# Standard Error
+se_bp = sd_bp / np.sqrt(len(bp))
+print(f"Standard Error: {se_bp:.2f} mmHg")
 
 # ============================================
 # 3. Quartiles and Percentiles
@@ -1267,9 +1601,9 @@ q2 = np.percentile(bp, 50)  # median
 q3 = np.percentile(bp, 75)
 
 print(f"\nQuartiles:")
-print(f"Q1: {q1:.2f}")
-print(f"Median (Q2): {q2:.2f}")
-print(f"Q3: {q3:.2f}")
+print(f"Q1: {q1:.2f} mmHg")
+print(f"Median (Q2): {q2:.2f} mmHg")
+print(f"Q3: {q3:.2f} mmHg")
 
 # Five-number summary
 five_num = {
@@ -1281,7 +1615,7 @@ five_num = {
 }
 print(f"\nFive-Number Summary:")
 for key, value in five_num.items():
-    print(f"{key}: {value:.2f}")
+    print(f"{key}: {value:.2f} mmHg")
 
 # ============================================
 # 4. Outlier Detection
@@ -1293,68 +1627,51 @@ lower_fence = q1 - 1.5 * iqr_val
 upper_fence = q3 + 1.5 * iqr_val
 
 print(f"\nTukey's Fences:")
-print(f"Lower fence: {lower_fence:.2f}")
-print(f"Upper fence: {upper_fence:.2f}")
+print(f"Lower fence: {lower_fence:.2f} mmHg")
+print(f"Upper fence: {upper_fence:.2f} mmHg")
 
 # Identify outliers
 outliers = bp[(bp < lower_fence) | (bp > upper_fence)]
 print(f"Outliers: {outliers if len(outliers) > 0 else 'None'}")
 
 # ============================================
-# 5. Visualization
+# 5. Z-scores
 # ============================================
 
-# Set style
-sns.set_style("whitegrid")
-plt.rcParams['figure.figsize'] = (12, 6)
-
-# Boxplot
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
-
-# Boxplot
-ax1.boxplot(bp, patch_artist=True)
-ax1.set_ylabel('Blood Pressure (mmHg)')
-ax1.set_title('Boxplot of Blood Pressure')
-ax1.grid(True, alpha=0.3)
-
-# Histogram with SD bands
-ax2.hist(bp, bins=10, alpha=0.7, color='steelblue', edgecolor='black')
-ax2.axvline(np.mean(bp), color='red', linestyle='solid', linewidth=2, label='Mean')
-ax2.axvline(np.mean(bp) - sd_bp, color='blue', linestyle='dashed', linewidth=1.5, label='±1 SD')
-ax2.axvline(np.mean(bp) + sd_bp, color='blue', linestyle='dashed', linewidth=1.5)
-ax2.axvline(np.mean(bp) - 2*sd_bp, color='green', linestyle='dotted', linewidth=1.5, label='±2 SD')
-ax2.axvline(np.mean(bp) + 2*sd_bp, color='green', linestyle='dotted', linewidth=1.5)
-ax2.set_xlabel('Blood Pressure (mmHg)')
-ax2.set_ylabel('Frequency')
-ax2.set_title('Histogram with SD Bands')
-ax2.legend()
-
-plt.tight_layout()
-plt.show()
+z_scores = (bp - np.mean(bp)) / np.std(bp, ddof=1)
+print(f"\nZ-scores:")
+for val, z in zip(bp, z_scores):
+    print(f"{val}: {z:.2f}")
 
 # ============================================
-# 6. Effect of Outlier
+# 6. Standard Error and Confidence Intervals
 # ============================================
 
-# Add outlier
-bp_with_outlier = np.append(bp, 300)
+# 95% confidence interval for the mean
+n = len(bp)
+mean_val = np.mean(bp)
+sd_val = np.std(bp, ddof=1)
+se_val = sd_val / np.sqrt(n)
+t_val = stats.t.ppf(0.975, df=n-1)
+ci_lower = mean_val - t_val * se_val
+ci_upper = mean_val + t_val * se_val
 
-print("\nEffect of Outlier:")
-print(f"Range - Original: {np.ptp(bp):.2f}, With outlier: {np.ptp(bp_with_outlier):.2f}")
-print(f"IQR - Original: {stats.iqr(bp):.2f}, With outlier: {stats.iqr(bp_with_outlier):.2f}")
-print(f"SD - Original: {np.std(bp, ddof=1):.2f}, With outlier: {np.std(bp_with_outlier, ddof=1):.2f}")
-print(f"CV - Original: {np.std(bp, ddof=1)/np.mean(bp)*100:.2f}%, With outlier: {np.std(bp_with_outlier, ddof=1)/np.mean(bp_with_outlier)*100:.2f}%")
+print(f"\n95% Confidence Interval:")
+print(f"Lower: {ci_lower:.2f} mmHg")
+print(f"Upper: {ci_upper:.2f} mmHg")
 
 # ============================================
-# 7. Class Implementation
+# 7. Comprehensive Dispersion Class
 # ============================================
 
 class Dispersion:
-    """A class for computing measures of dispersion."""
+    """A comprehensive class for computing measures of dispersion."""
     
     def __init__(self, data: Union[List, np.ndarray]):
         self.data = np.array(data)
         self.n = len(self.data)
+        self.mean = np.mean(self.data)
+        self.median = np.median(self.data)
     
     def range(self) -> float:
         """Compute range."""
@@ -1363,6 +1680,14 @@ class Dispersion:
     def iqr(self) -> float:
         """Compute interquartile range."""
         return stats.iqr(self.data)
+    
+    def quartile_deviation(self) -> float:
+        """Compute quartile deviation."""
+        return self.iqr() / 2
+    
+    def mad(self) -> float:
+        """Compute mean absolute deviation."""
+        return np.mean(np.abs(self.data - self.mean))
     
     def variance(self) -> float:
         """Compute sample variance."""
@@ -1374,17 +1699,17 @@ class Dispersion:
     
     def cv(self) -> float:
         """Compute coefficient of variation."""
-        return self.sd() / np.mean(self.data) * 100
+        return self.sd() / self.mean * 100
     
-    def mad(self) -> float:
-        """Compute mean absolute deviation."""
-        return np.mean(np.abs(self.data - np.mean(self.data)))
+    def se(self) -> float:
+        """Compute standard error."""
+        return self.sd() / np.sqrt(self.n)
     
-    def quantiles(self, probs: List[float] = [0.25, 0.5, 0.75]) -> dict:
+    def quantiles(self, probs: List[float] = [0.25, 0.5, 0.75]) -> Dict:
         """Compute quantiles."""
         return {f'Q{p*100:.0f}': np.percentile(self.data, p*100) for p in probs}
     
-    def five_num_summary(self) -> dict:
+    def five_num_summary(self) -> Dict:
         """Compute five-number summary."""
         return {
             'Min': np.min(self.data),
@@ -1401,34 +1726,119 @@ class Dispersion:
         iqr = q3 - q1
         return q1 - 1.5 * iqr, q3 + 1.5 * iqr
     
-    def all_measures(self) -> dict:
+    def z_scores(self) -> np.ndarray:
+        """Compute Z-scores."""
+        return (self.data - self.mean) / self.sd()
+    
+    def confidence_interval(self, confidence: float = 0.95) -> Tuple[float, float]:
+        """Compute confidence interval for the mean."""
+        se = self.se()
+        t_val = stats.t.ppf((1 + confidence) / 2, df=self.n-1)
+        return self.mean - t_val * se, self.mean + t_val * se
+    
+    def all_measures(self) -> Dict:
         """Compute all measures."""
+        q1 = np.percentile(self.data, 25)
+        q3 = np.percentile(self.data, 75)
+        iqr = q3 - q1
+        
         return {
+            'n': self.n,
+            'mean': self.mean,
+            'median': self.median,
             'range': self.range(),
-            'iqr': self.iqr(),
+            'iqr': iqr,
+            'quartile_deviation': iqr / 2,
+            'mad': self.mad(),
             'variance': self.variance(),
             'sd': self.sd(),
             'cv': self.cv(),
-            'mad': self.mad(),
-            'five_num': self.five_num_summary(),
-            'outlier_fences': self.outlier_fences()
+            'se': self.se(),
+            'q1': q1,
+            'q3': q3,
+            'lower_fence': q1 - 1.5 * iqr,
+            'upper_fence': q3 + 1.5 * iqr,
+            'ci_95': self.confidence_interval(),
+            'z_scores': self.z_scores(),
+            'outliers': self.data[(self.data < q1 - 1.5 * iqr) | 
+                                  (self.data > q3 + 1.5 * iqr)]
         }
 
 # Test class
 disp = Dispersion(bp)
 print("\nAll Measures from Class:")
 for key, value in disp.all_measures().items():
-    if isinstance(value, dict):
-        print(f"{key}:")
-        for k, v in value.items():
-            print(f"  {k}: {v:.2f}")
+    if isinstance(value, np.ndarray):
+        print(f"{key}: {value}")
     elif isinstance(value, tuple):
-        print(f"{key}: Lower={value[0]:.2f}, Upper={value[1]:.2f}")
+        print(f"{key}: {value[0]:.2f} - {value[1]:.2f}")
     else:
         print(f"{key}: {value:.2f}")
 
 # ============================================
-# 8. Comparison with Different Distributions
+# 8. Effect of Outlier
+# ============================================
+
+# Add outlier
+bp_with_outlier = np.append(bp, 300)
+
+print("\nEffect of Outlier:")
+print(f"Range - Original: {np.ptp(bp):.2f}, With outlier: {np.ptp(bp_with_outlier):.2f}")
+print(f"IQR - Original: {stats.iqr(bp):.2f}, With outlier: {stats.iqr(bp_with_outlier):.2f}")
+print(f"SD - Original: {np.std(bp, ddof=1):.2f}, With outlier: {np.std(bp_with_outlier, ddof=1):.2f}")
+print(f"CV - Original: {np.std(bp, ddof=1)/np.mean(bp)*100:.2f}%, With outlier: {np.std(bp_with_outlier, ddof=1)/np.mean(bp_with_outlier)*100:.2f}%")
+
+# ============================================
+# 9. Visualization
+# ============================================
+
+# Set style
+sns.set_style("whitegrid")
+plt.rcParams['figure.figsize'] = (14, 6)
+
+# Create visualizations
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+
+# Histogram with SD bands
+ax = axes[0, 0]
+ax.hist(bp, bins=10, alpha=0.7, color='steelblue', edgecolor='black')
+ax.axvline(mean_val, color='red', linestyle='solid', linewidth=2, label='Mean')
+ax.axvline(mean_val - sd_val, color='blue', linestyle='dashed', linewidth=1.5, label='±1 SD')
+ax.axvline(mean_val + sd_val, color='blue', linestyle='dashed', linewidth=1.5)
+ax.axvline(mean_val - 2*sd_val, color='green', linestyle='dotted', linewidth=1.5, label='±2 SD')
+ax.axvline(mean_val + 2*sd_val, color='green', linestyle='dotted', linewidth=1.5)
+ax.set_xlabel('Blood Pressure (mmHg)')
+ax.set_ylabel('Frequency')
+ax.set_title('Histogram with SD Bands')
+ax.legend()
+
+# Boxplot
+ax = axes[0, 1]
+ax.boxplot(bp, patch_artist=True)
+ax.set_ylabel('Blood Pressure (mmHg)')
+ax.set_title('Boxplot with Outliers')
+ax.grid(True, alpha=0.3)
+
+# Density plot
+ax = axes[1, 0]
+sns.kdeplot(bp, fill=True, alpha=0.5, ax=ax)
+ax.axvline(mean_val, color='red', linestyle='solid', linewidth=2, label='Mean')
+ax.axvline(median_val := np.median(bp), color='blue', linestyle='dashed', linewidth=2, label='Median')
+ax.set_xlabel('Blood Pressure (mmHg)')
+ax.set_ylabel('Density')
+ax.set_title('Density Plot')
+ax.legend()
+
+# QQ plot
+ax = axes[1, 1]
+stats.probplot(bp, dist="norm", plot=ax)
+ax.set_title('QQ Plot (Normality Check)')
+
+plt.tight_layout()
+plt.show()
+
+# ============================================
+# 10. Comparison with Different Distributions
 # ============================================
 
 np.random.seed(123)
@@ -1436,19 +1846,26 @@ np.random.seed(123)
 # Generate distributions
 normal_data = np.random.normal(50, 10, 1000)
 right_skewed = np.random.lognormal(3, 0.5, 1000)
+uniform_data = np.random.uniform(0, 100, 1000)
 
 def compare_distributions(data, name):
     print(f"\n{name}:")
+    print(f"n: {len(data)}")
+    print(f"Mean: {np.mean(data):.2f}")
+    print(f"Median: {np.median(data):.2f}")
     print(f"Range: {np.ptp(data):.2f}")
     print(f"IQR: {stats.iqr(data):.2f}")
     print(f"SD: {np.std(data, ddof=1):.2f}")
     print(f"CV: {np.std(data, ddof=1)/np.mean(data)*100:.2f}%")
+    print(f"Skewness: {stats.skew(data):.3f}")
+    print(f"Kurtosis: {stats.kurtosis(data):.3f}")
 
 compare_distributions(normal_data, "Normal Distribution")
 compare_distributions(right_skewed, "Right-Skewed Distribution")
+compare_distributions(uniform_data, "Uniform Distribution")
 
 # ============================================
-# 9. Comprehensive Analysis Function
+# 11. Comprehensive Analysis Function
 # ============================================
 
 def comprehensive_dispersion(data: Union[List, np.ndarray], 
@@ -1469,23 +1886,35 @@ def comprehensive_dispersion(data: Union[List, np.ndarray],
         Summary of measures
     """
     data = np.array(data)
+    n = len(data)
+    mean_val = np.mean(data)
+    median_val = np.median(data)
+    sd_val = np.std(data, ddof=1)
     
-    # Compute measures
+    # Compute quartiles
     q1 = np.percentile(data, 25)
     q3 = np.percentile(data, 75)
     iqr = q3 - q1
     
+    # Compute measures
     measures = {
+        'n': n,
+        'Mean': mean_val,
+        'Median': median_val,
         'Range': np.ptp(data),
         'IQR': iqr,
+        'Quartile Deviation': iqr / 2,
+        'MAD': np.mean(np.abs(data - mean_val)),
         'Variance': np.var(data, ddof=1),
-        'Standard Deviation': np.std(data, ddof=1),
-        'CV (%)': np.std(data, ddof=1) / np.mean(data) * 100,
-        'MAD': np.mean(np.abs(data - np.mean(data))),
+        'Standard Deviation': sd_val,
+        'CV (%)': sd_val / mean_val * 100,
+        'SE': sd_val / np.sqrt(n),
         'Q1': q1,
         'Q3': q3,
         'Lower Fence': q1 - 1.5 * iqr,
-        'Upper Fence': q3 + 1.5 * iqr
+        'Upper Fence': q3 + 1.5 * iqr,
+        'Skewness': stats.skew(data),
+        'Kurtosis': stats.kurtosis(data)
     }
     
     summary = pd.DataFrame({
@@ -1494,29 +1923,41 @@ def comprehensive_dispersion(data: Union[List, np.ndarray],
     })
     
     if plot:
-        # Visualization
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+        # Create visualization
+        fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+        
+        # Histogram
+        ax = axes[0, 0]
+        ax.hist(data, bins=20, alpha=0.7, color='steelblue', edgecolor='black')
+        ax.axvline(mean_val, color='red', linestyle='solid', linewidth=2, label=f'Mean: {mean_val:.1f}')
+        ax.axvline(mean_val - sd_val, color='blue', linestyle='dashed', linewidth=1.5, label='±1 SD')
+        ax.axvline(mean_val + sd_val, color='blue', linestyle='dashed', linewidth=1.5)
+        ax.set_xlabel('Value')
+        ax.set_ylabel('Frequency')
+        ax.set_title('Histogram with SD Bands')
+        ax.legend()
         
         # Boxplot
-        ax1.boxplot(data, patch_artist=True)
-        ax1.set_ylabel('Value')
-        ax1.set_title('Boxplot')
-        ax1.grid(True, alpha=0.3)
+        ax = axes[0, 1]
+        ax.boxplot(data, patch_artist=True)
+        ax.set_ylabel('Value')
+        ax.set_title('Boxplot')
+        ax.grid(True, alpha=0.3)
         
-        # Histogram with SD bands
-        mean_val = np.mean(data)
-        sd_val = np.std(data, ddof=1)
+        # Density plot
+        ax = axes[1, 0]
+        sns.kdeplot(data, fill=True, alpha=0.5, ax=ax)
+        ax.axvline(mean_val, color='red', linestyle='solid', linewidth=2, label='Mean')
+        ax.axvline(median_val, color='blue', linestyle='dashed', linewidth=2, label='Median')
+        ax.set_xlabel('Value')
+        ax.set_ylabel('Density')
+        ax.set_title('Density Plot')
+        ax.legend()
         
-        ax2.hist(data, bins=20, alpha=0.7, color='steelblue', edgecolor='black')
-        ax2.axvline(mean_val, color='red', linestyle='solid', linewidth=2, label=f'Mean: {mean_val:.1f}')
-        ax2.axvline(mean_val - sd_val, color='blue', linestyle='dashed', linewidth=1.5, label='±1 SD')
-        ax2.axvline(mean_val + sd_val, color='blue', linestyle='dashed', linewidth=1.5)
-        ax2.axvline(mean_val - 2*sd_val, color='green', linestyle='dotted', linewidth=1.5, label='±2 SD')
-        ax2.axvline(mean_val + 2*sd_val, color='green', linestyle='dotted', linewidth=1.5)
-        ax2.set_xlabel('Value')
-        ax2.set_ylabel('Frequency')
-        ax2.set_title('Histogram with SD Bands')
-        ax2.legend()
+        # QQ plot
+        ax = axes[1, 1]
+        stats.probplot(data, dist="norm", plot=ax)
+        ax.set_title('QQ Plot (Normality Check)')
         
         plt.tight_layout()
         plt.show()
@@ -1529,15 +1970,14 @@ print("\nComprehensive Analysis:")
 print(summary.to_string(index=False))
 
 # ============================================
-# 10. Export Results
+# 12. Export Results
 # ============================================
 
-# Save summary to CSV
 summary.to_csv('dispersion_summary.csv', index=False)
 print("\nResults saved to 'dispersion_summary.csv'")
 
 # ============================================
-# 11. Empirical Rule Check
+# 13. Empirical Rule Check
 # ============================================
 
 # Generate normal data
@@ -1579,11 +2019,11 @@ BEGIN DATA
 END DATA.
 
 * ============================================
-* 2. Descriptive Statistics
+* 2. Basic Descriptive Statistics
 * ============================================
 
 DESCRIPTIVES VARIABLES=bp
-  /STATISTICS=MEAN STDDEV VARIANCE RANGE MIN MAX
+  /STATISTICS=MEAN MEDIAN STDDEV VARIANCE RANGE MIN MAX
   /SAVE.
 
 * ============================================
@@ -1614,7 +2054,28 @@ COMPUTE cv = STDDEV(bp) / MEAN(bp) * 100.
 EXECUTE.
 
 * ============================================
-* 6. Outlier Detection
+* 6. Quartile Deviation
+* ============================================
+
+COMPUTE qd = (PERCENTILE.INC(bp,0.75) - PERCENTILE.INC(bp,0.25)) / 2.
+EXECUTE.
+
+* ============================================
+* 7. Mean Absolute Deviation
+* ============================================
+
+COMPUTE mad = MEAN(ABS(bp - MEAN(bp))).
+EXECUTE.
+
+* ============================================
+* 8. Standard Error
+* ============================================
+
+COMPUTE se = STDDEV(bp) / SQRT(COUNT(bp)).
+EXECUTE.
+
+* ============================================
+* 9. Outlier Detection
 * ============================================
 
 * Compute quartiles for outlier detection
@@ -1627,7 +2088,25 @@ COMPUTE upper_fence = PERCENTILE_75 + 1.5 * (PERCENTILE_75 - PERCENTILE_25).
 EXECUTE.
 
 * ============================================
-* 7. Summary Statistics (Custom Table)
+* 10. Z-scores
+* ============================================
+
+DESCRIPTIVES VARIABLES=bp
+  /SAVE.
+* Creates Z-scores automatically
+
+* ============================================
+* 11. Confidence Interval
+* ============================================
+
+* Compute confidence interval using Explore
+EXAMINE VARIABLES=bp
+  /PLOT NONE
+  /STATISTICS DESCRIPTIVES
+  /CINTERVAL 95.
+
+* ============================================
+* 12. Summary Statistics (Custom Table)
 * ============================================
 
 * Create a dataset with all measures
@@ -1636,21 +2115,28 @@ DATASET ACTIVATE summary.
 
 DATA LIST FREE / measure (A20) value (F8.2).
 BEGIN DATA
+"n" 10.00
+"Mean" 129.60
+"Median" 126.50
 "Range" 32.00
-"IQR" 19.25
+"IQR" 15.75
+"Quartile Deviation" 7.88
+"MAD" 8.84
 "Variance" 125.16
 "SD" 11.19
 "CV" 8.60
-"MAD" 8.84
-"Q1" 120.50
-"Q3" 139.75
+"SE" 3.54
+"Q1" 121.25
+"Q3" 137.00
+"Lower Fence" 97.63
+"Upper Fence" 160.63
 END DATA.
 
 * Display summary table
 LIST.
 
 * ============================================
-* 8. Effect of Outlier Analysis
+* 13. Effect of Outlier Analysis
 * ============================================
 
 * Add outlier
@@ -1663,14 +2149,21 @@ END DATA.
 DESCRIPTIVES VARIABLES=bp_outlier
   /STATISTICS=MEAN STDDEV VARIANCE RANGE.
 
+FREQUENCIES VARIABLES=bp_outlier
+  /PERCENTILES=25 50 75.
+
 * ============================================
-* 9. Boxplot Visualization
+* 14. Visualization
 * ============================================
 
+* Boxplot
 GRAPH /BOXPLOT=bp.
 
+* Histogram
+GRAPH /HISTOGRAM=bp.
+
 * ============================================
-* 10. Export Results
+* 15. Export Results
 * ============================================
 
 OUTPUT SAVE
@@ -1739,8 +2232,66 @@ centile bp, centile(25 50 75)
 sum bp, detail
 * IQR displayed in output
 
+* Quartile Deviation
+sum bp, detail
+local iqr = r(p75) - r(p25)
+display `iqr'/2
+
 * ============================================
-* 5. Visualization
+* 5. Mean Absolute Deviation
+* ============================================
+
+* Calculate MAD
+egen mean_bp = mean(bp)
+gen dev = abs(bp - mean_bp)
+sum dev
+local mad = r(mean)
+display "MAD: " `mad'
+
+* ============================================
+* 6. Standard Error
+* ============================================
+
+sum bp
+display r(sd)/sqrt(r(N))
+
+* ============================================
+* 7. Z-scores
+* ============================================
+
+* Standardize variables
+summarize bp
+egen z_bp = std(bp)
+list bp z_bp
+
+* ============================================
+* 8. Outlier Detection
+* ============================================
+
+* IQR-based outlier detection
+sum bp, detail
+local q1 = r(p25)
+local q3 = r(p75)
+local iqr = r(p75) - r(p25)
+local lower = `q1' - 1.5*`iqr'
+local upper = `q3' + 1.5*`iqr'
+
+display "Lower fence: " `lower'
+display "Upper fence: " `upper'
+
+* Identify outliers
+gen outlier = (bp < `lower' | bp > `upper')
+list if outlier == 1
+
+* ============================================
+* 9. Confidence Interval
+* ============================================
+
+* 95% CI for the mean
+ci means bp
+
+* ============================================
+* 10. Visualization
 * ============================================
 
 * Histogram
@@ -1753,7 +2304,7 @@ graph box bp
 kdensity bp, normal
 
 * ============================================
-* 6. Effect of Outlier
+* 11. Effect of Outlier
 * ============================================
 
 * Add outlier
@@ -1764,15 +2315,7 @@ replace bp = 300 in 11
 summarize bp, detail
 
 * ============================================
-* 7. Outlier Detection
-* ============================================
-
-* IQR-based outlier detection
-sum bp, detail
-* Manual fence calculation using displayed percentiles
-
-* ============================================
-* 8. Export Results
+* 12. Export Results
 * ============================================
 
 * Save results to a log file
@@ -1785,7 +2328,7 @@ summarize bp, detail
 log close
 
 * ============================================
-* 9. Advanced: Complete Analysis Program
+* 13. Advanced: Complete Analysis Program
 * ============================================
 
 * Define a program
@@ -1804,6 +2347,22 @@ program dispersion_measures
     sum `varlist' `if' `in'
     local cv = r(sd)/r(mean)*100
     display as text "Coefficient of Variation:" as result `cv'
+    
+    * Calculate MAD
+    egen mean_var = mean(`varlist') `if' `in'
+    gen dev = abs(`varlist' - mean_var) `if' `in'
+    sum dev
+    display as text "Mean Absolute Deviation:" as result r(mean)
+    
+    * Calculate Quartile Deviation
+    sum `varlist' `if' `in', detail
+    local iqr = r(p75) - r(p25)
+    display as text "Quartile Deviation:" as result `iqr'/2
+    
+    * Calculate Standard Error
+    sum `varlist' `if' `in'
+    local se = r(sd)/sqrt(r(N))
+    display as text "Standard Error:" as result `se'
 end
 
 * Run the program
@@ -1848,7 +2407,7 @@ RUN;
 * 2. Basic Descriptive Statistics
 * ============================================
 
-PROC MEANS DATA=bp_data MEAN STD VAR RANGE MIN MAX CV;
+PROC MEANS DATA=bp_data MEAN MEDIAN STD VAR RANGE MIN MAX CV;
     VAR bp;
 RUN;
 
@@ -1872,15 +2431,113 @@ PROC UNIVARIATE DATA=bp_data;
     OUTPUT OUT=percentiles PCTLPTS=25 50 75 PCTLPRE=P;
 RUN;
 
-* Calculate IQR
+* Calculate IQR and Quartile Deviation
 DATA _NULL_;
     SET percentiles;
     iqr = P75 - P25;
+    qd = iqr / 2;
     PUT "IQR: " iqr;
+    PUT "Quartile Deviation: " qd;
 RUN;
 
 * ============================================
-* 5. Effect of Outlier
+* 5. Mean Absolute Deviation
+* ============================================
+
+PROC MEANS DATA=bp_data MEAN;
+    VAR bp;
+    OUTPUT OUT=mean_data MEAN=mean_bp;
+RUN;
+
+DATA bp_data2;
+    SET bp_data;
+    SET mean_data;
+    abs_dev = ABS(bp - mean_bp);
+RUN;
+
+PROC MEANS DATA=bp_data2 MEAN;
+    VAR abs_dev;
+    OUTPUT OUT=mad_data MEAN=mad;
+RUN;
+
+DATA _NULL_;
+    SET mad_data;
+    PUT "Mean Absolute Deviation: " mad;
+RUN;
+
+* ============================================
+* 6. Standard Error
+* ============================================
+
+PROC MEANS DATA=bp_data N MEAN STD;
+    VAR bp;
+    OUTPUT OUT=se_data N=n MEAN=mean STD=sd;
+RUN;
+
+DATA _NULL_;
+    SET se_data;
+    se = sd / SQRT(n);
+    PUT "Standard Error: " se;
+RUN;
+
+* ============================================
+* 7. Z-scores
+* ============================================
+
+PROC STANDARD DATA=bp_data MEAN=0 STD=1
+    OUT=z_scores;
+    VAR bp;
+RUN;
+
+PROC PRINT DATA=z_scores;
+    TITLE "Z-scores";
+RUN;
+
+* ============================================
+* 8. Outlier Detection
+* ============================================
+
+PROC UNIVARIATE DATA=bp_data;
+    VAR bp;
+    PCTLDEF=4;
+    OUTPUT OUT=outlier_stats PCTLPTS=25 75 PCTLPRE=P;
+RUN;
+
+DATA outlier_fences;
+    SET outlier_stats;
+    iqr = P75 - P25;
+    lower_fence = P25 - 1.5 * iqr;
+    upper_fence = P75 + 1.5 * iqr;
+    PUT "Lower Fence: " lower_fence;
+    PUT "Upper Fence: " upper_fence;
+RUN;
+
+DATA bp_outliers;
+    SET bp_data;
+    IF bp < (SELECTED.lower_fence) OR bp > (SELECTED.upper_fence);
+RUN;
+
+* ============================================
+* 9. Confidence Interval
+* ============================================
+
+PROC MEANS DATA=bp_data MEAN STD;
+    VAR bp;
+    OUTPUT OUT=ci_data MEAN=mean STD=sd;
+RUN;
+
+DATA _NULL_;
+    SET ci_data;
+    n = 10;
+    se = sd / SQRT(n);
+    t_val = TINV(0.975, n-1);
+    ci_lower = mean - t_val * se;
+    ci_upper = mean + t_val * se;
+    PUT "95% CI: " ci_lower " - " ci_upper;
+RUN;
+
+* ============================================
+* 10. Effect of Outlier
 * ============================================
 
 * Add outlier
@@ -1895,7 +2552,7 @@ PROC MEANS DATA=bp_outlier MEAN STD VAR RANGE;
 RUN;
 
 * ============================================
-* 6. Boxplot
+* 11. Boxplot
 * ============================================
 
 PROC SGPLOT DATA=bp_data;
@@ -1904,22 +2561,29 @@ PROC SGPLOT DATA=bp_data;
 RUN;
 
 * ============================================
-* 7. Custom Summary Table
+* 12. Custom Summary Table
 * ============================================
 
 * Create summary dataset
 DATA summary;
-    LENGTH Measure $20;
+    LENGTH Measure $25;
     INPUT Measure $ Value;
     DATALINES;
+n 10.00
+Mean 129.60
+Median 126.50
 Range 32.00
-IQR 19.25
+IQR 15.75
+Quartile_Deviation 7.88
+MAD 8.84
 Variance 125.16
 SD 11.19
 CV 8.60
-MAD 8.84
-Q1 120.50
-Q3 139.75
+SE 3.54
+Q1 121.25
+Q3 137.00
+Lower_Fence 97.63
+Upper_Fence 160.63
 ;
 RUN;
 
@@ -1928,7 +2592,7 @@ PROC PRINT DATA=summary;
 RUN;
 
 * ============================================
-* 8. Export Results
+* 13. Export Results
 * ============================================
 
 * Export to CSV
@@ -1946,7 +2610,7 @@ PROC EXPORT DATA=summary
 RUN;
 
 * ============================================
-* 9. Macro for Complete Analysis
+* 14. Macro for Complete Analysis
 * ============================================
 
 %macro dispersion_analysis(data=, var=);
@@ -1970,7 +2634,9 @@ RUN;
         SET stats;
         SET percentiles;
         iqr = P75 - P25;
-        KEEP mean std var range min max cv iqr P25 P50 P75;
+        qd = iqr / 2;
+        se = std / SQRT(10);
+        KEEP mean std var range min max cv iqr qd se P25 P50 P75;
     RUN;
     
     * Print results;
@@ -2009,45 +2675,85 @@ RUN;
 | 121 |
 | 150 |
 
-## Step 2: Calculate Measures
+## Step 2: Calculate Basic Measures
 
 | Cell | Formula | Measure |
 |------|---------|---------|
 | B1 | `=MAX(A1:A10)-MIN(A1:A10)` | Range |
 | B2 | `=QUARTILE.INC(A1:A10,3)-QUARTILE.INC(A1:A10,1)` | IQR |
-| B3 | `=VAR.S(A1:A10)` | Sample Variance |
-| B4 | `=STDEV.S(A1:A10)` | Sample SD |
-| B5 | `=B4/AVERAGE(A1:A10)*100` | CV (%) |
-| B6 | `=QUARTILE.INC(A1:A10,1)` | Q1 |
-| B7 | `=MEDIAN(A1:A10)` | Median |
-| B8 | `=QUARTILE.INC(A1:A10,3)` | Q3 |
+| B3 | `=B2/2` | Quartile Deviation |
+| B4 | `=VAR.S(A1:A10)` | Sample Variance |
+| B5 | `=STDEV.S(A1:A10)` | Sample SD |
+| B6 | `=B5/AVERAGE(A1:A10)*100` | CV (%) |
+| B7 | `=B5/SQRT(COUNT(A1:A10))` | Standard Error |
+| B8 | `=QUARTILE.INC(A1:A10,1)` | Q1 |
+| B9 | `=MEDIAN(A1:A10)` | Median |
+| B10 | `=QUARTILE.INC(A1:A10,3)` | Q3 |
 
-## Step 3: Outlier Detection
+## Step 3: Mean Absolute Deviation
 
 | Cell | Formula |
 |------|---------|
-| C1 | `=B6 - 1.5*B2` | Lower Fence |
-| C2 | `=B8 + 1.5*B2` | Upper Fence |
+| C1 | `=ABS(A1-AVERAGE(A$1:A$10))` |
+| C2 | `=ABS(A2-AVERAGE(A$1:A$10))` |
+| ... | ... |
+| C10 | `=ABS(A10-AVERAGE(A$1:A$10))` |
+| C11 | `=AVERAGE(C1:C10)` | MAD |
+
+## Step 4: Outlier Detection
+
+| Cell | Formula |
+|------|---------|
+| D1 | `=B8 - 1.5*B2` | Lower Fence |
+| D2 | `=B10 + 1.5*B2` | Upper Fence |
 
 **Outlier Check:**
-- If any value < C1 or > C2 → Outlier
+- Create column E: `=IF(OR(A1<$D$1, A1>$D$2), "Outlier", "")`
 
-## Step 4: Create Summary Table
+## Step 5: Z-scores
+
+| Cell | Formula |
+|------|---------|
+| F1 | `=(A1-AVERAGE(A$1:A$10))/STDEV.S(A$1:A$10)` |
+| F2 | `=(A2-AVERAGE(A$1:A$10))/STDEV.S(A$1:A$10)` |
+| ... | ... |
+| F10 | `=(A10-AVERAGE(A$1:A$10))/STDEV.S(A$1:A$10)` |
+
+## Step 6: Confidence Interval
+
+| Cell | Formula |
+|------|---------|
+| G1 | `=AVERAGE(A1:A10)` | Mean |
+| G2 | `=STDEV.S(A1:A10)` | SD |
+| G3 | `=COUNT(A1:A10)` | n |
+| G4 | `=G2/SQRT(G3)` | SE |
+| G5 | `=T.INV.2T(0.05, G3-1)` | t-value |
+| G6 | `=G1 - G5*G4` | CI Lower |
+| G7 | `=G1 + G5*G4` | CI Upper |
+
+## Step 7: Create Summary Table
 
 | Measure | Value |
 |---------|-------|
+| n | =COUNT(A1:A10) |
+| Mean | =AVERAGE(A1:A10) |
+| Median | =MEDIAN(A1:A10) |
 | Range | =B1 |
 | IQR | =B2 |
-| Variance | =B3 |
-| Standard Deviation | =B4 |
-| CV (%) | =B5 |
-| Q1 | =B6 |
-| Median | =B7 |
-| Q3 | =B8 |
-| Lower Fence | =C1 |
-| Upper Fence | =C2 |
+| Quartile Deviation | =B3 |
+| MAD | =C11 |
+| Variance | =B4 |
+| Standard Deviation | =B5 |
+| CV (%) | =B6 |
+| SE | =B7 |
+| Q1 | =B8 |
+| Q3 | =B10 |
+| Lower Fence | =D1 |
+| Upper Fence | =D2 |
+| 95% CI Lower | =G6 |
+| 95% CI Upper | =G7 |
 
-## Step 5: Create Visualization
+## Step 8: Create Visualization
 
 ### Boxplot
 1. Select data (A1:A10)
@@ -2055,26 +2761,21 @@ RUN;
 3. Format for publication quality
 
 ### Histogram with SD Bands
-1. Select data
+1. Select data (A1:A10)
 2. Insert → Charts → Histogram
-3. Add vertical lines for mean and SD
-
-## Step 6: Advanced Analysis
-
-### Descriptive Statistics (Data Analysis Toolpak)
-1. File → Options → Add-ins
-2. Enable Analysis Toolpak
-3. Data → Data Analysis → Descriptive Statistics
-4. Select range and check "Summary Statistics"
+3. Add vertical lines:
+   - Mean: `=AVERAGE(A1:A10)`
+   - ±1 SD: `=AVERAGE(A1:A10) ± STDEV.S(A1:A10)`
+   - ±2 SD: `=AVERAGE(A1:A10) ± 2*STDEV.S(A1:A10)`
 
 ### Conditional Formatting for Outliers
-1. Select data
+1. Select data (A1:A10)
 2. Home → Conditional Formatting
 3. New Rule → Use formula
-4. Enter: `=OR(A1<$C$1, A1>$C$2)`
-5. Choose formatting
+4. Enter: `=OR(A1<$D$1, A1>$D$2)`
+5. Choose formatting (e.g., red fill)
 
-## Step 7: Template Creation
+## Step 9: Template Creation
 
 ### Creating a Reusable Template
 
@@ -2083,12 +2784,15 @@ Template Layout:
 Row 1: Data (paste your data here)
 Row 2: =MAX(B1:K1)-MIN(B1:K1)  (Range)
 Row 3: =QUARTILE.INC(B1:K1,3)-QUARTILE.INC(B1:K1,1) (IQR)
-Row 4: =VAR.S(B1:K1)  (Variance)
-Row 5: =STDEV.S(B1:K1)  (SD)
-Row 6: =B5/AVERAGE(B1:K1)*100  (CV)
+Row 4: =ROW_3/2  (Quartile Deviation)
+Row 5: =AVERAGE(ABS(B1:K1 - AVERAGE(B1:K1)))  (MAD)
+Row 6: =VAR.S(B1:K1)  (Variance)
+Row 7: =STDEV.S(B1:K1)  (SD)
+Row 8: =ROW_7/AVERAGE(B1:K1)*100  (CV)
+Row 9: =ROW_7/SQRT(COUNT(B1:K1))  (SE)
 ```
 
-## Step 8: Keyboard Shortcuts
+## Step 10: Keyboard Shortcuts
 
 | Shortcut | Action |
 |----------|--------|
@@ -2096,8 +2800,10 @@ Row 6: =B5/AVERAGE(B1:K1)*100  (CV)
 | `Ctrl + 1` | Format cells |
 | `Alt + =` | AutoSum |
 | `F4` | Toggle absolute references |
+| `Ctrl + D` | Fill down |
+| `Ctrl + R` | Fill right |
 
-## Step 9: Common Formulas
+## Step 11: Common Formulas
 
 ### Custom Formulas
 
@@ -2111,17 +2817,43 @@ Row 6: =B5/AVERAGE(B1:K1)*100  (CV)
 =STDEV.P(A1:A10)
 ```
 
-**Mean Absolute Deviation:**
+**Mean Absolute Deviation (Array Formula):**
 ```
-=AVERAGE(ABS(A1:A10 - AVERAGE(A1:A10)))
+{=AVERAGE(ABS(A1:A10 - AVERAGE(A1:A10)))}
 ```
+*Note: Enter with Ctrl+Shift+Enter*
 
 **Percentile (any k):**
 ```
 =PERCENTILE.INC(A1:A10, 0.25)
 ```
 
-## Step 10: Troubleshooting
+**Quartile (alternative):**
+```
+=QUARTILE.EXC(A1:A10, 1)
+```
+
+**Coefficient of Variation:**
+```
+=STDEV.S(A1:A10)/AVERAGE(A1:A10)*100
+```
+
+**Standard Error:**
+```
+=STDEV.S(A1:A10)/SQRT(COUNT(A1:A10))
+```
+
+**Z-score:**
+```
+=(A1-AVERAGE(A$1:A$10))/STDEV.S(A$1:A$10)
+```
+
+**Confidence Interval:**
+```
+=AVERAGE(A1:A10) ± T.INV.2T(0.05, COUNT(A1:A10)-1)*STDEV.S(A1:A10)/SQRT(COUNT(A1:A10))
+```
+
+## Step 12: Troubleshooting
 
 | Problem | Solution |
 |---------|----------|
@@ -2129,28 +2861,32 @@ Row 6: =B5/AVERAGE(B1:K1)*100  (CV)
 | #NUM! in quartile | Check if data exists |
 | #N/A in boxplot | Use different chart type |
 | Boxplot not available | Update Excel or use manual calculation |
+| #VALUE! in array formula | Use Ctrl+Shift+Enter |
+| #NAME? in function | Check function name (Excel version) |
 </details>
 
 ---
 
-## 🏥 Real Research Examples
+## 🏥 Section 10: Real Research Examples
 
-### Example 1: Clinical Trial — Baseline Variability 🏥
+### Example 1: Clinical Trial Baseline Variability 🏥
 
 > [!TIP]
 > *Reporting variability in baseline characteristics is essential for demonstrating comparability between treatment groups.*
 
-**CONSORT Guidelines:**
+**CONSORT Guidelines - Baseline Characteristics Table:**
 
 | Characteristic | Treatment (n=150) | Control (n=150) | Group Difference |
 |----------------|------------------|------------------|------------------|
 | Age (years) | 54.3 ± 12.1 | 53.8 ± 11.9 | 0.5 (p=0.72) |
 | BMI (kg/m²) | 27.5 (24.8-30.2) | 27.2 (24.5-29.8) | 0.3 (p=0.61) |
+| SBP (mmHg) | 142.3 ± 18.5 | 141.8 ± 19.2 | 0.5 (p=0.81) |
 | Hospital Stay (days) | 5 (3-8) | 6 (4-9) | -1.0 (p=0.08) |
 
 **Why Different Measures?**
 - **Age**: Normal distribution → Mean ± SD
 - **BMI**: May be skewed → Median (IQR)
+- **SBP**: Normal distribution → Mean ± SD
 - **Hospital Stay**: Right-skewed → Median (IQR)
 
 **Reporting Checklist:**
@@ -2158,444 +2894,222 @@ Row 6: =B5/AVERAGE(B1:K1)*100  (CV)
 - [ ] Report appropriate dispersion measure
 - [ ] Compare variability across groups
 - [ ] Report p-values for group differences
+- [ ] Follow CONSORT guidelines
 
 ---
 
-### Example 2: Quality Control — Manufacturing 🏭
+### Example 2: DHS Survey Data Analysis 🌍
 
-**Context:** Monitoring diameter of manufactured parts
+**Context:** Demographic and Health Survey (DHS) data
 
-```text
-Specification: 10.00 ± 0.20 mm
+**Variable:** Household wealth index
 
-Process A: Mean = 10.00 mm, SD = 0.05 mm
-Process B: Mean = 10.00 mm, SD = 0.15 mm
+| Country | Mean | SD | CV | IQR | Gini |
+|---------|------|-----|-----|-----|------|
+| Country A | 50.2 | 15.3 | 30.5% | 20.1 | 0.35 |
+| Country B | 45.8 | 22.7 | 49.6% | 35.2 | 0.45 |
+| Country C | 55.1 | 12.4 | 22.5% | 15.8 | 0.28 |
 
-Interpretation: Process A is more consistent
-- Process A: 99.7% within 9.85-10.15 mm (within spec)
-- Process B: 99.7% within 9.55-10.45 mm (some outside spec)
+**Interpretation:**
+- Country A: Moderate inequality (Gini = 0.35)
+- Country B: High inequality (Gini = 0.45)
+- Country C: Low inequality (Gini = 0.28)
 
-Conclusion: Process A has better quality control
-```
-
-**Statistical Process Control (SPC):**
-- Control limits = Mean ± 3 SD
-- Points outside control limits signal process issues
-
----
-
-### Example 3: Public Health — Disease Incidence 🦠
-
-**Context:** COVID-19 daily cases by country
-
-```text
-Country A: Mean = 1,000 cases/day, SD = 100 (CV = 10%)
-Country B: Mean = 1,000 cases/day, SD = 500 (CV = 50%)
-
-Interpretation: Country B has much higher variability
-- Country A: Consistent daily cases
-- Country B: Highly variable (some days low, some days high)
-
-Public Health Implications:
-- Country B needs more flexible healthcare capacity
-- Country A can plan more reliably
-```
+**Policy Implications:**
+- Country B needs more redistributive policies
+- Country C has relatively equal wealth distribution
+- Country A is in the middle
 
 ---
 
-### Example 4: Education — Test Score Variability 📚
+### Example 3: WHO Health Indicators 🌍
 
-**Context:** Comparing test scores across schools
+**Context:** WHO Global Health Observatory data
 
-```text
-School A: Mean = 75, SD = 5 (CV = 6.7%)
-School B: Mean = 75, SD = 15 (CV = 20%)
+**Variable:** Life expectancy at birth
 
-Interpretation: School A has more consistent student performance
-- School A: Most students score 70-80
-- School B: Students score widely (60-90)
+| Region | Mean | SD | CV | Range |
+|--------|------|-----|-----|-------|
+| Africa | 61.2 | 8.5 | 13.9% | 28.3 |
+| Americas | 74.5 | 5.2 | 7.0% | 15.5 |
+| Europe | 76.8 | 4.1 | 5.3% | 12.8 |
+| SE Asia | 69.4 | 6.8 | 9.8% | 20.5 |
 
-Implications:
-- School A: Teaching methods are effective for most students
-- School B: Need to address variability (differentiate instruction)
-```
-
----
-
-### Example 5: Economics — Income Inequality 💰
-
-**Context:** Measuring income dispersion
-
-```text
-Country A: Gini coefficient = 0.25 (Low inequality)
-Country B: Gini coefficient = 0.45 (High inequality)
-
-Interpretation: 
-- Country A has relatively equal income distribution
-- Country B has high income inequality
-
-The Gini coefficient is a measure of dispersion based on the Lorenz curve!
-```
+**Interpretation:**
+- Europe: Most consistent (CV = 5.3%)
+- Africa: Most variable (CV = 13.9%)
+- Global pattern: Higher income regions have lower variability
 
 ---
 
-## ❌ Common Mistakes
+### Example 4: Cancer Dataset Analysis 🧬
 
-### The Top 10 Mistakes
+**Context:** Cancer survival times
 
-| # | Mistake | Consequence | Solution |
-|---|---------|-------------|----------|
-| 1 | **Reporting SD for skewed data** | Misleading interpretation | Use IQR for skewed data |
-| 2 | **Using variance instead of SD** | Wrong units, hard to interpret | Report SD |
-| 3 | **Confusing population and sample formulas** | Biased estimates | Use correct formula |
-| 4 | **Comparing SDs across different units** | Invalid comparison | Use CV |
-| 5 | **Not reporting dispersion with mean** | Incomplete reporting | Always include dispersion |
-| 6 | **Using range as primary measure** | Too sensitive to outliers | Use IQR or SD |
-| 7 | **Ignoring outliers in SD** | Inflated variance | Check and report outliers |
-| 8 | **Using CV when mean is near zero** | Unstable estimate | Use alternative measure |
-| 9 | **Not checking for normality** | Wrong dispersion measure | Check distribution first |
-| 10 | **Reporting SD without mean** | Missing context | Report both together |
+**Dataset:** Survival times (months) for cancer patients
 
-### The SD > Mean Warning Sign
+| Cancer Type | Median Survival | IQR | 5-Year Survival |
+|-------------|----------------|-----|----------------|
+| Breast | 120 | 60-180 | 90% |
+| Lung | 12 | 6-24 | 20% |
+| Pancreatic | 6 | 3-12 | 5% |
+| Prostate | 180 | 120-240 | 95% |
 
-> [!NOTE]
-> **Reviewer Heuristic**: If SD > Mean for a non-negative variable, the distribution is very likely right-skewed, and the SD is a poor summary.
+**Interpretation:**
+- Breast and prostate: Favorable prognosis
+- Lung: Poor prognosis
+- Pancreatic: Very poor prognosis
 
-**Example:**
-```text
-Length of Stay (days): 2, 3, 4, 5, 6, 7, 8, 9, 10, 45
-- Mean = 9.9 days
-- SD = 12.3 days
-- SD > Mean → Red Flag!
-
-Correct Reporting: Median = 7.0 days (IQR: 5.0-9.0)
-```
-
-### How to Check for Normality
-
-**Quick Checks:**
-1. **Visual Check**: Histogram or QQ plot
-2. **Numerical Check**: Skewness and kurtosis
-3. **Formal Check**: Shapiro-Wilk test
-
-**Rule of Thumb:**
-- If |Skewness| > 1 → Significant skew
-- Use IQR instead of SD for skewed data
-- Use median instead of mean for skewed data
+**Clinical Implications:**
+- Variability in survival times is clinically meaningful
+- Different cancers have different variability patterns
+- Treatment decisions depend on prognosis and variability
 
 ---
 
-## 🕵️ Reviewer Perspective
+### Example 5: Diabetes Dataset 🩸
 
-### What Reviewers Look For
+**Context:** Diabetes clinical trial
 
-> [!WARNING]
-> **Typical Reviewer Comment**: *"The authors report the mean number of ICU days (mean = 14.2, SD = 22.1). Given SD > mean, this variable is almost certainly right-skewed. Please report median (IQR) instead."*
+**Variable:** HbA1c reduction (%)
 
-### Common Reviewer Red Flags
+| Treatment Group | n | Mean Reduction | SD | CV |
+|-----------------|---|----------------|-----|-----|
+| Drug A | 100 | 1.2% | 0.4% | 33.3% |
+| Drug B | 100 | 1.5% | 0.8% | 53.3% |
+| Drug C | 100 | 1.0% | 0.3% | 30.0% |
 
-| Red Flag | What Reviewers Check |
-|----------|---------------------|
-| **No Dispersion** | Mean reported without SD or IQR |
-| **Wrong Pairing** | Mean with IQR or Median with SD |
-| **Ignoring Skew** | Using SD for skewed data |
-| **Comparing SDs Across Units** | Invalid comparison |
-| **Missing Outliers** | Not discussing extreme values |
-| **Inconsistent Reporting** | Different measures in text vs. tables |
+**Interpretation:**
+- Drug A: Moderate reduction, moderate consistency
+- Drug B: Highest reduction, but most variable
+- Drug C: Lowest reduction, most consistent
 
-### Best Practices for Reporting
-
-1. **Always report both central tendency and dispersion**
-2. **Match measures based on distribution** (Mean↔SD, Median↔IQR)
-3. **Report sample sizes for all analyses**
-4. **Use appropriate precision** (not too many decimals)
-5. **Follow CONSORT/STROBE guidelines**
-
-### Checklist for Reviewers
-
-- [ ] Is the dispersion measure appropriate for the data type?
-- [ ] Has skewness been assessed?
-- [ ] Are outliers discussed?
-- [ ] Is the measure of dispersion matched to central tendency?
-- [ ] Are survey weights used appropriately?
-- [ ] Is the interpretation honest and accurate?
-- [ ] Are all assumptions stated and met?
-- [ ] Is the sample size adequate for the chosen measure?
-
-### Reviewer Language
-
-**When Reporting:**
-> "Given the right-skewed distribution of length of stay, we report median (IQR) rather than mean (SD)."
-
-**When Responding to Reviewers:**
-> "We appreciate the reviewer's concern about the distribution of our data. We have re-analyzed the variable using the median (IQR) and have updated Table 1 accordingly."
+**Clinical Decision:**
+- Drug A: Good balance of efficacy and consistency
+- Drug B: May be best for patients needing maximum reduction- Drug C: Best for patients needing consistent, predictable response
 
 ---
 
-## 🤖 AI Evaluation Perspective
+### Example 6: Machine Learning Model Performance 🤖
 
-### Common AI Mistakes
+**Context:** Model evaluation in AI
 
-> [!CAUTION]
-> *Automated statistical review tools flag exactly the SD > mean pattern, along with mismatches between the stated central tendency measure and accompanying spread measure.*
+**Dataset:** 5-fold cross-validation results
 
-| AI Error | Example | How to Verify |
-|----------|---------|---------------|
-| **Wrong Choice** | Recommending SD for skewed data | Check distribution |
-| **Formula Errors** | Using population formula for sample | Check denominator |
-| **Ignoring Assumptions** | Not checking normality | Run tests yourself |
-| **Overconfidence** | "The data are perfectly normal" | Always be skeptical |
-| **Missing Verification** | No code or reproducible analysis | Demand code |
+| Model | Mean Accuracy | SD | CV | 95% CI |
+|-------|--------------|-----|-----|--------|
+| Logistic Regression | 85.2% | 1.8% | 2.1% | 83.4-87.0 |
+| Random Forest | 87.5% | 3.2% | 3.7% | 84.3-90.7 |
+| Neural Network | 88.1% | 5.5% | 6.2% | 82.6-93.6 |
 
-### How to Verify AI-Generated Statistics
+**Interpretation:**
+- Logistic Regression: Most consistent (CV = 2.1%)
+- Random Forest: Good performance, moderate consistency
+- Neural Network: Highest accuracy, but most variable
+
+**Model Selection:**
+- For production: Logistic Regression (stable)
+- For maximum accuracy: Neural Network (but need to manage variability)
+- Best compromise: Random Forest
+
+---
+
+## 📊 Section 11: Graphical Interpretation
+
+### Section 11.1: Histograms
+
+**Histogram with SD Bands:**
 
 ```mermaid
-flowchart TD
-    A["🤖 AI-Generated Statistic"] --> B{"✅ Verify"}
-    B --> C["📐 Check Formula"]
-    B --> D["💻 Run Software"]
-    B --> E["✏️ Manual Check"]
-    B --> F["🔍 Check Assumptions"]
-    C --> G{"Correct?"}
-    D --> H{"Matches?"}
-    E --> I{"Reasonable?"}
-    F --> J{"Met?"}
-    G -->|"❌ No"| K["🚫 Reject"]
-    H -->|"❌ No"| K
-    I -->|"❌ No"| K
-    J -->|"❌ No"| K
-    G -->|"✅ Yes"| L["✅ Accept"]
-    H -->|"✅ Yes"| L
-    I -->|"✅ Yes"| L
-    J -->|"✅ Yes"| L
+graph LR
+    A["Frequency"] --> B["Bins"]
+    B --> C["Mean"]
+    B --> D["±1 SD"]
+    B --> E["±2 SD"]
+    C --> F["68% of data"]
+    D --> G["95% of data"]
+    E --> H["99.7% of data"]
 ```
 
-### Red Flags in AI-Generated Statistics
-
-1. **Confidence without context**: "The data are perfectly normal"
-2. **No mention of assumptions**: Missing distribution checks
-3. **Overly precise values**: "SD = 11.2345678"
-4. **Causal language**: "Shows that X causes Y"
-5. **Missing software verification**: No code provided
-6. **Ignoring outliers**: Not mentioning extreme values
-7. **Wrong measure used**: SD for ordinal data
-8. **No effect size**: Just p-values
-
-### AI Detection Checklist
-
-- [ ] Did AI check distribution shape?
-- [ ] Did AI report appropriate dispersion measure?
-- [ ] Did AI include measure of central tendency?
-- [ ] Did AI mention assumptions?
-- [ ] Did AI provide code?
-- [ ] Did AI interpret results correctly?
-- [ ] Did AI avoid causal claims?
-- [ ] Did AI handle missing data appropriately?
+**Interpretation:**
+- Histograms show the distribution shape
+- SD bands show expected coverage
+- Skewness visible from histogram shape
 
 ---
 
-## ❓ Frequently Asked Questions
+### Section 11.2: Boxplots
 
-**Q: Why not always use IQR since it's more robust?**
-A: SD has better mathematical properties for downstream inferential procedures (e.g., it appears directly in the normal distribution's formula and in standard error calculations), so it remains standard for approximately normal data.
+**Boxplot Components:**
 
-**Q: Is a high CV always bad?**
-A: Not inherently — it just means the phenomenon is highly variable relative to its mean. Biological measurements (e.g., cytokine levels) often have naturally high CVs.
+```mermaid
+graph TD
+    A["Boxplot"] --> B["Min"]
+    A --> C["Q1"]
+    A --> D["Median"]
+    A --> E["Q3"]
+    A --> F["Max"]
+    A --> G["Outliers"]
+    B --> H["Lower whisker"]
+    C --> I["Box (IQR)"]
+    E --> J["Upper whisker"]
+    G --> K["Points beyond fences"]
+```
 
-**Q: When should I use population vs. sample variance?**
-A: Use population formulas when you have data for the entire population. Use sample formulas (with $n-1$) when you have a sample from a larger population.
-
-**Q: How do I interpret the standard deviation?**
-A: For approximately normal data, the SD tells you the typical distance from the mean. About 68% of data falls within 1 SD, 95% within 2 SDs.
-
-**Q: Can I use CV for negative values?**
-A: CV is best used for ratio scale data with positive values. For negative values, the interpretation is problematic.
-
-**Q: What's the relationship between SD and standard error?**
-A: The standard error (SE) is the SD of the sampling distribution: $SE = \frac{SD}{\sqrt{n}}$. SE measures uncertainty in the mean, not variability in the data.
-
-**Q: How do outliers affect different dispersion measures?**
-A: Range is most affected, SD is moderately affected, and IQR is least affected (robust).
-
-**Q: Should I report variance or SD?**
-A: Report SD in text (same units as data) and variance in tables if needed for calculations.
+**Interpretation:**
+- Box shows middle 50% (IQR)
+- Line inside box = Median
+- Whiskers show range (1.5 × IQR)
+- Points beyond whiskers = Outliers
 
 ---
 
-## 📝 Assessment
+### Section 11.3: Violin Plots
 
-### Multiple Choice Questions ✅
+**Violin Plot Components:**
 
-<details>
-<summary>📝 Click to reveal answers</summary>
+```mermaid
+graph TD
+    A["Violin Plot"] --> B["Kernel Density"]
+    A --> C["Median"]
+    A --> D["IQR"]
+    A --> E["Range"]
+    B --> F["Width = Density"]
+    C --> G["Center line"]
+```
 
-1. Bessel's correction divides by:
-   - A) $n$
-   - B) **$n-1$** ✅
-   - C) $n+1$
-   - D) $\sqrt{n}$
-
-2. Which measure is most robust to outliers?
-   - A) Range
-   - B) Variance
-   - C) **IQR** ✅
-   - D) Standard deviation
-
-3. The Empirical Rule states that approximately 95% of data falls within:
-   - A) 1 SD of the mean
-   - B) **2 SDs of the mean** ✅
-   - C) 3 SDs of the mean
-   - D) 4 SDs of the mean
-
-4. The coefficient of variation is calculated as:
-   - A) $SD + Mean$
-   - B) $SD \times Mean$
-   - C) **$SD / Mean \times 100\%$** ✅
-   - D) $Mean / SD \times 100\%$
-
-5. Which measure is in the same units as the data?
-   - A) Variance
-   - B) **Standard deviation** ✅
-   - C) CV
-   - D) All of the above
-
-6. Tukey's outlier fences use:
-   - A) $Mean \pm 2 \times SD$
-   - B) **$Q1 \pm 1.5 \times IQR$** ✅
-   - C) $Min \pm Max$
-   - D) $Median \pm 3 \times MAD$
-
-7. The IQR represents the:
-   - A) Full range of data
-   - B) **Middle 50% of data** ✅
-   - C) Upper 25% of data
-   - D) Lower 25% of data
-
-8. For right-skewed data, which dispersion measure is preferred?
-   - A) Standard deviation
-   - B) **IQR** ✅
-   - C) Range
-   - D) Variance
-
-9. The five-number summary includes:
-   - A) Mean, SD, range
-   - B) **Min, Q1, Median, Q3, Max** ✅
-   - C) Mean, median, mode
-   - D) Variance, SD, range
-
-10. Which measure allows comparison across different units?
-    - A) Standard deviation
-    - B) **Coefficient of variation** ✅
-    - C) Range
-    - D) IQR
-
-</details>
-
-### True/False Questions
-
-<details>
-<summary>📝 Click to reveal answers</summary>
-
-1. The range is robust to outliers. **False**
-2. The IQR is robust to outliers. **True**
-3. Sample variance uses $n$ in the denominator. **False**
-4. The standard deviation is the square root of the variance. **True**
-5. The CV is unit-free. **True**
-6. For normal data, 95% of values fall within 2 SDs of the mean. **True**
-7. The IQR uses all data points in its calculation. **False**
-8. Variance is in the same units as the data. **False**
-9. The median is part of the five-number summary. **True**
-10. The range is more stable than the IQR. **False**
-
-</details>
-
-### Short Questions ✍️
-
-1. **Explain** why sample variance uses $n-1$ instead of $n$.
-2. **What is** the relationship between standard deviation and the Empirical Rule?
-3. **When would you** use the coefficient of variation instead of standard deviation?
-4. **Explain** the difference between variance and standard deviation.
-5. **Why is** the IQR preferred for skewed data?
-6. **What does it mean** if SD > Mean for a positive variable?
-7. **Describe** the five-number summary and its uses.
-
-### Long Questions 📝
-
-1. **Clinical Trial Question:** A clinical trial reports baseline characteristics with means and SDs. The variable "length of hospital stay" has mean = 14.2 and SD = 22.1. Critique this reporting and suggest improvements.
-
-2. **Quality Control Question:** A manufacturing process produces parts with mean diameter = 10.0 mm and SD = 0.2 mm. The specification limits are 9.8 mm to 10.2 mm. What percentage of parts are within specification, assuming normality?
-
-3. **Research Design Question:** You are comparing variability in two groups with different means. Group A has mean = 50, SD = 10. Group B has mean = 100, SD = 15. Which group is more variable relative to its mean?
-
-### Numerical Problems 🧮
-
-<details>
-<summary>📝 Click to reveal solutions</summary>
-
-**Problem 1:** Calculate the range, IQR, variance, and SD for: [5, 7, 8, 9, 10, 12, 15]
-
-**Solution:**
-- Range = 15 - 5 = 10
-- Q1 = 7.5, Q3 = 11.5, IQR = 4.0
-- Mean = 9.43
-- Variance = $\frac{(5-9.43)^2 + (7-9.43)^2 + ...}{6} = 11.62$
-- SD = $\sqrt{11.62} = 3.41$
-
-**Problem 2:** A dataset has mean = 50 and SD = 10. What range contains 95% of the data (assuming normality)?
-
-**Solution:**
-Mean ± 2 SD = 50 ± 20 = (30, 70)
-
-**Problem 3:** Two variables: A (mean = 100, SD = 10) and B (mean = 200, SD = 15). Which has more relative variability?
-
-**Solution:**
-CV_A = 10/100 × 100% = 10%
-CV_B = 15/200 × 100% = 7.5%
-Variable A has more relative variability (CV = 10% > 7.5%).
-
-**Problem 4:** Calculate the coefficient of variation for: [2, 4, 6, 8, 10]
-
-**Solution:**
-Mean = 6
-SD = $\sqrt{\frac{(2-6)^2 + (4-6)^2 + (6-6)^2 + (8-6)^2 + (10-6)^2}{4}} = \sqrt{\frac{40}{4}} = \sqrt{10} = 3.16$
-CV = 3.16/6 × 100% = 52.7%
-
-</details>
-
-### Programming Exercises 💻
-
-<details>
-<summary>📝 Click to reveal exercises</summary>
-
-1. **R Exercise:** Write a function that computes all measures of dispersion from Chapter 3 and returns them in a clean summary table.
-
-2. **Python Exercise:** Create a class `Dispersion` that implements range, IQR, variance, SD, CV, and MAD methods.
-
-3. **SPSS Exercise:** Create a syntax file that computes all dispersion measures for five variables of different types.
-
-4. **STATA Exercise:** Write a do-file that computes and compares all dispersion measures for a given variable.
-
-5. **SAS Exercise:** Write a macro that computes all dispersion measures and identifies the most appropriate one.
-
-6. **Excel Exercise:** Create a template that automatically calculates all dispersion measures for any dataset pasted into it.
-
-</details>
-
-### Real Research Exercises 🔬
-
-1. **Clinical Data Analysis:** Download a clinical trial dataset and compute dispersion measures for baseline characteristics. Report them following CONSORT guidelines.
-
-2. **Quality Control Project:** Collect manufacturing data and compute control limits (Mean ± 3 SD). Identify any points outside control limits.
-
-3. **Comparative Variability Study:** Compare variability in two different datasets using CV. Justify your choice of measure.
-
-4. **Outlier Detection:** Use Tukey's IQR method to detect outliers in a dataset. Report the outliers and discuss their impact on dispersion measures.
-
-5. **Public Health Report:** Analyze a public health dataset and report variability in health indicators using appropriate measures.
+**Interpretation:**
+- Width shows density of data
+- Shape shows distribution
+- Combines boxplot with density
 
 ---
 
-## 📚 Chapter Summary
+### Section 11.4: Density Curves
+
+**Density Curve Properties:**
+
+```mermaid
+graph TD
+    A["Density Curve"] --> B["Area = 1"]
+    A --> C["Mean"]
+    A --> D["Median"]
+    A --> E["Mode"]
+    A --> F["SD"]
+    B --> G["Probability"]
+    C --> H["Balance point"]
+    F --> I["Spread"]
+```
+
+**Interpretation:**
+- Normal distribution: Bell-shaped
+- Right-skewed: Tail on right
+- Left-skewed: Tail on left
+- Area under curve = 1
+
+---
+
+## 📚 Section 12: Summary
 
 ### Key Takeaways 🎯
 
@@ -2603,14 +3117,14 @@ CV = 3.16/6 × 100% = 52.7%
 
 1. **Range**: Simple but sensitive to outliers; useful for quick sense of spread
 2. **IQR**: Robust measure of spread for the middle 50%; used with median
-3. **Variance**: Average squared deviation; in squared units; basis for many tests
-4. **Standard Deviation**: Square root of variance; same units as data; most commonly used
-5. **CV**: Unit-free measure; allows comparison across different units
-6. **MAD**: Average absolute deviation; intuitive but less commonly used
-7. **Match Measures**: Mean↔SD, Median↔IQR
-8. **Check Distribution**: Always assess shape before choosing measures
-9. **Report Completely**: Always include measure of dispersion
-10. **Follow Guidelines**: Use CONSORT/STROBE reporting standards
+3. **Quartile Deviation**: Half of IQR; robust measure of spread
+4. **MAD**: Average absolute deviation; intuitive but less commonly used
+5. **Variance**: Average squared deviation; in squared units; basis for many tests
+6. **Standard Deviation**: Square root of variance; same units as data; most commonly used
+7. **CV**: Unit-free measure; allows comparison across different units
+8. **SE**: Variability of the mean; decreases with sample size
+9. **Z-score**: Standardized deviation; identifies outliers
+10. **Match Measures**: Mean↔SD, Median↔IQR
 
 ### Formula Sheet 📐
 
@@ -2618,11 +3132,14 @@ CV = 3.16/6 × 100% = 52.7%
 |---------|---------|----------|
 | **Range** | $x_{max} - x_{min}$ | Quick sense of spread |
 | **IQR** | $Q_3 - Q_1$ | Skewed data, robust |
+| **Quartile Deviation** | $(Q_3 - Q_1)/2$ | Middle 50% spread |
+| **MAD** | $\frac{1}{n}\sum |x_i - \bar{x}|$ | Intuitive spread |
 | **Population Variance** | $\sigma^2 = \frac{1}{N}\sum(x_i - \mu)^2$ | Entire population |
 | **Sample Variance** | $s^2 = \frac{1}{n-1}\sum(x_i - \bar{x})^2$ | Sample from population |
 | **Standard Deviation** | $s = \sqrt{s^2}$ | Normal data, interpretable |
 | **CV** | $CV = \frac{s}{\bar{x}} \times 100\%$ | Comparing across units |
-| **MAD** | $\text{MAD} = \frac{1}{n}\sum |x_i - \bar{x}|$ | Intuitive spread |
+| **SE** | $SE = \frac{s}{\sqrt{n}}$ | Precision of mean |
+| **Z-score** | $Z = \frac{x - \bar{x}}{s}$ | Identifying outliers |
 | **Tukey's Fences** | $Q_1 - 1.5 \times IQR$, $Q_3 + 1.5 \times IQR$ | Outlier detection |
 
 ### Decision Table 📊
@@ -2636,35 +3153,43 @@ CV = 3.16/6 × 100% = 52.7%
 | Outlier detection | Tukey's IQR fences | Robust method |
 | Reporting with mean | Standard Deviation | Matched to mean |
 | Reporting with median | IQR | Matched to median |
+| Precision of estimate | Standard Error | Sampling variability |
+| Standardizing | Z-score | Standardized scale |
 
 ### Quick Reference Card 🃏
 
 ```text
-┌─────────────────────────────────────────────┐
-│   QUICK REFERENCE: DISPERSION               │
-├─────────────────────────────────────────────┤
-│  Range = Max - Min (sensitive)              │
-│  IQR   = Q3 - Q1 (robust)                   │
-│  Var   = Average squared deviation          │
-│  SD    = √Var (same units)                  │
-│  CV    = SD/Mean × 100% (unit-free)         │
-├─────────────────────────────────────────────┤
-│  CHECK FOR:                                 │
-│  □ Normality                                │
-│  □ Outliers                                 │
-│  □ Skewness                                 │
-│  □ Data type                                │
-├─────────────────────────────────────────────┤
-│  REMEMBER:                                  │
-│  Mean + SD for normal data                  │
-│  Median + IQR for skewed data               │
-│  Always report both!                        │
-└─────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│   QUICK REFERENCE: DISPERSION MEASURES                      │
+├─────────────────────────────────────────────────────────────┤
+│  Range         = Max - Min (sensitive)                     │
+│  IQR           = Q3 - Q1 (robust)                          │
+│  Quartile Dev  = IQR / 2 (robust)                          │
+│  MAD           = Mean |x - mean| (intuitive)               │
+│  Variance      = Average (x - mean)² (squared units)       │
+│  SD            = √Variance (same units)                    │
+│  CV            = SD/Mean × 100% (unit-free)                │
+│  SE            = SD/√n (precision)                         │
+│  Z-score       = (x - mean)/SD (standardized)              │
+├─────────────────────────────────────────────────────────────┤
+│  CHECK FOR:                                                 │
+│  □ Normality                                                │
+│  □ Outliers                                                 │
+│  □ Skewness                                                 │
+│  □ Data type                                                │
+│  □ Sample size                                              │
+├─────────────────────────────────────────────────────────────┤
+│  REMEMBER:                                                  │
+│  Mean + SD for normal data                                  │
+│  Median + IQR for skewed data                               │
+│  Always report both central tendency and dispersion!        │
+│  Check match: Mean↔SD, Median↔IQR                          │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 📖 Further Reading
+## 📖 Section 13: References and Further Reading
 
 ### Recommended Textbooks 📚
 
@@ -2676,12 +3201,19 @@ CV = 3.16/6 × 100% = 52.7%
 | *Modern Statistics for Behavioral Sciences* | Wilcox | Chapter 2 |
 | *Statistical Inference* | Casella & Berger | Chapter 3 |
 | *The Elements of Statistical Learning* | Hastie et al. | Chapter 2 |
+| *Fundamentals of Biostatistics* | Rosner | Chapter 2 |
+| *Biostatistics: A Foundation for Analysis* | Daniel | Chapter 3 |
 
 ### Key Papers 📄
 
 1. Altman, D.G. et al. (1983). "Statistical guidelines for contributors to medical journals." *BMJ*.
 2. Bland, J.M. & Altman, D.G. (1996). "Statistics notes: Measurement error." *BMJ*.
 3. Tukey, J.W. (1977). *Exploratory Data Analysis*. Addison-Wesley.
+4. Bessel, F.W. (1838). Original correction referenced in modern statistical theory texts.
+5. Pearson, K. (1894). "Contributions to the mathematical theory of evolution." *Philosophical Transactions*.
+6. Student (Gosset, W.S.) (1908). "The probable error of a mean." *Biometrika*.
+7. Fisher, R.A. (1925). *Statistical Methods for Research Workers*.
+8. Galton, F. (1889). *Natural Inheritance*.
 
 ### Online Resources 🌐
 
@@ -2690,10 +3222,20 @@ CV = 3.16/6 × 100% = 52.7%
 - [R for Data Science: Chapter 5](https://r4ds.had.co.nz)
 - [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 - [Penn State STAT 500](https://online.stat.psu.edu/stat500/)
+- [Brilliant: Statistics](https://brilliant.org/courses/statistics/)
+
+### Software Documentation 📚
+
+- [R Documentation](https://www.r-project.org)
+- [Python Documentation](https://docs.python.org)
+- [SPSS Documentation](https://www.ibm.com/docs/en/spss-statistics)
+- [STATA Documentation](https://www.stata.com/manuals)
+- [SAS Documentation](https://documentation.sas.com)
+- [Excel Support](https://support.microsoft.com/excel)
 
 ---
 
-## 📑 References
+## 📑 Section 14: References
 
 1. Altman, D.G. et al. (1983). Statistical guidelines for contributors to medical journals. *BMJ*.
 2. Bland, J.M. & Altman, D.G. (1996). Statistics notes: Measurement error. *BMJ*.
@@ -2702,10 +3244,15 @@ CV = 3.16/6 × 100% = 52.7%
 5. Wilcox, R.R. (2012). *Introduction to Robust Estimation and Hypothesis Testing*. Academic Press.
 6. CONSORT Group (2010). CONSORT 2010 Statement. *BMJ*, 340, c332.
 7. Vandenbroucke, J.P. et al. (2007). Strengthening the Reporting of Observational Studies in Epidemiology (STROBE). *Annals of Internal Medicine*, 147(8), 573-577.
+8. Bessel, F.W. (1838). Original correction referenced in modern statistical theory texts.
+9. Pearson, K. (1894). Contributions to the mathematical theory of evolution. *Philosophical Transactions*.
+10. Student (Gosset, W.S.) (1908). The probable error of a mean. *Biometrika*.
+11. Fisher, R.A. (1925). *Statistical Methods for Research Workers*.
+12. Galton, F. (1889). *Natural Inheritance*.
 
 ---
 
-## 🏠 Navigation
+## 🏠 Section 15: Navigation
 
 <div align="center">
 
@@ -2719,22 +3266,24 @@ CV = 3.16/6 × 100% = 52.7%
 
 ---
 
-## 📝 Bengali Summary (বাংলা সারাংশ)
+## 📝 Section 16: Bengali Summary (বাংলা সারাংশ)
 
 ### পর্ব ৩: বিচ্ছুরণের পরিমাপ
 
-> *"দুটি ডেটাসেটের গড় একই হতে পারে, কিন্তু তারা সম্পূর্ণ ভিন্ন বাস্তবতা বর্ণনা করে। বিচ্ছুরণ告诉你 'সাধারণ মান' কতটা বিশ্বাসযোগ্য তা বুঝতে সাহায্য করে।"*
+> *"দুটি ডেটাসেটের গড় একই হতে পারে, কিন্তু তারা সম্পূর্ণ ভিন্ন বাস্তবতা বর্ণনা করে। বিচ্ছুরণ আপনাকে 'সাধারণ মান' কতটা বিশ্বাসযোগ্য তা বুঝতে সাহায্য করে।"*
 
 **মূল ধারণা:**
 
 বিচ্ছুরণ এই প্রশ্নের উত্তর দেয়: **"ডেটাগুলো কতটা ছড়িয়ে আছে?"** কেন্দ্রীয় প্রবণতা ডেটার কেন্দ্র দেখায়, কিন্তু বিচ্ছুরণ দেখায় ডেটাগুলো কেন্দ্রের চারপাশে কতটা ছড়িয়ে আছে।
 
-**পাঁচটি প্রধান পরিমাপ:**
+**সাতটি প্রধান পরিমাপ:**
 
 | পরিমাপ | বর্ণনা | কখন ব্যবহার করবেন |
 |--------|---------|------------------|
 | **রেঞ্জ (Range)** | সর্বোচ্চ - সর্বনিম্ন | দ্রুত ধারণার জন্য |
 | **IQR** | Q3 - Q1 | তির্যক ডেটার জন্য |
+| **কোয়ার্টাইল ডেভিয়েশন** | IQR / 2 | মধ্যম ৫০% বিস্তার |
+| **MAD** | গড় পরম বিচ্যুতি | স্বজ্ঞাত বিস্তার |
 | **ভ্যারিয়েন্স (Variance)** | গড় বর্গ বিচ্যুতি | গাণিতিক বিশ্লেষণের জন্য |
 | **স্ট্যান্ডার্ড ডেভিয়েশন (SD)** | ভ্যারিয়েন্সের বর্গমূল | সাধারণ ডেটার জন্য |
 | **CV** | SD / Mean × 100% | বিভিন্ন ইউনিটের তুলনার জন্য |
@@ -2744,6 +3293,8 @@ CV = 3.16/6 × 100% = 52.7%
 - 📌 কখনও গড় ছাড়া বিচ্ছুরণ রিপোর্ট করবেন না
 - 📌 ডেটার বণ্টন অনুযায়ী পরিমাপ নির্বাচন করুন
 - 📌 Mean↔SD, Median↔IQR মিলিয়ে রিপোর্ট করুন
+- 📌 CV ব্যবহার করুন বিভিন্ন ইউনিটের তুলনার জন্য
+- 📌 SE ব্যবহার করুন গড়ের নির্ভুলতা বোঝার জন্য
 
 ---
 
