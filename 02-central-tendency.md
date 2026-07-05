@@ -192,26 +192,40 @@ graph TD
 ```
 
 
-
 ### The Central Tendency Spectrum
 
 ```mermaid
-graph LR
-    Robust["🛡️ Robust<br>Median<br>Mode"] --> Balanced["⚖️ Balanced<br>Trimmed Mean"] --> Sensitive["📈 Very Sensitive<br>Arithmetic Mean"]
-    Style Robust fill:#2ecc71,color:#fff
-    Style Balanced fill:#f39c12,color:#fff
-    Style Sensitive fill:#e74c3c,color:#fff
+flowchart LR
+
+R["🛡️ Robust<br/>Median<br/>Mode"]
+--> B["⚖️ Balanced<br/>Trimmed Mean"]
+--> S["📈 Highly Sensitive<br/>Arithmetic Mean"]
+
+style R fill:#2ecc71,color:#ffffff,stroke:#1e8449,stroke-width:2px
+style B fill:#f39c12,color:#ffffff,stroke:#b9770e,stroke-width:2px
+style S fill:#e74c3c,color:#ffffff,stroke:#922b21,stroke-width:2px
 ```
+
+---
 
 ### The Three Questions Each Measure Answers
 
-| Measure | Question It Answers | Optimal Criterion |
-|---------|-------------------|-------------------|
-| **Mean** | "What is the balance point?" | Minimizes sum of squared deviations |
-| **Median** | "What is the middle position?" | Minimizes sum of absolute deviations |
-| **Mode** | "What is the most common value?" | Maximizes frequency |
+| Measure | Fundamental Question | Statistical Principle |
+|---------|----------------------|-----------------------|
+| **Arithmetic Mean** | What is the balance point of the data? | Minimizes the **sum of squared deviations** from the center. |
+| **Median** | What value divides the dataset into two equal halves? | Minimizes the **sum of absolute deviations**. |
+| **Mode** | Which value occurs most frequently? | Maximizes the **frequency of occurrence**. |
 
 ---
+
+### Interpretation
+
+- **Arithmetic Mean** is most appropriate for **approximately symmetric numerical data** without extreme outliers.
+- **Median** is preferred for **skewed distributions** or datasets containing outliers.
+- **Mode** is useful for identifying the **most common category or value**, especially for categorical variables.
+
+> 💡 **Key Insight:**  
+> The choice of a measure of central tendency depends on the **distribution, scale of measurement, and presence of outliers**, rather than using the arithmetic mean in every situation.
 
 ## 🧠 Core Intuition
 
