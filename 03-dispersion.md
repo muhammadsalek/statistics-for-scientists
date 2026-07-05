@@ -3188,7 +3188,333 @@ graph TD
 ```
 
 ---
+---
 
+# Chapter Review Questions: Dispersion
+
+## Part A — Basic Conceptual Questions
+
+### Q1.
+What is meant by dispersion in statistics?
+
+---
+
+### Q2.
+Why is it not sufficient to report only the mean of a dataset?
+
+---
+
+### Q3.
+Can two datasets have the same arithmetic mean but different dispersions? Explain with an example.
+
+---
+
+### Q4.
+Why is dispersion called a measure of variability?
+
+---
+
+### Q5.
+What information does dispersion provide that central tendency cannot?
+
+---
+
+### Q6.
+Why do researchers always report both the mean and the standard deviation?
+
+---
+
+### Q7.
+Is a dataset with zero dispersion possible? Under what condition?
+
+---
+
+### Q8.
+What does a larger standard deviation imply?
+
+---
+
+### Q9.
+What does a smaller standard deviation imply?
+
+---
+
+### Q10.
+Why is dispersion important in scientific research?
+
+---
+
+## Part B — Understanding the Measures
+
+### Q11.
+Why is the range considered the simplest measure of dispersion?
+
+---
+
+### Q12.
+What is the biggest limitation of the range?
+
+---
+
+### Q13.
+Why is the interquartile range (IQR) resistant to outliers?
+
+---
+
+### Q14.
+When should the interquartile range be preferred over the standard deviation?
+
+---
+
+### Q15.
+Why is variance measured in squared units?
+
+---
+
+### Q16.
+Why do statisticians square deviations instead of taking absolute values?
+
+---
+
+### Q17.
+Why is standard deviation easier to interpret than variance?
+
+---
+
+### Q18.
+Can variance ever be negative? Explain mathematically.
+
+---
+
+### Q19.
+Can standard deviation be zero? Explain.
+
+---
+
+### Q20.
+Why is standard deviation the most widely reported measure of dispersion?
+
+---
+
+## Part C — Comparison Questions
+
+### Q21.
+Differentiate between range and interquartile range.
+
+---
+
+### Q22.
+Differentiate between variance and standard deviation.
+
+---
+
+### Q23.
+Differentiate between population variance and sample variance.
+
+---
+
+### Q24.
+Differentiate between absolute and relative measures of dispersion.
+
+---
+
+### Q25.
+Why is coefficient of variation useful when comparing two datasets measured in different units?
+
+---
+
+### Q26.
+Why can't standard deviations measured in kilograms and centimeters be directly compared?
+
+---
+
+### Q27.
+Which measure of dispersion is most robust against extreme observations?
+
+---
+
+### Q28.
+Which measure of dispersion is most sensitive to outliers?
+
+---
+
+### Q29.
+Which measure should be reported together with the median?
+
+---
+
+### Q30.
+Which measure should be reported together with the arithmetic mean?
+
+---
+
+## Part D — Effects of Data Transformation
+
+### Q31.
+What happens to the standard deviation if every observation increases by 10?
+
+---
+
+### Q32.
+What happens to the variance if every observation doubles?
+
+---
+
+### Q33.
+What happens to the coefficient of variation if all observations increase by the same constant?
+
+---
+
+### Q34.
+Why does adding a constant not change the standard deviation?
+
+---
+
+### Q35.
+Why does multiplying every observation by 5 increase the standard deviation fivefold?
+
+---
+
+## Part E — Outlier-Based Questions
+
+### Q36.
+How does one extremely large observation affect the range?
+
+---
+
+### Q37.
+How does an outlier influence the variance?
+
+---
+
+### Q38.
+How does an outlier influence the standard deviation?
+
+---
+
+### Q39.
+Which measure remains almost unchanged in the presence of outliers?
+
+---
+
+### Q40.
+Why is IQR commonly used in boxplots?
+
+---
+
+## Part F — GRE / BCS / Bangladesh Bank Style
+
+### Q41.
+Two datasets have identical means. One has a larger standard deviation.
+
+What can you conclude?
+
+---
+
+### Q42.
+Which dataset is more consistent: one with SD = 2 or SD = 20?
+
+Explain.
+
+---
+
+### Q43.
+Can a dataset have a large mean but a small variance?
+
+Explain.
+
+---
+
+### Q44.
+Which measure of dispersion should be used for highly skewed income data?
+
+Why?
+
+---
+
+### Q45.
+Why is standard deviation inappropriate for ordinal data?
+
+---
+
+### Q46.
+Why is coefficient of variation frequently used in finance?
+
+---
+
+### Q47.
+Which measure of dispersion is unit-free?
+
+---
+
+### Q48.
+Which measure is most appropriate for comparing exam scores from two different subjects?
+
+---
+
+### Q49.
+A dataset has zero variance.
+
+What does this imply about the observations?
+
+---
+
+### Q50.
+Why is dispersion considered essential in evidence-based decision making?
+
+---
+
+## Part G — Research and Reviewer Perspective
+
+### Q51.
+Why would a journal reviewer question a paper that reports only the mean?
+
+---
+
+### Q52.
+Why do clinical trials report both mean ± standard deviation?
+
+---
+
+### Q53.
+Why is standard deviation preferred over range in scientific publications?
+
+---
+
+### Q54.
+Why should dispersion always accompany measures of central tendency?
+
+---
+
+### Q55.
+How does dispersion help evaluate the reliability of experimental results?
+
+---
+
+### Q56.
+Why is low variability desirable in laboratory experiments?
+
+---
+
+### Q57.
+Why is high variability problematic in medical research?
+
+---
+
+### Q58.
+How can dispersion indicate measurement error?
+
+---
+
+### Q59.
+Why is coefficient of variation widely used in analytical chemistry?
+
+---
+
+### Q60.
+Explain why understanding dispersion is essential before performing hypothesis testing.
+
+---
 ## 📖 Section 13: References and Further Reading
 
 ### Recommended Textbooks 📚
