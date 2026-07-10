@@ -1,4 +1,4 @@
-# 📊 Chapter 6: Logistic Regression in Public Health Research Part 01
+# 📊 Logistic Regression in Public Health Research
 
 ## *A Comprehensive Guide with Practical Applications*
 
@@ -9,7 +9,7 @@
 [![Level](https://img.shields.io/badge/Level-Intermediate%20to%20Advanced-blue?style=for-the-badge)]()
 [![Software](https://img.shields.io/badge/Software-R%20%7C%20Python%20%7C%20SPSS%20%7C%20STATA%20%7C%20SAS%20%7C%20Excel-orange?style=for-the-badge)]()
 
-**[⬅ Previous: Chapter 5 - Regression Analysis](./05-regression.md) · [🏠 Home](../README.md) · [➡ Next: Chapter 7 - Advanced Regression Models](./07-advanced-regression.md)**
+**[📺 Watch on YouTube](https://www.youtube.com/@SalekDataLab) · [📄 View Slides](https://github.com/muhammadsalek/statistics-for-scientists/blob/main/Logistics_regression_Part%2001.pdf) · [🏠 Home](../README.md)**
 
 </div>
 
@@ -1076,6 +1076,34 @@ $$\log\left(\frac{P(\text{ECE}=1)}{1-P(\text{ECE}=1)}\right) = \beta_0 + \beta_1
 
 ---
 
+## 📺 Presentation Slides
+
+The accompanying presentation slides for this chapter are available at:
+
+**[📄 View Presentation Slides](https://github.com/muhammadsalek/statistics-for-scientists/blob/main/Logistics_regression_Part%2001.pdf)**
+
+The slides cover:
+- 30 comprehensive slides
+- Visual explanations of key concepts
+- Step-by-step examples
+- Diagnostic checklists
+- Software implementation tips
+
+### Topics Covered in Slides
+
+| Slide Section | Topics |
+|---------------|--------|
+| **Introduction** | What is logistic regression, when to use it |
+| **Types** | Binary, Multinomial, Ordinal |
+| **Mathematics** | Logit transformation, MLE, odds ratios |
+| **Diagnostics** | VIF, Cook's D, Hosmer-Lemeshow |
+| **Hidden Traps** | Perfect separation, EPV, multicollinearity |
+| **Examples** | ECE participation, Depression severity |
+| **Implementation** | Python, R, SPSS, STATA, SAS |
+| **Best Practices** | Checklist, common mistakes |
+
+---
+
 ## ❌ Common Mistakes
 
 ### The Top 10 Mistakes
@@ -1175,6 +1203,22 @@ $$\log\left(\frac{P(\text{ECE}=1)}{1-P(\text{ECE}=1)}\right) = \beta_0 + \beta_1
     - C) Ordinal
     - D) Conditional
 
+<details>
+<summary>📝 Click to reveal answers</summary>
+
+1. **C** (0 to 1)
+2. **C** (Likelihood Ratio Test)
+3. **A** (Events Per Variable)
+4. **B** (Brant Test)
+5. **B** (10)
+6. **B** (Multicollinearity)
+7. **B** (ln(p/(1-p)))
+8. **B** (Firth's Method)
+9. **A** (0 to 1)
+10. **C** (Ordinal)
+
+</details>
+
 ### True/False Questions
 
 1. Logistic regression assumes normally distributed errors. **False**
@@ -1236,6 +1280,11 @@ $$\log\left(\frac{P(\text{ECE}=1)}{1-P(\text{ECE}=1)}\right) = \beta_0 + \beta_1
 4. Steyerberg, E.W. et al. (2001). *Prognostic modeling with logistic regression analysis*. Med Decis Making.
 5. Harrell, F.E. (2015). *Regression Modeling Strategies*. Springer.
 
+### Online Resources
+
+- [📺 Salek Data Lab YouTube Channel](https://www.youtube.com/@SalekDataLab)
+- [📄 Presentation Slides](https://github.com/muhammadsalek/statistics-for-scientists/blob/main/Logistics_regression_Part%2001.pdf)
+
 ---
 
 ## 📑 References
@@ -1254,11 +1303,11 @@ $$\log\left(\frac{P(\text{ECE}=1)}{1-P(\text{ECE}=1)}\right) = \beta_0 + \beta_1
 
 <div align="center">
 
-**[⬅ Previous: Chapter 5 - Regression Analysis](./05-regression.md)**
+**[📄 View Slides](https://github.com/muhammadsalek/statistics-for-scientists/blob/main/Logistics_regression_Part%2001.pdf)**
+
+**[📺 Watch on YouTube](https://www.youtube.com/@SalekDataLab)**
 
 **[🏠 Back to Repository](../README.md)**
-
-**[➡ Next: Chapter 7 - Advanced Regression Models](./07-advanced-regression.md)**
 
 </div>
 
@@ -1309,11 +1358,12 @@ $$\log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1X_1 + \cdots + \beta_kX_k$$
 
 <div align="center">
 
-*Chapter 6: Logistic Regression Analysis*
+*Chapter 7: Logistic Regression in Public Health Research*
 
 *Statistics for Scientists — An Open-Access Textbook*
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/muhammadsalek)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-green)](LICENSE)
+[![YouTube](https://img.shields.io/badge/YouTube-Salek%20Data%20Lab-red)](https://www.youtube.com/@SalekDataLab)
 
 </div>
