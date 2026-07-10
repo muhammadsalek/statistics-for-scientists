@@ -9,7 +9,7 @@
 [![Level](https://img.shields.io/badge/Level-Intermediate%20to%20Advanced-blue?style=for-the-badge)]()
 [![Software](https://img.shields.io/badge/Software-R%20%7C%20Python%20%7C%20SPSS%20%7C%20STATA%20%7C%20SAS%20%7C%20Excel-orange?style=for-the-badge)]()
 
-**[▶️ Watch Video Tutorial](https://youtu.be/OgvO5V-IQ_8) · [📄 View Slides](https://github.com/muhammadsalek/statistics-for-scientists/blob/main/Logistics_regression_Part%2001.pdf) · [🏠 Home](../README.md)**
+**[▶️ Watch Video Tutorial](https://youtu.be/OgvO5V-IQ_8?si=cHusHXaOOc7Tlqdv) · [📄 View Slides](https://github.com/muhammadsalek/statistics-for-scientists/blob/main/Logistics_regression_Part%2001.pdf) · [🏠 Home](../README.md)**
 
 </div>
 
@@ -1081,32 +1081,50 @@ $$\log\left(\frac{P(\text{ECE}=1)}{1-P(\text{ECE}=1)}\right) = \beta_0 + \beta_1
 ### Watch the Complete Video Tutorial
 
 <div align="center">
-  <a href="https://youtu.be/OgvO5V-IQ_8">
+  <a href="https://youtu.be/OgvO5V-IQ_8?si=cHusHXaOOc7Tlqdv">
     <img src="https://img.youtube.com/vi/OgvO5V-IQ_8/maxresdefault.jpg" alt="Logistic Regression Tutorial" width="80%">
   </a>
   <br>
-  <strong>▶️ Click to Watch: Logistic Regression in Public Health Research</strong>
+  <strong>▶️ Click to Watch: Logistic Regression in Public Health Research | Bangla | Day 10 | Part 1</strong>
   <br>
   <em>Comprehensive video tutorial covering all aspects of logistic regression</em>
+  <br>
+  <br>
+  <a href="https://youtu.be/OgvO5V-IQ_8?si=cHusHXaOOc7Tlqdv">
+    <img src="https://img.shields.io/badge/Watch_on-YouTube-red?style=for-the-badge&logo=youtube" alt="Watch on YouTube">
+  </a>
+  <a href="https://www.youtube.com/@SalekDataLab">
+    <img src="https://img.shields.io/badge/Subscribe-Salek_Data_Lab-red?style=for-the-badge&logo=youtube" alt="Subscribe">
+  </a>
 </div>
 
 ### What You'll Learn in the Video
 
-| Timestamp | Topic |
-|-----------|-------|
-| **00:00** | Introduction to Logistic Regression |
-| **05:00** | The Logit Transformation |
-| **10:00** | Odds Ratios Explained |
-| **15:00** | Types of Logistic Regression |
-| **25:00** | Model Diagnostics |
-| **35:00** | Hidden Traps & Solutions |
-| **45:00** | Real Research Examples |
-| **55:00** | Software Implementation |
-| **65:00** | Q&A and Discussion |
+| Timestamp | Topic | Description |
+|-----------|-------|-------------|
+| **00:00** | Introduction | What is logistic regression and why it matters |
+| **05:00** | The Logit Transformation | Understanding the logit transformation |
+| **10:00** | Odds Ratios Explained | How to interpret odds ratios |
+| **15:00** | Types of Logistic Regression | Binary, Multinomial, Ordinal |
+| **25:00** | Model Diagnostics | VIF, Cook's Distance, Hosmer-Lemeshow |
+| **35:00** | Hidden Traps & Solutions | Perfect separation, EPV, multicollinearity |
+| **45:00** | Real Research Examples | ECE participation, Depression severity |
+| **55:00** | Software Implementation | Python, R, SPSS, STATA, SAS |
+| **65:00** | Q&A and Discussion | Common questions and answers |
+
+### Why Watch This Video?
+
+✅ **Bangla Tutorial** - Explained in Bengali for better understanding  
+✅ **Practical Examples** - Real research data from Bangladesh  
+✅ **Step-by-Step** - From theory to implementation  
+✅ **Multiple Software** - Code in R, Python, SPSS, STATA, SAS  
+✅ **Common Mistakes** - What to avoid in your research  
+✅ **Interactive** - Q&A session included  
 
 ### Subscribe for More Content
 
-📺 **YouTube Channel:** [Salek Data Lab](https://www.youtube.com/@SalekDataLab)
+📺 **YouTube Channel:** [Salek Data Lab](https://www.youtube.com/@SalekDataLab)  
+🔔 **Don't forget to subscribe and hit the bell icon!**
 
 ---
 
@@ -1317,7 +1335,7 @@ The slides cover:
 ### Online Resources
 
 - [📺 Salek Data Lab YouTube Channel](https://www.youtube.com/@SalekDataLab)
-- [▶️ Logistic Regression Video Tutorial](https://youtu.be/OgvO5V-IQ_8)
+- [▶️ Logistic Regression Video Tutorial](https://youtu.be/OgvO5V-IQ_8?si=cHusHXaOOc7Tlqdv)
 - [📄 Presentation Slides](https://github.com/muhammadsalek/statistics-for-scientists/blob/main/Logistics_regression_Part%2001.pdf)
 
 ---
@@ -1338,7 +1356,7 @@ The slides cover:
 
 <div align="center">
 
-**[▶️ Watch Video Tutorial](https://youtu.be/OgvO5V-IQ_8)**
+**[▶️ Watch Video Tutorial](https://youtu.be/OgvO5V-IQ_8?si=cHusHXaOOc7Tlqdv)**
 
 **[📄 View Slides](https://github.com/muhammadsalek/statistics-for-scientists/blob/main/Logistics_regression_Part%2001.pdf)**
 
