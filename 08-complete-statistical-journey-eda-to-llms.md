@@ -1,4 +1,4 @@
-# Chapter 7: Complete Statistical Journey - From EDA to LLMs
+# Chapter 8: Complete Statistical Journey - From EDA to LLMs
 
 [⬅ Previous: Probability Distributions](./06-probability-distributions.md) | [🏠 Home](../README.md) | [➡ Next: Hypothesis Testing](./07-hypothesis-testing.md)
 
