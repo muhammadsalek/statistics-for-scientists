@@ -108,7 +108,7 @@ mindmap
     Continuous
       Uniform
         Equal probability
-        [a,b] interval
+        a,b interval
       Normal
         Bell curve
         Most common
@@ -120,7 +120,7 @@ mindmap
         Sum of exponentials
       Beta
         Proportions
-        [0,1] interval
+        0,1 interval
       Weibull
         Reliability
         Survival analysis
@@ -144,11 +144,11 @@ mindmap
         ANOVA
     Key Theorems
       Central Limit Theorem
-        Sample means → Normal
-        n ≥ 30 rule
+        Sample means to Normal
+        n greater than 30 rule
         Works for any distribution
       Law of Large Numbers
-        Sample mean → population mean
+        Sample mean to population mean
         Convergence
       Transformation Theorems
         Change of variables
@@ -159,13 +159,13 @@ mindmap
         Normal errors
         Continuous outcome
       Logistic Regression
-        Bernoulli/Binomial
+        Bernoulli and Binomial
         Binary outcome
       Poisson Regression
         Poisson distribution
         Count outcome
       Survival Analysis
-        Exponential/Weibull
+        Exponential and Weibull
         Time-to-event
       Beta Regression
         Beta distribution
@@ -580,6 +580,23 @@ $$P(X=k) = \binom{k-1}{r-1}p^r(1-p)^{k-r}, \quad k = r, r+1, r+2,\dots$$
 - Modeling overdispersed count data
 
 **Connection to Poisson**: Negative Binomial is a mixture of Poissons where λ ~ Gamma.
+
+---
+
+### 7. Discrete Uniform Distribution
+
+**Simple Explanation**: All k values equally likely.
+
+**Probability Mass Function**:
+$$P(X=x) = \frac{1}{k}, \quad x = 1,2,\dots,k$$
+
+**Moments**:
+- Mean: E[X] = (k+1)/2
+- Variance: Var(X) = (k²-1)/12
+
+**Examples**:
+- Rolling a fair die (k=6)
+- Random number generation
 
 ---
 
@@ -1109,6 +1126,46 @@ $$f(x) = \frac{\Gamma((d₁+d₂)/2)}{\Gamma(d₁/2)\Gamma(d₂/2)} \left(\frac{
 
 ---
 
+### 11. Cauchy Distribution (কচি বণ্টন)
+
+**Simple Explanation**: Heavy-tailed distribution with no mean or variance.
+
+**সহজ ব্যাখ্যা**: ভারী লেজবিশিষ্ট বণ্টন যার গড় বা প্রকরণ নেই।
+
+**Probability Density Function**:
+$$f(x) = \frac{1}{\pi\gamma\left[1 + \left(\frac{x-\mu}{\gamma}\right)^2\right]}$$
+
+**Parameters**:
+- μ: Location parameter
+- γ > 0: Scale parameter
+
+**Properties**:
+- Very heavy tails
+- No finite moments (mean and variance don't exist)
+- Ratio of two independent normals
+
+---
+
+### 12. Pareto Distribution (পারেটো বণ্টন)
+
+**Simple Explanation**: Power law distribution for income and wealth.
+
+**সহজ ব্যাখ্যা**: আয় এবং সম্পদের জন্য পাওয়ার ল বণ্টন।
+
+**Probability Density Function**:
+$$f(x) = \frac{\alpha x_m^\alpha}{x^{\alpha+1}}, \quad x \ge x_m$$
+
+**Parameters**:
+- α > 0: Shape parameter (Pareto index)
+- x_m > 0: Minimum value
+
+**Properties**:
+- Heavy-tailed
+- Used for income distribution
+- "80-20 rule"
+
+---
+
 ## Distribution Properties
 
 ### Symmetry and Shape
@@ -1190,8 +1247,8 @@ flowchart TD
     J -->|Yes| L[Uniform]
     I -->|No| M{Positive data?}
     M -->|Yes| N{Time between events?}
-    N -->|Yes| O[Exponential/Weibull]
-    N -->|No| P[Log-Normal/Gamma]
+    N -->|Yes| O[Exponential or Weibull]
+    N -->|No| P[Log-Normal or Gamma]
     M -->|No| Q[Skewed distributions]
 ```
 
@@ -1329,7 +1386,7 @@ $$\sqrt{n}(\bar{X}_n - \mu) \xrightarrow{d} N(0, \sigma^2) \text{ as } n \to \in
 
 ```mermaid
 mindmap
-  root((Regression & Distributions))
+  root((Regression and Distributions))
     Linear Regression
       Distribution: Normal
       Link: Identity
@@ -1337,13 +1394,13 @@ mindmap
       Errors: Normal
       Examples: Height, Weight
     Logistic Regression
-      Distribution: Bernoulli/Binomial
+      Distribution: Bernoulli and Binomial
       Link: Logit
       Outcome: Binary
       Errors: None
       Examples: Disease, Success
     Probit Regression
-      Distribution: Bernoulli/Binomial
+      Distribution: Bernoulli and Binomial
       Link: Probit
       Outcome: Binary
       Errors: None
@@ -1353,7 +1410,7 @@ mindmap
       Link: Log
       Outcome: Count
       Errors: None
-      Examples: Hospital visits, Accidents
+      Examples: Hospital visits
     Negative Binomial
       Distribution: Negative Binomial
       Link: Log
@@ -1361,8 +1418,8 @@ mindmap
       Errors: None
       Examples: Insurance claims
     Survival Analysis
-      Distribution: Exponential/Weibull
-      Link: Log/Complementary log-log
+      Distribution: Exponential and Weibull
+      Link: Log and Complementary log-log
       Outcome: Time-to-event
       Errors: None
       Examples: Death, Failure
@@ -1371,7 +1428,7 @@ mindmap
       Link: Logit
       Outcome: Proportions
       Errors: None
-      Examples: Market share, Scores
+      Examples: Market share
 ```
 
 ### Linear Regression (লিনিয়ার রিগ্রেশন)
@@ -1466,7 +1523,7 @@ $$\log(\mu) = \beta_0 + \beta_1X$$
 - Poisson model with gamma mixture
 - Handles excess zeros
 
-**বাংলায়**: অতিবিক্ষিপ্ত গণনার তথ্যের জন্য。
+**বাংলায়**: অতিবিক্ষিপ্ত গণনার তথ্যের জন্য।
 
 ### Generalized Linear Models Framework
 
