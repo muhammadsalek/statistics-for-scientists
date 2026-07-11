@@ -1973,6 +1973,680 @@ PracticeProblems.problem_5()
 | **RMSprop** | v = βv + (1-β)∇L²; θ = θ - α∇L/√v | Adaptive learning |
 | **Adam** | m = β₁m + (1-β₁)∇L; v = β₂v + (1-β₂)∇L²; θ = θ - αm/(√v+ε) | Best of both |
 
+
+## 🚀 শক্তিশালী ম্যাথমেটিক্যাল এআই প্রজেক্ট আইডিয়া
+
+আপনার **সমস্ত রিডমি থিওরি** (ক্যালকুলাস, স্ট্যাটিস্টিকস, লিনিয়ার অ্যালজেবরা, অ্যাক্টিভেশন ফাংশন, এলএলএম থিওরি) ব্যবহার করে একটি শক্তিশালী প্রজেক্ট বানানোর জন্য এখানে বিস্তারিত আইডিয়া এবং রোডম্যাপ দেওয়া হলো, যা আপনি **ক্যাগল-এ রান** করবেন এবং পরে **স্ট্রিমলাইট দিয়ে হোস্ট** করবেন।
+
+---
+
+## 💡 প্রোজেক্ট আইডিয়া: "MathAI: From Calculus to Classification - A Mathematical Deep Dive"
+
+### 🎯 **প্রোজেক্টের মূল উদ্দেশ্য**
+
+একটি সম্পূর্ণ মেশিন লার্নিং পাইপলাইন তৈরি করা যা **শূন্য থেকে শুরু করে সবকিছু ম্যাথমেটিক্যালি ইমপ্লিমেন্ট করে** এবং প্রতিটি ধাপের গাণিতিক ব্যাখ্যা可视化 করে দেখায়। এটি আপনার সমস্ত রিডমির থিওরি (ক্যালকুলাস, লিনিয়ার অ্যালজেবরা, অ্যাক্টিভেশন ফাংশন, অপটিমাইজেশন) লাইভ অ্যাকশনে দেখাবে।
+
+**প্রজেক্টটি ৩টি অংশে বিভক্ত:**
+
+1. **ম্যাথমেটিক্যাল ফাউন্ডেশন** - গ্রেডিয়েন্ট ডিসেন্ট, ব্যাকপ্রোপাগেশন, অ্যাক্টিভেশন ফাংশন স্ক্র্যাচ থেকে ইমপ্লিমেন্ট করা
+2. **মডেল বিল্ডিং** - স্ক্র্যাচ থেকে নিউরাল নেটওয়ার্ক তৈরি করে ক্লাসিফিকেশন করা (MNIST/CIFAR-10)
+3. **ম্যাথমেটিক্যাল অ্যানালাইসিস** - লস ফাংশন, গ্রেডিয়েন্ট ফ্লো, অ্যাক্টিভেশন বিহেভিয়ার অ্যানালাইসিস এবং ভিজুয়ালাইজেশন
+
+---
+
+## 📊 **ক্যাগল ডেটাসেট নির্বাচন**
+
+আপনার থিওরি প্রয়োগের জন্য এই ডেটাসেটগুলো পারফেক্ট:
+
+### প্রাইমারি ডেটাসেট (MNIST)
+- **লিংক**: [Digit Recognizer - MNIST](https://www.kaggle.com/competitions/digit-recognizer)
+- **কেন ভালো**: ছোট, সহজ, দ্রুত ট্রেনিং, ক্যালকুলাস ও অ্যাক্টিভেশন ফাংশনের প্রভাব সহজে বুঝা যায় 
+
+### সেকেন্ডারি ডেটাসেট (Brain Tumor MRI) - অ্যাডভান্সড
+- **লিংক**: [Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
+- **কেন ভালো**: রিয়েল-ওয়ার্ল্ড অ্যাপ্লিকেশন, মেডিকেল ইমেজিং, কোভোলিউশন ও ম্যাথমেটিক্যাল ফিচার এক্সট্র্যাকশন 
+
+---
+
+## 🏗️ **প্রজেক্ট আর্কিটেকচার**
+
+```mermaid
+flowchart TD
+    A[📊 ক্যাগল ডেটাসেট] --> B[🧮 ম্যাথমেটিক্যাল ফিচার এক্সট্র্যাকশন]
+    B --> C[⚡ স্ক্র্যাচ থেকে নিউরাল নেটওয়ার্ক]
+    C --> D[📐 অ্যাক্টিভেশন ফাংশন অ্যানালাইসিস]
+    D --> E[🎯 অপটিমাইজেশন & ব্যাকপ্রোপাগেশন]
+    E --> F[📈 ভিজুয়ালাইজেশন & অ্যানালাইসিস]
+    F --> G[🌐 স্ট্রিমলাইট ড্যাশবোর্ড]
+```
+
+---
+
+## 📝 **প্রজেক্টের ৬টি মডিউল**
+
+### মডিউল ১: ম্যাথমেটিক্যাল ফিচার ইঞ্জিনিয়ারিং (ক্যালকুলাস + অ্যালজেবরা)
+
+আপনার **ক্যালকুলাস ও লিনিয়ার অ্যালজেবরা** থিওরি প্রয়োগ করুন:
+
+```python
+import numpy as np
+import pandas as pd
+from scipy.ndimage import sobel, gaussian_filter
+
+class MathematicalFeatureExtractor:
+    """
+    Calculus-based feature extraction from images.
+    Demonstrates: gradients, integrals, linear algebra
+    """
+    
+    @staticmethod
+    def image_gradients(image):
+        """Demonstrates partial derivatives from calculus"""
+        # Partial derivative ∂I/∂x (Sobel filter)
+        grad_x = sobel(image, axis=0)
+        # Partial derivative ∂I/∂y
+        grad_y = sobel(image, axis=1)
+        # Gradient magnitude: √((∂I/∂x)² + (∂I/∂y)²)
+        grad_mag = np.sqrt(grad_x**2 + grad_y**2)
+        return grad_x, grad_y, grad_mag
+    
+    @staticmethod
+    def fourier_features(image):
+        """Demonstrates integral transforms"""
+        from scipy.fft import fft2, fftshift
+        # 2D Fourier Transform: ∫∫ f(x,y) e^(-i2π(ux+vy)) dxdy
+        f_transform = fftshift(fft2(image))
+        return np.abs(f_transform)
+    
+    @staticmethod
+    def pca_features(data, n_components=10):
+        """Linear algebra: Eigen decomposition"""
+        # Center data
+        mean = np.mean(data, axis=0)
+        centered = data - mean
+        # Covariance matrix: Σ (xi - μ)(xi - μ)ᵀ / n
+        cov = np.cov(centered.T)
+        # Eigen decomposition: A = VΛVᵀ
+        eigenvalues, eigenvectors = np.linalg.eigh(cov)
+        # Sort by eigenvalues (principal components)
+        idx = np.argsort(eigenvalues)[::-1]
+        eigenvectors = eigenvectors[:, idx[:n_components]]
+        return centered @ eigenvectors
+```
+
+---
+
+### মডিউল ২: স্ক্র্যাচ থেকে নিউরাল নেটওয়ার্ক (ক্যালকুলাসের প্রয়োগ)
+
+আপনার **চেইন রুল ও পার্শিয়াল ডেরিভেটিভ** থিওরি লাইভ দেখান:
+
+```python
+class NeuralNetworkFromScratch:
+    """
+    Neural network built from scratch.
+    Every step shows the calculus behind it.
+    """
+    
+    def __init__(self, layer_sizes, activation='relu'):
+        self.layer_sizes = layer_sizes
+        self.weights = []
+        self.biases = []
+        self.activations = []
+        
+        # Xavier initialization
+        for i in range(len(layer_sizes)-1):
+            # Weight matrix: W ∈ ℝ^(m×n)
+            # Initialized using: Var(W) = 2/(n_in + n_out)
+            std = np.sqrt(2 / (layer_sizes[i] + layer_sizes[i+1]))
+            W = np.random.randn(layer_sizes[i], layer_sizes[i+1]) * std
+            b = np.zeros((1, layer_sizes[i+1]))
+            self.weights.append(W)
+            self.biases.append(b)
+        
+        self.activation_fn = self._get_activation(activation)
+        self.activation_prime = self._get_activation_prime(activation)
+    
+    def _get_activation(self, name):
+        """Demonstrates different activation functions"""
+        if name == 'relu':
+            return lambda x: np.maximum(0, x)
+        elif name == 'sigmoid':
+            return lambda x: 1/(1 + np.exp(-np.clip(x, -500, 500)))
+        elif name == 'tanh':
+            return np.tanh
+        elif name == 'softmax':
+            return lambda x: np.exp(x - np.max(x, axis=1, keepdims=True)) / np.sum(np.exp(x - np.max(x, axis=1, keepdims=True)), axis=1, keepdims=True)
+    
+    def _get_activation_prime(self, name):
+        """Derivatives of activation functions from calculus"""
+        if name == 'relu':
+            return lambda x: (x > 0).astype(float)
+        elif name == 'sigmoid':
+            # σ'(x) = σ(x)(1-σ(x))
+            return lambda x: x * (1 - x)
+        elif name == 'tanh':
+            # tanh'(x) = 1 - tanh²(x)
+            return lambda x: 1 - x**2
+        elif name == 'softmax':
+            return lambda x: x * (1 - x)  # Simplified
+    
+    def forward(self, X):
+        """
+        Forward pass: demonstrates function composition
+        f(x) = f_L(f_{L-1}(...f_1(x)...))
+        """
+        self.activations = [X]
+        current = X
+        
+        for i in range(len(self.weights)-1):
+            # z = Wx + b (linear transformation)
+            z = current @ self.weights[i] + self.biases[i]
+            # a = σ(z) (activation)
+            a = self.activation_fn(z)
+            self.activations.append(a)
+            current = a
+        
+        # Last layer: softmax for classification
+        z = current @ self.weights[-1] + self.biases[-1]
+        a = self._get_activation('softmax')(z)
+        self.activations.append(a)
+        
+        return a
+    
+    def backward(self, X, y, learning_rate=0.01):
+        """
+        Backpropagation: Chain rule in action!
+        ∂L/∂W = ∂L/∂a * ∂a/∂z * ∂z/∂W
+        """
+        m = X.shape[0]
+        
+        # Forward pass to get activations
+        self.forward(X)
+        
+        # Output layer gradient
+        # ∂L/∂a (Cross-entropy with softmax)
+        da = self.activations[-1] - y
+        
+        # Backpropagate through layers (Chain Rule!)
+        for i in range(len(self.weights)-1, -1, -1):
+            # ∂a/∂z (activation derivative)
+            if i == len(self.weights)-1:
+                dz = da  # Softmax+Cross-entropy simplification
+            else:
+                dz = da * self.activation_prime(self.activations[i+1])
+            
+            # ∂z/∂W = a_prev
+            # ∂z/∂b = 1
+            dW = self.activations[i].T @ dz / m
+            db = np.mean(dz, axis=0, keepdims=True)
+            
+            # ∂L/∂a_prev = ∂L/∂z * ∂z/∂a_prev = dz * W^T
+            da = dz @ self.weights[i].T
+            
+            # Update weights (Gradient Descent)
+            self.weights[i] -= learning_rate * dW
+            self.biases[i] -= learning_rate * db
+        
+        return self.compute_loss(X, y)
+    
+    def compute_loss(self, X, y):
+        """Cross-entropy loss: L = -Σ y log(ŷ)"""
+        y_pred = self.forward(X)
+        return -np.mean(np.sum(y * np.log(y_pred + 1e-8), axis=1))
+```
+
+---
+
+### মডিউল ৩: অ্যাক্টিভেশন ফাংশন অ্যানালাইসিস (ক্যালকুলাসের প্রয়োগ)
+
+```python
+class ActivationAnalysis:
+    """Analyze activation functions using calculus"""
+    
+    @staticmethod
+    def analyze_activation(name, func, func_prime, x_range=(-5, 5)):
+        """Full analysis of an activation function"""
+        import matplotlib.pyplot as plt
+        
+        x = np.linspace(x_range[0], x_range[1], 1000)
+        y = func(x)
+        y_prime = func_prime(x)
+        
+        # Derivatives from calculus: f'(x) = lim[h→0] (f(x+h)-f(x))/h
+        numerical_prime = np.gradient(y, x[1] - x[0])
+        
+        fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+        
+        # 1. Function
+        axes[0, 0].plot(x, y, linewidth=2)
+        axes[0, 0].axhline(0, color='black', linestyle='--', alpha=0.3)
+        axes[0, 0].axvline(0, color='black', linestyle='--', alpha=0.3)
+        axes[0, 0].set_title(f'{name} - Function')
+        axes[0, 0].grid(True, alpha=0.3)
+        
+        # 2. Derivative (Analytical)
+        axes[0, 1].plot(x, y_prime, linewidth=2, color='red')
+        axes[0, 1].axhline(0, color='black', linestyle='--', alpha=0.3)
+        axes[0, 1].axvline(0, color='black', linestyle='--', alpha=0.3)
+        axes[0, 1].set_title(f'{name} - Derivative (Analytical)')
+        axes[0, 1].grid(True, alpha=0.3)
+        
+        # 3. Derivative (Numerical)
+        axes[1, 0].plot(x, numerical_prime, linewidth=2, color='green')
+        axes[1, 0].axhline(0, color='black', linestyle='--', alpha=0.3)
+        axes[1, 0].axvline(0, color='black', linestyle='--', alpha=0.3)
+        axes[1, 0].set_title(f'{name} - Derivative (Numerical)')
+        axes[1, 0].grid(True, alpha=0.3)
+        
+        # 4. Vanishing gradient check
+        axes[1, 1].plot(x, np.abs(y_prime), linewidth=2, color='purple')
+        axes[1, 1].axhline(0.01, color='red', linestyle='--', label='Vanishing threshold')
+        axes[1, 1].axhline(1, color='green', linestyle='--', label='Max gradient')
+        axes[1, 1].set_yscale('log')
+        axes[1, 1].set_title(f'{name} - Vanishing Gradient Check')
+        axes[1, 1].legend()
+        axes[1, 1].grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        plt.show()
+        
+        # Calculate vanishing gradient percentage
+        vanishing = np.mean(np.abs(y_prime) < 0.01)
+        return {
+            'function': name,
+            'mean_gradient': np.mean(np.abs(y_prime)),
+            'max_gradient': np.max(np.abs(y_prime)),
+            'vanishing_percent': vanishing * 100
+        }
+```
+
+---
+
+### মডিউল ৪: অপটিমাইজেশন অ্যালগরিদম (অপটিমাইজেশন থিওরি)
+
+```python
+class OptimizationAlgorithms:
+    """
+    Complete optimization algorithms from calculus
+    """
+    
+    @staticmethod
+    def gradient_descent(f, grad_f, x0, lr=0.01, epochs=100):
+        """Gradient Descent: x_{t+1} = x_t - α∇f(x_t)"""
+        x = x0
+        history = [x]
+        for _ in range(epochs):
+            grad = grad_f(x)
+            x = x - lr * grad
+            history.append(x)
+        return x, history
+    
+    @staticmethod
+    def momentum_gd(f, grad_f, x0, lr=0.01, beta=0.9, epochs=100):
+        """Momentum: v_t = βv_{t-1} + α∇f, x_{t+1} = x_t - v_t"""
+        x = x0
+        v = 0
+        history = [x]
+        for _ in range(epochs):
+            grad = grad_f(x)
+            v = beta * v + lr * grad
+            x = x - v
+            history.append(x)
+        return x, history
+    
+    @staticmethod
+    def adam(f, grad_f, x0, lr=0.01, beta1=0.9, beta2=0.999, eps=1e-8, epochs=100):
+        """Adam: Adaptive Moment Estimation"""
+        x = x0
+        m = 0  # First moment
+        v = 0  # Second moment
+        history = [x]
+        
+        for t in range(1, epochs+1):
+            grad = grad_f(x)
+            m = beta1 * m + (1 - beta1) * grad
+            v = beta2 * v + (1 - beta2) * grad**2
+            m_hat = m / (1 - beta1**t)
+            v_hat = v / (1 - beta2**t)
+            x = x - lr * m_hat / (np.sqrt(v_hat) + eps)
+            history.append(x)
+        return x, history
+    
+    @staticmethod
+    def compare_optimizers():
+        """Compare all optimizers visually"""
+        # Define a loss function: f(x) = x² + 2x + 1
+        def f(x): return x**2 + 2*x + 1
+        def grad_f(x): return 2*x + 2
+        
+        optimizers = {
+            'SGD': OptimizationAlgorithms.gradient_descent,
+            'Momentum': OptimizationAlgorithms.momentum_gd,
+            'Adam': OptimizationAlgorithms.adam
+        }
+        
+        x0 = 5
+        results = {}
+        
+        for name, opt in optimizers.items():
+            x_final, history = opt(f, grad_f, x0, lr=0.1, epochs=50)
+            results[name] = history
+        
+        # Plot
+        import matplotlib.pyplot as plt
+        x_range = np.linspace(-3, 6, 100)
+        y_range = f(x_range)
+        
+        plt.figure(figsize=(12, 8))
+        plt.plot(x_range, y_range, 'k--', label='Loss Function', linewidth=2)
+        
+        for name, history in results.items():
+            losses = [f(x) for x in history]
+            plt.plot(history, losses, 'o-', label=name, linewidth=2)
+        
+        plt.xlabel('Weight')
+        plt.ylabel('Loss')
+        plt.title('Optimization Algorithm Comparison')
+        plt.legend()
+        plt.grid(True, alpha=0.3)
+        plt.show()
+```
+
+---
+
+### মডিউল ৫: ট্রেনিং & ইভালুয়েশন পাইপলাইন
+
+```python
+class TrainingPipeline:
+    """Complete training pipeline with mathematical analysis"""
+    
+    def __init__(self, model, data, labels):
+        self.model = model
+        self.data = data
+        self.labels = labels
+        self.train_losses = []
+        self.valid_losses = []
+        self.gradient_norms = []
+        self.weights_history = []
+    
+    def train(self, epochs=100, learning_rate=0.01, batch_size=64):
+        """Complete training loop"""
+        
+        for epoch in range(epochs):
+            # Shuffle data
+            indices = np.random.permutation(len(self.data))
+            self.data = self.data[indices]
+            self.labels = self.labels[indices]
+            
+            epoch_loss = 0
+            epoch_grad_norm = 0
+            
+            for i in range(0, len(self.data), batch_size):
+                X_batch = self.data[i:i+batch_size]
+                y_batch = self.labels[i:i+batch_size]
+                
+                # Forward + Backward
+                loss = self.model.backward(X_batch, y_batch, learning_rate)
+                epoch_loss += loss
+                
+                # Track gradient norm
+                grad_norm = sum([np.mean(np.abs(W)) for W in self.model.weights])
+                epoch_grad_norm += grad_norm
+            
+            avg_loss = epoch_loss / (len(self.data) / batch_size)
+            avg_grad = epoch_grad_norm / (len(self.data) / batch_size)
+            
+            self.train_losses.append(avg_loss)
+            self.gradient_norms.append(avg_grad)
+            self.weights_history.append([w.copy() for w in self.model.weights])
+            
+            if epoch % 10 == 0:
+                print(f"Epoch {epoch}: Loss={avg_loss:.4f}, Grad={avg_grad:.4f}")
+        
+        return self.train_losses
+    
+    def analyze_training(self):
+        """Analyze training dynamics using calculus"""
+        import matplotlib.pyplot as plt
+        from scipy import signal
+        
+        fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+        
+        # 1. Loss curve
+        axes[0, 0].plot(self.train_losses, linewidth=2)
+        axes[0, 0].set_xlabel('Epoch')
+        axes[0, 0].set_ylabel('Loss')
+        axes[0, 0].set_title('Training Loss Over Time')
+        axes[0, 0].grid(True, alpha=0.3)
+        
+        # 2. Gradient norm
+        axes[0, 1].plot(self.gradient_norms, linewidth=2, color='red')
+        axes[0, 1].set_xlabel('Epoch')
+        axes[0, 1].set_ylabel('Gradient Norm')
+        axes[0, 1].set_title('Gradient Norm (Vanishing Check)')
+        axes[0, 1].grid(True, alpha=0.3)
+        
+        # 3. Loss derivative (rate of change)
+        loss_derivative = np.gradient(self.train_losses)
+        axes[1, 0].plot(loss_derivative, linewidth=2, color='green')
+        axes[1, 0].axhline(0, color='black', linestyle='--')
+        axes[1, 0].set_xlabel('Epoch')
+        axes[1, 0].set_ylabel("dL/dt")
+        axes[1, 0].set_title("Rate of Loss Change (Derivative)")
+        axes[1, 0].grid(True, alpha=0.3)
+        
+        # 4. Convexity check
+        if len(self.weights_history) > 0:
+            weights = self.weights_history
+            w_flat = [np.array([w.flatten() for w in epoch]).flatten() for epoch in weights]
+            w_var = [np.var(w) for w in w_flat]
+            axes[1, 1].plot(w_var, linewidth=2, color='purple')
+            axes[1, 1].set_xlabel('Epoch')
+            axes[1, 1].set_ylabel('Weight Variance')
+            axes[1, 1].set_title('Weight Variance (Convergence Check)')
+            axes[1, 1].grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        plt.show()
+```
+
+---
+
+### মডিউল ৬: স্ট্রিমলাইট ড্যাশবোর্ড
+
+```python
+# streamlit_app.py
+import streamlit as st
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.datasets import load_digits
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import OneHotEncoder
+
+st.set_page_config(page_title="MathAI Explorer", layout="wide")
+
+st.title("🧮 MathAI: From Calculus to Classification")
+st.markdown("""
+### Explore the Mathematics Behind Machine Learning
+This interactive dashboard demonstrates calculus, linear algebra, and optimization in action.
+""")
+
+# Sidebar
+st.sidebar.header("⚙️ Configuration")
+
+# Model parameters
+activation = st.sidebar.selectbox(
+    "Activation Function",
+    ["relu", "sigmoid", "tanh"]
+)
+
+learning_rate = st.sidebar.slider(
+    "Learning Rate (α)", 
+    0.001, 0.5, 0.01, 0.001
+)
+
+epochs = st.sidebar.slider(
+    "Training Epochs", 
+    10, 200, 50, 10
+)
+
+hidden_layers = st.sidebar.slider(
+    "Hidden Layer Size", 
+    8, 128, 32, 8
+)
+
+# Load data
+st.header("📊 Data & Model Training")
+
+@st.cache_data
+def load_data():
+    digits = load_digits()
+    X = digits.data / 16.0  # Normalize
+    y = digits.target
+    
+    # One-hot encode
+    encoder = OneHotEncoder(sparse_output=False)
+    y_onehot = encoder.fit_transform(y.reshape(-1, 1))
+    
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y_onehot, test_size=0.2, random_state=42
+    )
+    
+    return X_train, X_test, y_train, y_test
+
+X_train, X_test, y_train, y_test = load_data()
+
+st.write(f"Training samples: {X_train.shape[0]}")
+st.write(f"Test samples: {X_test.shape[0]}")
+st.write(f"Features: {X_train.shape[1]}")
+st.write(f"Classes: {y_train.shape[1]}")
+
+# Train button
+if st.button("🚀 Train Model"):
+    with st.spinner("Training neural network from scratch..."):
+        # Initialize model
+        layer_sizes = [X_train.shape[1], hidden_layers, y_train.shape[1]]
+        model = NeuralNetworkFromScratch(layer_sizes, activation=activation)
+        
+        # Train
+        pipeline = TrainingPipeline(model, X_train, y_train)
+        losses = pipeline.train(epochs=epochs, learning_rate=learning_rate)
+        
+        # Evaluate
+        train_acc = np.mean(np.argmax(model.forward(X_train), axis=1) == np.argmax(y_train, axis=1))
+        test_acc = np.mean(np.argmax(model.forward(X_test), axis=1) == np.argmax(y_test, axis=1))
+        
+        st.success(f"✅ Training Complete!")
+        st.metric("Training Accuracy", f"{train_acc:.2%}")
+        st.metric("Test Accuracy", f"{test_acc:.2%}")
+        
+        # Loss plot
+        fig, ax = plt.subplots(figsize=(10, 5))
+        ax.plot(losses, linewidth=2)
+        ax.set_xlabel("Epoch")
+        ax.set_ylabel("Loss")
+        ax.set_title("Training Loss")
+        ax.grid(True, alpha=0.3)
+        st.pyplot(fig)
+        
+        # Activation analysis
+        st.header("📐 Activation Function Analysis")
+        
+        # Analyze activation
+        from activation_analysis import ActivationAnalysis
+        activations = {
+            'ReLU': (lambda x: np.maximum(0, x), lambda x: (x > 0).astype(float)),
+            'Sigmoid': (lambda x: 1/(1+np.exp(-x)), lambda x: x*(1-x)),
+            'Tanh': (np.tanh, lambda x: 1-x**2)
+        }
+        
+        for name, (func, grad) in activations.items():
+            x = np.linspace(-5, 5, 100)
+            fig, axes = plt.subplots(1, 2, figsize=(10, 3))
+            
+            axes[0].plot(x, func(x), linewidth=2)
+            axes[0].set_title(f'{name} Function')
+            axes[0].grid(True, alpha=0.3)
+            
+            axes[1].plot(x, grad(func(x)), linewidth=2, color='red')
+            axes[1].set_title(f'{name} Derivative')
+            axes[1].grid(True, alpha=0.3)
+            
+            st.pyplot(fig)
+        
+        # Gradient analysis
+        st.header("🎯 Gradient Analysis")
+        fig, ax = plt.subplots(figsize=(10, 5))
+        ax.plot(pipeline.gradient_norms, linewidth=2, color='red')
+        ax.set_xlabel("Epoch")
+        ax.set_ylabel("Gradient Norm")
+        ax.set_title("Gradient Norm (Vanishing Gradient Check)")
+        ax.axhline(0.01, color='orange', linestyle='--', label='Warning threshold')
+        ax.legend()
+        ax.grid(True, alpha=0.3)
+        st.pyplot(fig)
+        
+        # Visualization of weights
+        st.header("🔬 Weights Visualization")
+        fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+        
+        # First layer weights
+        W1 = model.weights[0]
+        axes[0].imshow(W1, cmap='RdBu', aspect='auto')
+        axes[0].set_title('First Layer Weights')
+        axes[0].set_xlabel('Hidden Neurons')
+        axes[0].set_ylabel('Features')
+        plt.colorbar(axes[0].imshow(W1, cmap='RdBu', aspect='auto'), ax=axes[0])
+        
+        # Weight distribution
+        axes[1].hist(W1.flatten(), bins=30, edgecolor='black')
+        axes[1].set_title('Weight Distribution')
+        axes[1].set_xlabel('Weight Value')
+        axes[1].set_ylabel('Frequency')
+        
+        st.pyplot(fig)
+```
+
+---
+
+## 🚀 **ডিপ্লয়মেন্ট গাইড (Streamlit Cloud)**
+
+### স্টেপ ১: GitHub-এ আপলোড করুন
+
+```bash
+# Your project structure
+mathai-project/
+├── app.py                      # Main Streamlit app
+├── requirements.txt            # Dependencies
+├── README.md                   # Project documentation
+├── models/
+│   ├── neural_network.py      # Neural network from scratch
+│   ├── activation_analysis.py # Activation function analysis
+│   ├── optimization.py        # Optimizers
+│   └── training.py            # Training pipeline
+├── notebooks/
+│   ├── 01-mathematical-foundation.ipynb
+│   ├── 02-neural-network-scratch.ipynb
+│   └── 03-training-analysis.ipynb
+└── data/
+    └── sample_data.csv
+```
+
+### স্টেপ ২: requirements.txt তৈরি করুন
+
+```txt
+streamlit==1.28.0
+numpy==1.24.0
+scipy==1.11.0
+scikit-learn==1.3.0
+matplotlib==3.7.0
+seaborn==0.12.0
+pandas==2.0.0
+plotly==5.15.0
+```
+
 ---
 
 *This chapter is part of a comprehensive AI/ML curriculum. Mastery of calculus is essential for understanding modern AI systems.*
